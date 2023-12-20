@@ -24,7 +24,7 @@ session_start();
 			{
 				echo '<script type="text/javascript">
 						alert("Welcome User!");
-							location="home.php";
+							location="setschedule.php";
 							</script>';
 				$_SESSION['username'] = $username;
 			}
