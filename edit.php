@@ -18,12 +18,12 @@
 	$leveloptions = "";
 	$courseoptions = "";
 
-		while($row= mysqli_fetch_assoc($result))
-		{
+		// while($row= mysqli_fetch_assoc($result))
+		// {
 			
-			$options = $options."<option>$row[course]</option>";
-			$leveloptions = $options."<option>$row[level]</option>";
-		}
+		// 	$options = $options."<option>$row[course]</option>";
+		// 	$leveloptions = $options."<option>$row[level]</option>";
+		// }
 
 ?>
 <?php
@@ -98,15 +98,12 @@ body {
 							<label class="col-md-4 control-label" for="course"> Course </label> 
 						<div class="col-md-5">
 						<select id="course" name="course" class="form-control"> 
-<<<<<<< Updated upstream
-						<?php echo $options;?>
-=======
+
 							<?php while($row1 = mysqli_fetch_assoc($findAllCoursesResult)):;?>
 
 								<option  id="<?php echo $row1["course_id"];?>" value="<?php echo $row1["course_name"];?>"><?php echo $row1["course_name"];?></option>
 
 							<?php endwhile;?>
->>>>>>> Stashed changes
                     	</select>
 					</div>
 				</div>
