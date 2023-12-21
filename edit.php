@@ -1,133 +1,152 @@
+<?php 
+// ************** add.cor.php *********************
+
+// php select option value from database
+
+	$hostname = "localhost";
+	$username = "root";
+	$password = "";
+	$databaseName = "insertion";
+
+	// connect to database
+	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+
+	$query = "SELECT * FROM `faculty`";
+	$result2 = mysqli_query($connect, $query);
+
+	$options = "";
+
+		while($row2 = mysqli_fetch_array($result2))
+		{
+			$options = $options."<option>$row2[1]</option>";
+		}
+
+?>
 <?php
+  $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "header.php";
    include_once("header.php");
    include_once("navbar.php");
 ?>
-<html>
-    <head>
 
-    </head>
-        <body><br>
-        <div align="center">
-    <fieldset>
-                    <legend>Schedule</legend>
-        <body>
-            <?php
+<?php   
+        $hostname = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "insertion";
 
-                echo "<tr>
-                        <td>";
-                        // your database connection
-                        $host       = "localhost"; 
-                        $username   = "root"; 
-                        $password   = "";
-                        $database   = "insertion"; 
-                                
-                    // select database
-                        $connect = mysqli_connect($host,$username,$password,$database) or die(mysqli_error()); 
-                            mysqli_select_db($connect, "insertion") or die(mysql_error()); 
 
-                                $course_id = '';  // Define a default value
+        $connect = mysqli_connect($hostname,$username,$password,$database) or die(mysqli_error()); 
+                mysqli_select_db($connect, "insertion") or die(mysql_error()); 
 
-                                    if (isset($_GET['id'])) {
-                                        $course_id = mysqli_real_escape_string($connect, $_GET['id']);
-                                        $query = "SELECT * FROM `course` WHERE course_id='$course_id'";
-                                        
-                                        $sql = mysqli_query($connect, $query);
-                                    }
-
-                                $query = "SELECT * FROM `course` WHERE course_id='$course_id'";
-                                $result = mysqli_query($connect, $query);
-
-                                
-                                echo "<div class='container'> <table width='50' class='table table-bordered' >
-                                <tr>
-                                <th colspan='3'>ID Number</th>
-                                <th colspan='3'>Students Name</th>
-                            </tr>";
-
-                            while($row = mysqli_fetch_assoc($result))
-                            {   
+        if (isset($_GET['id'])) {
+                $course_id = mysqli_real_escape_string($connect, $_GET['id']);
+                $update = true;
+                $query = "SELECT * FROM course WHERE course_id=$course_id";
+                $result = mysqli_query($connect,$query);
+                }
+                
+                while($row = mysqli_fetch_assoc($result))
+                    {   
                                 $course_id = $row['course_id'];
                                 $course_code = $row['course_code'];
                                 $course_name = $row['course_name'];
                                 $course = $row['course'];
                                 $level = $row['level'];
+                     }
+?>
+<html>
+<head>
+<style>
+body {
+	background-color: white;
+}
+</body>
+</style>
+</head>
+<body>
+ 
+<br><div class="container">
+  <div class="row" align="center">
+    <div class="col-lg-6">
+		<div class="jumbotron">
+			Update Schedule
+		<form class="form-horizontal" method= "post" action = "add.cor.php">
+			<fieldset>
 
-                                echo "<tr align='center'>";
-                                
-                                 echo "<td colspan='3'>" . $row['course_code'] . "</td>";
-                                 echo "<td colspan='3'><B>" . $row['course_name'] . "</B></td>
-                                        </tr>";
-                                   
-                                echo "<tr>
-            
-                                        <th>Course</th>
-                                        <th>Level</th>
-                                        <th>Curriculum</th>
-                                        <th>Room Number</th>
-                                        <th>Teacher</th>
-                                        <th> Start / End </th>
-                                        <th>Note</th>
-                                        <th>Action</th>
-                                    </tr>";
-                               
-                                
-                             
-                                echo "<td>" . $row['course'] . "</td>";
-                                echo "<td>" . $row['level'] . "</td>";
-                                echo "<td>" . $row['level'] . "</td>";
-                                echo "<td>" . $row['level'] . "</td>";
-                                echo "<td>" . $row['level'] . "</td>";
-                                echo "<td>" . $row['level'] . "</td>";
-                                echo "<td>" . $row['level'] . "</td>";
-                                echo "<td>
-                                    <form class='form-horizontal' method='post' action='corlist.php'>
-                                    <input name='course_id' type='hidden' value='".$row['course_id']."';>
-                                    <button type='submit' name='update' class='btn btn-success'> Update </button>&nbsp;
-                                    <a href='schedulelist.php' class='btn btn-warning'> Cancel </a>&nbsp;
-                                    <input type='submit' class='btn btn-danger' name='delete' value='Delete'>&nbsp;
-                                    </form>
-                                    </td>"; 
-                                    echo "</tr>";
-                                    }
-                                echo "</table>";
+			<!-- Form Name -->
+			<legend> UPDATE</legend>
 
-                        echo "</td>           
-                    </tr>";
-                
-                    // delete record
-                //     if($_SERVER['REQUEST_METHOD'] == "POST")
-                //         {
-                //             echo '<script type="text/javascript">
-                //                         alert("Schedule Successfuly Deleted");
-                //                             location="schedulelist.php";
-                //                             </script>';
-                //         }
-                //         if(isset($_POST['id']))
-                //         {
-                //         $id = mysqli_real_escape_string($connect, $_POST['id']);
-                //         $sql = mysqli_query($connect, "DELETE FROM addtable WHERE id='$id'");
-                //         if(!$sql)
-                //         {
-                //             echo ("Could not delete rows" .mysqli_error($connect));
-                //         }
-                        
-                // }
-                
-            ?>
-    </fieldset>
-        </form>
-        </div>
-        </div>
-        </div>
+			
+			<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="corcode"> ID Number </label>  
+				  <div class="col-md-5">
+				  <input id="corcode" name="corcode" type="text" placeholder="Base on passport" value="<?php echo $course_code; ?>" class="form-control input-md" required="">	
+				  </div>
+				</div>
+				
+			
+			<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="corname">Students Name </label>  
+				  <div class="col-md-5">
+				  <input id="corname" name="corname" type="text" placeholder="Name here" value="<?php echo $course_name; ?> "  class="form-control input-md" required="">
+				  </div>
+				</div>
 
-      
-        </div>
-        </body>
-</html>
-	
+				<!-- Text input-->
+				<div class="form-group">
+					<div class="form-group">
+							<label class="col-md-4 control-label" for="course"> Course </label> 
+						<div class="col-md-5">
+						<select id="course" name="course" class="form-control"> 
+						
+                    	</select>
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<div class="form-group">
+							<label class="col-md-4 control-label" for="level"> Level </label> 
+						<div class="col-md-5">
+						<select id="level" name="level" value="<?php echo $level; ?>" class="form-control"> 
+							<option value="Select">Select</option>  
+							<option value="beginner1"> Beginner 1 </option>  
+							<option value="elementary2">Elementary 2</option>  
+							<option value="elementary3">Elementary 3</option>  
+							<option value="preintermediate4">Preintermediate 4</option>  
+							<option value="intermediate5">intermediate 5</option>  
+							<option value="intermediate6"> intermediate 6</option>  
+							<option value="upperintermediate7">Upper-Intermediate 7</option>
+							<option value="upperintermediate8">Upper-Intermediate 8</option>
+							<option value="advance9"> Advance 9</option> 
+							<option value="advance10"> Advance 10</option> 
+							<option value="advance11"> Advance 11</option> 
+							<option value="master12"> Master 12 </option>    
+						</select>
+					</div>
+				</div>
+
+				
+				<!-- Button -->
+			<div class="form-group"  align="right" >
+			  <label class="col-md-4 control-label" for="submit"></label>
+			  <div class="col-md-5">
+			  	<a href="schedulelist.php" class="btn btn-primary"> Back </a> &nbsp;  &nbsp; 
+				<button id="submit" name="submit" class="btn btn-success"> Update </button>
+			  </div>
+			</div>
+
+			</fieldset>
+			</form>
+		</div>		
+    </div>
+
 <?php
-   $path = $_SERVER['DOCUMENT_ROOT'];
+  $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "footer.php";
    include_once("footer.php");
-
+   include_once("navbar.php");
 ?>

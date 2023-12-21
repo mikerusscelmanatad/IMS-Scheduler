@@ -21,9 +21,6 @@
 			$options = $options."<option>$row2[1]</option>";
 		}
 
-
-
-
 ?>
 
 <?php
@@ -83,7 +80,6 @@ body {
 					</div>
 				</div>
 
-				<!-- Text input-->
 				<div class="form-group">
 					<div class="form-group">
 							<label class="col-md-4 control-label" for="level"> Level </label> 
@@ -111,7 +107,9 @@ body {
 			<div class="form-group"  align="right" >
 			  <label class="col-md-4 control-label" for="submit"></label>
 			  <div class="col-md-5">
-				<button id="submit" name="submit" class="btn btn-success"> SET SCHEDULE </button>
+			  	<a href="schedulelist.php" class="btn btn-primary"> Back </a> &nbsp;  &nbsp; 
+				<button id="submit" name="submit" class="btn btn-success"> Add Subjects </button>
+			  </div>
 			  </div>
 			</div>
 
