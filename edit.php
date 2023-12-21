@@ -48,6 +48,14 @@
 			$update = true;
 			$query = "SELECT * FROM course WHERE course_id=$course_id";
 			$result = mysqli_query($connect,$query);
+			while($row = mysqli_fetch_assoc($result))
+                    {   
+                                $course_id = $row['course_id'];
+                                $course_code = $row['course_code'];
+                                $course_name = $row['course_name'];
+                                $course = $row['course'];
+                                $level = $row['level'];
+                     }
 		}
 
 		$findAllCourses = "SELECT * FROM course";
