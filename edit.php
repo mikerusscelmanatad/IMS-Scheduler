@@ -11,14 +11,18 @@
 	// connect to database
 	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
-	$query = "SELECT * FROM `faculty`";
-	$result2 = mysqli_query($connect, $query);
+	$query = "SELECT * FROM course ";
+	$result = mysqli_query($connect, $query);
 
 	$options = "";
+	$leveloptions = "";
+	$courseoptions = "";
 
-		while($row2 = mysqli_fetch_array($result2))
+		while($row= mysqli_fetch_assoc($result))
 		{
-			$options = $options."<option>$row2[1]</option>";
+			
+			$options = $options."<option>$row[course]</option>";
+			$leveloptions = $options."<option>$row[level]</option>";
 		}
 
 ?>
@@ -95,13 +99,12 @@ body {
 				  </div>
 				</div>
 
-				<!-- Text input-->
 				<div class="form-group">
 					<div class="form-group">
 							<label class="col-md-4 control-label" for="course"> Course </label> 
 						<div class="col-md-5">
 						<select id="course" name="course" class="form-control"> 
-						
+						<?php echo $options;?>
                     	</select>
 					</div>
 				</div>
@@ -111,8 +114,9 @@ body {
 					<div class="form-group">
 							<label class="col-md-4 control-label" for="level"> Level </label> 
 						<div class="col-md-5">
-						<select id="level" name="level" value="<?php echo $level; ?>" class="form-control"> 
-							<option value="Select">Select</option>  
+						<select id="level" name="level" class="form-control"> 
+							<?php echo $leveloptions; ?>
+							<option value="">Select</option>  
 							<option value="beginner1"> Beginner 1 </option>  
 							<option value="elementary2">Elementary 2</option>  
 							<option value="elementary3">Elementary 3</option>  

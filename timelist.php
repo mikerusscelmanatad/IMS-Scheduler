@@ -48,9 +48,9 @@ td {
                     $result = mysqli_query($connect, $query) or die(mysqli_error());
                     echo "<div class='container'><table width='' class='table table-bordered' border='1' >
                             <tr>
-                             <th>Start time</th>
-								             <th>End time</th>
-                                <th>Action</th>
+                            <th>Start time</th>
+							<th>End time</th>
+                            <th>Action</th>
                             </tr>";
                         while($row = mysqli_fetch_assoc($result))
                         {

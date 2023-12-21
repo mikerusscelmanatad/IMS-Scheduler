@@ -1,37 +1,66 @@
 <?php
+  $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "header.php";
    include_once("header.php");
    include_once("navbar.php");
 ?>
 <html>
 <head>
 <style>
-
 body {
-    background-image: url();
-    background-color: white;
+	background-color: white;
 }
-th {
-    text-align: center;
-}
-tr {
-     height: 30px;
-}
-td {
-    padding-top: 5px;
-    padding-left: 20px; 
-    padding-bottom: 5px;    
-    height: 20px;
-}
-
-
 </body>
 </style>
 </head>
-<body><br>
-<div class="container">
-
-
 <body>
+ 
+ <br><div class="container"> 
+  <div class="row" align="center">
+    <div class="col-lg-6">
+		<div class="jumbotron">
+                Here you will Add subjects
+				<form class="form-horizontal" method= "POST" action="add.sub.php">
+				<fieldset>
+
+				<!-- Form Name -->
+				<legend>Add Subjects</legend>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="roomcode">Room Number</label>  
+				  <div class="col-md-5">
+				  <input id="roomcode" name="roomcode" type="text" placeholder="Room Number" class="form-control input-md" required="">
+					
+				  </div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="subj">Subject / Curriculum</label>  
+				  <div class="col-md-5">
+				  <input id="subj" name="subj" type="text" placeholder="Subject / Curriculum " class="form-control input-md" required="">
+					
+				  </div>
+				</div>
+				
+				<!-- Button -->
+			<div class="form-group" >
+			  <label class="col-md-4 control-label" for="submit"></label>
+			  <div class="col-md-5">
+			  	<a href="setschedule.php" class="btn btn-primary"> Back </a> &nbsp;  &nbsp; <br><br>
+
+				<button align="right" id="submit" name="submit" class="btn btn-success"> Add Subjects </button>
+			  </div>
+			  </div>
+			</div>
+
+				</fieldset>
+				</form>
+		</div>		
+    </div>
+
+
     <?php
      echo "<tr>
             <td>";
@@ -47,9 +76,9 @@ td {
 
                     $query = ("SELECT * FROM subject");
                     $result = mysqli_query($connect, $query);
-                    echo "<div class='container'><table width='' class='table table-bordered' border='1' >
+                    echo "<div class='subjectlist'><table width=''class='table table-bordered' border='1' >
                             <tr>
-                                <th>Code</th>
+                                <th>Room Number</th>
                                 <th>Subject</th>
                                 <th>Action</th>
                             </tr>";
@@ -96,8 +125,9 @@ td {
 </div>
     </body>
     </html>
-    
 <?php
+  $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "footer.php";
    include_once("footer.php");
-
+   include_once("navbar.php");
 ?>

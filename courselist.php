@@ -14,8 +14,18 @@ body {
 </style>
 </head>
 <body>
-            <div align="center">
-            <legend>List of Courses </legend></fieldset>
+          
+        <div align="center">
+          <?php
+            include_once("addfaculty.php");
+          ?>
+
+
+        <div align="center">
 			<?php
 				include_once("faclist.php");
 			?>
+      <br> <br> <br> <br>
+
+          
+      

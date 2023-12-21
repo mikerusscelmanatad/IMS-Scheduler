@@ -48,4 +48,9 @@
     font-size: 100px;
     font-weight: 300;
 
- }
+ } 
+ 
+  .row {
+    float:left;
+
+  }

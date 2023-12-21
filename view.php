@@ -63,7 +63,7 @@
                                             <th>Curriculum</th>
                                             <th>Room Number</th>
                                             <th>Teacher</th>
-                                            <th> Start / End </th>
+                                            <th colspan ='2'><center> Start / End </th>
                                             <th colspan='3'><center>Note</th> </center>
                                         </tr>";
                                    
@@ -74,7 +74,7 @@
                                     echo "<td>" . $row['level'] . "</td>";
                                     echo "<td>" . $row['level'] . "</td>";
                                     echo "<td>" . $row['level'] . "</td>";
-                                    echo "<td colspan='3'>" . $row['level'] . "</td>";
+                                    echo "<td align='center' colspan='2'>" . $row['level'] . "</td>";
                                     echo "<td> <center>
                                     <form class='form-horizontal' method='post' action='corlist.php'>
                                     <input name='course_id' type='hidden' value='".$row['course_id']."';>

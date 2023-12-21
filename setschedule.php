@@ -75,6 +75,7 @@ body {
 							<label class="col-md-4 control-label" for="course"> Course </label> 
 						<div class="col-md-5">
 						<select id="course" name="course" class="form-control"> 
+							<option value="Select">Select</option> 
                         <?php echo $options;?>
                     	</select>
 					</div>
@@ -107,8 +108,7 @@ body {
 			<div class="form-group"  align="right" >
 			  <label class="col-md-4 control-label" for="submit"></label>
 			  <div class="col-md-5">
-			  	<a href="schedulelist.php" class="btn btn-primary"> Back </a> &nbsp;  &nbsp; 
-				<button id="submit" name="submit" class="btn btn-success"> Add Subjects </button>
+			  	<a href="subject.php" class="btn btn-primary"> Next </a> &nbsp;  &nbsp;
 			  </div>
 			  </div>
 			</div>
