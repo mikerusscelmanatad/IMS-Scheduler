@@ -49,9 +49,9 @@ body {
 			  <label class="col-md-4 control-label" for="submit"></label>
 			  <div class="col-md-5">
 			  	<a href="setschedule.php" class="btn btn-primary"> Back </a> &nbsp;  &nbsp; <br><br>
-
 				<button align="right" id="submit" name="submit" class="btn btn-success"> Add Subjects </button>
-			  </div>
+			 
+                </div>
 			  </div>
 			</div>
 

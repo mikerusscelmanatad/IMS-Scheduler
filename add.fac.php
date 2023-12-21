@@ -24,7 +24,7 @@
  {
 	 echo '<script type="text/javascript">
                       alert("New Course Added!");
-                         location="addfaculty.php";
+                         location="courselist.php";
                            </script>';
  }
 

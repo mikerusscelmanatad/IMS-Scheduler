@@ -27,7 +27,7 @@
  {
 	 echo '<script type="text/javascript">
                       alert("Student Added!");
-                         location="setschedule.php";
+                         location="subject.php";
                            </script>';
  }
 

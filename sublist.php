@@ -74,7 +74,7 @@ td {
     {
         echo '<script type="text/javascript">
                       alert("Schedule Successfuly Deleted");
-                         location="list.php";
+                         location="subject.php";
                            </script>';
     }
     if(isset($_POST['subject_id']))
