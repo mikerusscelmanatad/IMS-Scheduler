@@ -44,20 +44,14 @@
                 mysqli_select_db($connect, "insertion") or die(mysql_error()); 
 
         if (isset($_GET['id'])) {
-                $course_id = mysqli_real_escape_string($connect, $_GET['id']);
-                $update = true;
-                $query = "SELECT * FROM course WHERE course_id=$course_id";
-                $result = mysqli_query($connect,$query);
-                }
-                
-                while($row = mysqli_fetch_assoc($result))
-                    {   
-                                $course_id = $row['course_id'];
-                                $course_code = $row['course_code'];
-                                $course_name = $row['course_name'];
-                                $course = $row['course'];
-                                $level = $row['level'];
-                     }
+			$course_id = mysqli_real_escape_string($connect, $_GET['id']);
+			$update = true;
+			$query = "SELECT * FROM course WHERE course_id=$course_id";
+			$result = mysqli_query($connect,$query);
+		}
+
+		$findAllCourses = "SELECT * FROM course";
+		$findAllCoursesResult = mysqli_query($connect,$findAllCourses);
 ?>
 <html>
 <head>
@@ -104,7 +98,15 @@ body {
 							<label class="col-md-4 control-label" for="course"> Course </label> 
 						<div class="col-md-5">
 						<select id="course" name="course" class="form-control"> 
+<<<<<<< Updated upstream
 						<?php echo $options;?>
+=======
+							<?php while($row1 = mysqli_fetch_assoc($findAllCoursesResult)):;?>
+
+								<option  id="<?php echo $row1["course_id"];?>" value="<?php echo $row1["course_name"];?>"><?php echo $row1["course_name"];?></option>
+
+							<?php endwhile;?>
+>>>>>>> Stashed changes
                     	</select>
 					</div>
 				</div>
