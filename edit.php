@@ -20,10 +20,6 @@
 		// 	$options = $options."<option>$row[course]</option>";
 		// 	$leveloptions = $options."<option>$row[level]</option>";
 		// }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8c006aa302af0852faf77ee2ea76cff921f1e97c
 ?>
 <?php
   $path = $_SERVER['DOCUMENT_ROOT'];
@@ -52,18 +48,12 @@
                                 $level = $row['level'];
                      }
 		}
-<<<<<<< HEAD
 			//Dropdown list query *************************************
 		$findAllCourses = "SELECT * FROM course WHERE course_id=$course_id";
 		$findAllCoursesResult = mysqli_query($connect,$findAllCourses);
 				// **************************
 		$findAllLevel = "SELECT * FROM course WHERE course_id=$course_id";
 		$findAllLevelResult = mysqli_query($connect,$findAllLevel);
-=======
-
-		$findAllCourses = "SELECT * FROM course";
-		$findAllCoursesResult = mysqli_query($connect,$findAllCourses);
->>>>>>> 8c006aa302af0852faf77ee2ea76cff921f1e97c
 ?>
 <html>
 <head>
@@ -107,16 +97,8 @@ body {
 							<label class="col-md-4 control-label" for="course"> Course </label> 
 						<div class="col-md-5">
 						<select id="course" name="course" class="form-control"> 
-<<<<<<< HEAD
 							<?php while($row1 = mysqli_fetch_assoc($findAllCoursesResult)):;?>
 								<option  id="<?php echo $row1["course_id"];?>" value="<?php echo $row1["course"];?>"><?php echo $row1["course"];?></option>
-=======
-
-							<?php while($row1 = mysqli_fetch_assoc($findAllCoursesResult)):;?>
-
-								<option  id="<?php echo $row1["course_id"];?>" value="<?php echo $row1["course_name"];?>"><?php echo $row1["course_name"];?></option>
-
->>>>>>> 8c006aa302af0852faf77ee2ea76cff921f1e97c
 							<?php endwhile;?>
                     	</select>
 					</div>
