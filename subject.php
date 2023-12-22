@@ -20,7 +20,7 @@ body {
     <div class="col-lg-6">
 		<div class="jumbotron">
                 Here you will Add subjects
-				<form class="form-horizontal" method= "POST" action="add.sub.php">
+				<form class="form-horizontal" method= "POST" action="add.sub.php" enctype="multipart/form-data">
 				<fieldset>
 
 				<!-- Form Name -->
@@ -48,8 +48,7 @@ body {
 			<div class="form-group" >
 			  <label class="col-md-4 control-label" for="submit"></label>
 			  <div class="col-md-5">
-			  	<a href="setschedule.php" class="btn btn-primary"> Back </a> &nbsp;  &nbsp; <br><br>
-				<button align="right" id="submit" name="submit" class="btn btn-success"> Add Subjects </button>
+				<button id="submit" name="submit" class="btn btn-success"> Input </button>
 			 
                 </div>
 			  </div>
@@ -78,23 +77,31 @@ body {
                     $result = mysqli_query($connect, $query);
                     echo "<div class='subjectlist'><table width=''class='table table-bordered' border='1' >
                             <tr>
-                                <th>Room Number</th>
-                                <th>Subject</th>
+                                <th scope= col>PERIOD</th>
+                                <th colspan='2'>Room Number</th>
+                                <th colspan='2'>Subject</th>
                                 <th>Action</th>
                             </tr>";
+
+                        $no = 1 ; // Auto Numbering the Subjects
                         while($row = mysqli_fetch_assoc($result))
                         {
                         echo "<tr>";
-                        echo "<td>" . $row['subject_code'] . "</td>";
-                        echo "<td>" . $row['subject_description'] . "</td>";
+                        echo "<td scope = col>" .$no. "</td>";
+                        echo "<td colspan ='2'>" . $row['subject_code'] . "</td>";
+                        echo "<td colspan ='2'>" . $row['subject_description'] . "</td>";
                         echo "<td><form class='form-horizontal' method='post' action='sublist.php'>
                         <input name='subject_id' type='hidden' value='".$row['subject_id']."';>
+                        <a href='editsubject.php?id=".$row['subject_id']."' class='btn btn-success'>Edit</a> &nbsp;
                         <input type='submit' class='btn btn-danger' name='delete' value='Delete'>
-                        </form></td>";
+                          </form></td>";
                         echo "</tr>";
+                       $no++;
                         }
+                    
+                        
                     echo "</table>";
-
+                    
             echo "</td>           
         </tr>";
 
@@ -102,7 +109,7 @@ body {
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
         echo '<script type="text/javascript">
-                      alert("Schedule Successfuly Deleted");
+                      alert("Successfuly Deleted");
                          location="list.php";
                            </script>';
     }
@@ -117,6 +124,7 @@ body {
     
     }
     ?>
+   
 </fieldset>
 </form>
 </div>

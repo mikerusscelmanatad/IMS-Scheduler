@@ -29,11 +29,12 @@
 
                                     if (isset($_GET['id'])) {
                                         $course_id = mysqli_real_escape_string($connect, $_GET['id']);
-                                    }
+                                    
 
                                 $query = "SELECT * FROM `course` WHERE course_id='$course_id'";
                                 $result = mysqli_query($connect, $query);
-                                    
+                            }
+
                                 echo "<div class='container'> <table width='50' class='table table-bordered' >
                                     <tr>
                                     <th colspan='1'><center> ID NUMBER </center></th>

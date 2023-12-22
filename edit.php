@@ -1,30 +1,25 @@
+
 <?php 
 // ************** add.cor.php *********************
-
 // php select option value from database
-
 	$hostname = "localhost";
 	$username = "root";
 	$password = "";
 	$databaseName = "insertion";
-
 	// connect to database
 	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
-
 	$query = "SELECT * FROM course ";
 	$result = mysqli_query($connect, $query);
-
 	$options = "";
 	$leveloptions = "";
 	$courseoptions = "";
 
-		while($row= mysqli_fetch_assoc($result))
-		{
+		// while($row= mysqli_fetch_assoc($result))
+		// {
 			
-			$options = $options."<option>$row[course]</option>";
-			$leveloptions = $options."<option>$row[level]</option>";
-		}
-
+		// 	$options = $options."<option>$row[course]</option>";
+		// 	$leveloptions = $options."<option>$row[level]</option>";
+		// }
 ?>
 <?php
   $path = $_SERVER['DOCUMENT_ROOT'];
@@ -32,25 +27,19 @@
    include_once("header.php");
    include_once("navbar.php");
 ?>
-
 <?php   
         $hostname = "localhost";
         $username = "root";
         $password = "";
         $database = "insertion";
-
-
         $connect = mysqli_connect($hostname,$username,$password,$database) or die(mysqli_error()); 
                 mysqli_select_db($connect, "insertion") or die(mysql_error()); 
-
         if (isset($_GET['id'])) {
-                $course_id = mysqli_real_escape_string($connect, $_GET['id']);
-                $update = true;
-                $query = "SELECT * FROM course WHERE course_id=$course_id";
-                $result = mysqli_query($connect,$query);
-                }
-                
-                while($row = mysqli_fetch_assoc($result))
+			$course_id = mysqli_real_escape_string($connect, $_GET['id']);
+			$update = true;
+			$query = "SELECT * FROM course WHERE course_id=$course_id";
+			$result = mysqli_query($connect,$query);
+			while($row = mysqli_fetch_assoc($result))
                     {   
                                 $course_id = $row['course_id'];
                                 $course_code = $row['course_code'];
@@ -58,6 +47,13 @@
                                 $course = $row['course'];
                                 $level = $row['level'];
                      }
+		}
+			//Dropdown list query *************************************
+		$findAllCourses = "SELECT * FROM course WHERE course_id=$course_id";
+		$findAllCoursesResult = mysqli_query($connect,$findAllCourses);
+				// **************************
+		$findAllLevel = "SELECT * FROM course WHERE course_id=$course_id";
+		$findAllLevelResult = mysqli_query($connect,$findAllLevel);
 ?>
 <html>
 <head>
@@ -75,12 +71,10 @@ body {
     <div class="col-lg-6">
 		<div class="jumbotron">
 			Update Schedule
-		<form class="form-horizontal" method= "post" action = "add.cor.php">
+		<form class="form-horizontal" method= "post" action = "add.cor2.php" enctype="multipart/form-data">
 			<fieldset>
-
 			<!-- Form Name -->
 			<legend> UPDATE</legend>
-
 			
 			<!-- Text input-->
 				<div class="form-group">
@@ -98,25 +92,27 @@ body {
 				  <input id="corname" name="corname" type="text" placeholder="Name here" value="<?php echo $course_name; ?> "  class="form-control input-md" required="">
 				  </div>
 				</div>
-
 				<div class="form-group">
 					<div class="form-group">
 							<label class="col-md-4 control-label" for="course"> Course </label> 
 						<div class="col-md-5">
 						<select id="course" name="course" class="form-control"> 
-						<?php echo $options;?>
+							<?php while($row1 = mysqli_fetch_assoc($findAllCoursesResult)):;?>
+								<option  id="<?php echo $row1["course_id"];?>" value="<?php echo $row1["course"];?>"><?php echo $row1["course"];?></option>
+							<?php endwhile;?>
                     	</select>
 					</div>
 				</div>
-
 				<!-- Text input-->
 				<div class="form-group">
 					<div class="form-group">
 							<label class="col-md-4 control-label" for="level"> Level </label> 
 						<div class="col-md-5">
 						<select id="level" name="level" class="form-control"> 
-							<?php echo $leveloptions; ?>
-							<option value="">Select</option>  
+
+							<?php while($row1 = mysqli_fetch_assoc($findAllLevelResult)):;?>
+								<option  id="<?php echo $row1["course_id"];?>" value="<?php echo $row1["level"];?>"><?php echo $row1["level"];?></option>
+							<?php endwhile;?>
 							<option value="beginner1"> Beginner 1 </option>  
 							<option value="elementary2">Elementary 2</option>  
 							<option value="elementary3">Elementary 3</option>  
@@ -132,22 +128,19 @@ body {
 						</select>
 					</div>
 				</div>
-
 				
 				<!-- Button -->
 			<div class="form-group"  align="right" >
 			  <label class="col-md-4 control-label" for="submit"></label>
 			  <div class="col-md-5">
 			  	<a href="schedulelist.php" class="btn btn-primary"> Back </a> &nbsp;  &nbsp; 
-				<button id="submit" name="submit" class="btn btn-success"> Update </button>
+				<button id="update" name="update" class="btn btn-success"> Update </button>
 			  </div>
 			</div>
-
 			</fieldset>
 			</form>
 		</div>		
     </div>
-
 <?php
   $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "footer.php";

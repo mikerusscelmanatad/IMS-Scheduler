@@ -108,8 +108,8 @@ body {
 			<div class="form-group"  align="right" >
 			  <label class="col-md-4 control-label" for="submit"></label>
 			  <div class="col-md-5">
-			  	<a href="subject.php" class="btn btn-primary"> Next </a> &nbsp;  &nbsp;
-				<button align="right" id="submit" name="submit" class="btn btn-success"> Add Subjects </button>
+			 	 <a href='subject.php' class='btn btn-primary'> next </a>&nbsp;
+				<button align="right" id="submit" name="submit" class="btn btn-primary"> Proceed  </button>
 			  </div>
 			  </div>
 			</div>
