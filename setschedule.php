@@ -10,16 +10,12 @@
 
 	// connect to database
 	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
-
-	$query = "SELECT * FROM `faculty`";
+	$student_id = "student_id";
+	
+	$query = "SELECT * FROM `student_subject` WHERE student_id='$student_id' ";
 	$result2 = mysqli_query($connect, $query);
 
-	$options = "";
-
-		while($row2 = mysqli_fetch_array($result2))
-		{
-			$options = $options."<option>$row2[1]</option>";
-		}
+	
 
 ?>
 
@@ -43,9 +39,9 @@ body {
 <br><div class="container">
   <div class="row" align="center">
     <div class="col-lg-6">
-		<div class="jumbotron">
-			IMS SCHEDULER
-		<form class="form-horizontal" method= "post" action = "add.cor.php">
+			<div class="jumbotron">
+				IMS SCHEDULER
+			<form class="form-horizontal" method= "post" action = "add.cor.php">
 			<fieldset>
 
 			<!-- Form Name -->
@@ -54,38 +50,48 @@ body {
 			
 			<!-- Text input-->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="corcode"> ID Number </label>  
+				  <label class="col-md-4 control-label" for="student_id"> ID Number </label>  
 				  <div class="col-md-5">
-				  <input id="corcode" name="corcode" type="text" placeholder="Base on passport" class="form-control input-md" required="">	
+				  <input id="student_id" name="student_id" type="text" placeholder="Base on passport" class="form-control input-md" required="">	
 				  </div>
 				</div>
 				
 			
 			<!-- Text input-->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="corname">Students Name </label>  
+				  <label class="col-md-4 control-label" for="student_name">Students Name </label>  
 				  <div class="col-md-5">
-				  <input id="corname" name="corname" type="text" placeholder="Name here " class="form-control input-md" required="">
+				  <input id="student_name" name="student_name" type="text" placeholder="Name here " class="form-control input-md" required="">
 				  </div>
 				</div>
 
 				<!-- Text input-->
 				<div class="form-group">
 					<div class="form-group">
-							<label class="col-md-4 control-label" for="course"> Course </label> 
+							<label class="col-md-4 control-label" for="student_course"> Course </label> 
 						<div class="col-md-5">
-						<select id="course" name="course" class="form-control"> 
-							<option value="Select">Select</option> 
-                        <?php echo $options;?>
-                    	</select>
+						<select id="student_course" name="student_course" class="form-control"> 
+							<option value="Select">Select</option>  
+							<option value="ESL Premium"> ESL Premium </option>  
+							<option value="ESL Intensive">ESL Intensive</option>  
+							<option value="ESL Essential">ESL Essential</option>  
+							<option value="POWER SPEAKING">POWER SPEAKING</option>  
+							<option value="IELTS ACADEMIC"> IELTS ACADEMIC</option>  
+							<option value="IELTS GENERAL"> IELTS GENERAL</option>  
+							<option value="IELTS PRE-GUARANTEE">IELTS PRE-GUARANTEE</option>
+							<option value="IELTS GUARANTEE">IELTS GUARANTEE</option>
+							<option value="PRE TOEIC"> PRE TOEIC</option> 
+							<option value="TOEIC"> TOEIC </option> 
+							<option value="BUSINESS"> BUSINESS</option>   
+						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="form-group">
-							<label class="col-md-4 control-label" for="level"> Level </label> 
+							<label class="col-md-4 control-label" for="student_level"> Level </label> 
 						<div class="col-md-5">
-						<select id="level" name="level" class="form-control"> 
+						<select id="student_level" name="student_level" class="form-control"> 
 							<option value="Select">Select</option>  
 							<option value="beginner1"> Beginner 1 </option>  
 							<option value="elementary2">Elementary 2</option>  
@@ -101,19 +107,28 @@ body {
 							<option value="master12"> Master 12 </option>    
 						</select>
 					</div>
-				</div>
+					</div>
 
-				
-				<!-- Button -->
-			<div class="form-group"  align="right" >
-			  <label class="col-md-4 control-label" for="submit"></label>
-			  <div class="col-md-5">
-			 	
-				<button align="right" id="submit" name="submit" class="btn btn-primary"> Proceed  </button>
-			  </div>
-			  </div>
-			</div>
+						
 
+						<!-- Text input-->
+						<div class="form-group">
+						<label class="col-md-4 control-label" for="subj">Subject / Curriculum</label>  
+						<div class="col-md-5">
+						<input id="subject_description" name="subject_description" type="text" placeholder="Subject / Curriculum " class="form-control input-md" required="">
+							
+						</div>
+						</div>
+
+
+						<!-- Button -->
+						<div class="form-group"  align="right" >
+						<label class="col-md-4 control-label" for="submit"></label>
+						<div class="col-md-5">
+						<button align="right" id="submit" name="submit" class="btn btn-primary"> Proceed  </button>
+						</div>
+						</div>
+						</div>
 			</fieldset>
 			</form>
 		</div>		

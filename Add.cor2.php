@@ -10,8 +10,7 @@
  if (!mysqli_select_db($connect, 'insertion'))
  {
 	 echo 'database not selected';
- } 
- 
+ }
 
  $course_Code = $_POST['corcode'];
  $course_name = $_POST['corname'];
@@ -28,10 +27,9 @@
  {
 	 echo '<script type="text/javascript">
                       alert("Student Added!");
-                         location="schedulelist.php";
+                         location="subject.php";
                            </script>';
  }
-    
 
 
 ?>

@@ -22,7 +22,7 @@
       <ul class="nav navbar-nav">
           <li><a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
           <!-- <li><a href="addfaculty.php"><span class="glyphicon glyphicon-plus-sign"></span> Add Course  </a></li>  -->
-          <li><a href="courselist.php"><span class="glyphicon glyphicon-list"></span> View Courses  </a></li>  
+          <!-- <li><a href="courselist.php"><span class="glyphicon glyphicon-list"></span> View Courses  </a></li>   -->
           <!-- <li><a href="addsubject.php"><span class="glyphicon glyphicon-plus-sign"></span> Subjects</a></li> -->
           <li><a href="setschedule.php"><span class="glyphicon glyphicon-plus-sign"></span>Set Schedule</a></li>
           <li><a href="addroom.php"><span class="glyphicon glyphicon-asterisk"></span> Room</a></li>
