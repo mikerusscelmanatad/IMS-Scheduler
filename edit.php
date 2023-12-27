@@ -42,6 +42,8 @@
 			$query = "SELECT * FROM student WHERE student_id=$student_id";
 			$result = mysqli_query($connect,$query);
 			while($row = mysqli_fetch_assoc($result)) {
+
+				$student_id = $row['student_id'];
 				$student_name = $row['student_name'];
 				$student_course = $row['student_course'];
 				$student_level = $row['student_level'];
