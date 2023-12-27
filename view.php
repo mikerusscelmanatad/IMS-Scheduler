@@ -25,36 +25,35 @@
                         $connect = mysqli_connect($host,$username,$password,$database) or die(mysqli_error()); 
                             mysqli_select_db($connect, "insertion") or die(mysql_error()); 
 
-                                $course_id = '';  // Define a default value
-
                                     if (isset($_GET['id'])) {
-                                        $course_id = mysqli_real_escape_string($connect, $_GET['id']);
+                                        $student_id = mysqli_real_escape_string($connect, $_GET['id']);
                                     
 
-                                $query = "SELECT * FROM `course` WHERE course_id='$course_id'";
-                                $result = mysqli_query($connect, $query);
+                                $query = "SELECT * FROM `studyload` WHERE student_id='$student_id'";
+                                $result = mysqli_query($connect, $query);   
+
+
                             }
 
                                 echo "<div class='container'> <table width='50' class='table table-bordered' >
                                     <tr>
                                     <th colspan='1'><center> ID NUMBER </center></th>
                                     <th colspan='3'><center> STUDENTS NAME </center></th>
-                                    <th colspan='2'><center>Course</th></center>
-                                    <th colspan='1'><center>Level</th></center>
+                                    <th colspan='2'><center> COURSE </th></center>
+                                    <th colspan='1'><center> LEVEL </th></center>
                                 </tr>"; 
 
                                 while($row = mysqli_fetch_assoc($result))
                                 {   
-                                    $course_id = $row['course_id'];
-                                    $course_code = $row['course_code'];
-                                    $course_name = $row['course_name'];
-                                    $course = $row['course'];
-                                    $level = $row['level'];
-
+                                    $student_id = $row['student_id'];
+                                    $student_name = $row['student_name'];
+                                    $student_course = $row['student_course'];
+                                    $student_level = $row['student_level'];
+                                  
                                     echo "<tr>";
                                     
-                                     echo "<td align='center' colspan='1'>" . $row['course_code'] . "</td>";
-                                     echo "<td align='center' colspan='3'><B>" . $row['course_name'] . "</B></td>";
+                                     echo "<td align='center' colspan='1'> 1 </td>";
+                                     echo "<td align='center' colspan='3'> 1 </td>";
                                      echo "<td align='center' colspan='2'>" . $row['course'] . "</td>";
                                      echo "<td align='center' colspan='1'>" . $row['level'] . "</td>";   
                                      "</tr>";
@@ -72,9 +71,9 @@
                                  
                                     
                                    
-                                    echo "<td>" . $row['level'] . "</td>";
-                                    echo "<td>" . $row['level'] . "</td>";
-                                    echo "<td>" . $row['level'] . "</td>";
+                                    echo "<td> adadwwad </td>";
+                                    echo "<td> awdawdawdawd </td>";
+                                    echo "<td>wdqqwdqwdqw </td>";
                                     echo "<td align='center' colspan='2'>" . $row['level'] . "</td>";
                                     echo "<td> <center>
                                     <form class='form-horizontal' method='post' action='corlist.php'>

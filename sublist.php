@@ -49,14 +49,14 @@ td {
                     $result = mysqli_query($connect, $query);
                     echo "<div class='container'><table width='' class='table table-bordered' border='1' >
                             <tr>
-                                <th>Code</th>
+                                <th>Subject type</th>
                                 <th>Subject</th>
                                 <th>Action</th>
                             </tr>";
                         while($row = mysqli_fetch_assoc($result))
                         {
                         echo "<tr>";
-                        echo "<td>" . $row['subject_code'] . "</td>";
+                        echo "<td>" . $row['subject_type'] . "</td>";
                         echo "<td>" . $row['subject_description'] . "</td>";
                         echo "<td><form class='form-horizontal' method='post' action='sublist.php'>
                         <input name='subject_id' type='hidden' value='".$row['subject_id']."';>

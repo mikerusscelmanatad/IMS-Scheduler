@@ -109,17 +109,6 @@ body {
 					</div>
 					</div>
 
-						
-
-						<!-- Text input-->
-						<div class="form-group">
-						<label class="col-md-4 control-label" for="subj">Subject / Curriculum</label>  
-						<div class="col-md-5">
-						<input id="subject_description" name="subject_description" type="text" placeholder="Subject / Curriculum " class="form-control input-md" required="">
-							
-						</div>
-						</div>
-
 
 						<!-- Button -->
 						<div class="form-group"  align="right" >

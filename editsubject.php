@@ -17,22 +17,29 @@
 
         $connect = mysqli_connect($hostname,$username,$password,$database) or die(mysqli_error()); 
                 mysqli_select_db($connect, "insertion") or die(mysql_error()); 
+				
+	// Update button 		// 	
+	if (isset($_POST['update'])) {
 
-        if (isset($_GET['id'])) {
-                $subject_id = $_GET['id'];
-            
-                $subject_id = mysqli_real_escape_string($connect, $_GET['id']);
-                $update = true;
-                $query = "SELECT * FROM subject WHERE subject_id = '$subject_id'";
-                $sql = mysqli_query($connect, $query);
-                }
-                
-                while($row = mysqli_fetch_assoc($sql))
-                    {   
-                                $subject_id = $row['subject_id'];
-                                $subject_code = $row['subject_code'];
-                                $subject_description = $row['subject_description'];
-                     }
+	$subject_type = mysqli_real_escape_string($connect, $_POST['subject_type']);
+	$subject_description = mysqli_real_escape_string($connect, $_POST['subject_description']);
+	
+	$query = "UPDATE subject SET `subject_id`='$subject_id', `subject_type`='$subject_type', `subject_description`='$subject_description', `updated_at`=now(), WHERE subject_id='$subject_id'";
+	$result = mysqli_query($connect, $query);
+				
+
+				if (!$result)
+				{
+					echo 'not updated';
+				}
+				else
+				{
+					echo '<script type="text/javascript">
+							alert("updated!");
+							location="schedulelist.php";
+							</script>';
+				}
+}	
 ?>
 <html>
 <head>
@@ -58,18 +65,18 @@ body {
 
 				<!-- Text input-->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="roomcode">Room Number</label>  
+				  <label class="col-md-4 control-label" for="subject_type"> Subject_type</label>  
 				  <div class="col-md-5">
-				  <input id="roomcode" name="roomcode" type="text" placeholder="Room Number" value="<?php echo $subject_code; ?> " class="form-control input-md" required="">
+				  <input id="subject_type" name="subject_type" type="text" placeholder="subject_type" value="<?php echo $subject_type; ?> " class="form-control input-md" >
 					
 				  </div>
 				</div>
 
 				<!-- Text input-->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="subj">Subject / Curriculum</label>  
+				  <label class="col-md-4 control-label" for="subject_description">Subject / Curriculum</label>  
 				  <div class="col-md-5">
-				  <input id="subj" name="subj" type="text" placeholder="Subject / Curriculum " value="<?php echo $subject_description; ?> " class="form-control input-md" required="">
+				  <input id="subject_description" name="subject_description" type="text" placeholder="Subject Description " value="<?php echo $subject_description; ?> " class="form-control input-md">
 					
 				  </div>
 				</div>
@@ -79,7 +86,7 @@ body {
 			  <label class="col-md-4 control-label" for="update"></label>
 			  <div class="col-md-5">
 			  	
-				<button id="update" name="update" class="btn btn-success"> Update </button>
+				<input type="submit" id="update" name="update" class="btn btn-success" value="Update">  </input>
 			 
                 </div>
 			  </div>

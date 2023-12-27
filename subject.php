@@ -28,9 +28,9 @@ body {
 
 				<!-- Text input-->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="roomcode">Room Number</label>  
+				  <label class="col-md-4 control-label" for="subject_type"> Subject type</label>  
 				  <div class="col-md-5">
-				  <input id="roomcode" name="roomcode" type="text" placeholder="Room Number" class="form-control input-md" required="">
+				  <input id="subject_type" name="subject_type" type="text" placeholder="Subject type" class="form-control input-md" required="">
 					
 				  </div>
 				</div>
@@ -39,9 +39,9 @@ body {
         
 				<!-- Text input-->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="subj">Subject / Curriculum</label>  
+				  <label class="col-md-4 control-label" for="subject_description">Subject / Curriculum</label>  
 				  <div class="col-md-5">
-				  <input id="subj" name="subj" type="text" placeholder="Subject / Curriculum " class="form-control input-md" required="">
+				  <input id="subject_description" name="subject_description" type="text" placeholder="Subject Description" class="form-control input-md" required="">
 					
 				  </div>
 				</div>
@@ -79,8 +79,7 @@ body {
                     $result = mysqli_query($connect, $query);
                     echo "<div class='subjectlist'><table width=''class='table table-bordered' border='1' >
                             <tr>
-                                <th scope= col>PERIOD</th>
-                                <th colspan='2'>Room Number</th>
+                                <th colspan='1'>Subject type</th>
                                 <th colspan='2'>Subject</th>
                                 <th>Action</th>
                             </tr>";
@@ -89,8 +88,7 @@ body {
                         while($row = mysqli_fetch_assoc($result))
                         {
                         echo "<tr>";
-                        echo "<td scope = col>" .$no. "</td>";
-                        echo "<td colspan ='2'>" . $row['subject_code'] . "</td>";
+                        echo "<td colspan ='1'>". $row['subject_type'] . "</td>";
                         echo "<td colspan ='2'>" . $row['subject_description'] . "</td>";
                         echo "<td><form class='form-horizontal' method='post' action='sublist.php'>
                         <input name='subject_id' type='hidden' value='".$row['subject_id']."';>

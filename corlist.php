@@ -44,7 +44,7 @@ td {
               $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error()); 
                mysqli_select_db($connect, "insertion") or die(mysqli_error()); 
 
-                    $query = "SELECT * FROM course ";
+                    $query = "SELECT * FROM student  ORDER BY student_id ASC ";
                     $result = mysqli_query($connect, $query) or die(mysqli_error());
                     echo "<div class='container'><table width='' class='table table-bordered' border='1' >
                             <tr>
@@ -56,25 +56,24 @@ td {
                             </tr>";
                         while($row = mysqli_fetch_assoc($result))
                         {
-                            $course_id = $row['course_id'];
-                            $course_code = $row['course_code'];
-                            $course_name = $row['course_name'];
-                            $course = $row['course'];
-                            $level = $row['level'];
+                            $course_id = $row['student_id'];
+                            $course_name = $row['student_name'];
+                            $course = $row['student_course'];
+                            $level = $row['student_level'];
 
 
                         echo "<tr>";
                         
-                        echo "<td>" . $row['course_code'] . "</td>";
-                        echo "<td><B> " . $row['course_name'] . " </B></td>";
-                        echo "<td>" . $row['course'] . "</td>";
-                        echo "<td>" . $row['level'] . "</td>";
+                        echo "<td>" . $row['student_id'] . "</td>";
+                        echo "<td><B> " . $row['student_name'] . " </B></td>";
+                        echo "<td>" . $row['student_course'] . "</td>";
+                        echo "<td>" . $row['student_level'] . "</td>";
 
                         echo "<td>
                         <form class='form-horizontal' method='post' action='corlist.php'>
-                        <input name='course_id' type='hidden' value='".$row['course_id']."';>
-                        <a href='view.php?id=".$row['course_id']."' class='btn btn-primary'> View </a> &nbsp;
-                        <a href='edit.php?id=".$row['course_id']."' class='btn btn-success'>Edit</a> &nbsp;
+                        <input name='student_id' type='hidden' value='".$row['student_id']."';>
+                        <a href='view.php?id=".$row['student_id']."' class='btn btn-primary'> View </a> &nbsp;
+                        <a href='edit.php?id=".$row['student_id']."' class='btn btn-success'>Edit</a> &nbsp;
                         <input type='submit' class='btn btn-danger' name='delete' value='Delete'>&nbsp;
                         </form></td>"; 
                         echo "</tr>";
@@ -93,16 +92,17 @@ td {
                          location="schedulelist.php";
                            </script>';
     }
-        if(isset($_POST['course_id']))
+        if(isset($_POST['student_id']))
     {
-        $course_id = mysqli_real_escape_string($connect, $_POST['course_id']);
-        $sql = mysqli_query($connect, "DELETE FROM course WHERE course_id='$course_id'");
+        $student_id = mysqli_real_escape_string($connect, $_POST['student_id']);
+        $sql = mysqli_query($connect, "DELETE FROM student WHERE student_id='$student_id'");
         if(!$sql)
         {
             echo ("Could not delete rows" .mysql_error($connect));
         }
-    
     }
+
+
     ?>
 </fieldset>
 </form>

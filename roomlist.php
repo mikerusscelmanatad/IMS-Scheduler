@@ -56,7 +56,7 @@ td {
                         echo "<tr>";
                         echo "<td>" . $row['room'] . "</td>";
                         echo "<td><form class='form-horizontal' method='post' action='roomlist.php'>
-                        <input name='id' type='hidden' value='".$row['id']."';>
+                        <input name='room_id' type='hidden' value='".$row['room_id']."';>
                         <input type='submit' class='btn btn-danger' name='delete' value='Delete'>
                         </form></td>";
                         echo "</tr>";
@@ -71,13 +71,13 @@ td {
     {
 		echo '<script type="text/javascript">
                       alert("Schedule Successfuly Deleted");
-                         location="tablelist.php";
+                         location="list.php";
                            </script>';
     }
-    if(isset($_POST['id']))
+    if(isset($_POST['room_id']))
     {
-        $id = mysqli_real_escape_string($connect, $_POST['id']);
-        $sql = mysqli_query($connect, "DELETE FROM rooms WHERE id='$id'");
+        $room_id = mysqli_real_escape_string($connect, $_POST['room_id']);
+        $sql = mysqli_query($connect, "DELETE FROM rooms WHERE room_id='$room_id'");
             if(!$sql)
             {
                 echo ("Could not delete rows" .mysqli_error($connect));

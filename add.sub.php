@@ -4,14 +4,17 @@
 	
 
 		// The Submit button or create // 
-	if (isset($_POST['submit'])) {
+	if (isset($_POST['submit'])) 
+	{
 
 		$subject_description = mysqli_real_escape_string($connect, $_POST['subject_description']);
+		$subject_type = mysqli_real_escape_string($connect, $_POST['subject_type']);
 
-		$query = "INSERT INTO subject (subject_description) VALUES ('$subject_description')";
+				
+		$query = "INSERT INTO subject (subject_type, subject_description) VALUES ('$subject_type', '$subject_description')";
 		$result = mysqli_query($connect, $query);
-				}
-					if(!$result)
+				
+					if (!$result)
 					{
 						echo 'not inserted';
 					}
@@ -23,26 +26,6 @@
 											</script>';
 					}
 
-		// Update button 		// 	
-		if (isset($_POST['update'])) {
-
-
-			$subject_description = mysqli_real_escape_string($connect, $_POST['subj']);
-
-			$query = "UPDATE subject SET `subject_description`='$subject_description', `updated_at`=now(), WHERE subject_id='$subject_id'";
-			$result = mysqli_query($connect, $query);
-						}		
-
-						if (!$result)
-						{
-							echo 'not updated';
-						}
-						else
-						{
-							echo '<script type="text/javascript">
-									alert("updated!");
-									location="schedulelist.php";
-									</script>';
-						}
-
-		?>
+		
+	}
+?>
