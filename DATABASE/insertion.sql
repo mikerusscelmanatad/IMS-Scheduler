@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2023 at 06:37 AM
+-- Generation Time: Dec 28, 2023 at 05:31 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -89,8 +89,8 @@ CREATE TABLE `course` (
   `course_name` varchar(250) NOT NULL,
   `course` varchar(250) NOT NULL,
   `level` varchar(250) NOT NULL,
-  `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL
+  `created_at` int(11) NOT NULL DEFAULT current_timestamp(),
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -98,28 +98,14 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `course_code`, `course_name`, `course`, `level`, `created_at`, `updated_at`) VALUES
-(87, '1456', 'ANNE', 'IELTS - ACADEMIC', 'beginner1', 0, 0),
-(88, '1456', 'Vitaly shmuck', 'IELTS - ACADEMIC', 'elementary2', 0, 0),
-(90, 'LS123', 'MIKE', 'ESL - Premium', 'beginner1', 0, 0),
-(91, '1456', 'Vitaly shmuck ', 'IELTS - PRE-GUARANTEE', 'Select', 0, 0),
-(92, '8888888', 'ANNE', 'ESL - Premium', 'elementary2', 0, 0),
-(94, '1456', 'MIKE', 'ESL - Premium', 'beginner1', 0, 0),
-(95, '213awd', 'wa', 'ESL - Premium', 'beginner1', 0, 0),
-(97, '1456', 'MIKE', 'ESL - Premium', 'beginner1', 0, 0),
-(98, '1456', 'MIKE', 'ESL - Premium', 'beginner1', 0, 0),
-(99, '1456', 'wa', 'ESL - Premium', 'beginner1', 0, 0),
-(100, '1456', 'ANNE', 'ESL - Intensive', 'beginner1', 0, 0),
-(101, '1456', 'ANNE', 'ESL - Premium', 'beginner1', 0, 0),
-(102, '1456', 'MIKE', 'ESL - Premium', 'beginner1', 0, 0),
-(103, '789', 'Mark', 'ESL - Premium', 'advance11', 0, 0),
-(104, '1456', 'MIKE', 'ESL - Premium', 'beginner1', 0, 0),
-(105, '1456', 'MIKE', 'ESL - Premium', 'beginner1', 0, 0),
-(106, '000000000', 'MIKE', 'ESL - Intensive', 'preintermediate4', 0, 0),
-(107, '1456', 'MIKE', 'ESL - Premium', 'beginner1', 0, 0),
-(108, '000000000', 'MIKE', 'ESL - Intensive', 'beginner1', 0, 0),
-(110, '1456', 'MIKE', 'ESL - Premium', 'beginner1', 0, 0),
-(111, '1456', 'MIKE', 'ESL - Premium', 'beginner1', 0, 0),
-(112, '8888888', 'ANNE ', 'ESL - Premium', 'beginner1', 0, 0);
+(141, '1456', 'MIKE', 'ESL - Premium', 'beginner1', 0, 0),
+(142, '1456', 'MIKE', 'ESL - Premium', 'beginner1', 0, 0),
+(143, '1456', 'MIKE', 'ESL - Premium', 'beginner1', 0, 0),
+(144, '1456', 'baaabbiu', 'IELTS - ACADEMIC', 'elementary3', 0, 0),
+(145, '1456', 'John Empinado', 'ESL - Essential', 'preintermediate4', 0, 0),
+(146, '1456', 'ANNE ', 'IELTS - ACADEMIC', 'beginner1', 0, 0),
+(147, '1456', 'ANNE ', 'IELTS - ACADEMIC', 'beginner1', 0, 0),
+(150, '1456', 'ANNE  ', 'IELTS - ACADEMIC', 'preintermediate4', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -173,7 +159,7 @@ INSERT INTO `faculty` (`faculty_id`, `faculty_name`, `designation`) VALUES
 --
 
 CREATE TABLE `rooms` (
-  `id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
   `room` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -181,16 +167,61 @@ CREATE TABLE `rooms` (
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`id`, `room`) VALUES
-(3, 'SB14'),
-(8, 'CP09'),
-(9, 'SB11'),
-(10, 'CP19'),
-(11, 'DM28'),
-(12, 'NB15'),
-(13, 'SS36'),
-(14, 'PK22'),
-(15, '555');
+INSERT INTO `rooms` (`room_id`, `room`) VALUES
+(17, '501'),
+(18, '502'),
+(19, '503'),
+(20, '504'),
+(21, '505'),
+(22, '506'),
+(23, '507'),
+(24, '508'),
+(25, '509'),
+(26, '510'),
+(27, '511'),
+(28, '512'),
+(29, '513'),
+(30, '514'),
+(31, '515'),
+(32, '516'),
+(33, '517'),
+(34, '518'),
+(35, '519'),
+(36, '520'),
+(37, '521'),
+(38, '522'),
+(39, '523'),
+(40, '524'),
+(41, '525'),
+(42, '526'),
+(43, '527'),
+(44, '528'),
+(45, '529'),
+(46, '530'),
+(47, '531'),
+(48, '532'),
+(49, '533'),
+(50, '534'),
+(51, '535'),
+(52, '536'),
+(53, '537'),
+(54, '538'),
+(55, '539'),
+(56, '540'),
+(57, '541'),
+(58, '542'),
+(59, '543'),
+(60, '544'),
+(61, '545'),
+(62, '546'),
+(63, '547'),
+(64, '548'),
+(65, '549'),
+(66, '550'),
+(67, '551'),
+(68, '552'),
+(69, '553'),
+(70, '554');
 
 -- --------------------------------------------------------
 
@@ -209,37 +240,81 @@ CREATE TABLE `setschedule` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `student`
+--
+
+CREATE TABLE `student` (
+  `student_id` int(11) NOT NULL,
+  `student_name` varchar(250) NOT NULL,
+  `student_course` varchar(250) NOT NULL,
+  `student_level` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`student_id`, `student_name`, `student_course`, `student_level`) VALUES
+(200, 'Lee min hoo ', 'ESL Essential', 'elementary2'),
+(123, 'Lee min hoo', 'ESL Intensive', 'elementary3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_subject`
+--
+
+CREATE TABLE `student_subject` (
+  `subject_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `deleted` int(11) NOT NULL,
+  `created_at` varchar(11) NOT NULL DEFAULT current_timestamp(),
+  `created_by` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `student_subject`
+--
+
+INSERT INTO `student_subject` (`subject_id`, `student_id`, `deleted`, `created_at`, `created_by`) VALUES
+(0, 222, 0, '2023-12-23 ', ''),
+(0, 222, 0, '2023-12-23 ', ''),
+(0, 12, 0, '2023-12-23 ', ''),
+(0, 232, 0, '2023-12-23 ', ''),
+(0, 3, 0, '2023-12-23 ', ''),
+(0, 123, 0, '2023-12-27 ', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `studyload`
+--
+
+CREATE TABLE `studyload` (
+  `student_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subject`
 --
 
 CREATE TABLE `subject` (
   `subject_id` int(11) NOT NULL,
-  `subject_code` varchar(250) NOT NULL,
+  `subject_type` varchar(250) NOT NULL,
   `subject_description` varchar(250) NOT NULL,
-  `updated_at` int(11) DEFAULT NULL
+  `updated_at` int(11) DEFAULT NULL,
+  `room_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `subject`
 --
 
-INSERT INTO `subject` (`subject_id`, `subject_code`, `subject_description`, `updated_at`) VALUES
-(43, '2144', 'Listening 3', NULL),
-(44, '2121', 'Reading 1 ', NULL),
-(45, '2121', '21awd', NULL),
-(46, '2121', 'Listening 3', NULL),
-(47, '2121', 'Listening 3', NULL),
-(48, '2144', 'Reading 1 ', NULL),
-(49, '2121', 'Reading 1 ', NULL),
-(50, '212121', 'Listening 3', NULL),
-(51, '5555', 'Listening 3', NULL),
-(54, '2121', '21awd', NULL),
-(64, '2121  ', 'Listening 4', NULL),
-(65, '2121', 'Listening 4', NULL),
-(66, '2121', 'Reading 1 ', NULL),
-(67, '2144 ', 'reeeeeee', NULL),
-(68, '2144 ', 'Listening 21', NULL),
-(86, '2121', 'Reading 1 ', NULL);
+INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `updated_at`, `room_id`) VALUES
+(1, 'PREMIUM', 'Reading ', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -308,7 +383,7 @@ ALTER TABLE `faculty`
 -- Indexes for table `rooms`
 --
 ALTER TABLE `rooms`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`room_id`);
 
 --
 -- Indexes for table `setschedule`
@@ -320,7 +395,8 @@ ALTER TABLE `setschedule`
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
-  ADD PRIMARY KEY (`subject_id`);
+  ADD PRIMARY KEY (`subject_id`),
+  ADD UNIQUE KEY `subject_id` (`subject_id`);
 
 --
 -- Indexes for table `timer`
@@ -348,7 +424,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 
 --
 -- AUTO_INCREMENT for table `data`
@@ -360,19 +436,19 @@ ALTER TABLE `data`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `faculty_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `faculty_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
 
 --
 -- AUTO_INCREMENT for table `timer`
