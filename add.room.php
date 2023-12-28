@@ -24,7 +24,7 @@
  {
 	 echo '<script type="text/javascript">
                       alert("New Room Reserved!");
-                         location="home.php";
+                         location="addroom.php";
                            </script>';
  }
  

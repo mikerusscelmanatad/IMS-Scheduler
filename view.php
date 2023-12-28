@@ -25,15 +25,14 @@
                         $connect = mysqli_connect($host,$username,$password,$database) or die(mysqli_error()); 
                             mysqli_select_db($connect, "insertion") or die(mysql_error()); 
 
-                                    if (isset($_GET['id'])) {
-                                        $student_id = mysqli_real_escape_string($connect, $_GET['id']);
+                                if (isset($_GET['id'])) {
+                                    $student_id = mysqli_real_escape_string($connect, $_GET['id']);
                                     
-
-                                $query = "SELECT * FROM `studyload` WHERE student_id='$student_id'";
+                                    
+                                $query = "SELECT * FROM `student` WHERE student_id='$student_id'";
                                 $result = mysqli_query($connect, $query);   
 
-
-                            }
+                       
 
                                 echo "<div class='container'> <table width='50' class='table table-bordered' >
                                     <tr>
@@ -43,52 +42,77 @@
                                     <th colspan='1'><center> LEVEL </th></center>
                                 </tr>"; 
 
+                            }
+                          
                                 while($row = mysqli_fetch_assoc($result))
                                 {   
                                     $student_id = $row['student_id'];
                                     $student_name = $row['student_name'];
                                     $student_course = $row['student_course'];
                                     $student_level = $row['student_level'];
-                                  
-                                    echo "<tr>";
-                                    
-                                     echo "<td align='center' colspan='1'> 1 </td>";
-                                     echo "<td align='center' colspan='3'> 1 </td>";
-                                     echo "<td align='center' colspan='2'>" . $row['course'] . "</td>";
-                                     echo "<td align='center' colspan='1'>" . $row['level'] . "</td>";   
-                                     "</tr>";
-                                       
-                                    echo "<tr>
-                   
-                                            <th>Curriculum</th>
-                                            <th>Room Number</th>
-                                            <th>Teacher</th>
-                                            <th colspan ='2'><center> Start / End </th>
-                                            <th colspan='3'><center>Note</th> </center>
+                           
+
+                                echo "<td colspan='1'> <center>". $row['student_id'] . " </td>";
+                                echo "<td colspan='3'> <center>" . $row['student_name'] . " </td>";
+                                echo "<td colspan='2'> <center>" . $row['student_course'] . " </td>";
+                                echo "<td colspan='1'> <center>" . $row['student_level'] . " </td>
+                    
+                               
+                                </form> </center>
+                                </td>"; 
+                            }
+                             
+                             // select database
+                        $connect = mysqli_connect($host,$username,$password,$database) or die(mysqli_error()); 
+                        mysqli_select_db($connect, "insertion") or die(mysql_error()); 
+
+                            if (isset($_GET['id'])) {
+                                $subject_id = mysqli_real_escape_string($connect, $_GET['id']);
+                                
+                                
+                            $query = "SELECT * FROM `studyload` WHERE subject_id='$subject_id'";
+                                $result = mysqli_query($connect, $query);   
+
+
+                            echo "<div class='container'> <table width='50' class='table table-bordered' >
+                                    <tr>
+                                            <th>PERIOD</th>
+                                            <th> SUBJECT TYPE </th>
+                                            <th> SUBJECT </th>
+                                            <th> ROOM </th>
+                                            <th colspan ='2'> TEACHER</th>
+                                            <th colspan='3' NOTED</th> </center>
                                         </tr>";
-                                   
-                                    
-                                 
-                                    
-                                   
+                                
+                            }
+
+                                while($row = mysqli_fetch_assoc($result))
+                                {   
+                                    $student_id = $row['subject_id'];
+                                    $student_name = $row['subject_type'];
+                                    $student_course = $row['subject_description'];
+                               
+                                
+                                    echo "<td> adadwwad </td>";
+                                    echo "<td> adadwwad </td>";
                                     echo "<td> adadwwad </td>";
                                     echo "<td> awdawdawdawd </td>";
                                     echo "<td>wdqqwdqwdqw </td>";
-                                    echo "<td align='center' colspan='2'>" . $row['level'] . "</td>";
+                                    echo "<td align='center' colspan='2'>" . $row['subject_description'] . "</td>";
                                     echo "<td> <center>
                                     <form class='form-horizontal' method='post' action='corlist.php'>
-                                    <input name='course_id' type='hidden' value='".$row['course_id']."';>
-    
+                                    <input name='subject_id' type='hidden' value='".$row['subject_id']."';>
+        
                                     </form> </center>
                                     </td>"; 
                                     echo "</tr>";
-                                    }
+                                }
                                 echo "</table>";
 
-                        echo "</td> 
+                                echo "</td> 
                             <a href='schedulelist.php' class='btn btn-primary'> Print </a>&nbsp;
                              <a href='schedulelist.php' class='btn btn-success'> Go Back </a>&nbsp;
-                    </tr>";
+                             </tr>";
 
                 
                     

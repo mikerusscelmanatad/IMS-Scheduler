@@ -115,7 +115,7 @@ body {
 						<div class="form-group"  align="right" >
 						<label class="col-md-4 control-label" for="submit"></label>
 						<div class="col-md-5">
-						<button align="right" id="submit" name="submit" class="btn btn-primary"> Proceed  </button>
+						<button id="submit" name="submit" class="btn btn-primary"> Proceed  </button>
 						</div>
 						</div>
 						</div>

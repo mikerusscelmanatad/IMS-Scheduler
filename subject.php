@@ -26,6 +26,15 @@ body {
 				<!-- Form Name -->
 				<legend>Add Subjects</legend>
 
+        <!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="subject_id"> Subject ID</label>  
+				  <div class="col-md-5">
+				  <input id="subject_id" name="subject_id" type="text" placeholder="Subject ID" class="form-control input-md" required="">
+					
+				  </div>
+				</div>
+
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="subject_type"> Subject type</label>  
@@ -79,6 +88,7 @@ body {
                     $result = mysqli_query($connect, $query);
                     echo "<div class='subjectlist'><table width=''class='table table-bordered' border='1' >
                             <tr>
+                                <th colspan='1'>NO.</th>
                                 <th colspan='1'>Subject type</th>
                                 <th colspan='2'>Subject</th>
                                 <th>Action</th>
@@ -88,6 +98,7 @@ body {
                         while($row = mysqli_fetch_assoc($result))
                         {
                         echo "<tr>";
+                        echo "<td colspan ='1'>". $no. "</td>";
                         echo "<td colspan ='1'>". $row['subject_type'] . "</td>";
                         echo "<td colspan ='2'>" . $row['subject_description'] . "</td>";
                         echo "<td><form class='form-horizontal' method='post' action='sublist.php'>
@@ -110,7 +121,7 @@ body {
     {
         echo '<script type="text/javascript">
                       alert("Successfuly Deleted");
-                         location="list.php";
+                         location="subject.php";
                            </script>';
     }
     if(isset($_POST['subject_id']))

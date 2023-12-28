@@ -18,28 +18,20 @@
         $connect = mysqli_connect($hostname,$username,$password,$database) or die(mysqli_error()); 
                 mysqli_select_db($connect, "insertion") or die(mysql_error()); 
 				
-	// Update button 		// 	
-	if (isset($_POST['update'])) {
-
-	$subject_type = mysqli_real_escape_string($connect, $_POST['subject_type']);
-	$subject_description = mysqli_real_escape_string($connect, $_POST['subject_description']);
-	
-	$query = "UPDATE subject SET `subject_id`='$subject_id', `subject_type`='$subject_type', `subject_description`='$subject_description', `updated_at`=now(), WHERE subject_id='$subject_id'";
-	$result = mysqli_query($connect, $query);
+				if (isset($_GET['id'])) {
+					$subject_id = $_GET['id'] ;
+		
+					$update = true;
+					$query = "SELECT * FROM subject WHERE subject_id=$subject_id";
+					$result = mysqli_query($connect,$query);
+					while($row = mysqli_fetch_assoc($result)) {
+		
+					$subject_id = $row['subject_id'] ;
+					$subject_type = $row ['subject_type'] ;
+					$subject_description = $row['subject_description'] ;
 				
-
-				if (!$result)
-				{
-					echo 'not updated';
+					}
 				}
-				else
-				{
-					echo '<script type="text/javascript">
-							alert("updated!");
-							location="schedulelist.php";
-							</script>';
-				}
-}	
 ?>
 <html>
 <head>
@@ -62,6 +54,15 @@ body {
 
 				<!-- Form Name -->
 				<legend>Add Subjects</legend>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="subject_id"> Subject ID</label>  
+				  <div class="col-md-5">
+				  <input id="subject_id" name="subject_id" type="text" placeholder="Subject ID" value="<?php echo $subject_id; ?> " class="form-control input-md" required="">
+					
+				  </div>
+				</div>
 
 				<!-- Text input-->
 				<div class="form-group">

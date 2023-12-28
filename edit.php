@@ -1,6 +1,6 @@
 
 <?php 
-// ************** add.cor2.php *********************
+// ************** add.cor.php *********************
 // php select option value from database
 	$hostname = "localhost";
 	$username = "root";
@@ -146,7 +146,7 @@ body {
 			  <label class="col-md-4 control-label" for="submit"></label>
 			  <div class="col-md-5">
 			  	<a href="schedulelist.php" class="btn btn-primary"> Back </a> &nbsp;  &nbsp; 
-				  <button type="submit" name="update" class="btn btn-success"> Update </button>
+				  <button type="submit" name="submit" id="submit" class="btn btn-success"> Update </button>
 			  </div>
 			</div>
 			</fieldset>

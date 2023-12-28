@@ -12,7 +12,7 @@
 	 echo 'database not selected';
  }
 
-// Update butto // 	
+// Update button // 	
 if($_SERVER['REQUEST_METHOD'] == "POST")
           {
                  echo '<script type="text/javascript">
