@@ -94,11 +94,11 @@ body {
                                 <th>Action</th>
                             </tr>";
 
-                        $no = 1 ; // Auto Numbering the Subjects
+                      
                         while($row = mysqli_fetch_assoc($result))
                         {
                         echo "<tr>";
-                        echo "<td colspan ='1'>". $no. "</td>";
+                        echo "<td colspan ='1'>" . $row['subject_id'] ."</td>";
                         echo "<td colspan ='1'>". $row['subject_type'] . "</td>";
                         echo "<td colspan ='2'>" . $row['subject_description'] . "</td>";
                         echo "<td><form class='form-horizontal' method='post' action='sublist.php'>
@@ -107,7 +107,7 @@ body {
                         <input type='submit' class='btn btn-danger' name='delete' value='Delete'>
                           </form></td>";
                         echo "</tr>";
-                       $no++;
+                    
                         }
                     
                         

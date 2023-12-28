@@ -70,19 +70,25 @@
                                 $subject_id = mysqli_real_escape_string($connect, $_GET['id']);
                                 
                                 
-                            $query = "SELECT * FROM `studyload` WHERE subject_id='$subject_id'";
-                                $result = mysqli_query($connect, $query);   
+                            $query = "SELECT * FROM student_subject AS studSub
+                                    INNER JOIN subject AS sub ON
+                                    studSub.subject_id = sub.subject_id
+                                    INNER JOIN rooms AS r ON
+                                    r.room_id = sub.room_id
+                                    INNER JOIN timer AS t ON
+                                    t.id = sub.timer_id WHERE studSub.student_id='$student_id'";
+                            $result = mysqli_query($connect, $query);   
 
 
                             echo "<div class='container'> <table width='50' class='table table-bordered' >
                                     <tr>
-                                            <th>PERIOD</th>
+                                            <th> PERIOD</th>
                                             <th> SUBJECT TYPE </th>
                                             <th> SUBJECT </th>
                                             <th> ROOM </th>
                                             <th colspan ='2'> TEACHER</th>
                                             <th colspan='3' NOTED</th> </center>
-                                        </tr>";
+                                        </tr>"; 
                                 
                             }
 
@@ -93,10 +99,10 @@
                                     $student_course = $row['subject_description'];
                                
                                 
-                                    echo "<td> adadwwad </td>";
-                                    echo "<td> adadwwad </td>";
-                                    echo "<td> adadwwad </td>";
-                                    echo "<td> awdawdawdawd </td>";
+                                    echo "<td>" .$row['start_time']. " - ". $row['end_time']."</td>";
+                                    echo "<td>".$row['subject_type']. "</td>";
+                                    echo "<td>".$row['subject_description']. "</td>";
+                                    echo "<td>".$row['room']. "</td>";
                                     echo "<td>wdqqwdqwdqw </td>";
                                     echo "<td align='center' colspan='2'>" . $row['subject_description'] . "</td>";
                                     echo "<td> <center>

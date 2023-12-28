@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2023 at 05:31 AM
+-- Generation Time: Dec 28, 2023 at 06:16 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -277,12 +277,14 @@ CREATE TABLE `student_subject` (
 --
 
 INSERT INTO `student_subject` (`subject_id`, `student_id`, `deleted`, `created_at`, `created_by`) VALUES
-(0, 222, 0, '2023-12-23 ', ''),
-(0, 222, 0, '2023-12-23 ', ''),
-(0, 12, 0, '2023-12-23 ', ''),
-(0, 232, 0, '2023-12-23 ', ''),
-(0, 3, 0, '2023-12-23 ', ''),
-(0, 123, 0, '2023-12-27 ', '');
+(1, 123, 0, 'current_tim', 'ADMIN'),
+(1, 200, 0, 'current_tim', 'ADMIN'),
+(2, 123, 0, 'current_tim', 'ADMIN'),
+(2, 200, 0, 'current_tim', 'ADMIN'),
+(168, 123, 0, 'current_tim', 'ADMIN'),
+(168, 200, 0, 'current_tim', 'ADMIN'),
+(169, 123, 0, 'current_tim', 'ADMIN'),
+(169, 200, 0, 'current_tim', 'ADMIN');
 
 -- --------------------------------------------------------
 
@@ -305,16 +307,21 @@ CREATE TABLE `subject` (
   `subject_id` int(11) NOT NULL,
   `subject_type` varchar(250) NOT NULL,
   `subject_description` varchar(250) NOT NULL,
+  `subject_code` varchar(500) NOT NULL,
   `updated_at` int(11) DEFAULT NULL,
-  `room_id` int(11) NOT NULL
+  `room_id` int(11) NOT NULL,
+  `timer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `subject`
 --
 
-INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `updated_at`, `room_id`) VALUES
-(1, 'PREMIUM', 'Reading ', NULL, 0);
+INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `subject_code`, `updated_at`, `room_id`, `timer_id`) VALUES
+(1, 'PREEMIUM', 'Reading', '1.1', NULL, 17, 3),
+(2, 'PREEMIUM', 'Speaking', '1.1', NULL, 18, 4),
+(168, 'PREEMIUM', 'Grammar', '1.1', NULL, 57, 6),
+(169, 'PREEMIUM', 'Vocabulary', '1.1', NULL, 57, 7);
 
 -- --------------------------------------------------------
 
@@ -392,11 +399,19 @@ ALTER TABLE `setschedule`
   ADD PRIMARY KEY (`schedule_id`);
 
 --
+-- Indexes for table `student_subject`
+--
+ALTER TABLE `student_subject`
+  ADD PRIMARY KEY (`subject_id`,`student_id`);
+
+--
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
   ADD PRIMARY KEY (`subject_id`),
-  ADD UNIQUE KEY `subject_id` (`subject_id`);
+  ADD UNIQUE KEY `subject_id` (`subject_id`),
+  ADD KEY `fk_room_id` (`room_id`),
+  ADD KEY `fk_period_id` (`timer_id`);
 
 --
 -- Indexes for table `timer`
@@ -448,13 +463,24 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
 -- AUTO_INCREMENT for table `timer`
 --
 ALTER TABLE `timer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `subject`
+--
+ALTER TABLE `subject`
+  ADD CONSTRAINT `fk_period_id` FOREIGN KEY (`timer_id`) REFERENCES `timer` (`id`),
+  ADD CONSTRAINT `fk_room_id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

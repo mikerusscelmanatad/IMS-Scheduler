@@ -18,7 +18,7 @@
 		{
 			echo '<script type="text/javascript">
 							alert("Subject Inserted!");
-								location="schedulelist.php";
+								location="subject.php";
 								</script>';
 		}
 
