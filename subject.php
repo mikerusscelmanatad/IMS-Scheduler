@@ -17,7 +17,7 @@ body {
  
  <br><div class="container"> 
   <div class="row" align="center">
-    <div class="col-lg-6">
+    <div class="">
 		<div class="jumbotron">
                 Here you will Add subjects
 				<form class="form-horizontal" method= "POST" action="add.sub.php" enctype="multipart/form-data">

@@ -109,16 +109,14 @@
                                     echo "<td>".$row['subject_type']. "</td>";
                                     echo "<td>".$row['subject_description']. "</td>";
                                     echo "<td>".$row['room']. "</td>";
-                                    echo "<td> Teachear wdqqwdqwdqw </td>";
+                                    echo "<td> Teacher's Name Here </td>";
                                     echo "<td align='center' colspan='2'>" . $row['subject_description'] . "</td>";
                                     echo "<td> <center>
                                     <form class='form-horizontal' method='post' action='corlist.php'>
                                     <input name='subject_id' type='hidden' value='".$row['subject_id']."';>
-                                    
-                                    
         
-                                    </form> </center>
-                                    </td>"; 
+                                    // </form> </center>
+                                    // </td>"; 
                                     echo "</tr>";
                                 }
                                 echo "</table>";
