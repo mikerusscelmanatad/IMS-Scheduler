@@ -9,7 +9,7 @@
 <style>
 body {
 	background-color: white;
-}
+  }
 </body>
 </style>
 </head>
@@ -26,15 +26,7 @@ body {
 				<!-- Form Name -->
 				<legend>Add Subjects</legend>
 
-        <!-- Text input-->
-				<div class="form-group">
-				  <label class="col-md-4 control-label" for="subject_id"> Subject ID</label>  
-				  <div class="col-md-5">
-				  <input id="subject_id" name="subject_id" type="text" placeholder="Subject ID" class="form-control input-md" required="">
-					
-				  </div>
-				</div>
-
+        
 				<!-- Text input-->
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="subject_type"> Subject type</label>  

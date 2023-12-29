@@ -93,6 +93,16 @@ body {
 				  <input id="student_name" name="student_name" type="text" placeholder="Name here" value="<?php echo $student_name; ?> "  class="form-control input-md" required="">
 				  </div>
 				</div>
+
+				
+				<div class="form-group"> 
+				  	<input type="radio" id="student_status" name="student_status" value="Old student" />
+      			  	<label for="student_status">Old Student</label> &nbsp; &nbsp;
+					<input type="radio" id="student_status" name="student_status" value="New student" />
+      				<label for="student_status">New Student</label>
+				</div>
+
+
 				<div class="form-group">
 					<div class="form-group">
 							<label class="col-md-4 control-label" for="student_course"> Course </label> 

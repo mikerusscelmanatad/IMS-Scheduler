@@ -40,6 +40,7 @@
                                     <th colspan='3'><center> STUDENTS NAME </center></th>
                                     <th colspan='2'><center> COURSE </th></center>
                                     <th colspan='1'><center> LEVEL </th></center>
+                                    <th colspan='1'><center> STATUS </th></center>
                                 </tr>"; 
 
                             }
@@ -50,12 +51,14 @@
                                     $student_name = $row['student_name'];
                                     $student_course = $row['student_course'];
                                     $student_level = $row['student_level'];
+                                    $student_status = $row['student_status'];
                            
 
                                 echo "<td colspan='1'> <center>". $row['student_id'] . " </td>";
                                 echo "<td colspan='3'> <center>" . $row['student_name'] . " </td>";
                                 echo "<td colspan='2'> <center>" . $row['student_course'] . " </td>";
-                                echo "<td colspan='1'> <center>" . $row['student_level'] . " </td>
+                                echo "<td colspan='1'> <center>" . $row['student_level'] . " </td>";
+                                echo "<td colspan='1'> <center>" . $row['student_status'] . " </td>
                     
                                
                                 </form> </center>
@@ -82,12 +85,14 @@
 
                             echo "<div class='container'> <table width='50' class='table table-bordered' >
                                     <tr>
-                                            <th> PERIOD</th>
-                                            <th> SUBJECT TYPE </th>
-                                            <th> SUBJECT </th>
-                                            <th> ROOM </th>
-                                            <th colspan ='2'> TEACHER</th>
-                                            <th colspan='3' NOTED</th> </center>
+                                          <center>  <th> PERIOD</th>
+                                          <center> <th> COURSE </th>
+                                          <center> <th> SUBJECT </th>
+                                          <center><th> ROOM </th>
+                                          <center><th colspan ='2'> TEACHER</th>
+                                          <center> <th colspan='3'> BOOKS </th> 
+                                          <center> <th colspan='3'> ACTION </th> 
+                                            
                                         </tr>"; 
                                 
                             }
@@ -97,17 +102,20 @@
                                     $student_id = $row['subject_id'];
                                     $student_name = $row['subject_type'];
                                     $student_course = $row['subject_description'];
+                                    
                                
                                 
                                     echo "<td>" .$row['start_time']. " - ". $row['end_time']."</td>";
                                     echo "<td>".$row['subject_type']. "</td>";
                                     echo "<td>".$row['subject_description']. "</td>";
                                     echo "<td>".$row['room']. "</td>";
-                                    echo "<td>wdqqwdqwdqw </td>";
+                                    echo "<td> Teachear wdqqwdqwdqw </td>";
                                     echo "<td align='center' colspan='2'>" . $row['subject_description'] . "</td>";
                                     echo "<td> <center>
                                     <form class='form-horizontal' method='post' action='corlist.php'>
                                     <input name='subject_id' type='hidden' value='".$row['subject_id']."';>
+                                    
+                                    
         
                                     </form> </center>
                                     </td>"; 

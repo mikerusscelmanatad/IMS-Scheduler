@@ -12,10 +12,28 @@
 	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
 	$student_id = "student_id";
 	
-	$query = "SELECT * FROM `student_subject` WHERE student_id='$student_id' ";
-	$result2 = mysqli_query($connect, $query);
+	$query = "SELECT * FROM `student` ORDER BY student_id ASC ";
+	$result = mysqli_query($connect, $query);
 
 	
+
+?>
+<?php 
+// ************** add.cor.php *********************
+
+// php select option value from database
+
+	$hostname = "localhost";
+	$username = "root";
+	$password = "";
+	$databaseName = "insertion";
+
+	// connect to database
+	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+	$course_id = "course_id";
+	
+	$query = " SELECT * FROM `subject` WHERE course_id='$course_id'";
+	$result = mysqli_query($connect, $query);
 
 ?>
 
@@ -24,6 +42,8 @@
    $path .= "header.php";
    include_once("header.php");
    include_once("navbar.php");
+
+
 ?>
 <html>
 <head>
@@ -64,6 +84,16 @@ body {
 				  <input id="student_name" name="student_name" type="text" placeholder="Name here " class="form-control input-md" required="">
 				  </div>
 				</div>
+				
+
+				<div class="form-group"> 
+					<label for="student_status"> Please select </label> &nbsp; &nbsp;&nbsp; &nbsp;
+				  	<input type="radio" id="student_status" name="student_status" value= "Old student" />
+      			  	<label for="student_status">Old Student</label> &nbsp; &nbsp;
+					<input type="radio" id="student_status" name="student_status" style="color:blue" value= "New student" />
+					<label for="student_status"> New student </label>
+				</div>
+
 
 				<!-- Text input-->
 				<div class="form-group">
@@ -87,6 +117,7 @@ body {
 					</div>
 				</div>
 
+				
 				<div class="form-group">
 					<div class="form-group">
 							<label class="col-md-4 control-label" for="student_level"> Level </label> 
@@ -115,7 +146,7 @@ body {
 						<div class="form-group"  align="right" >
 						<label class="col-md-4 control-label" for="submit"></label>
 						<div class="col-md-5">
-						<button id="submit" name="submit" class="btn btn-primary"> Proceed  </button>
+						<button align="right" id="submit" name="submit" class="btn btn-primary"> Proceed  </button>
 						</div>
 						</div>
 						</div>
@@ -129,4 +160,4 @@ body {
    $path .= "footer.php";
    include_once("footer.php");
    include_once("navbar.php");
-?>
+?> 

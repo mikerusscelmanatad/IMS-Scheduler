@@ -44,7 +44,7 @@ td {
               $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error()); 
                mysqli_select_db($connect, "insertion") or die(mysqli_error()); 
 
-                    $query = "SELECT * FROM student  ORDER BY student_id ASC ";
+                    $query = "SELECT * FROM student  ORDER BY student_id ASC  ";
                     $result = mysqli_query($connect, $query) or die(mysqli_error());
                     echo "<div class='container'><table width='' class='table table-bordered' border='1' >
                             <tr>
@@ -52,23 +52,28 @@ td {
                                 <th>Students Name </th>
                                 <th>Course</th>
                                 <th>Level</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>";
+
                         while($row = mysqli_fetch_assoc($result))
                         {
-                            $course_id = $row['student_id'];
-                            $course_name = $row['student_name'];
-                            $course = $row['student_course'];
-                            $level = $row['student_level'];
+                            $student_id = $row['student_id'];
+                            $student_name = $row['student_name'];
+                            $student_course = $row['student_course'];
+                            $student_level = $row['student_level'];
+                            $student_status = $row['student_status'];
 
 
                         echo "<tr>";
                         
-                        echo "<td>" . $row['student_id'] . "</td>";
-                        echo "<td><B> " . $row['student_name'] . " </B></td>";
-                        echo "<td>" . $row['student_course'] . "</td>";
-                        echo "<td>" . $row['student_level'] . "</td>";
+                        echo "<td><center>" . $row['student_id'] . "</td>";
+                        echo "<td><B><center> " . $row['student_name'] . " </B></td>";
+                        echo "<td><center>" . $row['student_course'] . "</td>";
+                        echo "<td><center>" . $row['student_level'] . "</td>";
+                        echo "<td><center>" . $row['student_status'] . "</td>";
 
+                        
                         echo "<td>
                         <form class='form-horizontal' method='post' action='corlist.php'>
                         <input name='student_id' type='hidden' value='".$row['student_id']."';>

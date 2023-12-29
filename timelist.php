@@ -44,7 +44,7 @@ td {
 			   $connect = mysqli_connect($host,$username,$password, $database) or die(mysqli_error()); 
                         mysqli_select_db($connect, "insertion") or die(mysqli_error()); 
 
-                    $query = ("SELECT * FROM timer");
+                    $query = "SELECT * FROM timer";
                     $result = mysqli_query($connect, $query) or die(mysqli_error());
                     echo "<div class='container'><table width='' class='table table-bordered' border='1' >
                             <tr>
@@ -59,7 +59,7 @@ td {
 						echo "<td>" . $row['end_time'] . "</td>";
                         echo "<td><form class='form-horizontal' method='post' action='timelist.php'>
                         <input name='id' type='hidden' value='".$row['id']."';>
-                        <input type='submit' class='btn btn-danger' name='delete' value='Delete'>
+                        <input type='submit'id='submit' class='btn btn-danger' name='delete' value='Delete'>
                         </form></td>";
                         echo "</tr>";
                         }
@@ -73,19 +73,19 @@ td {
     {
 		echo '<script type="text/javascript">
                       alert("Schedule Successfuly Deleted");
-                         location="tablelist.php";
+                         location="list.php";
                            </script>';
     }
-    if(isset($_POST['id']))
-    {
-    $id = mysql_real_escape_string($_POST['id']);
-    $sql = mysql_query("DELETE FROM timer WHERE id='$id'");
-    if(!$sql)
-    {
-        echo ("Could not delete rows" .mysql_error());
-    }
-	
-    }
+        if(isset($_POST['id']))
+            {
+            $id = mysqli_real_escape_string($connect, $_POST['id']);
+            $sql = mysqli_query($connect, "DELETE FROM timer WHERE id='$id'");
+                if(!$sql)
+                {
+                    echo ("Could not delete rows" .mysqli_error());
+                }
+            
+            }
     ?>
 </fieldset>
 </form>
