@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2023 at 11:52 AM
+-- Generation Time: Dec 30, 2023 at 04:52 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -281,7 +281,7 @@ CREATE TABLE `student` (
   `student_name` varchar(250) NOT NULL,
   `student_course` varchar(250) NOT NULL,
   `student_level` varchar(250) NOT NULL,
-  `student_status` enum('NEW','OLD','NO STATUS') NOT NULL
+  `student_status` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -289,11 +289,10 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `student_name`, `student_course`, `student_level`, `student_status`) VALUES
-(123, 'Pedro Penduko', 'ESL Intensive', 'elementary3', 'NEW'),
-(200, 'Lee min hoo ', 'ESL Essential', 'elementary2', 'NEW'),
-(201, 'John Doe', 'baaabbiu', 'Elementary 3', 'NEW'),
-(202, 'Michael', 'MIKE', 'Elementary 3', 'NEW'),
-(212, 'Joseph Makabli', 'John Empinado', 'Master 12', 'OLD');
+(226, 'John Cortes', 'ESL Intensive', 'elementary3', 'Old student'),
+(228, 'John Cortes', 'ESL Intensive', 'beginner1', 'New student'),
+(229, 'kykle  manny', 'ESL Intensive', 'elementary2', 'Old student'),
+(230, 'John Cortes', 'ESL Intensive', 'beginner1', 'New student');
 
 -- --------------------------------------------------------
 
@@ -308,21 +307,6 @@ CREATE TABLE `student_subject` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_by` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `student_subject`
---
-
-INSERT INTO `student_subject` (`subject_id`, `student_id`, `deleted`, `created_at`, `created_by`) VALUES
-(1, 123, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(1, 200, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(2, 123, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(2, 200, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(123, 200, 0, '2023-12-28 08:44:53', 'ADMIN'),
-(168, 123, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(168, 200, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(169, 123, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(169, 200, 0, '0000-00-00 00:00:00', 'ADMIN');
 
 -- --------------------------------------------------------
 
@@ -522,7 +506,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
 
 --
 -- AUTO_INCREMENT for table `subject`

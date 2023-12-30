@@ -12,7 +12,7 @@
 	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
 	$student_id = "student_id";
 	
-	$query = "SELECT * FROM `student` ORDER BY student_id ASC limit 10000";
+	$query = "SELECT * FROM `student` ";
 	$result = mysqli_query($connect, $query);
 
 	
@@ -28,7 +28,7 @@
 
 	if (empty($lastId)) {
 
-		$number = " IMS - 1001";
+		$number = " IMS - 0000 ";
 
 	} else {
 
@@ -67,51 +67,24 @@
 				$lastId = $row['student_id'];
 			
 				if (empty($lastId)) {
-			
-					$number = " IMS - 1001";
-			
+				$number = " IMS - 0000";
+
 				} else {
-			
 					$idd = str_replace("IMS -", "", $lastId);
 					$id = str_pad($idd + 1, 4, 0, STR_PAD_LEFT);
 					$number = ' IMS - ' .$id ;
 				}
-			
-
 			} else {
 
 				echo "Record failed" ;
 			}
-
 		}
-
 	}
 
-
 ?>
 
 
-<?php 
-// ************** add.cor.php *********************
 
-// php select option value from database
-
-	$hostname = "localhost";
-	$username = "root";
-	$password = "";
-	$databaseName = "insertion";
-
-	// connect to database
-	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
-	
-	$query = "SELECT * FROM `course`";
-	$findAllQueryResult = mysqli_query($connect, $query);
-
-
-	$query = "SELECT * FROM `level`";
-	$findAllLevelResult = mysqli_query($connect, $query);
-
-?>
 
 <?php
   $path = $_SERVER['DOCUMENT_ROOT'];
@@ -134,7 +107,7 @@ body {
  
 <br><div class="container">
   <div class="row" align="center">
-    <div class="">
+    <div class="col-lg-6">
 			<div class="jumbotron">
 				IMS SCHEDULER
 			<form class="form-horizontal" method= "post" action = "add.cor.php">
@@ -164,9 +137,9 @@ body {
 
 				<div class="form-group"> 
 					<label for="student_status"> Please select </label> &nbsp; &nbsp;&nbsp; &nbsp;
-				  	<input type="radio" id="student_status" name="student_status" value= "OLD" />
+				  	<input type="radio" id="student_status" name="student_status" value= "Old student" />
       			  	<label for="student_status">Old Student</label> &nbsp; &nbsp;
-					<input type="radio" id="student_status" name="student_status" style="color:blue" value= "NEW" />
+					<input type="radio" id="student_status" name="student_status" value= "New student" />
 					<label for="student_status"> New student </label>
 				</div>
 
@@ -178,9 +151,17 @@ body {
 						<div class="col-md-5">
 						<select id="student_course" name="student_course" class="form-control"> 
 							<option value="Select">Select</option>  
-							<?php while($row1 = mysqli_fetch_array($findAllQueryResult)):;?>
-								<option  id=<?php echo $row1['course_id'];?> value="<?php echo $row1['course_name'];?>"><?php echo $row1['course_name'];?></option>
-							<?php endwhile;?>
+							<option value="ESL Premium"> ESL Premium </option>  
+							<option value="ESL Intensive">ESL Intensive</option>  
+							<option value="ESL Essential">ESL Essential</option>  
+							<option value="POWER SPEAKING">POWER SPEAKING</option>  
+							<option value="IELTS ACADEMIC"> IELTS ACADEMIC</option>  
+							<option value="IELTS GENERAL"> IELTS GENERAL</option>  
+							<option value="IELTS PRE-GUARANTEE">IELTS PRE-GUARANTEE</option>
+							<option value="IELTS GUARANTEE">IELTS GUARANTEE</option>
+							<option value="PRE TOEIC"> PRE TOEIC</option> 
+							<option value="TOEIC"> TOEIC </option> 
+							<option value="BUSINESS"> BUSINESS</option>   
 						</select>
 					</div>
 				</div>
@@ -192,9 +173,18 @@ body {
 						<div class="col-md-5">
 						<select id="student_level" name="student_level" class="form-control"> 
 							<option value="Select">Select</option>  
-							<?php while($row1 = mysqli_fetch_array($findAllLevelResult)):;?>
-								<option  id=<?php echo $row1['level_id'];?> value="<?php echo $row1['level_name'];?>"><?php echo $row1['level_name'];?></option>
-							<?php endwhile;?>
+							<option value="beginner1"> Beginner 1 </option>  
+							<option value="elementary2">Elementary 2</option>  
+							<option value="elementary3">Elementary 3</option>  
+							<option value="preintermediate4">Preintermediate 4</option>  
+							<option value="intermediate5">intermediate 5</option>  
+							<option value="intermediate6"> intermediate 6</option>  
+							<option value="upperintermediate7">Upper-Intermediate 7</option>
+							<option value="upperintermediate8">Upper-Intermediate 8</option>
+							<option value="advance9"> Advance 9</option> 
+							<option value="advance10"> Advance 10</option> 
+							<option value="advance11"> Advance 11</option> 
+							<option value="master12"> Master 12 </option>    
 						</select>
 					</div>
 					</div>
