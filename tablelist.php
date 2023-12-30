@@ -28,7 +28,7 @@
                     $result = mysqli_query($connect, $query);
                     echo "<div class='container'><table width='' class='table table-bordered' border='1' >
                             <tr>
-                                <th>HELLOW</th>
+                                <th>Department</th>
 								<th>Course</th>
                                 <th>Subject</th>
 								<th>Room</th>

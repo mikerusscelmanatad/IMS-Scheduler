@@ -49,7 +49,7 @@ body {
     <br><div class="container" >
         
     <div class="row" align="center">
-        <div class="col-lg-6">
+        <div class="    ">
             <div class="jumbotron">
             Set your schedules
             <form class="form-horizontal" method="post" action = "add.home.php">
