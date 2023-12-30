@@ -53,7 +53,6 @@ td {
                                 <th>Course</th>
                                 <th>Level</th>
                                 <th>Status</th>
-                                <th>Action</th>
                             </tr>";
 
                         while($row = mysqli_fetch_assoc($result))

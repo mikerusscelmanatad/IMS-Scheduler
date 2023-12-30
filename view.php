@@ -91,7 +91,7 @@
                                           <center><th> ROOM </th>
                                           <center><th colspan ='2'> TEACHER</th>
                                           <center> <th colspan='3'> BOOKS </th> 
-                                          <center> <th colspan='3'> ACTION </th> 
+                                      
                                             
                                         </tr>"; 
                                 
@@ -111,10 +111,11 @@
                                     echo "<td>".$row['room']. "</td>";
                                     echo "<td> Teachear wdqqwdqwdqw </td>";
                                     echo "<td align='center' colspan='2'>" . $row['subject_description'] . "</td>";
-                                    echo "<td> <center>
-                                    <form class='form-horizontal' method='post' action='corlist.php'>
-                                    <input name='subject_id' type='hidden' value='".$row['subject_id']."';>
-                                    
+                                    echo "<td>
+                                        <form class='form-horizontal' method='post' action='corlist.php'>
+                                        <input name='student_id' type='hidden' value='".$row['student_id']."';>
+                                        <a href='edit.php?id=".$row['student_id']."' class='btn btn-success'>Edit</a> &nbsp;
+                                                    
                                     
         
                                     </form> </center>
