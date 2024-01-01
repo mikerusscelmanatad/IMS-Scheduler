@@ -1,4 +1,3 @@
-
 <?php
    include_once("header.php");
    include_once("navbar.php");
@@ -6,7 +5,6 @@
 <html>
 <head>
 <style>
-
 
 body {
     background-image: url();
@@ -46,7 +44,7 @@ td {
               $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error()); 
                mysqli_select_db($connect, "insertion") or die(mysqli_error()); 
 
-                    $query = "SELECT * FROM student  ORDER BY student_id ASC";
+                    $query = "SELECT * FROM student  ORDER BY student_id ASC  ";
                     $result = mysqli_query($connect, $query) or die(mysqli_error());
                     echo "<div class='container'><table width='' class='table table-bordered' border='1' >
                             <tr>
@@ -55,7 +53,6 @@ td {
                                 <th>Course</th>
                                 <th>Level</th>
                                 <th>Status</th>
-                                <th>Action</th>
                             </tr>";
 
                         while($row = mysqli_fetch_assoc($result))
