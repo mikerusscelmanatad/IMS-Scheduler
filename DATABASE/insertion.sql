@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2024 at 06:23 AM
+-- Generation Time: Jan 01, 2024 at 11:45 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -100,17 +100,18 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `course_code`, `course_name`, `course`, `level_id`, `created_at`, `updated_at`) VALUES
-(141, '1456', 'ESL - Premium', 'ESL - Premium', 9, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(142, '1456', 'ESL Intensive', 'ESL Intensive', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(143, '1456', 'ESL Essential', 'ESL Essential', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(144, '1456', 'POWER SPEAKING', 'POWER SPEAKING', 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(145, '1456', 'IELTS ACADEMIC', 'IELTS ACADEMIC', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(146, '1456', 'IELTS GENERAL', 'IELTS GENERAL', 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(147, '1456', 'IELTS PRE-GUARANTEE', 'IELTS PRE-GUARANTEE', 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(150, '1456', 'IELTS GUARANTEE', 'IELTS GUARANTEE', 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(151, '1456', 'PRE TOEIC', 'PRE TOEIC', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00'),
-(152, '1456', 'TOEIC', 'TOEIC', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00'),
-(153, '1456', 'BUSINESS', 'BUSINESS', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00');
+(141, 'ESL - Premium', 'ESL - Premium', 'ESL - Premium', 9, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(142, 'ESL Intensive', 'ESL Intensive', 'ESL Intensive', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(143, 'ESL Essential', 'ESL Essential', 'ESL Essential', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(144, 'POWER SPEAKING', 'POWER SPEAKING', 'POWER SPEAKING', 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(145, 'IELTS ACADEMIC', 'IELTS ACADEMIC', 'IELTS ACADEMIC', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(146, 'IELTS GENERAL', 'IELTS GENERAL', 'IELTS GENERAL', 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(147, 'IELTS PRE-GUARANTEE', 'IELTS PRE-GUARANTEE', 'IELTS PRE-GUARANTEE', 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(150, 'IELTS GUARANTEE', 'IELTS GUARANTEE', 'IELTS GUARANTEE', 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(151, 'PRE TOEIC', 'PRE TOEIC', 'PRE TOEIC', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00'),
+(152, 'TOEIC', 'TOEIC', 'TOEIC', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00'),
+(153, 'BUSINESS', 'BUSINESS', 'BUSINESS', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00'),
+(155, 'NULL COURSE', 'NULL COURSE', 'NULL COURSE', 13, '2024-01-01 10:12:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -186,7 +187,8 @@ INSERT INTO `level` (`level_id`, `level_name`, `created_at`, `created_by`) VALUE
 (9, 'Advance 9', '2023-12-29 09:58:48', ''),
 (10, 'Advance 10', '2023-12-29 09:58:48', ''),
 (11, 'Advance 11', '2023-12-29 09:58:48', ''),
-(12, 'Master 12', '2023-12-29 09:58:48', '');
+(12, 'Master 12', '2023-12-29 09:58:48', ''),
+(13, 'NULL LEVEL', '2024-01-01 10:12:39', 'NULL LEVEL');
 
 -- --------------------------------------------------------
 
@@ -257,7 +259,8 @@ INSERT INTO `rooms` (`room_id`, `room`) VALUES
 (67, '551'),
 (68, '552'),
 (69, '553'),
-(70, '554');
+(70, '554'),
+(71, 'NO ROOM');
 
 -- --------------------------------------------------------
 
@@ -295,7 +298,11 @@ INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `s
 (200, 'Lee min hoo      ', 142, 4, 'OLD'),
 (201, 'John Doe', 141, 1, 'NEW'),
 (202, 'Michael Javier  ', 144, 11, 'OLD'),
-(212, 'Joseph Makabli  ', 146, 12, 'NEW');
+(212, 'Joseph Makabli  ', 146, 12, 'NEW'),
+(224, 'Kimkim', 142, 2, 'OLD'),
+(225, 'Kim jung on', 143, 4, 'NEW'),
+(226, 'Anneee', 142, 3, 'NEW'),
+(227, 'John doe', 142, 2, 'NEW');
 
 -- --------------------------------------------------------
 
@@ -359,14 +366,21 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `subject_code`, `updated_at`, `room_id`, `timer_id`, `course_id`) VALUES
-(1, 'PREEMIUM', 'Reading', '1.1', NULL, 17, 3, 141),
-(2, 'PREEMIUM', 'Speaking', '1.1', NULL, 18, 4, 141),
-(168, 'PREEMIUM', 'Grammar', '1.1', NULL, 57, 6, 141),
-(169, 'PREEMIUM', 'Vocabulary', '1.1', NULL, 57, 7, 141),
-(170, 'PREEMIUM', 'Reading', '1.1', NULL, 17, 3, 142),
-(171, 'PREEMIUM', 'Speaking', '1.1', NULL, 18, 4, 142),
-(172, 'PREEMIUM', 'Grammar', '1.1', NULL, 57, 6, 142),
-(173, 'PREEMIUM', 'Vocabulary', '1.1', NULL, 57, 7, 142);
+(1, 'PREMIUM', 'Reading', '1.1', NULL, 17, 3, 141),
+(2, 'PREMIUM', 'Speaking', '1.1', NULL, 18, 4, 141),
+(168, 'PREMIUM', 'Grammar', '1.1', NULL, 57, 6, 141),
+(169, 'PREMIUM', 'Vocabulary', '1.1', NULL, 57, 7, 141),
+(170, 'PREMIUM', 'Native', 'G', NULL, 17, 3, 141),
+(171, 'PREMIUM', 'Writing', 'G', NULL, 18, 4, 141),
+(172, 'PREMIUM', 'Listening', 'G', NULL, 57, 6, 141),
+(173, 'PREMIUM', 'Conversation', 'G', NULL, 57, 7, 141),
+(178, 'INTENSIVE', 'Reading', '1.1', NULL, 71, 15, 142),
+(179, 'INTENSIVE', 'Grammar', '1.1', NULL, 71, 4, 142),
+(180, 'INTENSIVE', 'Vocabulary', '1.1', NULL, 71, 6, 142),
+(181, 'INTENSIVE', 'Speaking', '1.1', NULL, 71, 7, 142),
+(182, 'INTENSIVE', 'Writing', 'G', NULL, 71, 3, 142),
+(183, 'INTENSIVE', 'Listening', 'G', NULL, 71, 4, 142),
+(184, 'INTENSIVE', 'Native', 'G', NULL, 71, 7, 142);
 
 -- --------------------------------------------------------
 
@@ -385,17 +399,18 @@ CREATE TABLE `timer` (
 --
 
 INSERT INTO `timer` (`id`, `start_time`, `end_time`) VALUES
-(3, '5:30 pm', '7:30 pm'),
-(4, '1:00 pm', '5:30 pm'),
-(6, '10:00 am', '12:00 pm'),
-(7, '6:00 pm', '7:00 pm'),
-(8, '7:30 am', '10:30 am'),
-(9, '9:20 am', '1:40 pm'),
-(10, '6:30 am', '9:00 am'),
-(11, '8:00 am', '2:00 pm'),
-(12, '10:30 am', '3:00 pm'),
-(13, '2:00 pm', '5:00 pm'),
-(14, '3:00 pm', '6:00 pm');
+(3, '8:30 am', '9:15 am'),
+(4, '9:25 am', '10:10 am'),
+(6, '10:20 am', '11:05 am'),
+(7, '11:15 am', '12:00 pm'),
+(8, '12:00 pm', '1:00 pm'),
+(9, '1:00 pm', '1:45 pm'),
+(10, '1:55 pm', '2:40 pm'),
+(11, '2:50 pm', '3:35 pm'),
+(12, '3:45 pm', '4:30 pm'),
+(13, '4:40 pm', '5:25 pm'),
+(14, '6:00 pm', '7:00 pm'),
+(15, 'NULL TIME', 'NULL TIME');
 
 --
 -- Indexes for dumped tables
@@ -500,7 +515,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- AUTO_INCREMENT for table `data`
@@ -518,31 +533,31 @@ ALTER TABLE `faculty`
 -- AUTO_INCREMENT for table `level`
 --
 ALTER TABLE `level`
-  MODIFY `level_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `level_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=228;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 
 --
 -- AUTO_INCREMENT for table `timer`
 --
 ALTER TABLE `timer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
