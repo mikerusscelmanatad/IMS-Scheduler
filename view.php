@@ -29,7 +29,11 @@
                                     $student_id = mysqli_real_escape_string($connect, $_GET['id']);
                                     
                                     
-                                $query = "SELECT * FROM `student` WHERE student_id='$student_id'";
+                                $query = "SELECT * FROM student AS s 
+                                        INNER JOIN level AS l ON s.level_id = l.level_id 
+                                        INNER JOIN course AS c ON s.course_id = c.course_id 
+                                        WHERE student_id='$student_id'
+                                ";
                                 $result = mysqli_query($connect, $query);   
 
                        
@@ -49,15 +53,15 @@
                                 {   
                                     $student_id = $row['student_id'];
                                     $student_name = $row['student_name'];
-                                    $student_course = $row['student_course'];
-                                    $student_level = $row['student_level'];
+                                    $student_course_id = $row['course_id'];
+                                    $student_level_id = $row['level_id'];
                                     $student_status = $row['student_status'];
                            
 
                                 echo "<td colspan='1'> <center>". $row['student_id'] . " </td>";
                                 echo "<td colspan='3'> <center>" . $row['student_name'] . " </td>";
-                                echo "<td colspan='2'> <center>" . $row['student_course'] . " </td>";
-                                echo "<td colspan='1'> <center>" . $row['student_level'] . " </td>";
+                                echo "<td colspan='2'> <center>" . $row['course_name'] . " </td>";
+                                echo "<td colspan='1'> <center>" . $row['level_name'] . " </td>";
                                 echo "<td colspan='1'> <center>" . $row['student_status'] . " </td>
                     
                                
@@ -73,13 +77,10 @@
                                 $subject_id = mysqli_real_escape_string($connect, $_GET['id']);
                                 
                                 
-                            $query = "SELECT * FROM student_subject AS studSub
-                                    INNER JOIN subject AS sub ON
-                                    studSub.subject_id = sub.subject_id
-                                    INNER JOIN rooms AS r ON
-                                    r.room_id = sub.room_id
-                                    INNER JOIN timer AS t ON
-                                    t.id = sub.timer_id WHERE studSub.student_id='$student_id'";
+                            $query = "SELECT * FROM subject AS s 
+                                    INNER JOIN rooms AS r ON s.room_id = r.room_id
+                                    INNER JOIN timer AS t ON s.timer_id = t.id
+                                WHERE s.course_id=$student_course_id";
                             $result = mysqli_query($connect, $query);   
 
 
@@ -112,10 +113,6 @@
                                     echo "<td> Teacher's Name Here </td>";
                                     echo "<td align='center' colspan='2'>" . $row['subject_description'] . "</td>";
 
-                                    echo "<td>
-                                        <form class='form-horizontal' method='post' action='corlist.php'>
-                                        <input name='student_id' type='hidden' value='".$row['student_id']."';>
-                                        <a href='edit.php?id=".$row['student_id']."' class='btn btn-success'>Edit</a> &nbsp;
                                                     
                                     
         

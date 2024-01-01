@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2023 at 11:52 AM
+-- Generation Time: Jan 01, 2024 at 06:23 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -100,14 +100,17 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `course_code`, `course_name`, `course`, `level_id`, `created_at`, `updated_at`) VALUES
-(141, '1456', 'MIKE', 'ESL - Premium', 9, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(142, '1456', 'MIKE', 'ESL - Premium', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(143, '1456', 'MIKE', 'ESL - Premium', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(144, '1456', 'baaabbiu', 'IELTS - ACADEMIC', 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(145, '1456', 'John Empinado', 'ESL - Essential', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(146, '1456', 'ANNE ', 'IELTS - ACADEMIC', 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(147, '1456', 'ANNE ', 'IELTS - ACADEMIC', 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(150, '1456', 'ANNE  ', 'IELTS - ACADEMIC', 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(141, '1456', 'ESL - Premium', 'ESL - Premium', 9, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(142, '1456', 'ESL Intensive', 'ESL Intensive', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(143, '1456', 'ESL Essential', 'ESL Essential', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(144, '1456', 'POWER SPEAKING', 'POWER SPEAKING', 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(145, '1456', 'IELTS ACADEMIC', 'IELTS ACADEMIC', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(146, '1456', 'IELTS GENERAL', 'IELTS GENERAL', 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(147, '1456', 'IELTS PRE-GUARANTEE', 'IELTS PRE-GUARANTEE', 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(150, '1456', 'IELTS GUARANTEE', 'IELTS GUARANTEE', 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(151, '1456', 'PRE TOEIC', 'PRE TOEIC', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00'),
+(152, '1456', 'TOEIC', 'TOEIC', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00'),
+(153, '1456', 'BUSINESS', 'BUSINESS', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -279,8 +282,8 @@ CREATE TABLE `setschedule` (
 CREATE TABLE `student` (
   `student_id` int(11) NOT NULL,
   `student_name` varchar(250) NOT NULL,
-  `student_course` varchar(250) NOT NULL,
-  `student_level` varchar(250) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `level_id` int(11) NOT NULL,
   `student_status` enum('NEW','OLD','NO STATUS') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -288,12 +291,11 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `student_name`, `student_course`, `student_level`, `student_status`) VALUES
-(123, 'Pedro Penduko', 'ESL Intensive', 'elementary3', 'NEW'),
-(200, 'Lee min hoo ', 'ESL Essential', 'elementary2', 'NEW'),
-(201, 'John Doe', 'baaabbiu', 'Elementary 3', 'NEW'),
-(202, 'Michael', 'MIKE', 'Elementary 3', 'NEW'),
-(212, 'Joseph Makabli', 'John Empinado', 'Master 12', 'OLD');
+INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `student_status`) VALUES
+(200, 'Lee min hoo      ', 142, 4, 'OLD'),
+(201, 'John Doe', 141, 1, 'NEW'),
+(202, 'Michael Javier  ', 144, 11, 'OLD'),
+(212, 'Joseph Makabli  ', 146, 12, 'NEW');
 
 -- --------------------------------------------------------
 
@@ -360,7 +362,11 @@ INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `sub
 (1, 'PREEMIUM', 'Reading', '1.1', NULL, 17, 3, 141),
 (2, 'PREEMIUM', 'Speaking', '1.1', NULL, 18, 4, 141),
 (168, 'PREEMIUM', 'Grammar', '1.1', NULL, 57, 6, 141),
-(169, 'PREEMIUM', 'Vocabulary', '1.1', NULL, 57, 7, 141);
+(169, 'PREEMIUM', 'Vocabulary', '1.1', NULL, 57, 7, 141),
+(170, 'PREEMIUM', 'Reading', '1.1', NULL, 17, 3, 142),
+(171, 'PREEMIUM', 'Speaking', '1.1', NULL, 18, 4, 142),
+(172, 'PREEMIUM', 'Grammar', '1.1', NULL, 57, 6, 142),
+(173, 'PREEMIUM', 'Vocabulary', '1.1', NULL, 57, 7, 142);
 
 -- --------------------------------------------------------
 
@@ -448,7 +454,9 @@ ALTER TABLE `setschedule`
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
-  ADD PRIMARY KEY (`student_id`);
+  ADD PRIMARY KEY (`student_id`),
+  ADD KEY `fk_course_id` (`course_id`),
+  ADD KEY `fk_level_key` (`level_id`);
 
 --
 -- Indexes for table `student_subject`
@@ -492,7 +500,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT for table `data`
@@ -522,13 +530,13 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- AUTO_INCREMENT for table `timer`
@@ -545,6 +553,13 @@ ALTER TABLE `timer`
 --
 ALTER TABLE `course`
   ADD CONSTRAINT `fk_level_id` FOREIGN KEY (`level_id`) REFERENCES `level` (`level_id`);
+
+--
+-- Constraints for table `student`
+--
+ALTER TABLE `student`
+  ADD CONSTRAINT `fk_course_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`),
+  ADD CONSTRAINT `fk_level_key` FOREIGN KEY (`level_id`) REFERENCES `level` (`level_id`);
 
 --
 -- Constraints for table `subject`

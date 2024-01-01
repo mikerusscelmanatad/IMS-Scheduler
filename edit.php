@@ -39,14 +39,19 @@
 			$student_id = $_GET['id'] ;
 
 			$update = true;
-			$query = "SELECT * FROM student WHERE student_id=$student_id";
+			$query = "SELECT * FROM student s
+						INNER JOIN course c ON s.course_id = c.course_id
+						INNER JOIN level l ON l.level_id = s.level_id
+					WHERE 
+					s.student_id=$student_id";
 			$result = mysqli_query($connect,$query);
 			while($row = mysqli_fetch_assoc($result)) {
 
 				$student_id = $row['student_id'];
 				$student_name = $row['student_name'];
-				$student_course = $row['student_course'];
-				$student_level = $row['student_level'];
+				$get_student_status = $row['student_status'];
+				$get_student_course = $row['course_id'];
+				$get_student_level = $row['level_id'];
 			}
 		}
 			//Dropdown list query *************************************
@@ -81,7 +86,7 @@ body {
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="student_id"> ID Number </label>  
 				  <div class="col-md-5">
-				  <input id="student_id" name="student_id" type="text" placeholder="Base on passport" value="<?php echo $student_id; ?>" class="form-control input-md" required="" disabled/>	
+				  	<input readonly id="student_id" name="student_id" type="text" placeholder="Base on passport" value="<?php echo $student_id; ?>" class="form-control input-md" required=""/>	
 				  </div>
 				</div>
 				
@@ -96,9 +101,22 @@ body {
 
 				
 				<div class="form-group"> 
-				  	<input type="radio" id="student_status" name="student_status" value="Old student" />
+				  	<input type="radio" id="student_status" name="student_status" value="OLD" 
+						<?php 
+							if("OLD" == $get_student_status) {
+								echo "checked";
+							} 
+						?>
+								
+						/>
       			  	<label for="student_status">Old Student</label> &nbsp; &nbsp;
-					<input type="radio" id="student_status" name="student_status" value="New student" />
+					<input type="radio" id="student_status" name="student_status" value="NEW"
+						<?php 
+							if("NEW" == $get_student_status) {
+								echo "checked";
+							} 
+						?>
+					/>
       				<label for="student_status">New Student</label>
 				</div>
 
@@ -109,19 +127,15 @@ body {
 						<div class="col-md-5">
 						<select id="student_course" name="student_course" class="form-control"> 
 							<?php while($row1 = mysqli_fetch_assoc($findAllCoursesResult)):;?>
-								<option  id="<?php echo $row1["course_id"];?>" value="<?php echo $row1["course_name"];?>"><?php echo $row1["course_name"];?></option>
+								<option  id="<?php echo $row1["course_id"];?>" value="<?php echo $row1["course_id"];?>" 
+									<?php 
+										if($row1["course_id"] == $get_student_course) {
+											echo "selected";
+										} 
+									?>
+								>
+							<?php echo $row1["course_name"];?></option>
 							<?php endwhile;?>
-							<option value="ESL Premium"> ESL Premium </option>  
-							<option value="ESL Intensive">ESL Intensive</option>  
-							<option value="ESL Essential">ESL Essential</option>  
-							<option value="POWER SPEAKING">POWER SPEAKING</option>  
-							<option value="IELTS ACADEMIC"> IELTS ACADEMIC</option>  
-							<option value="IELTS GENERAL"> IELTS GENERAL</option>  
-							<option value="IELTS PRE-GUARANTEE">IELTS PRE-GUARANTEE</option>
-							<option value="IELTS GUARANTEE">IELTS GUARANTEE</option>
-							<option value="PRE TOEIC"> PRE TOEIC</option> 
-							<option value="TOEIC"> TOEIC </option> 
-							<option value="BUSINESS"> BUSINESS</option>  
                     	</select>
 					</div>
 				</div>
@@ -133,7 +147,14 @@ body {
 						<select id="student_level" name="student_level" class="form-control"> 
 
 							<?php while($row1 = mysqli_fetch_assoc($findAllLevelResult)):;?>
-								<option  id="<?php echo $row1["level_id"];?>" value="<?php echo $row1["level_id"];?>"><?php echo $row1["level_name"];?></option>
+								<option  id="<?php echo $row1["level_id"];?>" value="<?php echo $row1["level_id"];?>" 
+									<?php 
+										if($row1["level_id"] == $get_student_level) {
+											echo "selected";
+										} 
+									?>
+								>
+								<?php echo $row1["level_name"];?></option>
 							<?php endwhile;?>
 						</select>
 					</div>
@@ -141,10 +162,10 @@ body {
 				
 				<!-- Button -->
 			<div class="form-group"  align="right" >
-			  <label class="col-md-4 control-label" for="submit"></label>
+			  <label class="col-md-4 control-label" for="update"></label>
 			  <div class="col-md-5">
 			  	<a href="schedulelist.php" class="btn btn-primary"> Back </a> &nbsp;  &nbsp; 
-				  <button type="submit" name="submit" id="submit" class="btn btn-success"> Update </button>
+				  <button type="submit" name="update" id="update" class="btn btn-success"> Update </button>
 			  </div>
 			</div>
 			</fieldset>

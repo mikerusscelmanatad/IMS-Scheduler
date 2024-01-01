@@ -44,7 +44,11 @@ td {
               $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error()); 
                mysqli_select_db($connect, "insertion") or die(mysqli_error()); 
 
-                    $query = "SELECT * FROM student  ORDER BY student_id ASC  ";
+                    $query = "SELECT * FROM student AS s
+                                INNER JOIN level AS l ON s.level_id = l.level_id
+                                INNER JOIN course AS c ON s.course_id = c.course_id
+                            ORDER BY student_id ASC 
+                      ";
                     $result = mysqli_query($connect, $query) or die(mysqli_error());
                     echo "<div class='container'><table width='' class='table table-bordered' border='1' >
                             <tr>
@@ -59,8 +63,8 @@ td {
                         {
                             $student_id = $row['student_id'];
                             $student_name = $row['student_name'];
-                            $student_course = $row['student_course'];
-                            $student_level = $row['student_level'];
+                            $student_course = $row['course_name'];
+                            $student_level = $row['level_name'];
                             $student_status = $row['student_status'];
 
 
@@ -68,8 +72,8 @@ td {
                         
                         echo "<td><center>" . $row['student_id'] . "</td>";
                         echo "<td><B><center> " . $row['student_name'] . " </B></td>";
-                        echo "<td><center>" . $row['student_course'] . "</td>";
-                        echo "<td><center>" . $row['student_level'] . "</td>";
+                        echo "<td><center>" . $row['course_name'] . "</td>";
+                        echo "<td><center>" . $row['level_name'] . "</td>";
                         echo "<td><center>" . $row['student_status'] . "</td>";
 
                         

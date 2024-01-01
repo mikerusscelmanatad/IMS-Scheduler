@@ -178,7 +178,7 @@ body {
 						<select id="student_course" name="student_course" class="form-control"> 
 							<option value="Select">Select</option>  
 							<?php while($row1 = mysqli_fetch_array($findAllQueryResult)):;?>
-								<option  id=<?php echo $row1['course_id'];?> value="<?php echo $row1['course_name'];?>"><?php echo $row1['course_name'];?></option>
+								<option  id=<?php echo $row1['course_id'];?> value="<?php echo $row1['course_id'];?>"><?php echo $row1['course_name'];?></option>
 							<?php endwhile;?>
 						</select>
 					</div>
@@ -192,7 +192,7 @@ body {
 						<select id="student_level" name="student_level" class="form-control"> 
 							<option value="Select">Select</option>  
 							<?php while($row1 = mysqli_fetch_array($findAllLevelResult)):;?>
-								<option  id=<?php echo $row1['level_id'];?> value="<?php echo $row1['level_name'];?>"><?php echo $row1['level_name'];?></option>
+								<option  id=<?php echo $row1['level_id'];?> value="<?php echo $row1['level_id'];?>"><?php echo $row1['level_name'];?></option>
 							<?php endwhile;?>
 						</select>
 					</div>
