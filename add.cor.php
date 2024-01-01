@@ -1,7 +1,6 @@
 <?php 
 	// ************************** setschedule.php 
  require 'databaasee.php' ;
- 
 
  	if (isset($_POST['submit'])) {
 
@@ -54,4 +53,3 @@
 
 
 ?>
-

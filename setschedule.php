@@ -12,79 +12,30 @@
 	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
 	$student_id = "student_id";
 	
-	$query = "SELECT * FROM `student` ";
+	$query = "SELECT * FROM `student` ORDER BY student_id ASC ";
 	$result = mysqli_query($connect, $query);
 
 	
 
 ?>
-
 <?php 
+// ************** add.cor.php *********************
 
-	$query = "SELECT student_id FROM student ORDER BY student_id DESC " ;
-	$result = mysqli_query($connect, $query); 
-	$row = mysqli_fetch_assoc($result);
-	$lastId = $row['student_id'];
+// php select option value from database
 
-	if (empty($lastId)) {
+	$hostname = "localhost";
+	$username = "root";
+	$password = "";
+	$databaseName = "insertion";
 
-		$number = " IMS - 0000 ";
-
-	} else {
-
-		$idd = str_replace("IMS -", "", $lastId);
-		$id = str_pad($idd + 1, 4, 0, STR_PAD_LEFT);
-		$number = ' IMS - ' .$id ;
-	}
+	// connect to database
+	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+	$course_id = "course_id";
+	
+	$query = " SELECT * FROM `subject` WHERE course_id='$course_id'";
+	$result = mysqli_query($connect, $query);
 
 ?>
-
-<?php 
-
-	if ($_SERVER["REQUEST_METHOD"] == 'POST')
-	{
-
-		$student_id = $_POST['student_id'];
-		$student_name = $_POST['student_name'];
-		$student_status = $_POST['student_status'];
-		$student_course = $_POST['student_course'];
-		$student_level = $_POST['student_level'];
-
-
-
-		if(!$connect) {
-			die ("connection failed" .mysqli_connect_error());
-		} else {
-
-			$query = "INSERT INTO student(`student_id`, `student_name`, `student_status`, `student_course`, `student_level`) VALUES ('$student_id', '$student_name', '$student_status', '$student_course', '$student_level')" ;
-
-			if( mysqli_query($connect, $query))
-			{
-
-				$query = "SELECT student_id FROM student ORDER BY student_id DESC " ;
-				$result = mysqli_query($connect, $query); 
-				$row = mysqli_fetch_assoc($result);
-				$lastId = $row['student_id'];
-			
-				if (empty($lastId)) {
-				$number = " IMS - 0000";
-
-				} else {
-					$idd = str_replace("IMS -", "", $lastId);
-					$id = str_pad($idd + 1, 4, 0, STR_PAD_LEFT);
-					$number = ' IMS - ' .$id ;
-				}
-			} else {
-
-				echo "Record failed" ;
-			}
-		}
-	}
-
-?>
-
-
-
 
 <?php
   $path = $_SERVER['DOCUMENT_ROOT'];
@@ -121,7 +72,7 @@ body {
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="student_id"> ID Number </label>  
 				  <div class="col-md-5">
-				  <input id="student_id" name="student_id" type="text" style="color: blue;" value= "<?php echo $number; ?>" class="form-control input-md" required="" readonly>	
+				  <input id="student_id" name="student_id" type="text" placeholder="Base on passport" class="form-control input-md" required="">	
 				  </div>
 				</div>
 				
