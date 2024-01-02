@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2024 at 11:45 AM
+-- Generation Time: Jan 02, 2024 at 10:06 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -104,14 +104,14 @@ INSERT INTO `course` (`course_id`, `course_code`, `course_name`, `course`, `leve
 (142, 'ESL Intensive', 'ESL Intensive', 'ESL Intensive', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (143, 'ESL Essential', 'ESL Essential', 'ESL Essential', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (144, 'POWER SPEAKING', 'POWER SPEAKING', 'POWER SPEAKING', 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(145, 'IELTS ACADEMIC', 'IELTS ACADEMIC', 'IELTS ACADEMIC', 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(145, 'IELTS ACADEMIC', 'IELTS ACADEMIC', 'IELTS ACADEMIC', 9, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (146, 'IELTS GENERAL', 'IELTS GENERAL', 'IELTS GENERAL', 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(147, 'IELTS PRE-GUARANTEE', 'IELTS PRE-GUARANTEE', 'IELTS PRE-GUARANTEE', 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(150, 'IELTS GUARANTEE', 'IELTS GUARANTEE', 'IELTS GUARANTEE', 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(147, 'PRE - IELTS ACADEMIC', 'PRE - IELTS ACADEMIC', 'PRE - IELTS ACADEMIC', 13, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(150, 'PRE - IELTS GENERAL', 'PRE - IELTS GENERAL', 'PRE - IELTS GENERAL', 13, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (151, 'PRE TOEIC', 'PRE TOEIC', 'PRE TOEIC', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00'),
 (152, 'TOEIC', 'TOEIC', 'TOEIC', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00'),
 (153, 'BUSINESS', 'BUSINESS', 'BUSINESS', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00'),
-(155, 'NULL COURSE', 'NULL COURSE', 'NULL COURSE', 13, '2024-01-01 10:12:59', NULL);
+(156, 'Null', 'Null', 'Null', 13, '2024-01-02 08:00:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -188,7 +188,7 @@ INSERT INTO `level` (`level_id`, `level_name`, `created_at`, `created_by`) VALUE
 (10, 'Advance 10', '2023-12-29 09:58:48', ''),
 (11, 'Advance 11', '2023-12-29 09:58:48', ''),
 (12, 'Master 12', '2023-12-29 09:58:48', ''),
-(13, 'NULL LEVEL', '2024-01-01 10:12:39', 'NULL LEVEL');
+(13, 'NULL LEVEL', '2024-01-01 10:12:39', '');
 
 -- --------------------------------------------------------
 
@@ -260,7 +260,18 @@ INSERT INTO `rooms` (`room_id`, `room`) VALUES
 (68, '552'),
 (69, '553'),
 (70, '554'),
-(71, 'NO ROOM');
+(71, 'NO ROOM'),
+(72, 'G - 560'),
+(73, 'G - 561'),
+(74, 'G - 562'),
+(75, 'G - 563'),
+(76, 'G - 564'),
+(77, 'G - 565'),
+(78, 'G - 567'),
+(79, 'G - 568'),
+(80, 'G - 568'),
+(81, 'G - 569'),
+(82, 'G - 570');
 
 -- --------------------------------------------------------
 
@@ -295,14 +306,11 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `student_status`) VALUES
-(200, 'Lee min hoo      ', 142, 4, 'OLD'),
-(201, 'John Doe', 141, 1, 'NEW'),
-(202, 'Michael Javier  ', 144, 11, 'OLD'),
-(212, 'Joseph Makabli  ', 146, 12, 'NEW'),
-(224, 'Kimkim', 142, 2, 'OLD'),
-(225, 'Kim jung on', 143, 4, 'NEW'),
-(226, 'Anneee', 142, 3, 'NEW'),
-(227, 'John doe', 142, 2, 'NEW');
+(231, 'Lee min hoo    ', 141, 2, 'OLD'),
+(232, 'kykle  manny', 142, 2, 'OLD'),
+(233, 'johjoha', 143, 1, 'NEW'),
+(234, 'John Cortes', 145, 3, 'NEW'),
+(235, 'Manny Pacman', 150, 4, 'NEW');
 
 -- --------------------------------------------------------
 
@@ -366,21 +374,88 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `subject_code`, `updated_at`, `room_id`, `timer_id`, `course_id`) VALUES
-(1, 'PREMIUM', 'Reading', '1.1', NULL, 17, 3, 141),
-(2, 'PREMIUM', 'Speaking', '1.1', NULL, 18, 4, 141),
-(168, 'PREMIUM', 'Grammar', '1.1', NULL, 57, 6, 141),
-(169, 'PREMIUM', 'Vocabulary', '1.1', NULL, 57, 7, 141),
-(170, 'PREMIUM', 'Native', 'G', NULL, 17, 3, 141),
-(171, 'PREMIUM', 'Writing', 'G', NULL, 18, 4, 141),
-(172, 'PREMIUM', 'Listening', 'G', NULL, 57, 6, 141),
-(173, 'PREMIUM', 'Conversation', 'G', NULL, 57, 7, 141),
-(178, 'INTENSIVE', 'Reading', '1.1', NULL, 71, 15, 142),
-(179, 'INTENSIVE', 'Grammar', '1.1', NULL, 71, 4, 142),
-(180, 'INTENSIVE', 'Vocabulary', '1.1', NULL, 71, 6, 142),
-(181, 'INTENSIVE', 'Speaking', '1.1', NULL, 71, 7, 142),
-(182, 'INTENSIVE', 'Writing', 'G', NULL, 71, 3, 142),
-(183, 'INTENSIVE', 'Listening', 'G', NULL, 71, 4, 142),
-(184, 'INTENSIVE', 'Native', 'G', NULL, 71, 7, 142);
+(1, 'PREMIUM', 'Reading', '1.1', NULL, 18, 3, 141),
+(2, 'PREMIUM', 'Speaking', '1.1', NULL, 19, 4, 141),
+(168, 'PREMIUM', 'Grammar', '1.1', NULL, 20, 6, 141),
+(169, 'PREMIUM', 'Vocabulary', '1.1', NULL, 21, 7, 141),
+(170, 'PREMIUM', 'Native', 'G', NULL, 72, 9, 141),
+(171, 'PREMIUM', 'Writing', 'G', NULL, 73, 10, 141),
+(172, 'PREMIUM', 'Listening', 'G', NULL, 74, 11, 141),
+(173, 'PREMIUM', 'Conversation', 'G', NULL, 75, 12, 141),
+(178, 'INTENSIVE', 'Reading', '1.1', NULL, 22, 3, 142),
+(179, 'INTENSIVE', 'Grammar', '1.1', NULL, 23, 4, 142),
+(180, 'INTENSIVE', 'Vocabulary', '1.1', NULL, 24, 6, 142),
+(181, 'INTENSIVE', 'Speaking', '1.1', NULL, 25, 7, 142),
+(182, 'INTENSIVE', 'Writing', 'G', NULL, 76, 10, 142),
+(183, 'INTENSIVE', 'Listening', 'G', NULL, 77, 11, 142),
+(184, 'INTENSIVE', 'Native', 'G', NULL, 78, 12, 142),
+(187, 'POWER SPEAKING', 'Speaking', '1.1', NULL, 26, 3, 144),
+(188, 'POWER SPEAKING', 'Speaking Drill', '1.1', NULL, 27, 4, 144),
+(189, 'POWER SPEAKING', 'Grammar', '1.1', NULL, 28, 6, 144),
+(190, 'POWER SPEAKING', 'Vocabulary', '1.1', NULL, 29, 7, 144),
+(192, 'POWER SPEAKING', 'Listening', 'G', NULL, 79, 8, 144),
+(193, 'POWER SPEAKING', 'Native', 'G', NULL, 79, 10, 144),
+(194, 'POWER SPEAKING', 'Discussion', 'G', NULL, 80, 13, 144),
+(195, 'TOEIC', 'Reading', '1.1', NULL, 26, 3, 152),
+(196, 'TOEIC', 'Speaking', '1.1', NULL, 29, 4, 152),
+(197, 'TOEIC', 'Grammar', '1.1', NULL, 37, 6, 152),
+(198, 'TOEIC', 'Vocabulary', '1.1', NULL, 37, 7, 152),
+(199, 'TOEIC', 'Reading P56', 'G', NULL, 80, 10, 152),
+(200, 'TOEIC', 'Reading P7', 'G', NULL, 81, 11, 152),
+(201, 'TOEIC', 'Listening', 'G', NULL, 82, 12, 152),
+(202, 'PRE - TOEIC', 'Reading', '1.1', NULL, 45, 3, 151),
+(203, 'PRE - TOEIC ', 'Listening', '1.1', NULL, 47, 4, 151),
+(204, 'PRE - TOEIC ', 'Grammar', '1.1', NULL, 49, 6, 151),
+(205, 'PRE - TOEIC ', 'Vocabulary', '1.1', NULL, 47, 7, 151),
+(206, 'PRE - TOEIC ', 'Native', 'G', NULL, 51, 10, 151),
+(207, 'PRE - TOEIC ', 'Writing', 'G', NULL, 54, 11, 151),
+(208, 'PRE - TOEIC ', 'Listening', 'G', NULL, 58, 12, 151),
+(209, 'PRE - TOEIC', 'Conversation', 'G', NULL, 60, 13, 151),
+(210, 'ESSENTIAL', 'Reading', '1.1', NULL, 18, 3, 143),
+(211, 'ESSENTIAL', 'Speaking', '1.1', NULL, 36, 4, 143),
+(212, 'ESSENTIAL', 'Grammar', '1.1', NULL, 30, 6, 143),
+(213, 'ESSENTIAL', 'Vocabulary', '1.1', NULL, 33, 7, 143),
+(214, 'IELTS - ACAD', 'Reading', '1.1', NULL, 40, 3, 145),
+(215, 'IELTS - ACAD', 'Writing t1', '1.1', NULL, 49, 4, 145),
+(216, 'IELTS - ACAD', 'Pronunciation', '1.1', NULL, 24, 6, 145),
+(217, 'IELTS - ACAD', 'Speaking', '1.1', NULL, 59, 7, 145),
+(218, 'IELTS - ACAD', 'Reading (IELTS INTEG)', 'G', NULL, 73, 9, 145),
+(219, 'IELTS - ACAD', 'Listening', 'G', NULL, 76, 10, 145),
+(220, 'IELTS - ACAD', 'Writing T2', 'G', NULL, 80, 11, 145),
+(222, 'IELTS - ACAD', 'Grammar Vocabulary', 'G', NULL, 79, 12, 145),
+(223, 'IELTS - GEN', 'Reading', '1.1', NULL, 22, 3, 146),
+(224, 'IELTS - GEN', 'Writing T1', '1.1', NULL, 39, 4, 146),
+(225, 'IELTS - GEN', 'Pronunciation', '1.1', NULL, 29, 6, 146),
+(226, 'IELTS - GEN', 'Speaking', '1.1', NULL, 56, 7, 146),
+(227, 'IELTS - GEN', 'Reading (IELTS INTEG)', 'G', NULL, 80, 9, 146),
+(228, 'IELTS - GEN', 'Listening', 'G', NULL, 78, 10, 146),
+(229, 'IELTS - GEN', 'Writing T2', 'G', NULL, 73, 11, 146),
+(230, 'IELTS - GEN', 'Grammar Vocabulary', 'G', NULL, 77, 12, 146),
+(231, 'PRE - IELTS - ACAD', 'Reading', '1.1', NULL, 24, 3, 147),
+(232, 'PRE - IELTS - ACAD', 'Writing', '1.1', NULL, 26, 4, 147),
+(233, 'PRE - IELTS - ACAD', 'Listening', '1.1', NULL, 26, 6, 147),
+(234, 'PRE - IELTS - ACAD', 'Speaking', '1.1', NULL, 32, 7, 147),
+(235, 'PRE - IELTS - ACAD', 'Native', 'G', NULL, 73, 9, 147),
+(236, 'PRE - IELTS - ACAD', 'Writing', 'G', NULL, 74, 10, 147),
+(237, 'PRE - IELTS - ACAD', 'Listening', 'G', NULL, 74, 11, 147),
+(238, 'PRE - IELTS - ACAD', 'Conversation', 'G', NULL, 78, 12, 147),
+(239, 'PRE - IELTS - GEN', 'Reading', '1.1', NULL, 20, 3, 150),
+(240, 'PRE - IELTS - GEN', 'Writing', '1.1', NULL, 22, 4, 150),
+(241, 'PRE - IELTS - GEN', 'Listening', '1.1', NULL, 31, 6, 150),
+(242, 'PRE - IELTS - GEN', 'Speaking', '1.1', NULL, 34, 7, 150),
+(243, 'PRE - IELTS - GEN', 'Native', 'G', NULL, 74, 9, 150),
+(244, 'PRE - IELTS - GEN', 'Writing', 'G', NULL, 78, 10, 150),
+(245, 'PRE - IELTS - GEN', 'Listening', 'G', NULL, 78, 11, 150),
+(246, 'PRE - IELTS - GEN', 'Conversation', 'G', NULL, 73, 12, 150),
+(247, 'BUSINESS', 'Speaking', '1.1', NULL, 28, 3, 153),
+(248, 'BUSINESS', 'Business Grammar and Vocabulary', '1.1', NULL, 27, 4, 153),
+(249, 'BUSINESS', 'Business Writing', '1.1', NULL, 31, 6, 153),
+(250, 'BUSINESS', 'Professional English', '1.1', NULL, 32, 7, 153),
+(251, 'BUSINESS', 'Business Integration 1', 'G', NULL, 72, 9, 153),
+(252, 'BUSINESS', 'Business Integration 2', 'G', NULL, 79, 10, 153),
+(253, 'BUSINESS', 'Presentation and Socialization', 'G', NULL, 80, 11, 153),
+(254, 'BUSINESS', 'Native', 'G', NULL, 77, 8, 153),
+(255, 'Null', 'Null ', 'Null ', NULL, 71, 15, 142);
 
 -- --------------------------------------------------------
 
@@ -399,16 +474,16 @@ CREATE TABLE `timer` (
 --
 
 INSERT INTO `timer` (`id`, `start_time`, `end_time`) VALUES
-(3, '8:30 am', '9:15 am'),
-(4, '9:25 am', '10:10 am'),
-(6, '10:20 am', '11:05 am'),
-(7, '11:15 am', '12:00 pm'),
-(8, '12:00 pm', '1:00 pm'),
-(9, '1:00 pm', '1:45 pm'),
-(10, '1:55 pm', '2:40 pm'),
-(11, '2:50 pm', '3:35 pm'),
-(12, '3:45 pm', '4:30 pm'),
-(13, '4:40 pm', '5:25 pm'),
+(3, 'Period 1 - 8:30 am', '9:15 am'),
+(4, 'Period 2 - 9:25 am', '10:10 am'),
+(6, 'Period 3 - 10:20 am', '11:05 am'),
+(7, 'Period 4 - 11:15 am', '12:00 pm'),
+(8, 'Lunch - 12:00 pm', '1:00 pm'),
+(9, 'Period 5 - 1:00 pm', '1:45 pm'),
+(10, 'Period 6 - 1:55 pm', '2:40 pm'),
+(11, 'Period 7 - 2:50 pm', '3:35 pm'),
+(12, 'Period 8 - 3:45 pm', '4:30 pm'),
+(13, 'Period 9 - 4:40 pm', '5:25 pm'),
 (14, '6:00 pm', '7:00 pm'),
 (15, 'NULL TIME', 'NULL TIME');
 
@@ -515,7 +590,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
 -- AUTO_INCREMENT for table `data`
@@ -539,19 +614,19 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=228;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
 
 --
 -- AUTO_INCREMENT for table `timer`

@@ -49,7 +49,7 @@ include_once("navbar.php");
             $query = "SELECT * FROM student AS s
                                 INNER JOIN level AS l ON s.level_id = l.level_id
                                 INNER JOIN course AS c ON s.course_id = c.course_id
-                            ORDER BY student_id ASC 
+                            ORDER BY student_id DESC
                       ";
             $result = mysqli_query($connect, $query) or die(mysqli_error($connect));
             echo "<div class='container'><table width='' class='table table-bordered' border='1' >
@@ -72,7 +72,7 @@ include_once("navbar.php");
 
                 echo "<tr>";
 
-                echo "<td><center>" . $row['passport_id'] . "</td>";
+                echo "<td><center>" . $row['student_id'] . "</td>";
                 echo "<td><B><center> " . $row['student_name'] . " </B></td>";
                 echo "<td><center>" . $row['course_name'] . "</td>";
                 echo "<td><center>" . $row['level_name'] . "</td>";

@@ -47,7 +47,6 @@ if (isset($_GET['id'])) {
 	while ($row = mysqli_fetch_assoc($result)) {
 
 		$student_id = $row['student_id'];
-		$passport_id = $row['passport_id'];
 		$student_name = $row['student_name'];
 		$get_student_status = $row['student_status'];
 		$get_student_course = $row['course_id'];
@@ -82,17 +81,7 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 					<form class="form-horizontal" method="post" action='add.cor.php' enctype="multipart/form-data">
 						<fieldset>
 							<!-- Form Name -->
-							<legend> UPDATE</legend>
-
-							<!-- Text input-->
-							<div class="form-group">
-								<label class="col-md-4 control-label" for="student_id"> ID Number </label>
-								<div class="col-md-5">
-									<input readonly id="student_id" name="student_id" type="hidden" placeholder="Base on passport" value="<?php echo $student_id; ?>" class="form-control input-md" required="" />
-									<input readonly id="passport_id" name="passport_id" type="text" placeholder="Base on passport" value="<?php echo $passport_id; ?>" class="form-control input-md" required="" />
-								</div>
-							</div>
-
+							<legend> UPDATE</legend>			
 
 							<!-- Text input-->
 							<div class="form-group">

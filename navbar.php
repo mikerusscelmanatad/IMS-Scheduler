@@ -15,21 +15,21 @@ include_once("header.php");
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="home.php"><!--BUPC --> <em> IMS </em> Scheduler </a>
+        <a class="navbar-brand" href="setschedule.php"><!--BUPC --> <em> IMS </em> Scheduler </a>
       </div>
       <div>
 
 
         <ul class="nav navbar-nav">
-          <li><a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+          <!-- <li><a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a></li> -->
           <!-- <li><a href="addfaculty.php"><span class="glyphicon glyphicon-plus-sign"></span> Add Course  </a></li>  -->
           <!-- <li><a href="courselist.php"><span class="glyphicon glyphicon-list"></span> View Courses  </a></li>   -->
           <!-- <li><a href="addsubject.php"><span class="glyphicon glyphicon-plus-sign"></span> Subjects</a></li> -->
           <li><a href="setschedule.php"><span class="glyphicon glyphicon-plus-sign"></span>Set Schedule</a></li>
-          <li><a href="addroom.php"><span class="glyphicon glyphicon-asterisk"></span> Room</a></li>
-          <li><a href="addtime.php"><span class="glyphicon glyphicon-time"></span> Time</a></li>
-          <li><a href="list.php"><span class="glyphicon glyphicon-list"></span> List</a></li>
-          <li><a href="tablelist.php"><span class="glyphicon glyphicon-calendar"></span> Schedule</a></li>
+          <!-- <li><a href="addroom.php"><span class="glyphicon glyphicon-asterisk"></span> Room</a></li>
+          <li><a href="addtime.php"><span class="glyphicon glyphicon-time"></span> Time</a></li> -->
+          <!-- <li><a href="list.php"><span class="glyphicon glyphicon-list"></span> List</a></li>
+          <li><a href="tablelist.php"><span class="glyphicon glyphicon-calendar"></span> Schedule</a></li> -->
           <li><a href="schedulelist.php"><span class="glyphicon glyphicon-calendar"></span> View Schedule</a></li>
 
         </ul>

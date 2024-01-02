@@ -43,7 +43,7 @@ include_once("navbar.php");
 
 
             echo "<div id='divToPrint' class='container'> 
-                        <table width='50' class='table table-bordered'>
+                        <table width='50' class='table table-primary' border='2' >
                             <tr>
                                 <th colspan='1'><center> ID NUMBER </center></th>
                                 <th colspan='3'><center> STUDENTS NAME </center></th>
@@ -60,7 +60,7 @@ include_once("navbar.php");
                 $student_status = $row['student_status'];
 
 
-                echo "<td colspan='1'> <center>" . $row['passport_id'] . " </td>";
+                echo "<td colspan='1'> <center>" . $row['student_id'] . " </td>";
                 echo "<td colspan='3'> <center>" . $row['student_name'] . " </td>";
                 echo "<td colspan='2'> <center>" . $row['course_name'] . " </td>";
                 echo "<td colspan='1'> <center>" . $row['level_name'] . " </td>";
@@ -83,15 +83,16 @@ include_once("navbar.php");
                 $result = mysqli_query($connect, $query);
             }
 
-            echo "<table width='50' class='table table-bordered' >
+            echo "<table width='50' class='table table-primary' border='2' >
                             <tr>
-                                <center>  <th> PERIOD</th>
-                                <center> <th> COURSE </th>
-                                <center> <th> SUBJECT </th>
-                                <center><th> ROOM </th>
-                                <center><th> TEACHER</th>
-                                <center> <th> BOOKS </th> 
-                                <center> <th> ACTION </th> 
+                            
+                                <th style='text-align: center'> PERIOD</th>
+                                <th style='text-align: center'> COURSE </th>
+                                <th style='text-align: center'> SUBJECT </th>
+                                <th style='text-align: center'> ROOM </th>
+                                <th style='text-align: center'> TEACHER</th>
+                                <th style='text-align: center'> BOOKS </th> 
+                                <th style='text-align: center'> ACTION </th> 
                                 
                             </tr>";
 
@@ -101,20 +102,25 @@ include_once("navbar.php");
                 $student_name = $row['subject_type'];
                 $student_course = $row['subject_description'];
 
-                echo "<td>" . $row['start_time'] . " - " . $row['end_time'] . "</td>";
-                echo "<td>" . $row['subject_type'] . "</td>";
-                echo "<td>" . $row['subject_description'] . "</td>";
-                echo "<td>" . $row['room'] . "</td>";
-                echo "<td> Teacher's Name Here </td>";
-                echo "<td align='center'>" . $row['subject_description'] . "</td>";
-                echo "<td align='center'>" . $row['subject_description'] . "</td>";
+                echo "<td style='text-align: center'>" . $row['start_time'] . " - " . $row['end_time'] . "</td>";
+                echo "<td style='text-align: center'>" . $row['subject_type'] . "</td>";
+                echo "<td style='text-align: center'>" . $row['subject_description'] . "</td>";
+                echo "<td style='text-align: center'>" . $row['room'] . "</td>";
+                echo "<td style='text-align: center'> Teacher's Name Here </td>";
+                echo "<td style='text-align: center'>" . $row['subject_description'] . "</td>";
+
+                echo "<td style='text-align: center'>
+                <form class='form-horizontal' method='post' action='corlist.php'>
+                <input name='student_id' type='hidden' value='" . $row['subject_id'] . "';>
+                <a href='edit.php?id=" . $row['subject_id'] . "' class='btn btn-success'>Edit</a> &nbsp;
+                </td>";
                 echo "</tr>";
             }
 
             echo "</table>";
 
-            echo "<a href='#' class='printBtn btn btn-primary' onClick='PrintDiv()'> Print </a>&nbsp;";
-            echo "<a href='schedulelist.php' class='btn btn-success'> Go Back </a>&nbsp;";
+            echo "<a href='#' class='printBtn btn btn-success' onClick='PrintDiv()'> Print </a>&nbsp;";
+            echo "<a href='schedulelist.php' class='btn btn-primary'>Back </a>&nbsp;";
 
             // delete record
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
