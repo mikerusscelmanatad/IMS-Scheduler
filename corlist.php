@@ -59,6 +59,7 @@ include_once("navbar.php");
                                 <th>Course</th>
                                 <th>Level</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>";
 
             while ($row = mysqli_fetch_assoc($result)) {
@@ -71,7 +72,7 @@ include_once("navbar.php");
 
                 echo "<tr>";
 
-                echo "<td><center>" . $row['student_id'] . "</td>";
+                echo "<td><center>" . $row['passport_id'] . "</td>";
                 echo "<td><B><center> " . $row['student_name'] . " </B></td>";
                 echo "<td><center>" . $row['course_name'] . "</td>";
                 echo "<td><center>" . $row['level_name'] . "</td>";

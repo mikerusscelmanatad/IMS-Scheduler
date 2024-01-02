@@ -60,7 +60,7 @@ include_once("navbar.php");
                 $student_status = $row['student_status'];
 
 
-                echo "<td colspan='1'> <center>" . $row['student_id'] . " </td>";
+                echo "<td colspan='1'> <center>" . $row['passport_id'] . " </td>";
                 echo "<td colspan='3'> <center>" . $row['student_name'] . " </td>";
                 echo "<td colspan='2'> <center>" . $row['course_name'] . " </td>";
                 echo "<td colspan='1'> <center>" . $row['level_name'] . " </td>";

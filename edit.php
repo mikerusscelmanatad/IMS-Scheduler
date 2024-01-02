@@ -47,6 +47,7 @@ if (isset($_GET['id'])) {
 	while ($row = mysqli_fetch_assoc($result)) {
 
 		$student_id = $row['student_id'];
+		$passport_id = $row['passport_id'];
 		$student_name = $row['student_name'];
 		$get_student_status = $row['student_status'];
 		$get_student_course = $row['course_id'];
@@ -87,7 +88,8 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="student_id"> ID Number </label>
 								<div class="col-md-5">
-									<input readonly id="student_id" name="student_id" type="text" placeholder="Base on passport" value="<?php echo $student_id; ?>" class="form-control input-md" required="" />
+									<input readonly id="student_id" name="student_id" type="hidden" placeholder="Base on passport" value="<?php echo $student_id; ?>" class="form-control input-md" required="" />
+									<input readonly id="passport_id" name="passport_id" type="text" placeholder="Base on passport" value="<?php echo $passport_id; ?>" class="form-control input-md" required="" />
 								</div>
 							</div>
 
@@ -103,16 +105,16 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 
 							<div class="form-group">
 								<input type="radio" id="student_status" name="student_status" value="OLD" <?php
-																											if ("OLD" == $get_student_status) {
-																												echo "checked";
-																											}
-																											?> />
+									if ("OLD" == $get_student_status) {
+										echo "checked";
+									}
+									?> />
 								<label for="student_status">Old Student</label> &nbsp; &nbsp;
 								<input type="radio" id="student_status" name="student_status" value="NEW" <?php
-																											if ("NEW" == $get_student_status) {
-																												echo "checked";
-																											}
-																											?> />
+									if ("NEW" == $get_student_status) {
+										echo "checked";
+									}
+									?> />
 								<label for="student_status">New Student</label>
 							</div>
 
@@ -124,10 +126,10 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 										<select id="student_course" name="student_course" class="form-control">
 											<?php while ($row1 = mysqli_fetch_assoc($findAllCoursesResult)) :; ?>
 												<option id="<?php echo $row1["course_id"]; ?>" value="<?php echo $row1["course_id"]; ?>" <?php
-																																		if ($row1["course_id"] == $get_student_course) {
-																																			echo "selected";
-																																		}
-																																		?>>
+													if ($row1["course_id"] == $get_student_course) {
+														echo "selected";
+													}
+													?>>
 													<?php echo $row1["course_name"]; ?></option>
 											<?php endwhile; ?>
 										</select>
@@ -142,10 +144,10 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 
 												<?php while ($row1 = mysqli_fetch_assoc($findAllLevelResult)) :; ?>
 													<option id="<?php echo $row1["level_id"]; ?>" value="<?php echo $row1["level_id"]; ?>" <?php
-																																			if ($row1["level_id"] == $get_student_level) {
-																																				echo "selected";
-																																			}
-																																			?>>
+															if ($row1["level_id"] == $get_student_level) {
+																echo "selected";
+															}
+															?>>
 														<?php echo $row1["level_name"]; ?></option>
 												<?php endwhile; ?>
 											</select>
