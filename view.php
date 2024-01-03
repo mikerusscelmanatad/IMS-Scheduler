@@ -43,7 +43,7 @@ include_once("navbar.php");
 
 
             echo "<div id='divToPrint' class='container'> 
-                        <table width='50' class='table table-primary' border='2' >
+                        <table width='50' class='table table-primary' border='1' >
                             <tr>
                                 <th colspan='1'><center> ID NUMBER </center></th>
                                 <th colspan='3'><center> STUDENTS NAME </center></th>

@@ -102,7 +102,7 @@ include_once("navbar.php");
 									<div class="col-md-4">
 									<input type="radio" id="student_status" name="student_status" value="OLD STUDENT" />
 									<label for="student_status">Old Student</label> &nbsp; &nbsp;
-									<input  type="radio" id="student_status" name="student_status" style="color:blue" value="NEW STUDENT" />
+									<input  type="radio" id="student_status" name="student_status" value="NEW STUDENT" />
 									<label for="student_status"> New student </label>
 								</div>
 							</div>

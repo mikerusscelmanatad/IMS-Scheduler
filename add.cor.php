@@ -27,6 +27,7 @@ require 'databaasee.php';
 			header('Location: ./view.php?id='.$last_student_id);
 		}
 			} else if (isset($_POST['update'])) {
+				$student_id = $_POST['student_id'];
 
 				$student_id = mysqli_real_escape_string($connect, $_POST['student_id']);
 				$student_name = mysqli_real_escape_string($connect, $_POST['student_name']);

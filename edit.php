@@ -73,15 +73,35 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 <body>
 
 	<br>
-	<div class="container">
-		<div class="row" align="center">
-			<div class="form-group">
+	<div class="container container-fluid">
+		
+			<div class="form-group" align="center" >
 				<div class="jumbotron">
-					Update Schedule
-					<form class="form-horizontal" method="post" action='add.cor.php' enctype="multipart/form-data">
+					IMS ACADEMY
+					<form align="center" class="form-horizontal" method="post" action="add.cor.php">
 						<fieldset>
+
 							<!-- Form Name -->
-							<legend> UPDATE</legend>			
+							<legend><h3> STUDENT INFORMATION </h3>  </legend> <br> <br>
+
+
+
+							<div class="form-group">
+								<input type="radio" id="student_status" name="student_status" value="OLD STUDENT" <?php
+									if ("OLD STUDENT" == $get_student_status) {
+										echo "checked";
+									}
+									?> />
+								<label for="student_status">Old Student</label> &nbsp; &nbsp;
+								
+								<input type="radio" id="student_status" name="student_status" value="NEW STUDENT" <?php
+									if ("NEW STUDENT" == $get_student_status) {
+										echo "checked";
+									}
+									?> />
+								<label for="student_status">New Student</label>
+							</div>
+
 
 							<!-- Text input-->
 							<div class="form-group">
@@ -89,22 +109,6 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 								<div class="col-md-5">
 									<input id="student_name" name="student_name" type="text" placeholder="Name here" value="<?php echo $student_name; ?> " class="form-control input-md" required="">
 								</div>
-							</div>
-
-
-							<div class="form-group">
-								<input type="radio" id="student_status" name="student_status" value="OLD" <?php
-									if ("OLD" == $get_student_status) {
-										echo "checked";
-									}
-									?> />
-								<label for="student_status">Old Student</label> &nbsp; &nbsp;
-								<input type="radio" id="student_status" name="student_status" value="NEW" <?php
-									if ("NEW" == $get_student_status) {
-										echo "checked";
-									}
-									?> />
-								<label for="student_status">New Student</label>
 							</div>
 
 

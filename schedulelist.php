@@ -21,8 +21,10 @@ include_once("navbar.php");
 
     <br>
     <div align="center">
-        <legend> Students </legend>
-        </fieldset>
+        <legend> LIST OF STUDENTS </legend>
+       
         <?php
         include_once("corlist.php");
         ?>
+</body>
+</html>
