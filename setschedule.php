@@ -16,7 +16,6 @@ $query = "SELECT * FROM `student` ORDER BY student_id ASC ";
 $result = mysqli_query($connect, $query);
 
 
-
 ?>
 
 
@@ -54,51 +53,76 @@ include_once("navbar.php");
 <html>
 
 <head>
+
+
+ 
 	<style>
-		body {
-			background-color: white;
-		}
+		 body {
+           
+		   background-color: white;
+		   color: black;
+	   }
+
+	   th {
+		   text-align: center;
+	   }   
+
+	   tr {
+		   height: 10px;
+	   }
+
+	   td {
+		   padding-top: 5px;
+		   padding-left: 20px;
+		   padding-bottom: 5px;
+		   height: 20px;
+	   }
+
 	</style>
 </head>
 
 <body>
 
 	<br>
-	<div class="container">
-		<div class="row" align="center">
-			<div class="">
+	
+	<div class="container container-fluid">
+		
+			<div class="form-group" align="center" >
 				<div class="jumbotron">
-					IMS SCHEDULER
-					<form class="form-horizontal" method="post" action="add.cor.php">
+					IMS ACADEMY
+					<form align="center" class="form-horizontal" method="post" action="add.cor.php">
 						<fieldset>
 
 							<!-- Form Name -->
-							<legend> SCHEDULER</legend>
-
-							<!-- Text input-->
+							<legend><h3> STUDENT INFORMATION </h3>  </legend> <br> <br>
+	   						
+							
 							<div class="form-group">
-								<label class="col-md-4 control-label" for="student_name">Students Name </label>
-								<div class="col-md-5">
-									<input id="student_name" name="student_name" type="text" placeholder="Name here " class="form-control input-md" required="">
+									<label class="col-md-4 control-label" for="student_status"> Please select </label>
+									<div class="col-md-4">
+									<input type="radio" id="student_status" name="student_status" value="OLD STUDENT" />
+									<label for="student_status">Old Student</label> &nbsp; &nbsp;
+									<input  type="radio" id="student_status" name="student_status" style="color:blue" value="NEW STUDENT" />
+									<label for="student_status"> New student </label>
 								</div>
 							</div>
 
 
+							<!-- Text input-->
 							<div class="form-group">
-								<label for="student_status"> Please select </label> &nbsp; &nbsp;&nbsp; &nbsp;
-								<input type="radio" id="student_status" name="student_status" value="OLD" />
-								<label for="student_status">Old Student</label> &nbsp; &nbsp;
-								<input type="radio" id="student_status" name="student_status" style="color:blue" value="NEW" />
-								<label for="student_status"> New student </label>
+								<label class="col-md-4 control-label" for="student_name">Students Name </label>
+								<div class="col-md-4">
+									<input class="form-control" id="student_name" name="student_name" type="text" placeholder="Name here "  required="">
+								</div>
 							</div>
 
 
 							<!-- Text input-->
-							<div class="form-group">
+							
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="student_course"> Course </label>
-									<div class="col-md-5">
-										<select id="student_course" name="student_course" class="form-control">
+									<div class="col-md-4">
+										<select  class="form-control" id="student_course" name="student_course">
 											<option value="Select">Select</option>
 											<?php while ($row1 = mysqli_fetch_array($findAllQueryResult)) :; ?>
 												<option id=<?php echo $row1['course_id']; ?> value="<?php echo $row1['course_id']; ?>"><?php echo $row1['course_name']; ?></option>
@@ -108,10 +132,10 @@ include_once("navbar.php");
 								</div>
 
 
-								<div class="form-group">
+							
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="student_level"> Level </label>
-										<div class="col-md-5">
+										<div class="col-md-4">
 											<select id="student_level" name="student_level" class="form-control">
 												<option value="Select">Select</option>
 												<?php while ($row1 = mysqli_fetch_array($findAllLevelResult)) :; ?>
@@ -126,8 +150,8 @@ include_once("navbar.php");
 									<!-- Button -->
 									<div class="form-group" align="right">
 										<label class="col-md-4 control-label" for="submit"></label>
-										<div class="col-md-5">
-											<button align="right" id="submit" name="submit" class="btn btn-primary"> Proceed </button>
+										<div class="col-md-4">
+											<button align="right" id="submit" name="submit" class="btn btn-success"> Proceed </button>
 										</div>
 									</div>
 								</div>

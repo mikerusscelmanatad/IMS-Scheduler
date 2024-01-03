@@ -27,7 +27,7 @@
 }
 
 .hover {
-  border: 3px dashed red;
+  border: 3px dashed rgb(199, 167, 167);
 }
 .sublist {
   display: table-cell;
@@ -50,10 +50,10 @@
 .table,
 th,
 td {
-  border: 1px solid white;
+  border: 2px solid rgb(0, 0, 0);
   border-collapse: collapse;
 }
 th,
 td {
-  background-color: #96d4d4;
+  background-color: #ffffff;
 }

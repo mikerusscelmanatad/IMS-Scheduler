@@ -29,7 +29,7 @@ include_once("navbar.php");
 
             // select database
             $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error($connect));
-            mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
+                        mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
 
             if (isset($_GET['id'])) {
                 $student_id = mysqli_real_escape_string($connect, $_GET['id']);
@@ -60,7 +60,7 @@ include_once("navbar.php");
                 $student_status = $row['student_status'];
 
 
-                echo "<td colspan='1'> <center>" . $row['student_id'] . " </td>";
+                echo "<td colspan='1'> <center> IMS - " . $row['student_id'] . " </td>";
                 echo "<td colspan='3' style='text-align: center'> <B>" . $row['student_name'] . "</B> </td>";
                 echo "<td colspan='2'> <center>" . $row['course_name'] . " </td>";
                 echo "<td colspan='1'> <center>" . $row['level_name'] . " </td>";
@@ -98,7 +98,7 @@ include_once("navbar.php");
 
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
-                $student_id = $row['subject_id'];
+                $subject_id = $row['subject_id'];
                 $student_name = $row['subject_type'];
                 $student_course = $row['subject_description'];
 
@@ -112,7 +112,7 @@ include_once("navbar.php");
                 echo "<td style='text-align: center'>
                 <form class='form-horizontal' method='post' action='corlist.php'>
                 <input name='student_id' type='hidden' value='" . $row['subject_id'] . "';>
-                <a href='edit.php?id=" . $row['subject_id'] . "' class='btn btn-success'>Edit</a> &nbsp;
+                <a href='view.edit.php?id=" . $row['subject_id'] . "' class='btn btn-success'>Edit</a> &nbsp;
                 </td>";
                 echo "</tr>";
             }

@@ -5,18 +5,22 @@ include_once("navbar.php");
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
     <style>
         body {
-            background-image: url();
+           
             background-color: white;
+            color: black;
         }
 
         th {
             text-align: center;
-        }
+        }   
 
         tr {
-            height: 30px;
+            height: 10px;
         }
 
         td {

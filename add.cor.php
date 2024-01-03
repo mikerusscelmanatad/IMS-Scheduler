@@ -36,7 +36,7 @@ require 'databaasee.php';
 
 
 
-				$query = " UPDATE `student` SET 
+				$query = "UPDATE `student` SET 
 							`student_id`='$student_id',
 							`student_name`='$student_name',`course_id`='$student_course',`level_id`='$student_level', 
 							`student_status`='$student_status' WHERE `student_id`='$student_id' ";

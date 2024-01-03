@@ -75,7 +75,7 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 	<br>
 	<div class="container">
 		<div class="row" align="center">
-			<div class="">
+			<div class="form-group">
 				<div class="jumbotron">
 					Update Schedule
 					<form class="form-horizontal" method="post" action='add.cor.php' enctype="multipart/form-data">
@@ -108,7 +108,7 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 							</div>
 
 
-							<div class="form-group">
+						
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="student_course"> Course </label>
 									<div class="col-md-5">
@@ -125,7 +125,7 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 									</div>
 								</div>
 								<!-- Text input-->
-								<div class="form-group">
+								
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="student_level"> Level </label>
 										<div class="col-md-5">
@@ -143,6 +143,7 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 										</div>
 									</div>
 
+									
 									<!-- Button -->
 									<div class="form-group" align="right">
 										<label class="col-md-4 control-label" for="update"></label>
