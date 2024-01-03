@@ -72,14 +72,14 @@ include_once("navbar.php");
 
                 echo "<tr>";
 
-                echo "<td><center>" . $row['student_id'] . "</td>";
-                echo "<td><B><center> " . $row['student_name'] . " </B></td>";
-                echo "<td><center>" . $row['course_name'] . "</td>";
-                echo "<td><center>" . $row['level_name'] . "</td>";
-                echo "<td><center>" . $row['student_status'] . "</td>";
+                echo "<td style='text-align: center'> IMS - " . $row['student_id'] . "</td>";
+                echo "<td style='text-align: center'><B>" . $row['student_name'] . " </B></td>";
+                echo "<td style='text-align: center'>" . $row['course_name'] . "</td>";
+                echo "<td style='text-align: center'>" . $row['level_name'] . "</td>";
+                echo "<td style='text-align: center'>" . $row['student_status'] . "</td>";
 
 
-                echo "<td>
+                echo "<td style='text-align: center'>
                         <form class='form-horizontal' method='post' action='corlist.php'>
                         <input name='student_id' type='hidden' value='" . $row['student_id'] . "';>
                         <a href='view.php?id=" . $row['student_id'] . "' class='btn btn-primary'> View </a> &nbsp;

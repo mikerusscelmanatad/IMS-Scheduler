@@ -61,7 +61,7 @@ include_once("navbar.php");
 
 
                 echo "<td colspan='1'> <center>" . $row['student_id'] . " </td>";
-                echo "<td colspan='3'> <center>" . $row['student_name'] . " </td>";
+                echo "<td colspan='3' style='text-align: center'> <B>" . $row['student_name'] . "</B> </td>";
                 echo "<td colspan='2'> <center>" . $row['course_name'] . " </td>";
                 echo "<td colspan='1'> <center>" . $row['level_name'] . " </td>";
                 echo "<td colspan='1'> <center>" . $row['student_status'] . " </td>";

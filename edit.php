@@ -147,8 +147,9 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 									<div class="form-group" align="right">
 										<label class="col-md-4 control-label" for="update"></label>
 										<div class="col-md-5">
-											<a href="schedulelist.php" class="btn btn-primary"> Back </a> &nbsp; &nbsp;
 											<button type="submit" name="update" id="update" class="btn btn-success"> Update </button>
+											<a href="schedulelist.php" class="btn btn-primary"> Back </a> &nbsp; &nbsp;
+											
 										</div>
 									</div>
 						</fieldset>
