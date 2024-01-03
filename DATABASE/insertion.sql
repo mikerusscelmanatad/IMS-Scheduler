@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2024 at 08:31 AM
+-- Generation Time: Jan 03, 2024 at 09:08 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -313,7 +313,8 @@ INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `s
 (238, 'John Cortes', 141, 1, 'NEW STUDENT'),
 (239, 'kykle  manny', 142, 1, 'OLD STUDENT'),
 (242, 'kykle  manny', 142, 4, 'NEW STUDENT'),
-(243, 'John Cortes', 141, 3, 'NEW STUDENT');
+(243, 'John Cortes', 141, 3, 'NEW STUDENT'),
+(244, 'Janjan ceniza ', 153, 5, 'NEW STUDENT');
 
 -- --------------------------------------------------------
 
@@ -457,7 +458,7 @@ INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `sub
 (251, 'BUSINESS', 'Business Integration 1', 'G', NULL, 72, 9, 153),
 (252, 'BUSINESS', 'Business Integration 2', 'G', NULL, 79, 10, 153),
 (253, 'BUSINESS', 'Presentation and Socialization', 'G', NULL, 80, 11, 153),
-(254, 'BUSINESS', 'Native', 'G', NULL, 77, 8, 153),
+(254, 'BUSINESS', 'Native', 'G', NULL, 77, 12, 153),
 (255, 'Null', 'Null ', 'Null ', NULL, 71, 15, 142);
 
 -- --------------------------------------------------------
@@ -623,7 +624,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
 
 --
 -- AUTO_INCREMENT for table `subject`
