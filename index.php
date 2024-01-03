@@ -11,6 +11,7 @@ include_once("header.php");
   	
 
 	<style>
+		
 		body {
 			background-image: url();
 			background-color: white;
@@ -21,8 +22,10 @@ include_once("header.php");
 <body>
 
 	<nav class="navbar navbar-default navbar-static-top">
-		<div class="container">
-			<h3>SCHEDULING SYSTEM</h3>
+		<div class="container"> <center>
+			<h1 style="color:blue">IMS ACADEMY</h1>
+			</center>
+			
 		</div>
 	</nav>
 
@@ -31,7 +34,7 @@ include_once("header.php");
 			<form class="form-horizontal" method="post" action="login.php">
 				<fieldset>
 
-					<legend>Login Panel</legend>
+					<legend><center>IMS SCHEDULER </center></legend>
 
 
 					<br>

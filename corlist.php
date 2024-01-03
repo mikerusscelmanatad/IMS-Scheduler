@@ -76,7 +76,7 @@ include_once("navbar.php");
 
                 echo "<tr>";
 
-                echo "<td style='text-align: center'> IMS - " . $row['student_id'] . "</td>";
+                echo "<td style= 'color:blue'> <B><center> IMS - " . $row['student_id'] . "</td>";
                 echo "<td style='text-align: center'><B>" . $row['student_name'] . " </B></td>";
                 echo "<td style='text-align: center'>" . $row['course_name'] . "</td>";
                 echo "<td style='text-align: center'>" . $row['level_name'] . "</td>";

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2024 at 10:06 AM
+-- Generation Time: Jan 03, 2024 at 08:31 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -298,7 +298,7 @@ CREATE TABLE `student` (
   `student_name` varchar(250) NOT NULL,
   `course_id` int(11) NOT NULL,
   `level_id` int(11) NOT NULL,
-  `student_status` enum('NEW','OLD','NO STATUS') NOT NULL
+  `student_status` enum('NEW STUDENT','OLD STUDENT','NO STATUS') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -306,11 +306,14 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `student_status`) VALUES
-(231, 'Lee min hoo    ', 141, 2, 'OLD'),
-(232, 'kykle  manny', 142, 2, 'OLD'),
-(233, 'johjoha', 143, 1, 'NEW'),
-(234, 'John Cortes', 145, 3, 'NEW'),
-(235, 'Manny Pacman', 150, 4, 'NEW');
+(231, 'Lee min hoo    ', 141, 2, ''),
+(232, 'kykle  manny', 142, 2, ''),
+(233, 'johjoha', 143, 1, ''),
+(234, 'John Cortes', 145, 3, ''),
+(238, 'John Cortes', 141, 1, 'NEW STUDENT'),
+(239, 'kykle  manny', 142, 1, 'OLD STUDENT'),
+(242, 'kykle  manny', 142, 4, 'NEW STUDENT'),
+(243, 'John Cortes', 141, 3, 'NEW STUDENT');
 
 -- --------------------------------------------------------
 
@@ -620,7 +623,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
 
 --
 -- AUTO_INCREMENT for table `subject`
