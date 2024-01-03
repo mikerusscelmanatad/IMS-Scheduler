@@ -21,13 +21,13 @@ include_once("header.php");
 
 <body>
 
-	<nav class="navbar navbar-default navbar-static-top">
-		<div class="container"> <center>
-			<h1 style="color:blue">IMS ACADEMY</h1>
+		<div class="container"> 
+			<br>
+			<center>
+			<img src = "photo/imslogo.png" alt="IMS Academy logo" class="logo" width="200" height="100">
 			</center>
 			
 		</div>
-	</nav>
 
 	<div class="content">
 		<div class="form">
