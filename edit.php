@@ -73,13 +73,13 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 <body>
 
 	<br>
-	<div class="container container-fluid">
+<div class="container container-fluid">
 		
-			<div class="form-group" align="center" >
-				<div class="jumbotron">
+	<div class="form-group" align="center" >
+		<div class="jumbotron">
 					IMS ACADEMY
-					<form align="center" class="form-horizontal" method="post" action="add.cor.php">
-						<fieldset>
+			<form align="center" class="form-horizontal" method="post" action="add.cor.php">
+				<fieldset>
 
 							<!-- Form Name -->
 							<legend><h3> STUDENT INFORMATION </h3>  </legend> <br> <br>
@@ -130,44 +130,42 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 								</div>
 								<!-- Text input-->
 								
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="student_level"> Level </label>
-										<div class="col-md-5">
-											<select id="student_level" name="student_level" class="form-control">
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="student_level"> Level </label>
+									<div class="col-md-5">
+										<select id="student_level" name="student_level" class="form-control">
 
-												<?php while ($row1 = mysqli_fetch_assoc($findAllLevelResult)) :; ?>
-													<option id="<?php echo $row1["level_id"]; ?>" value="<?php echo $row1["level_id"]; ?>" <?php
-															if ($row1["level_id"] == $get_student_level) {
-																echo "selected";
-															}
-															?>>
-														<?php echo $row1["level_name"]; ?></option>
-												<?php endwhile; ?>
-											</select>
-										</div>
+										<?php while ($row1 = mysqli_fetch_assoc($findAllLevelResult)) :; ?>
+										<option id="<?php echo $row1["level_id"]; ?>" value="<?php echo $row1["level_id"]; ?>" <?php
+											if ($row1["level_id"] == $get_student_level) {
+													echo "selected";
+													}
+													?>>
+										<?php echo $row1["level_name"]; ?></option>
+										<?php endwhile; ?>
+										</select>
 									</div>
+							</div>
 
 									
 									<!-- Button -->
-									<div class="form-group" align="right">
-										<label class="col-md-4 control-label" for="update"></label>
-										<div class="col-md-5">
-											<button type="submit" name="update" id="update" class="btn btn-success"> Update </button>
-											<a href="schedulelist.php" class="btn btn-primary"> Back </a> &nbsp; &nbsp;
+							<div class="form-group" align="right">
+								<label class="col-md-4 control-label" for="update"></label>
+								<div class="col-md-5">
+									<button type="submit" name="update" id="update" class="btn btn-success"> Update </button>
+									<a href="schedulelist.php" class="btn btn-primary"> Back </a> &nbsp; &nbsp;
 											
-										</div>
-									</div>
-						</fieldset>
-					</form>
-				</div>
-			</div>
+								</div>
+							</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+<?php
 
-			<?php
-
-
-
-			$path = $_SERVER['DOCUMENT_ROOT'];
-			$path .= "footer.php";
-			include_once("footer.php");
-			include_once("navbar.php");
-			?>
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "footer.php";
+include_once("footer.php");
+include_once("navbar.php");
+?>

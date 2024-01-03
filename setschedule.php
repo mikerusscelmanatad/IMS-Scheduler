@@ -87,7 +87,8 @@ include_once("navbar.php");
 	
 	<div class="container container-fluid">
 		
-			<div class="form-group" align="center" >
+		<div class="form-group" align="center" >
+			<div class="form">
 				<div class="jumbotron">
 					IMS ACADEMY
 					<form align="center" class="form-horizontal" method="post" action="add.cor.php">
@@ -154,15 +155,18 @@ include_once("navbar.php");
 											<button align="right" id="submit" name="submit" class="btn btn-success"> Proceed </button>
 										</div>
 									</div>
-								</div>
+				
+						
 						</fieldset>
 					</form>
 				</div>
 			</div>
+		</div>
+	</div>
 
-			<?php
-			$path = $_SERVER['DOCUMENT_ROOT'];
-			$path .= "footer.php";
-			include_once("footer.php");
-			include_once("navbar.php");
-			?>
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "footer.php";
+include_once("footer.php");
+include_once("navbar.php");
+?>
