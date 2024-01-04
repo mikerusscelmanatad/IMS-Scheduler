@@ -26,6 +26,7 @@ $path .= "header.php";
 include_once("header.php");
 include_once("navbar.php");
 ?>
+
 <?php
 $hostname = "localhost";
 $username = "root";
@@ -41,8 +42,8 @@ if (isset($_GET['id'])) {
 	$query = "SELECT * FROM student s
 						INNER JOIN course c ON s.course_id = c.course_id
 						INNER JOIN level l ON l.level_id = s.level_id
-					WHERE 
-					s.student_id=$student_id";
+						WHERE 
+						s.student_id=$student_id";
 	$result = mysqli_query($connect, $query);
 	while ($row = mysqli_fetch_assoc($result)) {
 
@@ -88,14 +89,14 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 
 							<div class="form-group">
 								<input type="radio" id="student_status" name="student_status" value="OLD STUDENT" <?php
-									if ("OLD STUDENT" == $get_student_status) {
+									if ("OLD STUDENT" === $get_student_status) {
 										echo "checked";
 									}
 									?> />
 								<label for="student_status">Old Student</label> &nbsp; &nbsp;
 								
 								<input type="radio" id="student_status" name="student_status" value="NEW STUDENT" <?php
-									if ("NEW STUDENT" == $get_student_status) {
+									if ("NEW STUDENT" === $get_student_status) {
 										echo "checked";
 									}
 									?> />
@@ -107,11 +108,10 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="student_name">Students Name </label>
 								<div class="col-md-5">
+									<input readonly id="student_id" name="student_id" type="hidden"  value="<?php echo $student_id; ?>" class="form-control input-md" required="" />
 									<input id="student_name" name="student_name" type="text" placeholder="Name here" value="<?php echo $student_name; ?> " class="form-control input-md" required="">
 								</div>
 							</div>
-
-
 						
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="student_course"> Course </label>

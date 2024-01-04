@@ -56,7 +56,8 @@ include_once("navbar.php");
                             ORDER BY student_id DESC
                       ";
             $result = mysqli_query($connect, $query) or die(mysqli_error($connect));
-            echo "<div class='container'><table width='' class='table table-bordered' border='1' >
+            echo "<div class='container'>
+                    <table width='50' class='table table-primary'>
                             <tr>
                                 <th>ID Number </th>
                                 <th>Students Name </th>
@@ -94,14 +95,10 @@ include_once("navbar.php");
             }
             echo "</table>";
 
-            echo "</td>           
-        </tr>";
-
-
             // delete record
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 echo '<script type="text/javascript">
-                      alert("Schedule Successfuly Deleted");
+                      alert("Successfuly Deleted");
                          location="schedulelist.php";
                            </script>';
             }

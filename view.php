@@ -32,7 +32,7 @@ include_once("navbar.php");
                         mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
 
             if (isset($_GET['id'])) {
-                $student_id = mysqli_real_escape_string($connect, $_GET['id']);
+                $student_id = $_GET['id'];
                 $query = "SELECT * FROM student AS s 
                                     INNER JOIN level AS l ON s.level_id = l.level_id 
                                     INNER JOIN course AS c ON s.course_id = c.course_id 
@@ -43,7 +43,7 @@ include_once("navbar.php");
 
 
             echo "<div id='divToPrint' class='container'> 
-                        <table width='50' class='table table-primary' border='1' >
+            <table width='100%' class='table table-primary' style='margin-bottom:20px;'>
                             <tr>
                                 <th colspan='1'><center> ID NUMBER </center></th>
                                 <th colspan='3'><center> STUDENTS NAME </center></th>
@@ -66,7 +66,7 @@ include_once("navbar.php");
                 echo "<td colspan='1'> <center>" . $row['level_name'] . " </td>";
                 echo "<td colspan='1'> <center>" . $row['student_status'] . " </td>";
             }
-
+            echo "</table>";
 
             // select database
             $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error($connect));
@@ -79,11 +79,12 @@ include_once("navbar.php");
                 $query = "SELECT * FROM subject AS s 
                                     INNER JOIN rooms AS r ON s.room_id = r.room_id
                                     INNER JOIN timer AS t ON s.timer_id = t.id
-                                WHERE s.course_id=$student_course_id";
+                                    WHERE s.course_id=$student_course_id";
+                                    
                 $result = mysqli_query($connect, $query);
             }
 
-            echo "<table width='50' class='table table-primary' border='2' >
+            echo "<table width='100%' class='table table-primary'>
                             <tr>
                             
                                 <th style='text-align: center'> PERIOD</th>
@@ -95,6 +96,7 @@ include_once("navbar.php");
                                 <th style='text-align: center'> ACTION </th> 
                                 
                             </tr>";
+            $periodCount = 0;               
 
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
@@ -102,7 +104,8 @@ include_once("navbar.php");
                 $student_name = $row['subject_type'];
                 $student_course = $row['subject_description'];
 
-                echo "<td style='text-align: center'>" . $row['start_time'] . " - " . $row['end_time'] . "</td>";
+                $periodCount += 1;
+                echo "<td style='text-align: center'> <h4>Period " .$periodCount."</h4> ( ". $row['start_time'] . " - " . $row['end_time'] . " )"."</td>";
                 echo "<td style='text-align: center'>" . $row['subject_type'] . "</td>";
                 echo "<td style='text-align: center'>" . $row['subject_description'] . "</td>";
                 echo "<td style='text-align: center'>" . $row['room'] . "</td>";

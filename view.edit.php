@@ -38,14 +38,10 @@ if (isset($_GET['id'])) {
 	$subject_id = $_GET['id'];
 
 	$update = true;
-	$query = "SELECT * FROM subject s
-						INNER JOIN course c ON s.course_id = c.course_id
-						INNER JOIN level l ON l.level_id = s.level_id 
-                        INNER JOIN timer t ON t.timer_id = s.timer_id 
-                        WHERE 
-                        s.subject_id=$subject_id";
+	$query = 
+	$query = "SELECT * FROM `subject` WHERE `subject_id`='$subject_id'";
 
-	    $result = mysqli_query($connect, $query);
+	    	$result = mysqli_query($connect, $query);
 	while ($row = mysqli_fetch_assoc($result)) {
 
 		$subject_id = $row['subject_id'];
@@ -90,7 +86,7 @@ $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 		<div class="" align="center">
 			<div class="">
 				<div class="jumbotron">
-					Update Schedule
+
 					<form class="form-horizontal" method="post" action='add.cor.php' enctype="multipart/form-data">
 						<fieldset>
 							<!-- Form Name -->
@@ -98,22 +94,13 @@ $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 
 
 							
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="student_course"> Period </label>
-									<div class="col-md-5">
-										<select id="student_course" name="student_course" class="form-control">
-											<?php while ($row1 = mysqli_fetch_assoc($findAllPeriodResult)) :; ?>
-												<option id="<?php echo $row1["timer_id"]; ?>" value="<?php echo $row1["timer_id"]; ?>" <?php
-													if ($row1["timer_id"] == $get_student_period) {
-														echo "selected";
-													}
-													?>>
-													<?php echo $row1["start_time"] - $row1["end_time"] ; ?></option>
-											<?php endwhile; ?>
-										</select>
-                                    </div>
+									<!-- Text input-->
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="student_name"> Period </label>
+								<div class="col-md-4">
+									<input class="form-control" id="timer_id" name="timer_id" type="text"   required="">
 								</div>
-							
+							</div>
 
 
 							
@@ -208,8 +195,8 @@ $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 
 
 
-			$path = $_SERVER['DOCUMENT_ROOT'];
-			$path .= "footer.php";
-			include_once("footer.php");
-			include_once("navbar.php");
-			?>
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "footer.php";
+include_once("footer.php");
+include_once("navbar.php");
+?>

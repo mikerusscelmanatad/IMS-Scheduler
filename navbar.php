@@ -12,7 +12,7 @@ include_once("header.php");
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <body>
-
+  
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">

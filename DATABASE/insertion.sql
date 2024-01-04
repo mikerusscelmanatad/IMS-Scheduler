@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2024 at 09:08 AM
+-- Generation Time: Jan 04, 2024 at 07:04 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -111,7 +111,7 @@ INSERT INTO `course` (`course_id`, `course_code`, `course_name`, `course`, `leve
 (151, 'PRE TOEIC', 'PRE TOEIC', 'PRE TOEIC', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00'),
 (152, 'TOEIC', 'TOEIC', 'TOEIC', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00'),
 (153, 'BUSINESS', 'BUSINESS', 'BUSINESS', 7, '2023-12-29 10:57:12', '0000-00-00 00:00:00'),
-(156, 'Null', 'Null', 'Null', 13, '2024-01-02 08:00:21', NULL);
+(156, 'NO COURSE', 'NO COURSE', 'NO COURSE', 13, '2024-01-02 08:00:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -188,7 +188,7 @@ INSERT INTO `level` (`level_id`, `level_name`, `created_at`, `created_by`) VALUE
 (10, 'Advance 10', '2023-12-29 09:58:48', ''),
 (11, 'Advance 11', '2023-12-29 09:58:48', ''),
 (12, 'Master 12', '2023-12-29 09:58:48', ''),
-(13, 'NULL LEVEL', '2024-01-01 10:12:39', '');
+(13, 'NO LEVEL', '2024-01-01 10:12:39', '');
 
 -- --------------------------------------------------------
 
@@ -306,15 +306,14 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `student_status`) VALUES
-(231, 'Lee min hoo    ', 141, 2, ''),
-(232, 'kykle  manny', 142, 2, ''),
-(233, 'johjoha', 143, 1, ''),
-(234, 'John Cortes', 145, 3, ''),
 (238, 'John Cortes', 141, 1, 'NEW STUDENT'),
 (239, 'kykle  manny', 142, 1, 'OLD STUDENT'),
 (242, 'kykle  manny', 142, 4, 'NEW STUDENT'),
 (243, 'John Cortes', 141, 3, 'NEW STUDENT'),
-(244, 'Janjan ceniza ', 153, 5, 'NEW STUDENT');
+(244, 'Janjan ceniza ', 153, 5, 'NEW STUDENT'),
+(245, 'Pedro penbbukouko  ', 152, 13, 'NEW STUDENT'),
+(250, 'ANN CURTIS ', 147, 12, 'NEW STUDENT'),
+(251, 'manny    ', 144, 4, 'OLD STUDENT');
 
 -- --------------------------------------------------------
 
@@ -397,7 +396,7 @@ INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `sub
 (188, 'POWER SPEAKING', 'Speaking Drill', '1.1', NULL, 27, 4, 144),
 (189, 'POWER SPEAKING', 'Grammar', '1.1', NULL, 28, 6, 144),
 (190, 'POWER SPEAKING', 'Vocabulary', '1.1', NULL, 29, 7, 144),
-(192, 'POWER SPEAKING', 'Listening', 'G', NULL, 79, 8, 144),
+(192, 'POWER SPEAKING', 'Listening', 'G', NULL, 79, 9, 144),
 (193, 'POWER SPEAKING', 'Native', 'G', NULL, 79, 10, 144),
 (194, 'POWER SPEAKING', 'Discussion', 'G', NULL, 80, 13, 144),
 (195, 'TOEIC', 'Reading', '1.1', NULL, 26, 3, 152),
@@ -459,7 +458,7 @@ INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `sub
 (252, 'BUSINESS', 'Business Integration 2', 'G', NULL, 79, 10, 153),
 (253, 'BUSINESS', 'Presentation and Socialization', 'G', NULL, 80, 11, 153),
 (254, 'BUSINESS', 'Native', 'G', NULL, 77, 12, 153),
-(255, 'Null', 'Null ', 'Null ', NULL, 71, 15, 142);
+(255, 'NO SUBJECT', 'NO SUBJECT', 'NO SUBJECT', NULL, 71, 15, 142);
 
 -- --------------------------------------------------------
 
@@ -489,7 +488,7 @@ INSERT INTO `timer` (`id`, `start_time`, `end_time`) VALUES
 (12, 'Period 8 - 3:45 pm', '4:30 pm'),
 (13, 'Period 9 - 4:40 pm', '5:25 pm'),
 (14, '6:00 pm', '7:00 pm'),
-(15, 'NULL TIME', 'NULL TIME');
+(15, 'NO TIME', 'NO TIME');
 
 --
 -- Indexes for dumped tables
@@ -624,7 +623,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=252;
 
 --
 -- AUTO_INCREMENT for table `subject`
