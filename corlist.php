@@ -91,10 +91,6 @@ include_once("navbar.php");
             }
             echo "</table>";
 
-<<<<<<< HEAD
-=======
-
->>>>>>> dd804ce2497fbd6f16a28fd1bee346bc0290ea51
             // delete record
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 echo '<script type="text/javascript">

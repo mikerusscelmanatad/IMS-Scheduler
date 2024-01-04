@@ -28,19 +28,11 @@ require 'databaasee.php';
 		}
 	} else if (isset($_POST['update'])) {
 
-<<<<<<< HEAD
-		$student_id = mysqli_real_escape_string($connect, $_POST['student_id']);
-		$student_name = mysqli_real_escape_string($connect, $_POST['student_name']);
-		$student_status = mysqli_real_escape_string($connect, $_POST['student_status']);
-		$student_course = $_POST['student_course'];
-		$student_level = $_POST['student_level'];
-=======
 				$student_id = mysqli_real_escape_string($connect, $_POST['student_id']);
 				$student_name = mysqli_real_escape_string($connect, $_POST['student_name']);
 				$student_status = mysqli_real_escape_string($connect, $_POST['student_status']);
 				$student_course = $_POST['student_course'];
 				$student_level = $_POST['student_level'];
->>>>>>> dd804ce2497fbd6f16a28fd1bee346bc0290ea51
 
 		$query = "UPDATE student SET `student_id`='$student_id',
 			`student_name`='$student_name', `course_id`='$student_course',`level_id`='$student_level', 
