@@ -43,7 +43,11 @@ include_once("navbar.php");
 
 
             echo "<div id='divToPrint' class='container'> 
+<<<<<<< HEAD
             <table width='100%' class='table table-primary' style='margin-bottom:20px;'>
+=======
+                        <table width='100%' class='table table-primary' style='margin-bottom:20px;'>
+>>>>>>> dd804ce2497fbd6f16a28fd1bee346bc0290ea51
                             <tr>
                                 <th colspan='1'><center> ID NUMBER </center></th>
                                 <th colspan='3'><center> STUDENTS NAME </center></th>
@@ -96,14 +100,21 @@ include_once("navbar.php");
                                 <th style='text-align: center'> ACTION </th> 
                                 
                             </tr>";
+<<<<<<< HEAD
             $periodCount = 0;               
 
+=======
+            $periodCount = 0;
+>>>>>>> dd804ce2497fbd6f16a28fd1bee346bc0290ea51
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 $subject_id = $row['subject_id'];
                 $student_name = $row['subject_type'];
                 $student_course = $row['subject_description'];
+<<<<<<< HEAD
 
+=======
+>>>>>>> dd804ce2497fbd6f16a28fd1bee346bc0290ea51
                 $periodCount += 1;
                 echo "<td style='text-align: center'> <h4>Period " .$periodCount."</h4> ( ". $row['start_time'] . " - " . $row['end_time'] . " )"."</td>";
                 echo "<td style='text-align: center'>" . $row['subject_type'] . "</td>";

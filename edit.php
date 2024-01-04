@@ -108,7 +108,11 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="student_name">Students Name </label>
 								<div class="col-md-5">
+<<<<<<< HEAD
 									<input readonly id="student_id" name="student_id" type="hidden"  value="<?php echo $student_id; ?>" class="form-control input-md" required="" />
+=======
+									<input readonly id="student_id" name="student_id" type="hidden" placeholder="Base on passport" value="<?php echo $student_id; ?>" class="form-control input-md" required="" />
+>>>>>>> dd804ce2497fbd6f16a28fd1bee346bc0290ea51
 									<input id="student_name" name="student_name" type="text" placeholder="Name here" value="<?php echo $student_name; ?> " class="form-control input-md" required="">
 								</div>
 							</div>

@@ -35,11 +35,7 @@ include_once("navbar.php");
 
 <body><br>
     <div class="container">
-
-        <body>
             <?php
-            echo "<tr>
-            <td>";
             // your database connection
             $host       = "localhost";
             $username   = "root";
@@ -95,6 +91,10 @@ include_once("navbar.php");
             }
             echo "</table>";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> dd804ce2497fbd6f16a28fd1bee346bc0290ea51
             // delete record
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 echo '<script type="text/javascript">
