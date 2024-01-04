@@ -35,11 +35,7 @@ include_once("navbar.php");
 
 <body><br>
     <div class="container">
-
-        <body>
             <?php
-            echo "<tr>
-            <td>";
             // your database connection
             $host       = "localhost";
             $username   = "root";
@@ -56,7 +52,8 @@ include_once("navbar.php");
                             ORDER BY student_id DESC
                       ";
             $result = mysqli_query($connect, $query) or die(mysqli_error($connect));
-            echo "<div class='container'><table width='' class='table table-bordered' border='1' >
+            echo "<div class='container'>
+                    <table width='50' class='table table-primary'>
                             <tr>
                                 <th>ID Number </th>
                                 <th>Students Name </th>
@@ -93,9 +90,6 @@ include_once("navbar.php");
                 echo "</tr>";
             }
             echo "</table>";
-
-            echo "</td>           
-        </tr>";
 
 
             // delete record

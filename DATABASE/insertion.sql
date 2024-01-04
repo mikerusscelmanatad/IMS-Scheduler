@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2024 at 09:08 AM
+-- Generation Time: Jan 04, 2024 at 06:37 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -306,15 +306,12 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `student_status`) VALUES
-(231, 'Lee min hoo    ', 141, 2, ''),
-(232, 'kykle  manny', 142, 2, ''),
-(233, 'johjoha', 143, 1, ''),
-(234, 'John Cortes', 145, 3, ''),
+(231, 'Lee min hoo      ', 142, 2, 'OLD STUDENT'),
 (238, 'John Cortes', 141, 1, 'NEW STUDENT'),
-(239, 'kykle  manny', 142, 1, 'OLD STUDENT'),
-(242, 'kykle  manny', 142, 4, 'NEW STUDENT'),
-(243, 'John Cortes', 141, 3, 'NEW STUDENT'),
-(244, 'Janjan ceniza ', 153, 5, 'NEW STUDENT');
+(244, 'Janjan ceniza ', 153, 5, 'NEW STUDENT'),
+(245, 'THIS IS SO OLD UPDATED TO NEW', 144, 2, 'NEW STUDENT'),
+(246, 'THIS IS NEW STUDENT ', 152, 12, 'NEW STUDENT'),
+(247, 'HEMLO ', 145, 2, 'OLD STUDENT');
 
 -- --------------------------------------------------------
 
@@ -458,8 +455,7 @@ INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `sub
 (251, 'BUSINESS', 'Business Integration 1', 'G', NULL, 72, 9, 153),
 (252, 'BUSINESS', 'Business Integration 2', 'G', NULL, 79, 10, 153),
 (253, 'BUSINESS', 'Presentation and Socialization', 'G', NULL, 80, 11, 153),
-(254, 'BUSINESS', 'Native', 'G', NULL, 77, 12, 153),
-(255, 'Null', 'Null ', 'Null ', NULL, 71, 15, 142);
+(254, 'BUSINESS', 'Native', 'G', NULL, 77, 12, 153);
 
 -- --------------------------------------------------------
 
@@ -478,18 +474,18 @@ CREATE TABLE `timer` (
 --
 
 INSERT INTO `timer` (`id`, `start_time`, `end_time`) VALUES
-(3, 'Period 1 - 8:30 am', '9:15 am'),
-(4, 'Period 2 - 9:25 am', '10:10 am'),
-(6, 'Period 3 - 10:20 am', '11:05 am'),
-(7, 'Period 4 - 11:15 am', '12:00 pm'),
-(8, 'Lunch - 12:00 pm', '1:00 pm'),
-(9, 'Period 5 - 1:00 pm', '1:45 pm'),
-(10, 'Period 6 - 1:55 pm', '2:40 pm'),
-(11, 'Period 7 - 2:50 pm', '3:35 pm'),
-(12, 'Period 8 - 3:45 pm', '4:30 pm'),
-(13, 'Period 9 - 4:40 pm', '5:25 pm'),
-(14, '6:00 pm', '7:00 pm'),
-(15, 'NULL TIME', 'NULL TIME');
+(3, '08:30 AM', '09:15 AM'),
+(4, '09:25 AM', '10:10 AM'),
+(6, '10:20 AM', '11:05 am'),
+(7, '11:15 AM', '12:00 PM'),
+(8, '12:00 PM', '01:00 PM'),
+(9, '01:00 PM', '01:45 PM'),
+(10, '01:55 PM', '02:40 PM'),
+(11, '02:50 PM', '03:35 PM'),
+(12, '03:45 PM', '04:30 PM'),
+(13, '04:40 PM', '05:25 PM'),
+(14, '06:00 PM', '07:00 PM'),
+(15, 'NO TIME', 'NO TIME');
 
 --
 -- Indexes for dumped tables
@@ -624,7 +620,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
 
 --
 -- AUTO_INCREMENT for table `subject`

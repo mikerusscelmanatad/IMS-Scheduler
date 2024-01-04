@@ -32,8 +32,8 @@ require 'databaasee.php';
 				$student_id = mysqli_real_escape_string($connect, $_POST['student_id']);
 				$student_name = mysqli_real_escape_string($connect, $_POST['student_name']);
 				$student_status = mysqli_real_escape_string($connect, $_POST['student_status']);
-				$student_course = $_POST['course_id'];
-				$student_level = $_POST['level_id'];
+				$student_course = $_POST['student_course'];
+				$student_level = $_POST['student_level'];
 
 
 
