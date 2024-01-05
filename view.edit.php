@@ -96,7 +96,7 @@ $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 							
 									<!-- Text input-->
 							<div class="form-group">
-								<label class="col-md-4 control-label" for="student_name"> Period </label>
+								<label class="col-md-4 control-label" for="timer_id"> Period </label>
 								<div class="col-md-4">
 									<input class="form-control" id="timer_id" name="timer_id" type="text"   required="">
 								</div>
@@ -123,16 +123,16 @@ $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 
 							
 								<div class="form-group">
-									<label class="col-md-4 control-label" for="student_course"> Subject </label>
+									<label class="col-md-4 control-label" for="subject_description"> Subject </label>
 									<div class="col-md-5">
-										<select id="student_course" name="student_course" class="form-control">
-											<?php while ($row1 = mysqli_fetch_assoc($findAllCoursesResult)) :; ?>
-												<option id="<?php echo $row1["course_id"]; ?>" value="<?php echo $row1["course_id"]; ?>" <?php
-													if ($row1["course_id"] == $get_student_course) {
+										<select id="subject_description" name="subject_description" class="form-control">
+											<?php while ($row1 = mysqli_fetch_assoc($findAllSubjectResult)) :; ?>
+												<option id="<?php echo $row1["subject_id"]; ?>" value="<?php echo $row1["subject_id"]; ?>" <?php
+													if ($row1["subject_id"] == $subject_description) {
 														echo "selected";
 													}
 													?>>
-													<?php echo $row1["course_name"]; ?></option>
+													<?php echo $row1["subject_description"]; ?></option>
 											<?php endwhile; ?>
 										</select>
                                     </div>
@@ -141,16 +141,16 @@ $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 
                             <div class="form-group">
 								<div class="form-group">
-									<label class="col-md-4 control-label" for="student_course"> Room </label>
+									<label class="col-md-4 control-label" for="room_id"> Room </label>
 									<div class="col-md-5">
-										<select id="student_course" name="student_course" class="form-control">
+										<select id="room_id" name="student_course" class="form-control">
 											<?php while ($row1 = mysqli_fetch_assoc($findAllCoursesResult)) :; ?>
-												<option id="<?php echo $row1["course_id"]; ?>" value="<?php echo $row1["course_id"]; ?>" <?php
-													if ($row1["course_id"] == $get_student_course) {
+												<option id="<?php echo $row1["room_id"]; ?>" value="<?php echo $row1["room_id"]; ?>" <?php
+													if ($row1["room_id"] == $get_student_course) {
 														echo "selected";
 													}
 													?>>
-													<?php echo $row1["course_name"]; ?></option>
+													<?php echo $row1["room_id"]; ?></option>
 											<?php endwhile; ?>
 										</select>
                                     </div>
@@ -160,7 +160,7 @@ $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 
                                     <!-- Text input-->
 									<div class="form-group">
-										<label class="col-md-4 control-label" for="student_name"> Teachers Name </label>
+										<label class="col-md-4 control-label" for=""> Teachers Name </label>
 										<div class="col-md-5">
 											<input id="student_name" name="student_name" type="text" placeholder="Name here" value="<?php echo $student_name; ?> " class="form-control input-md" required="">
 										</div>
@@ -190,8 +190,7 @@ $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 					</form>
 				</div>
 			</div>
-
-			<?php
+		<?php
 
 
 

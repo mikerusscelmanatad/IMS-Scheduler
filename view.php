@@ -96,14 +96,15 @@ include_once("navbar.php");
                                 <th style='text-align: center'> ACTION </th> 
                                 
                             </tr>";
-            $periodCount = 0;
+            
+
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 $subject_id = $row['subject_id'];
                 $student_name = $row['subject_type'];
                 $student_course = $row['subject_description'];
-                $periodCount += 1;
-                echo "<td style='text-align: center'> <h4>Period " .$periodCount."</h4> ( ". $row['start_time'] . " - " . $row['end_time'] . " )"."</td>";
+               
+                echo "<td style='text-align: center'>  ( ". $row['start_time'] . " - " . $row['end_time'] . " )"."</td>";
                 echo "<td style='text-align: center'>" . $row['subject_type'] . "</td>";
                 echo "<td style='text-align: center'>" . $row['subject_description'] . "</td>";
                 echo "<td style='text-align: center'>" . $row['room'] . "</td>";
