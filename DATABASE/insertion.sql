@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2024 at 06:39 AM
+-- Generation Time: Jan 05, 2024 at 07:06 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -306,16 +306,17 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `student_status`) VALUES
-(238, 'John Cortes', 141, 1, 'NEW STUDENT'),
-(239, 'kykle  manny', 142, 1, 'OLD STUDENT'),
+(238, 'John Cortes ', 153, 1, 'NEW STUDENT'),
+(239, 'kykle  manny ', 152, 1, 'OLD STUDENT'),
 (242, 'kykle  manny', 142, 4, 'NEW STUDENT'),
-(243, 'John Cortes', 141, 3, 'NEW STUDENT'),
-(244, 'Janjan ceniza ', 153, 5, 'NEW STUDENT'),
-(245, 'Pedro penbbukouko  ', 152, 13, 'NEW STUDENT'),
-(250, 'ANN CURTIS ', 147, 12, 'NEW STUDENT'),
-(251, 'manny pakaayaww', 141, 9, 'NEW STUDENT'),
-(254, 'John Cortes  ', 143, 11, 'OLD STUDENT'),
-(255, 'Ryu zen ', 144, 3, 'NEW STUDENT');
+(243, 'John Cortes ', 151, 3, 'NEW STUDENT'),
+(244, 'Janjan ceniza  ', 150, 5, 'NEW STUDENT'),
+(245, 'Pedro penbbukouko   ', 152, 2, 'NEW STUDENT'),
+(250, 'ANN CURTIS  ', 146, 12, 'NEW STUDENT'),
+(251, 'manny pakaayaww ', 147, 9, 'NEW STUDENT'),
+(254, 'John Cortes   ', 144, 11, 'OLD STUDENT'),
+(255, 'Ryu zen ', 144, 3, 'NEW STUDENT'),
+(256, 'ANN CURTIS ', 141, 3, 'NEW STUDENT');
 
 -- --------------------------------------------------------
 
@@ -405,7 +406,7 @@ INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `sub
 (196, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 70, 8, 144),
 (197, 'POWER SPEAKING', 'Listening', 'G', NULL, 78, 9, 144),
 (198, 'POWER SPEAKING', 'Listening', 'G', NULL, 80, 10, 144),
-(199, 'POWER SPEAKING', 'Native', 'G', NULL, 80, 12, 144),
+(199, 'POWER SPEAKING', 'Native', 'G', NULL, 78, 11, 144),
 (200, 'POWER SPEAKING', 'Discussion\r\n', 'G', NULL, 80, 12, 144),
 (201, 'TOEIC', 'Reading', '1.1', NULL, 37, 3, 152),
 (202, 'TOEIC', 'Speaking', '1.1', NULL, 40, 4, 152),
@@ -414,7 +415,7 @@ INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `sub
 (205, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 152),
 (206, 'TOEIC ', 'Reading P56', 'G', NULL, 80, 9, 152),
 (207, 'TOEIC ', 'Reading P7', 'G', NULL, 79, 10, 152),
-(208, 'TOEIC ', 'Listening', 'G', NULL, 58, 11, 152),
+(208, 'TOEIC ', 'Listening', 'G', NULL, 79, 11, 152),
 (209, 'TOEIC', 'Listening', 'G', NULL, 80, 12, 152),
 (210, 'PRE - TOEIC', 'Reading', '1.1', NULL, 18, 3, 151),
 (211, 'PRE - TOEIC', 'Listening', '1.1', NULL, 36, 4, 151),
@@ -453,8 +454,8 @@ INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `sub
 (246, 'PRE - IELTS - ACAD', 'Speaking', '1.1', NULL, 55, 7, 147),
 (247, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 147),
 (248, 'PRE - IELTS - ACAD', 'Native', 'G', NULL, 78, 9, 147),
-(249, 'PRE - IELTS - ACAD', 'Writing', 'G', NULL, 77, 11, 147),
-(250, 'PRE - IELTS - ACAD', 'Listening', 'G', NULL, 78, 12, 147),
+(249, 'PRE - IELTS - ACAD', 'Writing', 'G', NULL, 77, 10, 147),
+(250, 'PRE - IELTS - ACAD', 'Listening', 'G', NULL, 78, 11, 147),
 (251, 'PRE - IELTS - ACAD', 'Conversation', 'G', NULL, 72, 12, 147),
 (252, 'PRE - IELTS - GEN', 'Reading', '1.1', NULL, 29, 3, 150),
 (253, 'PRE - IELTS - GEN', 'Writing', '1.1', NULL, 34, 4, 150),
@@ -638,7 +639,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
 
 --
 -- AUTO_INCREMENT for table `subject`
