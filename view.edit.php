@@ -52,6 +52,10 @@ if (isset($_GET['id'])) {
 
 	}
 }
+
+$findAllSubject = "SELECT * FROM `subject`";
+$findAllSubjectResult = mysqli_query($connect, $findAllSubject);
+
 //Dropdown list query *************************************
 $findAllCourses = "SELECT * FROM `course`";
 $findAllCoursesResult = mysqli_query($connect, $findAllCourses);
@@ -65,8 +69,6 @@ $findAllPeriod = "SELECT * FROM `timer`";
 $findAllPeriodResult = mysqli_query($connect, $findAllPeriod);
 
 // **************************
-$findAllSubject = "SELECT * FROM `subject`";
-$findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 
 ?>
 <html>
@@ -128,7 +130,7 @@ $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 										<select id="subject_description" name="subject_description" class="form-control">
 											<?php while ($row1 = mysqli_fetch_assoc($findAllSubjectResult)) :; ?>
 												<option id="<?php echo $row1["subject_id"]; ?>" value="<?php echo $row1["subject_id"]; ?>" <?php
-													if ($row1["subject_id"] == $subject_description) {
+													if ($row1["subject_id"] == $subject_id) {
 														echo "selected";
 													}
 													?>>
