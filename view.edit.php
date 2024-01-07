@@ -38,16 +38,15 @@ if (isset($_GET['id'])) {
 	$subject_id = $_GET['id'];
 
 	$update = true;
-	$query = 
 	$query = "SELECT * FROM `subject` WHERE `subject_id`='$subject_id'";
 
 	    	$result = mysqli_query($connect, $query);
 	while ($row = mysqli_fetch_assoc($result)) {
 
 		$subject_id = $row['subject_id'];
+		$get_room_id = $row['room_id'];
 		$subject_description = $row['subject_description'];
 		$get_student_course = $row['course_id'];
-		$get_student_level = $row['level_id'];
         $get_student_period = $row['timer_id'];
 
 	}
@@ -60,13 +59,15 @@ $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 $findAllCourses = "SELECT * FROM `course`";
 $findAllCoursesResult = mysqli_query($connect, $findAllCourses);
 
-// **************************
-$findAllLevel = "SELECT * FROM `level`";
-$findAllLevelResult = mysqli_query($connect, $findAllLevel);
-
 // *******************************
 $findAllPeriod = "SELECT * FROM `timer`";
 $findAllPeriodResult = mysqli_query($connect, $findAllPeriod);
+
+// **************************
+
+$findAllRooms = "SELECT * FROM `rooms`";
+$findAllRoomsResult = mysqli_query($connect, $findAllRooms);
+
 
 // **************************
 
@@ -89,47 +90,25 @@ $findAllPeriodResult = mysqli_query($connect, $findAllPeriod);
 			<div class="">
 				<div class="jumbotron">
 
-					<form class="form-horizontal" method="post" action='add.cor.php' enctype="multipart/form-data">
+					<form class="form-horizontal" method="post" action='add.cor2.php' enctype="multipart/form-data">
 						<fieldset>
 							<!-- Form Name -->
 							<legend> UPDATE</legend>			
 
-
-							
-									<!-- Text input-->
 							<div class="form-group">
-								<label class="col-md-4 control-label" for="timer_id"> Period </label>
-								<div class="col-md-4">
-									<input class="form-control" id="timer_id" name="timer_id" type="text"   required="">
+								<div class="col-md-5">
+								   <input readonly id="subject_id" name="subject_id" type="hidden" value="<?php echo $subject_id; ?>" class="form-control input-md" required="" />
 								</div>
 							</div>
 
 
-							
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="student_course"> Course </label>
-									<div class="col-md-5">
-										<select id="student_course" name="student_course" class="form-control">
-											<?php while ($row1 = mysqli_fetch_assoc($findAllCoursesResult)) :; ?>
-												<option id="<?php echo $row1["course_id"]; ?>" value="<?php echo $row1["course_id"]; ?>" <?php
-													if ($row1["course_id"] == $get_student_course) {
-														echo "selected";
-													}
-													?>>
-													<?php echo $row1["course_name"]; ?></option>
-											<?php endwhile; ?>
-										</select>
-                                    </div>
-								</div>
 
-
-							
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="subject_description"> Subject </label>
 									<div class="col-md-5">
 										<select id="subject_description" name="subject_description" class="form-control">
 											<?php while ($row1 = mysqli_fetch_assoc($findAllSubjectResult)) :; ?>
-												<option id="<?php echo $row1["subject_id"]; ?>" value="<?php echo $row1["subject_id"]; ?>" <?php
+												<option id="<?php echo $row1["subject_description"]; ?>" value="<?php echo $row1["subject_id"]; ?>" <?php
 													if ($row1["subject_id"] == $subject_id) {
 														echo "selected";
 													}
@@ -141,30 +120,28 @@ $findAllPeriodResult = mysqli_query($connect, $findAllPeriod);
 								</div>
 							
 
-                            <div class="form-group">
+                        
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="room_id"> Room </label>
 									<div class="col-md-5">
-										<select id="room_id" name="student_course" class="form-control">
-											<?php while ($row1 = mysqli_fetch_assoc($findAllCoursesResult)) :; ?>
+										<select id="room_id" name="room_id" class="form-control">
+											<?php while ($row1 = mysqli_fetch_assoc($findAllRoomsResult)) :; ?>
 												<option id="<?php echo $row1["room_id"]; ?>" value="<?php echo $row1["room_id"]; ?>" <?php
-													if ($row1["room_id"] == $get_student_course) {
+													if ($row1["room_id"] == $get_room_id) {
 														echo "selected";
 													}
 													?>>
-													<?php echo $row1["room_id"]; ?></option>
+													<?php echo $row1["room"]; ?></option>
 											<?php endwhile; ?>
 										</select>
                                     </div>
 								</div>
-							</div>
-
-
+					
                                     <!-- Text input-->
 									<div class="form-group">
 										<label class="col-md-4 control-label" for=""> Teachers Name </label>
 										<div class="col-md-5">
-											<input id="student_name" name="student_name" type="text" placeholder="Name here" value="<?php echo $student_name; ?> " class="form-control input-md" required="">
+											<input id="student_name" name="student_name" type="text" placeholder="Teachers name here" value="" class="form-control input-md" required="">
 										</div>
 									</div>
 
@@ -172,7 +149,7 @@ $findAllPeriodResult = mysqli_query($connect, $findAllPeriod);
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="student_name"> Books</label>
 										<div class="col-md-5">
-											<input id="student_name" name="student_name" type="text" placeholder="Name here" value="<?php echo $student_name; ?> " class="form-control input-md" required="">
+											<input id="student_name" name="student_name" type="text" placeholder="Book" value="" class="form-control input-md" required="">
 										</div>
 									</div>
 
