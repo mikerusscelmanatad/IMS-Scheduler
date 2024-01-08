@@ -19,12 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 if (isset($_POST['update'])) {
 
-	$student_id = mysqli_real_escape_string($connect, $_POST['student_id']);
-	$student_name = mysqli_real_escape_string($connect, $_POST['student_name']);
-	$student_course = mysqli_real_escape_string($connect, $_POST['student_course']);
-	$student_level = mysqli_real_escape_string($connect, $_POST['student_level']);
+	$subject_id = mysqli_real_escape_string($connect, $_POST['subject_id']);
+	$subject_description = mysqli_real_escape_string($connect, $_POST['subject_description']);
+	$faculty_id = mysqli_real_escape_string($connect, $_POST['faculty_id']);
+	$room_id = mysqli_real_escape_string($connect, $_POST['room_id']);
 
-	$query = "UPDATE subject SET `student_id`='$student_id', `student_name`='$student_name', `student_course`='$student_course', `student_level`='$student_level', `updated_at`=NOW() WHERE `student_id`='$student_id'";
+	$query = "UPDATE subject SET `subject_description`='$subject_description', `room_id`='$room_id', `faculty_id`='$faculty_id' WHERE `subject_id`='$subject_id'";
 
 	$result = mysqli_query($connect, $query);
 }

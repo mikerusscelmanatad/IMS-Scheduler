@@ -102,13 +102,13 @@ include_once("navbar.php");
                 echo "<tr>";
                 $subject_id = $row['subject_id'];
                 $student_name = $row['subject_type'];
-                $student_course = $row['subject_description'];
+                $subject_description = $row['subject_description'];
                
                 echo "<td style='text-align: center'>  ( ". $row['start_time'] . " - " . $row['end_time'] . " )"."</td>";
                 echo "<td style='text-align: center'>" . $row['subject_type'] . "</td>";
                 echo "<td style='text-align: center'>" . $row['subject_description'] . "</td>";
                 echo "<td style='text-align: center'>" . $row['room'] . "</td>";
-                echo "<td style='text-align: center'> Teacher's Name Here </td>";
+                echo "<td style='text-align: center'>" . $row['faculty_id'] . "</td>";
                 echo "<td style='text-align: center'>" . $row['subject_description'] . "</td>";
 
                 echo "<td style='text-align: center'>

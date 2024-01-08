@@ -108,7 +108,7 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 									<div class="col-md-5">
 										<select id="subject_description" name="subject_description" class="form-control">
 											<?php while ($row1 = mysqli_fetch_assoc($findAllSubjectResult)) :; ?>
-												<option id="<?php echo $row1["subject_description"]; ?>" value="<?php echo $row1["subject_id"]; ?>" <?php
+												<option id="<?php echo $row1["subject_description"]; ?>" value="<?php echo $row1["subject_description"]; ?>" <?php
 													if ($row1["subject_id"] == $subject_id) {
 														echo "selected";
 													}
@@ -118,9 +118,7 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 										</select>
                                     </div>
 								</div>
-							
-
-                        
+								
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="room_id"> Room </label>
 									<div class="col-md-5">
