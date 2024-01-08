@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 if (isset($_POST['update'])) {
 
-	$subject_id = mysqli_real_escape_string($connect, $_POST['subject_id']);
+	$subject_id = $_POST['subject_id'];
 	$subject_description = mysqli_real_escape_string($connect, $_POST['subject_description']);
 	$faculty_id = mysqli_real_escape_string($connect, $_POST['faculty_id']);
 	$room_id = mysqli_real_escape_string($connect, $_POST['room_id']);

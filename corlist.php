@@ -32,8 +32,7 @@ include_once("navbar.php");
 
     </style>
 </head>
-
-<body><br>
+<body> 
     <div class="container">
             <?php
             // your database connection
@@ -44,6 +43,8 @@ include_once("navbar.php");
 
             // select database
             $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error($connect));
+
+                   
             mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
 
             $query = "SELECT * FROM student AS s
