@@ -52,77 +52,78 @@ include_once("navbar.php");
                                 <th colspan='1'><center> STATUS </th></center>
                             </tr>";
 
-            while ($row = mysqli_fetch_assoc($result)) {
-                $student_id = $row['student_id'];
-                $student_name = $row['student_name'];
-                $student_course_id = $row['course_id'];
-                $student_level_id = $row['level_id'];
-                $student_status = $row['student_status'];
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $student_id = $row['student_id'];
+                            $student_name = $row['student_name'];
+                            $student_course_id = $row['course_id'];
+                            $student_level_id = $row['level_id'];
+                            $student_status = $row['student_status'];
 
 
-                echo "<td style= 'color:blue' colspan='1'> <B> <center> IMS - " . $row['student_id'] . "</B> </td>";
-                echo "<td colspan='3' style='text-align: center'> <B>" . $row['student_name'] . "</B> </td>";
-                echo "<td colspan='2'> <center>" . $row['course_name'] . " </td>";
-                echo "<td colspan='1'> <center>" . $row['level_name'] . " </td>";
-                echo "<td colspan='1'> <center>" . $row['student_status'] . " </td>";
-            }
-            echo "</table>";
+                            echo "<td style= 'color:blue' colspan='1'> <B> <center> IMS - " . $row['student_id'] . "</B> </td>";
+                            echo "<td colspan='3' style='text-align: center'> <B>" . $row['student_name'] . "</B> </td>";
+                            echo "<td colspan='2'> <center>" . $row['course_name'] . " </td>";
+                            echo "<td colspan='1'> <center>" . $row['level_name'] . " </td>";
+                            echo "<td colspan='1'> <center>" . $row['student_status'] . " </td>";
+                        }
+                        echo "</table>";
 
-            // select database
-            $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error($connect));
-            mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
+                            // select database
+                            $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error($connect));
+                            mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
 
-            if (isset($_GET['id'])) {
-                $subject_id = mysqli_real_escape_string($connect, $_GET['id']);
+                            if (isset($_GET['id'])) {
+                                $subject_id = mysqli_real_escape_string($connect, $_GET['id']);
 
 
-                $query = "SELECT * FROM subject AS s 
-                                    INNER JOIN rooms AS r ON s.room_id = r.room_id
-                                    INNER JOIN timer AS t ON s.timer_id = t.id
-                                    WHERE s.course_id=$student_course_id";
-                                    
-                $result = mysqli_query($connect, $query);
-            }
+                                $query = "SELECT * FROM subject AS s 
+                                                    INNER JOIN rooms AS r ON s.room_id = r.room_id
+                                                    INNER JOIN timer AS t ON s.timer_id = t.id
+                                                    WHERE s.course_id=$student_course_id";
+                                                    
+                                $result = mysqli_query($connect, $query);
+                            }
 
-            echo "<table width='100%' class='table table-primary'>
-                            <tr>
-                            
-                                <th style='text-align: center'> PERIOD</th>
-                                <th style='text-align: center'> COURSE </th>
-                                <th style='text-align: center'> SUBJECT </th>
-                                <th style='text-align: center'> ROOM </th>
-                                <th style='text-align: center'> TEACHER</th>
-                                <th style='text-align: center'> BOOKS </th> 
-                                <th style='text-align: center'> ACTION </th> 
-                                
-                            </tr>";
+                            echo "<table width='100%' class='table table-primary'>
+                                            <tr>
+                                            
+                                                <th style='text-align: center'> PERIOD</th>
+                                                <th style='text-align: center'> TIME </th>
+                                                <th style='text-align: center'> SUBJECT </th>
+                                                <th style='text-align: center'> ROOM </th>
+                                                <th style='text-align: center'> TEACHER</th>
+                                                <th style='text-align: center'> BOOKS </th> 
+                                                <th style='text-align: center'> ACTION </th> 
+                                                
+                                            </tr>";
             
+                                            $count = 1;
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                echo "<tr>";
+                                                $subject_id = $row['subject_id'];
+                                                $student_name = $row['subject_type'];
+                                                $subject_description = $row['subject_description'];
+                                            
+                                                echo "<td style='text-align: center'> $count </td>";
+                                                echo "<td style='text-align: center'>". $row['start_time'] . " - " . $row['end_time'] .     "</td>";
+                                                echo "<td style='text-align: center'>" . $row['subject_description'] . "</td>";
+                                                echo "<td style='text-align: center'>" . $row['room'] . "</td>";
+                                                echo "<td style='text-align: center'>" . $row['faculty_id'] . "</td>";
+                                                echo "<td style='text-align: center'>" . $row['book_id'] . "</td>";
+                                    
+                                                echo "<td style='text-align: center'>
+                                                <form class='form-horizontal' method='post' action='corlist.php'>
+                                                <input name='student_id' type='hidden' value='" . $row['subject_id'] . "';>
+                                                <a href='view.edit.php?id=" . $row['subject_id'] . "' class='btn btn-success'>Edit</a> &nbsp;
+                                                </td>";
+                                                echo "</tr>";
+                                                $count ++;
+                                            }
+                                                
+                                echo "</table>";
 
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>";
-                $subject_id = $row['subject_id'];
-                $student_name = $row['subject_type'];
-                $subject_description = $row['subject_description'];
-               
-                echo "<td style='text-align: center'>  ( ". $row['start_time'] . " - " . $row['end_time'] . " )"."</td>";
-                echo "<td style='text-align: center'>" . $row['subject_type'] . "</td>";
-                echo "<td style='text-align: center'>" . $row['subject_description'] . "</td>";
-                echo "<td style='text-align: center'>" . $row['room'] . "</td>";
-                echo "<td style='text-align: center'>" . $row['faculty_id'] . "</td>";
-                echo "<td style='text-align: center'>" . $row['subject_description'] . "</td>";
-
-                echo "<td style='text-align: center'>
-                <form class='form-horizontal' method='post' action='corlist.php'>
-                <input name='student_id' type='hidden' value='" . $row['subject_id'] . "';>
-                <a href='view.edit.php?id=" . $row['subject_id'] . "' class='btn btn-success'>Edit</a> &nbsp;
-                </td>";
-                echo "</tr>";
-            }
-
-            echo "</table>";
-
-            echo "<a href='#' class='printBtn btn btn-success' onClick='PrintDiv()'> Print </a>&nbsp;";
-            echo "<a href='schedulelist.php' class='btn btn-primary'>Back </a>&nbsp;";
+                                            echo "<a href='#' class='printBtn btn btn-success' onClick='PrintDiv()'> Print </a>&nbsp;";
+                                            echo "<a href='schedulelist.php' class='btn btn-primary'>Back </a>&nbsp;";
 
             // delete record
             if ($_SERVER['REQUEST_METHOD'] == "POST") {

@@ -134,8 +134,8 @@ include_once("navbar.php");
 
 
 							
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="student_level"> Level </label>
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="student_level"> Level </label>
 										<div class="col-md-4">
 											<select id="student_level" name="student_level" class="form-control">
 												<option value="Select">Select</option>
@@ -144,17 +144,17 @@ include_once("navbar.php");
 												<?php endwhile; ?>
 											</select>
 										</div>
-									</div>
+								</div>
 
 
 
 									<!-- Button -->
-									<div class="form-group" align="right">
-										<label class="col-md-4 control-label" for="submit"></label>
-										<div class="col-md-4">
+								<div class="form-group" align="right">
+								<label class="col-md-4 control-label" for="submit"></label>
+									<div class="col-md-4">
 											<button align="right" id="submit" name="submit" class="btn btn-success"> Proceed </button>
-										</div>
 									</div>
+								</div>
 				
 						
 						</fieldset>

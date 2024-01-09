@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2024 at 07:06 AM
+-- Generation Time: Jan 09, 2024 at 03:41 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -82,6 +82,25 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `books`
+--
+
+CREATE TABLE `books` (
+  `book_id` int(11) NOT NULL,
+  `book_name` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`book_id`, `book_name`) VALUES
+(0, 'Reading Advantage 1'),
+(0, 'Reading Advantage 2');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `course`
 --
 
@@ -146,17 +165,17 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`faculty_id`, `faculty_name`, `designation`) VALUES
-(35, 'ESL - Premium', 'ESL'),
-(36, 'ESL - Intensive', 'ESL'),
-(37, 'ESL - Essential', 'ESL'),
-(38, 'POWERS PEAKING', 'POWER SPEAKING'),
-(39, 'IELTS - ACADEMIC', 'IELTS'),
-(40, 'IELTS - GENERAL', 'IELTS'),
-(41, 'IELTS - PRE-GUARANTEE', 'IELTS'),
-(42, 'IELTS - GUARANTEE', 'IELTS'),
-(43, 'PRE - TOEIC', 'TOEIC'),
-(44, 'TOEIC', 'TOEIC'),
-(45, 'BUSINESS', 'BUSINESS');
+(35, 'Teacher Marie', 'ESL'),
+(36, 'Teacher cheryl', 'ESL'),
+(37, 'Teacher Jem', 'ESL'),
+(38, 'Teacher Dioni', 'Esl\r\n'),
+(39, 'Teacher Nathan', 'ESL\r\n'),
+(40, 'Teacher Sophia\r\n', 'ESL'),
+(41, 'Teacher Nathan', 'ESL'),
+(42, 'Teacher Juliet\r\n', 'ESL'),
+(43, 'Teacher Marilou ', 'ESL'),
+(44, 'Teacher August', 'ESL'),
+(45, 'Teacher Mary joy\r\n', 'ESL');
 
 -- --------------------------------------------------------
 
@@ -312,11 +331,10 @@ INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `s
 (243, 'John Cortes ', 151, 3, 'NEW STUDENT'),
 (244, 'Janjan ceniza  ', 150, 5, 'NEW STUDENT'),
 (245, 'Pedro penbbukouko   ', 152, 2, 'NEW STUDENT'),
-(250, 'ANN CURTIS  ', 146, 12, 'NEW STUDENT'),
 (251, 'manny pakaayaww ', 147, 9, 'NEW STUDENT'),
 (254, 'John Cortes   ', 144, 11, 'OLD STUDENT'),
 (255, 'Ryu zen ', 144, 3, 'NEW STUDENT'),
-(256, 'ANN CURTIS ', 141, 3, 'NEW STUDENT');
+(258, 'ANN CURTIS ', 141, 3, 'NEW STUDENT');
 
 -- --------------------------------------------------------
 
@@ -372,109 +390,111 @@ CREATE TABLE `subject` (
   `updated_at` int(11) DEFAULT NULL,
   `room_id` int(11) NOT NULL,
   `timer_id` int(11) NOT NULL,
-  `course_id` int(11) NOT NULL
+  `course_id` int(11) NOT NULL,
+  `faculty_id` int(11) NOT NULL,
+  `book_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `subject`
 --
 
-INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `subject_code`, `updated_at`, `room_id`, `timer_id`, `course_id`) VALUES
-(1, 'PREMIUM', 'Reading', '1.1', NULL, 18, 3, 141),
-(2, 'PREMIUM', 'Speaking', '1.1', NULL, 19, 4, 141),
-(168, 'PREMIUM', 'Grammar', '1.1', NULL, 20, 6, 141),
-(169, 'PREMIUM', 'Vocabulary', '1.1', NULL, 21, 7, 141),
-(170, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 141),
-(171, 'PREMIUM', 'Native', 'G', NULL, 73, 9, 141),
-(172, 'PREMIUM', 'Writing', 'G', NULL, 74, 10, 141),
-(173, 'PREMIUM', 'Listening', 'G', NULL, 75, 12, 141),
-(178, 'PREMIUM', 'Conversation', 'G', NULL, 78, 13, 141),
-(179, 'INTENSIVE', 'Reading', '1.1', NULL, 23, 3, 142),
-(180, 'INTENSIVE', 'Grammar', '1.1', NULL, 24, 4, 142),
-(181, 'INTENSIVE', 'Vocabulary', '1.1', NULL, 25, 6, 142),
-(182, 'INTENSIVE', 'Vocabulary', '1.1', NULL, 60, 7, 142),
-(183, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 142),
-(184, 'INTENSIVE', 'Speaking', '1.1', NULL, 67, 10, 142),
-(187, 'INTENSIVE', 'Speaking', '1.1', NULL, 36, 10, 142),
-(188, 'INTENSIVE', 'Writing', 'G', NULL, 80, 11, 142),
-(189, 'INTENSIVE', 'Listening', 'G', NULL, 78, 12, 142),
-(190, 'INTENSIVE', 'Native', 'G', NULL, 82, 13, 142),
-(192, 'POWER SPEAKING', 'Speaking', '1.1', NULL, 24, 3, 144),
-(193, 'POWER SPEAKING', 'Speaking Drill', '1.1', NULL, 38, 4, 144),
-(194, 'POWER SPEAKING', 'Grammar', '1.1', NULL, 27, 6, 144),
-(195, 'POWER SPEAKING', 'Vocabulary', '1.1', NULL, 66, 7, 144),
-(196, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 70, 8, 144),
-(197, 'POWER SPEAKING', 'Listening', 'G', NULL, 78, 9, 144),
-(198, 'POWER SPEAKING', 'Listening', 'G', NULL, 80, 10, 144),
-(199, 'POWER SPEAKING', 'Native', 'G', NULL, 78, 11, 144),
-(200, 'POWER SPEAKING', 'Discussion\r\n', 'G', NULL, 80, 12, 144),
-(201, 'TOEIC', 'Reading', '1.1', NULL, 37, 3, 152),
-(202, 'TOEIC', 'Speaking', '1.1', NULL, 40, 4, 152),
-(203, 'TOEIC ', 'Grammar', '1.1', NULL, 40, 6, 152),
-(204, 'TOEIC ', 'Vocabulary', '1.1', NULL, 51, 7, 152),
-(205, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 152),
-(206, 'TOEIC ', 'Reading P56', 'G', NULL, 80, 9, 152),
-(207, 'TOEIC ', 'Reading P7', 'G', NULL, 79, 10, 152),
-(208, 'TOEIC ', 'Listening', 'G', NULL, 79, 11, 152),
-(209, 'TOEIC', 'Listening', 'G', NULL, 80, 12, 152),
-(210, 'PRE - TOEIC', 'Reading', '1.1', NULL, 18, 3, 151),
-(211, 'PRE - TOEIC', 'Listening', '1.1', NULL, 36, 4, 151),
-(212, 'PRE - TOEIC', 'Grammar', '1.1', NULL, 30, 6, 151),
-(213, 'PRE - TOEIC', 'Vocabulary', '1.1', NULL, 33, 7, 151),
-(214, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 151),
-(215, 'PRE - TOEIC', 'Native', 'G', NULL, 78, 9, 151),
-(216, 'PRE - TOEIC', 'Writing', 'G', NULL, 79, 10, 151),
-(217, 'PRE - TOEIC', 'Listening', 'G', NULL, 80, 11, 151),
-(218, 'PRE - TOEIC ', 'Conversation', 'G', NULL, 73, 12, 151),
-(219, 'ESSENTIALS', 'Reading', '1.1', NULL, 19, 3, 143),
-(220, 'ESSENTIALS', 'Speaking', '1.1', NULL, 25, 4, 143),
-(222, 'ESSENTIALS', 'Grammar', '1.1', NULL, 33, 6, 143),
-(223, 'ESSENTIALS', 'Vocabulary', '1.1', NULL, 35, 7, 143),
-(224, 'IELTS - ACAD', 'Reading', '1.1', NULL, 39, 3, 145),
-(225, 'IELTS - ACAD', 'Writing T1', '1.1', NULL, 29, 4, 145),
-(226, 'IELTS - ACAD', 'Pronunciation', '1.1', NULL, 56, 6, 145),
-(227, 'IELTS - ACAD', 'Speaking', '1.1', NULL, 65, 7, 145),
-(228, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 145),
-(229, 'IELTS - ACAD', 'Reading (IELTS INTEG)', 'G', NULL, 73, 9, 145),
-(230, 'IELTS - ACAD', 'Listening', 'G', NULL, 77, 10, 145),
-(231, 'IELTS - ACAD', 'Writing T2', 'G', NULL, 76, 11, 145),
-(232, 'IELTS - ACAD', 'Grammar Voca', 'G', NULL, 80, 12, 145),
-(233, 'IELTS - GEN', 'Reading', '1.1', NULL, 26, 3, 146),
-(234, 'IELTS - GEN', 'Writing T1', '1.1', NULL, 32, 4, 146),
-(235, 'IELTS - GEN', 'Pronunciation', '1.1', NULL, 34, 6, 146),
-(236, 'IELTS - GEN', 'Speaking', '1.1', NULL, 36, 7, 146),
-(237, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 146),
-(238, 'IELTS - GEN', 'Reading (IELTS INTEG)', 'G', NULL, 78, 9, 146),
-(239, 'IELTS - GEN', 'Listening', 'G', NULL, 78, 10, 146),
-(240, 'IELTS - GEN', 'Writing T2', 'G', NULL, 74, 11, 146),
-(241, 'IELTS - GEN', 'Grammar Voca', 'G', NULL, 77, 12, 146),
-(243, 'PRE - IELTS - ACAD', 'Reading', '1.1', NULL, 34, 3, 147),
-(244, 'PRE - IELTS - ACAD', 'Writing', '1.1', NULL, 33, 4, 147),
-(245, 'PRE - IELTS - ACAD', 'Listening', '1.1', NULL, 37, 6, 147),
-(246, 'PRE - IELTS - ACAD', 'Speaking', '1.1', NULL, 55, 7, 147),
-(247, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 147),
-(248, 'PRE - IELTS - ACAD', 'Native', 'G', NULL, 78, 9, 147),
-(249, 'PRE - IELTS - ACAD', 'Writing', 'G', NULL, 77, 10, 147),
-(250, 'PRE - IELTS - ACAD', 'Listening', 'G', NULL, 78, 11, 147),
-(251, 'PRE - IELTS - ACAD', 'Conversation', 'G', NULL, 72, 12, 147),
-(252, 'PRE - IELTS - GEN', 'Reading', '1.1', NULL, 29, 3, 150),
-(253, 'PRE - IELTS - GEN', 'Writing', '1.1', NULL, 34, 4, 150),
-(254, 'PRE - IELTS - GEN', 'Listening', '1.1', NULL, 52, 6, 150),
-(255, 'PRE - IELTS - GEN', 'Speaking', '1.1', NULL, 56, 7, 150),
-(256, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 150),
-(257, 'PRE - IELTS - GEN', 'Native', 'G', NULL, 73, 9, 150),
-(258, 'PRE - IELTS - GEN', 'Writing', 'G', NULL, 74, 10, 150),
-(259, 'PRE - IELTS - GEN', 'Listening', 'G', NULL, 80, 11, 150),
-(260, 'PRE - IELTS - GEN', 'Conversation', 'G', NULL, 75, 12, 150),
-(261, 'BUSINESS', 'Speaking', '1.1', NULL, 18, 3, 153),
-(262, 'BUSINESS', 'Business Grammar and Vocabulary', '1.1', NULL, 25, 4, 153),
-(263, 'BUSINESS', 'Business Writing', '1.1', NULL, 30, 6, 153),
-(264, 'BUSINESS', 'Professional English', '1.1', NULL, 32, 7, 153),
-(265, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 153),
-(266, 'BUSINESS', 'Business Integration 1', 'G', NULL, 73, 9, 153),
-(267, 'BUSINESS', 'Business Integration 2', 'G', NULL, 75, 10, 153),
-(268, 'BUSINESS', 'Presentation and Socialization', 'G', NULL, 79, 11, 153),
-(269, 'BUSINESS', 'Native', 'G', NULL, 80, 12, 153);
+INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `subject_code`, `updated_at`, `room_id`, `timer_id`, `course_id`, `faculty_id`, `book_id`) VALUES
+(1, 'PREMIUM', 'Reading', '1.1', NULL, 35, 3, 141, 0, 0),
+(2, 'PREMIUM', 'Speaking', '1.1', NULL, 19, 4, 141, 0, 0),
+(168, 'PREMIUM', 'Grammmar', '1.1', NULL, 26, 6, 141, 0, 0),
+(169, 'PREMIUM', 'Vocabulary', '1.1', NULL, 21, 7, 141, 0, 0),
+(170, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 141, 0, 0),
+(171, 'PREMIUM', 'Native', 'G', NULL, 73, 9, 141, 0, 0),
+(172, 'PREMIUM', 'Writing', 'G', NULL, 74, 10, 141, 0, 0),
+(173, 'PREMIUM', 'Listening', 'G', NULL, 75, 11, 141, 0, 0),
+(178, 'PREMIUM', 'Conversation', 'G', NULL, 78, 12, 141, 0, 0),
+(179, 'INTENSIVE', 'Reading', '1.1', NULL, 23, 3, 142, 0, 0),
+(180, 'INTENSIVE', 'Grammar', '1.1', NULL, 24, 4, 142, 0, 0),
+(181, 'INTENSIVE', 'Vocabulary', '1.1', NULL, 25, 6, 142, 0, 0),
+(182, 'INTENSIVE', 'Vocabulary', '1.1', NULL, 60, 7, 142, 0, 0),
+(183, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 142, 0, 0),
+(184, 'INTENSIVE', 'Speaking', '1.1', NULL, 67, 10, 142, 0, 0),
+(187, 'INTENSIVE', 'Speaking', '1.1', NULL, 36, 10, 142, 0, 0),
+(188, 'INTENSIVE', 'Writing', 'G', NULL, 80, 11, 142, 0, 0),
+(189, 'INTENSIVE', 'Listening', 'G', NULL, 78, 12, 142, 0, 0),
+(190, 'INTENSIVE', 'Native', 'G', NULL, 82, 13, 142, 0, 0),
+(192, 'POWER SPEAKING', 'Speaking', '1.1', NULL, 24, 3, 144, 0, 0),
+(193, 'POWER SPEAKING', 'Speaking Drill', '1.1', NULL, 38, 4, 144, 0, 0),
+(194, 'POWER SPEAKING', 'Grammar', '1.1', NULL, 27, 6, 144, 0, 0),
+(195, 'POWER SPEAKING', 'Vocabulary', '1.1', NULL, 66, 7, 144, 0, 0),
+(196, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 144, 0, 0),
+(197, 'POWER SPEAKING', 'Listening', 'G', NULL, 78, 9, 144, 0, 0),
+(198, 'POWER SPEAKING', 'Listening', 'G', NULL, 80, 10, 144, 0, 0),
+(199, 'POWER SPEAKING', 'Native', 'G', NULL, 78, 11, 144, 0, 0),
+(200, 'POWER SPEAKING', 'Discussion\r\n', 'G', NULL, 80, 12, 144, 0, 0),
+(201, 'TOEIC', 'Reading', '1.1', NULL, 37, 3, 152, 0, 0),
+(202, 'TOEIC', 'Speaking', '1.1', NULL, 40, 4, 152, 0, 0),
+(203, 'TOEIC ', 'Grammar', '1.1', NULL, 40, 6, 152, 0, 0),
+(204, 'TOEIC ', 'Vocabulary', '1.1', NULL, 51, 7, 152, 0, 0),
+(205, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 152, 0, 0),
+(206, 'TOEIC ', 'Reading P56', 'G', NULL, 80, 9, 152, 0, 0),
+(207, 'TOEIC ', 'Reading P7', 'G', NULL, 79, 10, 152, 0, 0),
+(208, 'TOEIC ', 'Listening', 'G', NULL, 79, 11, 152, 0, 0),
+(209, 'TOEIC', 'Listening', 'G', NULL, 80, 12, 152, 0, 0),
+(210, 'PRE - TOEIC', 'Reading', '1.1', NULL, 18, 3, 151, 0, 0),
+(211, 'PRE - TOEIC', 'Listening', '1.1', NULL, 36, 4, 151, 0, 0),
+(212, 'PRE - TOEIC', 'Grammar', '1.1', NULL, 30, 6, 151, 0, 0),
+(213, 'PRE - TOEIC', 'Vocabulary', '1.1', NULL, 33, 7, 151, 0, 0),
+(214, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 151, 0, 0),
+(215, 'PRE - TOEIC', 'Native', 'G', NULL, 78, 9, 151, 0, 0),
+(216, 'PRE - TOEIC', 'Writing', 'G', NULL, 79, 10, 151, 0, 0),
+(217, 'PRE - TOEIC', 'Listening', 'G', NULL, 80, 11, 151, 0, 0),
+(218, 'PRE - TOEIC ', 'Conversation', 'G', NULL, 73, 12, 151, 0, 0),
+(219, 'ESSENTIALS', 'Reading', '1.1', NULL, 19, 3, 143, 0, 0),
+(220, 'ESSENTIALS', 'Speaking', '1.1', NULL, 25, 4, 143, 0, 0),
+(222, 'ESSENTIALS', 'Grammar', '1.1', NULL, 33, 6, 143, 0, 0),
+(223, 'ESSENTIALS', 'Vocabulary', '1.1', NULL, 35, 7, 143, 0, 0),
+(224, 'IELTS - ACAD', 'Reading', '1.1', NULL, 39, 3, 145, 0, 0),
+(225, 'IELTS - ACAD', 'Writing T1', '1.1', NULL, 29, 4, 145, 0, 0),
+(226, 'IELTS - ACAD', 'Pronunciation', '1.1', NULL, 56, 6, 145, 0, 0),
+(227, 'IELTS - ACAD', 'Speaking', '1.1', NULL, 65, 7, 145, 0, 0),
+(228, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 145, 0, 0),
+(229, 'IELTS - ACAD', 'Reading (IELTS INTEG)', 'G', NULL, 73, 9, 145, 0, 0),
+(230, 'IELTS - ACAD', 'Listening', 'G', NULL, 77, 10, 145, 0, 0),
+(231, 'IELTS - ACAD', 'Writing T2', 'G', NULL, 76, 11, 145, 0, 0),
+(232, 'IELTS - ACAD', 'Grammar Voca', 'G', NULL, 80, 12, 145, 0, 0),
+(233, 'IELTS - GEN', 'Reading', '1.1', NULL, 26, 3, 146, 0, 0),
+(234, 'IELTS - GEN', 'Writing T1', '1.1', NULL, 32, 4, 146, 0, 0),
+(235, 'IELTS - GEN', 'Pronunciation', '1.1', NULL, 34, 6, 146, 0, 0),
+(236, 'IELTS - GEN', 'Speaking', '1.1', NULL, 36, 7, 146, 0, 0),
+(237, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 146, 0, 0),
+(238, 'IELTS - GEN', 'Reading (IELTS INTEG)', 'G', NULL, 78, 9, 146, 0, 0),
+(239, 'IELTS - GEN', 'Listening', 'G', NULL, 78, 10, 146, 0, 0),
+(240, 'IELTS - GEN', 'Writing T2', 'G', NULL, 74, 11, 146, 0, 0),
+(241, 'IELTS - GEN', 'Grammar Voca', 'G', NULL, 77, 12, 146, 0, 0),
+(243, 'PRE - IELTS - ACAD', 'Reading', '1.1', NULL, 34, 3, 147, 0, 0),
+(244, 'PRE - IELTS - ACAD', 'Writing', '1.1', NULL, 33, 4, 147, 0, 0),
+(245, 'PRE - IELTS - ACAD', 'Listening', '1.1', NULL, 37, 6, 147, 0, 0),
+(246, 'PRE - IELTS - ACAD', 'Speaking', '1.1', NULL, 55, 7, 147, 0, 0),
+(247, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 147, 0, 0),
+(248, 'PRE - IELTS - ACAD', 'Native', 'G', NULL, 78, 9, 147, 0, 0),
+(249, 'PRE - IELTS - ACAD', 'Writing', 'G', NULL, 77, 10, 147, 0, 0),
+(250, 'PRE - IELTS - ACAD', 'Listening', 'G', NULL, 78, 11, 147, 0, 0),
+(251, 'PRE - IELTS - ACAD', 'Conversation', 'G', NULL, 72, 12, 147, 0, 0),
+(252, 'PRE - IELTS - GEN', 'Reading', '1.1', NULL, 29, 3, 150, 0, 0),
+(253, 'PRE - IELTS - GEN', 'Writing', '1.1', NULL, 34, 4, 150, 0, 0),
+(254, 'PRE - IELTS - GEN', 'Listening', '1.1', NULL, 52, 6, 150, 0, 0),
+(255, 'PRE - IELTS - GEN', 'Speaking', '1.1', NULL, 56, 7, 150, 0, 0),
+(256, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 150, 0, 0),
+(257, 'PRE - IELTS - GEN', 'Native', 'G', NULL, 73, 9, 150, 0, 0),
+(258, 'PRE - IELTS - GEN', 'Writing', 'G', NULL, 74, 10, 150, 0, 0),
+(259, 'PRE - IELTS - GEN', 'Listening', 'G', NULL, 80, 11, 150, 0, 0),
+(260, 'PRE - IELTS - GEN', 'Conversation', 'G', NULL, 75, 12, 150, 0, 0),
+(261, 'BUSINESS', 'Speaking', '1.1', NULL, 18, 3, 153, 0, 0),
+(262, 'BUSINESS', 'Business Grammar and Vocabulary', '1.1', NULL, 25, 4, 153, 0, 0),
+(263, 'BUSINESS', 'Business Writing', '1.1', NULL, 30, 6, 153, 0, 0),
+(264, 'BUSINESS', 'Professional English', '1.1', NULL, 32, 7, 153, 0, 0),
+(265, 'LUNCH', 'LUNCH', 'LUNCH', NULL, 71, 8, 153, 0, 0),
+(266, 'BUSINESS', 'Business Integration 1', 'G', NULL, 73, 9, 153, 0, 0),
+(267, 'BUSINESS', 'Business Integration 2', 'G', NULL, 75, 10, 153, 0, 0),
+(268, 'BUSINESS', 'Presentation and Socialization', 'G', NULL, 79, 11, 153, 0, 0),
+(269, 'BUSINESS', 'Native', 'G', NULL, 80, 12, 153, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -493,16 +513,16 @@ CREATE TABLE `timer` (
 --
 
 INSERT INTO `timer` (`id`, `start_time`, `end_time`) VALUES
-(3, 'Period 1 - 8:30 am', '9:15 am'),
-(4, 'Period 2 - 9:25 am', '10:10 am'),
-(6, 'Period 3 - 10:20 am', '11:05 am'),
-(7, 'Period 4 - 11:15 am', '12:00 pm'),
-(8, 'Lunch - 12:00 pm', '1:00 pm'),
-(9, 'Period 5 - 1:00 pm', '1:45 pm'),
-(10, 'Period 6 - 1:55 pm', '2:40 pm'),
-(11, 'Period 7 - 2:50 pm', '3:35 pm'),
-(12, 'Period 8 - 3:45 pm', '4:30 pm'),
-(13, 'Period 9 - 4:40 pm', '5:25 pm'),
+(3, '8:30', '9:15'),
+(4, '9:25', '10:10'),
+(6, '10:20', '11:05'),
+(7, '11:15', '12:00'),
+(8, 'LUNCH', 'TIME'),
+(9, '1:00', '1:45'),
+(10, '1:55', '2:40'),
+(11, '2:50', '3:35'),
+(12, '3:45', '4:30'),
+(13, '4:40', '5:25'),
 (14, '6:00 pm', '7:00 pm'),
 (15, 'NO TIME', 'NO TIME');
 
@@ -539,7 +559,8 @@ ALTER TABLE `data`
 -- Indexes for table `faculty`
 --
 ALTER TABLE `faculty`
-  ADD PRIMARY KEY (`faculty_id`);
+  ADD PRIMARY KEY (`faculty_id`),
+  ADD KEY `faculty_id` (`faculty_id`);
 
 --
 -- Indexes for table `level`
@@ -581,7 +602,9 @@ ALTER TABLE `subject`
   ADD UNIQUE KEY `subject_id` (`subject_id`),
   ADD KEY `fk_room_id` (`room_id`),
   ADD KEY `fk_period_id` (`timer_id`),
-  ADD KEY `course_id` (`course_id`);
+  ADD KEY `fk_faculty_id` (`faculty_id`) USING BTREE,
+  ADD KEY `fk_course_id` (`course_id`) USING BTREE,
+  ADD KEY `fk_book_id` (`book_id`) USING BTREE;
 
 --
 -- Indexes for table `timer`
@@ -639,7 +662,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
 
 --
 -- AUTO_INCREMENT for table `subject`

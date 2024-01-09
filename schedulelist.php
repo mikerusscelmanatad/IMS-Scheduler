@@ -29,7 +29,7 @@ include_once("navbar.php");
                 <form action="" method="GET" >
                     <div class="container col-sm-7 float-right">
                         <div class="input-group mb-3">
-                            <input type="text" id="search" name='search' value="<?php if(isset($_GET['search'])) {echo $_GET['search']; } ?>" placeholder="Enter ID number / Name of student" class='form-control col-sm-5 mx-auto' autocomplete='off' required>
+                            <input type="text" id="search" name='search' value="<?php if(isset($_GET['search'])) {echo $_GET['search']; } ?>" placeholder="Name of student" class='form-control col-sm-5 mx-auto' autocomplete='off' required>
                             <button type="submit" class="btn btn-primary"> Search </button>
                             <br>
                         </div>
@@ -85,7 +85,7 @@ include_once("navbar.php");
                     <?php
                 }
 
-        }
+            }
 
         ?>
         <br><br><br>
