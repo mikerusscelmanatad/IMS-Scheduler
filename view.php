@@ -8,10 +8,12 @@ include_once("navbar.php");
     <script>
         function PrintDiv() {
             var divToPrint = document.getElementById('divToPrint');
+            $('.action').hide();
             var popupWin = window.open('', '_blank', 'width=300,height=300');
             popupWin.document.open();
             popupWin.document.write('<html><body onload="window.print()"/>' + divToPrint.innerHTML + '</html>');
             popupWin.document.close();
+            $('.action').show();
         }
     </script>
 </head>
@@ -53,12 +55,10 @@ include_once("navbar.php");
                             </tr>";
 
                         while ($row = mysqli_fetch_assoc($result)) {
-                            $student_id = $row['student_id'];
                             $student_name = $row['student_name'];
                             $student_course_id = $row['course_id'];
                             $student_level_id = $row['level_id'];
                             $student_status = $row['student_status'];
-
 
                             echo "<td style= 'color:blue' colspan='1'> <B> <center> IMS - " . $row['student_id'] . "</B> </td>";
                             echo "<td colspan='3' style='text-align: center'> <B>" . $row['student_name'] . "</B> </td>";
@@ -84,7 +84,7 @@ include_once("navbar.php");
                                 $result = mysqli_query($connect, $query);
                             }
 
-                            echo "<table width='100%' class='table table-primary'>
+                            echo "<table width='100%' class='studentDetailsTable table table-primary'>
                                             <tr>
                                             
                                                
@@ -93,7 +93,7 @@ include_once("navbar.php");
                                                 <th style='text-align: center'> ROOM </th>
                                                 <th style='text-align: center'> TEACHER</th>
                                                 <th style='text-align: center'> BOOKS </th> 
-                                                <th style='text-align: center'> ACTION </th> 
+                                                <th class='action' style='text-align: center'> ACTION </th> 
                                                 
                                             </tr>";
             
@@ -111,13 +111,15 @@ include_once("navbar.php");
                                                 echo "<td style='text-align: center'>" . $row['faculty_id'] . "</td>";
                                                 echo "<td style='text-align: center'>" . $row['book_id'] . "</td>";
                                     
-                                                echo "<td style='text-align: center'>
-                                                <form class='form-horizontal' method='post' action='corlist.php'>
-                                                <input name='student_id' type='hidden' value='" . $row['subject_id'] . "';>
-                                                <a href='view.edit.php?id=" . $row['subject_id'] . "' class='btn btn-success'>Edit</a> &nbsp;
-                                                </td>";
+                                                echo "<td style='text-align: center'>";
+                                                echo "<form class='action form-horizontal' method='post' action='view.edit.php' enctype='multipart/form-data'>";
+                                                    echo "<input name='student_id' type='hidden' value=$student_id></input>";
+                                                    echo "<input name='subject_id' type='hidden' value=$row[subject_id]></input>";
+                                                    echo "<button type='submit' class='btn btn-success'>Edit</button>&nbsp;";
+                                                    // echo "<a href='view.edit.php?id=" . $row['subject_id'] . "' class='action btn btn-success'>Edit</a> &nbsp;";
+                                                echo "</td>";
                                                 echo "</tr>";
-                                               
+                                               echo "</form>";
                                             }
                                                 
                                 echo "</table>";
