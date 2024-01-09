@@ -34,25 +34,24 @@ $database = "insertion";
 $connect = mysqli_connect($hostname, $username, $password, $database) or die(mysqli_error($connect));
 mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
 
-if (isset($_GET['id'])) {
-	$subject_id = $_GET['id'];
 
-	$update = true;
-	$query = "SELECT * FROM `subject` WHERE `subject_id`='$subject_id'";
+$subject_id = $_POST['subject_id'];
+$student_id = $_POST['student_id'];
+$update = true;
+$query = "SELECT * FROM `subject` AS sub
+INNER JOIN `student` stud ON sub.course_id = stud.course_id
+WHERE stud.student_id=$student_id AND sub.subject_id=$subject_id";
 
-	    	$result = mysqli_query($connect, $query);
-	while ($row = mysqli_fetch_assoc($result)) {
+$findAllSubjectByCourseResult = mysqli_query($connect, $query);
 
-		$subject_id = $row['subject_id'];
-		$get_room_id = $row['room_id'];
-		$subject_description = $row['subject_description'];
-		$get_student_course = $row['course_id'];
-        $get_student_period = $row['timer_id'];
-
-	}
+while ($row = mysqli_fetch_assoc($findAllSubjectByCourseResult)) {
+	$get_subject_id = $row['subject_id'];
+	$get_room_id = $row['room_id'];
+	$get_student_course = $row['course_id'];
+	$get_student_period = $row['timer_id'];
 }
 
-$findAllSubject = "SELECT * FROM `subject`";
+$findAllSubject = "SELECT * FROM `subject` WHERE course_id=$get_student_course";
 $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 
 //Dropdown list query *************************************
@@ -90,14 +89,15 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 			<div class="">
 				<div class="jumbotron">
 
-					<form class="form-horizontal" method="post" action='add.cor2.php' enctype="multipart/form-data">
+					<form class="form-horizontal" method="get" action='view.edit.action.php?id=<?php echo $student_id ?>' enctype="multipart/form-data">
 						<fieldset>
 							<!-- Form Name -->
 							<legend> UPDATE</legend>			
 
 							<div class="form-group">
 								<div class="col-md-5">
-								   <input readonly id="subject_id" name="subject_id" type="hidden" value="<?php echo $subject_id; ?>" class="form-control input-md" required="" />
+								   <input readonly id="id" name="id" type="hidden" value="<?php echo $student_id; ?>" class="form-control input-md" required="" />
+								   <input readonly id="subject_id" name="subject_id" type="hidden" value="<?php echo $subject_id; ?>" class="subject_id form-control input-md" required="" />
 								</div>
 							</div>
 
@@ -108,8 +108,8 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 									<div class="col-md-5">
 										<select id="subject_description" name="subject_description" class="form-control">
 											<?php while ($row1 = mysqli_fetch_assoc($findAllSubjectResult)) :; ?>
-												<option id="<?php echo $row1["subject_description"]; ?>" value="<?php echo $row1["subject_description"]; ?>" <?php
-													if ($row1["subject_id"] == $subject_id) {
+												<option id="<?php echo $row1["subject_id"]; ?>" value="<?php echo $row1["subject_description"]; ?>" <?php
+													if ($row1["subject_id"] == $get_subject_id) {
 														echo "selected";
 													}
 													?>>
@@ -139,7 +139,7 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 									<div class="form-group">
 										<label class="col-md-4 control-label" for=""> Teachers Name </label>
 										<div class="col-md-5">
-											<input id="student_name" name="student_name" type="text" placeholder="Teachers name here" value="" class="form-control input-md" required="">
+											<input id="teacher_id" name="teacher_id" type="text" placeholder="Teachers name here" value="" class="form-control input-md" required="">
 										</div>
 									</div>
 
@@ -147,7 +147,7 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="student_name"> Books</label>
 										<div class="col-md-5">
-											<input id="student_name" name="student_name" type="text" placeholder="Book" value="" class="form-control input-md" required="">
+											<input id="book_id" name="book_id" type="text" placeholder="Book" value="" class="form-control input-md" required="">
 										</div>
 									</div>
 
@@ -158,8 +158,8 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 									<div class="form-group" align="right">
 										<label class="col-md-4 control-label" for="update"></label>
 										<div class="col-md-5">
-											<button type="submit" name="update" id="update" class="btn btn-success"> Update </button>
-											<a href="schedulelist.php" class="btn btn-primary"> Back </a> &nbsp; &nbsp;
+											<button type="submit" id="update" name="update" class="btn btn-success"> Update </button>
+											<a href="view.php?id=<?php echo $student_id?>" class="btn btn-primary"> Back </a> &nbsp; &nbsp;
 											
 										</div>
 									</div>

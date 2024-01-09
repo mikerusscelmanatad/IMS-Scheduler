@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2024 at 03:41 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jan 09, 2024 at 05:13 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -165,6 +165,7 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`faculty_id`, `faculty_name`, `designation`) VALUES
+(0, 'No Teacher', 'No faculty'),
 (35, 'Teacher Marie', 'ESL'),
 (36, 'Teacher cheryl', 'ESL'),
 (37, 'Teacher Jem', 'ESL'),
@@ -326,15 +327,15 @@ CREATE TABLE `student` (
 
 INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `student_status`) VALUES
 (238, 'John Cortes ', 153, 1, 'NEW STUDENT'),
-(239, 'kykle  manny ', 152, 1, 'OLD STUDENT'),
+(239, 'kykle  manny  ', 152, 1, 'NEW STUDENT'),
 (242, 'kykle  manny', 142, 4, 'NEW STUDENT'),
 (243, 'John Cortes ', 151, 3, 'NEW STUDENT'),
 (244, 'Janjan ceniza  ', 150, 5, 'NEW STUDENT'),
 (245, 'Pedro penbbukouko   ', 152, 2, 'NEW STUDENT'),
 (251, 'manny pakaayaww ', 147, 9, 'NEW STUDENT'),
-(254, 'John Cortes   ', 144, 11, 'OLD STUDENT'),
+(254, 'John Cortes    ', 144, 11, 'NEW STUDENT'),
 (255, 'Ryu zen ', 144, 3, 'NEW STUDENT'),
-(258, 'ANN CURTIS ', 141, 3, 'NEW STUDENT');
+(258, 'ANN CURTIS    ', 142, 3, 'NEW STUDENT');
 
 -- --------------------------------------------------------
 
@@ -345,6 +346,11 @@ INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `s
 CREATE TABLE `student_subject` (
   `subject_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `faculty_id` int(11) NOT NULL,
+  `timer_id` int(11) NOT NULL,
+  `books` varchar(1000) NOT NULL,
+  `teachers_name` varchar(1000) NOT NULL,
   `deleted` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_by` varchar(11) NOT NULL
@@ -354,16 +360,12 @@ CREATE TABLE `student_subject` (
 -- Dumping data for table `student_subject`
 --
 
-INSERT INTO `student_subject` (`subject_id`, `student_id`, `deleted`, `created_at`, `created_by`) VALUES
-(1, 123, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(1, 200, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(2, 123, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(2, 200, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(123, 200, 0, '2023-12-28 08:44:53', 'ADMIN'),
-(168, 123, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(168, 200, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(169, 123, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(169, 200, 0, '0000-00-00 00:00:00', 'ADMIN');
+INSERT INTO `student_subject` (`subject_id`, `student_id`, `room_id`, `faculty_id`, `timer_id`, `books`, `teachers_name`, `deleted`, `created_at`, `created_by`) VALUES
+(179, 258, 23, 44, 10, 'anne', '', 0, '2024-01-09 15:56:05', '258'),
+(192, 254, 24, 44, 10, 'john', '', 0, '2024-01-09 16:06:38', '254'),
+(243, 251, 34, 44, 10, 'wikiwiki', '', 0, '2024-01-09 16:06:57', '251'),
+(261, 238, 41, 44, 10, 'updated booking', '', 0, '2024-01-09 16:10:32', '238'),
+(264, 123, 17, 44, 10, '', '', 0, '2024-01-09 13:38:32', '');
 
 -- --------------------------------------------------------
 
@@ -408,7 +410,7 @@ INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `sub
 (171, 'PREMIUM', 'Native', 'G', NULL, 73, 9, 141, 0, 0),
 (172, 'PREMIUM', 'Writing', 'G', NULL, 74, 10, 141, 0, 0),
 (173, 'PREMIUM', 'Listening', 'G', NULL, 75, 11, 141, 0, 0),
-(178, 'PREMIUM', 'Conversation', 'G', NULL, 78, 12, 141, 0, 0),
+(178, 'PREMIUM', 'Reading', 'G', NULL, 78, 12, 141, 0, 0),
 (179, 'INTENSIVE', 'Reading', '1.1', NULL, 23, 3, 142, 0, 0),
 (180, 'INTENSIVE', 'Grammar', '1.1', NULL, 24, 4, 142, 0, 0),
 (181, 'INTENSIVE', 'Vocabulary', '1.1', NULL, 25, 6, 142, 0, 0),
@@ -592,7 +594,10 @@ ALTER TABLE `student`
 -- Indexes for table `student_subject`
 --
 ALTER TABLE `student_subject`
-  ADD PRIMARY KEY (`subject_id`,`student_id`);
+  ADD PRIMARY KEY (`subject_id`,`student_id`),
+  ADD KEY `fk_ss_room_id` (`room_id`),
+  ADD KEY `fk_ss_timer_id` (`timer_id`),
+  ADD KEY `fk_ss_faculty_id` (`faculty_id`);
 
 --
 -- Indexes for table `subject`
@@ -602,9 +607,9 @@ ALTER TABLE `subject`
   ADD UNIQUE KEY `subject_id` (`subject_id`),
   ADD KEY `fk_room_id` (`room_id`),
   ADD KEY `fk_period_id` (`timer_id`),
-  ADD KEY `fk_faculty_id` (`faculty_id`) USING BTREE,
   ADD KEY `fk_course_id` (`course_id`) USING BTREE,
-  ADD KEY `fk_book_id` (`book_id`) USING BTREE;
+  ADD KEY `fk_book_id` (`book_id`) USING BTREE,
+  ADD KEY `fk_faculty_id` (`faculty_id`);
 
 --
 -- Indexes for table `timer`
@@ -644,7 +649,7 @@ ALTER TABLE `data`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `faculty_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `faculty_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `level`
@@ -694,13 +699,22 @@ ALTER TABLE `student`
   ADD CONSTRAINT `fk_level_key` FOREIGN KEY (`level_id`) REFERENCES `level` (`level_id`);
 
 --
+-- Constraints for table `student_subject`
+--
+ALTER TABLE `student_subject`
+  ADD CONSTRAINT `fk_ss_faculty_id` FOREIGN KEY (`faculty_id`) REFERENCES `faculty` (`faculty_id`),
+  ADD CONSTRAINT `fk_ss_room_id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`),
+  ADD CONSTRAINT `fk_ss_subject_id` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`),
+  ADD CONSTRAINT `fk_ss_timer_id` FOREIGN KEY (`timer_id`) REFERENCES `timer` (`id`);
+
+--
 -- Constraints for table `subject`
 --
 ALTER TABLE `subject`
+  ADD CONSTRAINT `fk_faculty_id` FOREIGN KEY (`faculty_id`) REFERENCES `faculty` (`faculty_id`),
   ADD CONSTRAINT `fk_period_id` FOREIGN KEY (`timer_id`) REFERENCES `timer` (`id`),
   ADD CONSTRAINT `fk_room_id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`),
   ADD CONSTRAINT `subject_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`);
-  ADD CONSTRAINT `fk_faculty_id` FOREIGN KEY (`faculty_id`) REFERENCES `faculty` (`faculty_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
