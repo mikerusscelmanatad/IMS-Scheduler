@@ -19,7 +19,7 @@ include_once("navbar.php");
 <body>
     <div id="divToPrint" align="center">
         <fieldset>
-            <legend>Schedule</legend>
+            <legend><h2>SCHEDULE</h2></legend>
             <?php
             // your database connection
             $host       = "localhost";
@@ -87,7 +87,7 @@ include_once("navbar.php");
                             echo "<table width='100%' class='table table-primary'>
                                             <tr>
                                             
-                                                <th style='text-align: center'> PERIOD</th>
+                                               
                                                 <th style='text-align: center'> TIME </th>
                                                 <th style='text-align: center'> SUBJECT </th>
                                                 <th style='text-align: center'> ROOM </th>
@@ -97,14 +97,14 @@ include_once("navbar.php");
                                                 
                                             </tr>";
             
-                                            $count = 1;
+                                           
                                             while ($row = mysqli_fetch_assoc($result)) {
                                                 echo "<tr>";
                                                 $subject_id = $row['subject_id'];
                                                 $student_name = $row['subject_type'];
                                                 $subject_description = $row['subject_description'];
                                             
-                                                echo "<td style='text-align: center'> $count </td>";
+                                               
                                                 echo "<td style='text-align: center'>". $row['start_time'] . " - " . $row['end_time'] .     "</td>";
                                                 echo "<td style='text-align: center'>" . $row['subject_description'] . "</td>";
                                                 echo "<td style='text-align: center'>" . $row['room'] . "</td>";
@@ -117,7 +117,7 @@ include_once("navbar.php");
                                                 <a href='view.edit.php?id=" . $row['subject_id'] . "' class='btn btn-success'>Edit</a> &nbsp;
                                                 </td>";
                                                 echo "</tr>";
-                                                $count ++;
+                                               
                                             }
                                                 
                                 echo "</table>";
