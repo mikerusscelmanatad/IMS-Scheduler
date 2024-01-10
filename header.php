@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="styletwo.css">
 		
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<!-- Optional theme -->
 	<script src="css/bootstrap-theme.min.css"></script>
 	

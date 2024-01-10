@@ -26,66 +26,68 @@ include_once("navbar.php");
         <div class="container">
             <div class="card-body">
                 <div class="col-md-7">
-                    <form action="" method="GET">
+                    <form action="#" method="GET">
                         <div class="container col-sm-7 float-right">
                             <div class="input-group mb-3">
-                                <input type="text" id="search" name='search' value="<?php if (isset($_GET['search'])) {
-                                                                                        echo $_GET['search'];
-                                                                                    } ?>" placeholder="Name of student" class='form-control col-sm-5 mx-auto' autocomplete='off' required style='margin-bottom:10px;' />
-                                <button type="submit" class="btn btn-primary" style='margin-bottom:10px;'> Search </button>
-                                
-                                    <?php
+                            <input type="text" id="search" name='search' 
+                                value="<?php if (isset($_GET['search'])) {
+                                    echo $_GET['search'];
+                                } ?>" placeholder="Name of student" class='form-control col-sm-5 mx-auto'
+                                style='width: 50%; margin-bottom:10px;'/>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Search</button>
+                                <?php
 
-                                    $host       = "localhost";
-                                    $username   = "root";
-                                    $password   = "";
-                                    $database   = "insertion";
+                                $host       = "localhost";
+                                $username   = "root";
+                                $password   = "";
+                                $database   = "insertion";
 
-                                    // select database
-                                    $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error($connect));
+                                // select database
+                                $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error($connect));
 
 
-                                    mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
+                                mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
 
-                                    if (isset($_GET["search"])) {
-                                        $filtervalues = $_GET['search'];
+                                if (isset($_GET["search"])) {
+                                    $filtervalues = $_GET['search'];
 
-                                        $query = "SELECT * FROM student WHERE CONCAT(student_id, student_name, student_status) LIKE '%$filtervalues%' ";
+                                    $query = "SELECT * FROM student WHERE CONCAT(student_id, student_name, student_status) LIKE '%$filtervalues%' ";
 
-                                        $result = mysqli_query($connect, $query);
+                                    $result = mysqli_query($connect, $query);
 
-                                        if (mysqli_num_rows($result) > 0) {
+                                    if (mysqli_num_rows($result) > 0) {
 
-                                            foreach ($result as $row) {
-                                    ?>
-                                                <div class='container'>
+                                        foreach ($result as $row) {
+                                ?>
+                                            <div class='container'>
 
-                                                    <tr>
-                                                    <B><h4>
-                                                        <td style='text-align: center'> IMS - <?= $row['student_id']; ?></td> &nbsp;&nbsp;&nbsp;
-                                                        <td style='text-align: center'><?= $row['student_name']; ?></td> &nbsp;&nbsp;&nbsp;
-                                                        <td style='text-align: center'><?= $row['student_status']; ?></td> &nbsp;&nbsp;&nbsp;
-                                                    
-                                                    </h4></B>
-                                                    </tr>
-
-                                                </div>
-                                            <?php
-
-                                            }
-                                        } else {
-                                            ?>
-                                            <div class='container' style='margin-top:10px;'>
                                                 <tr>
-                                                    <td colspan="4"> NO RECORD FOUND</td>
-                                                </tr>
-                                            </div>
-                                    <?php
-                                        }
-                                    }
+                                                    <B>
+                                                        <h4>
+                                                            <td style='text-align: center'> IMS - <?= $row['student_id']; ?></td> &nbsp;&nbsp;&nbsp;
+                                                            <td style='text-align: center'><?= htmlspecialchars($row['student_name']); ?></td> &nbsp;&nbsp;&nbsp;
+                                                            <td style='text-align: center'><?= htmlspecialchars($row['student_status']); ?></td> &nbsp;&nbsp;&nbsp;
 
-                                    ?>
-                                </table>
+                                                        </h4>
+                                                    </B>
+                                                </tr>
+
+                                            </div>
+                                        <?php
+
+                                        }
+                                    } else {
+                                        ?>
+                                        <div class='container' style='margin-top:10px;'>
+                                            <tr>
+                                            <B><td colspan="4"> NO RECORD FOUND</td></B>
+                                            </tr>
+                                        </div>
+                                <?php
+                                    }
+                                }
+
+                                ?>
                             </div>
                         </div>
                     </form>
