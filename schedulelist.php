@@ -34,12 +34,6 @@ include_once("navbar.php");
                                                                                     } ?>" placeholder="Name of student" class='form-control col-sm-5 mx-auto' autocomplete='off' required style='margin-bottom:10px;' />
                                 <button type="submit" class="btn btn-primary" style='margin-bottom:10px;'> Search </button>
                                 
-                                <table width='50' class='table table-primary'>
-                                    <tr>
-                                        <td style='text-align: center'> <b>ID Number</b></td>
-                                        <td style='text-align: center'> <b>Students Name</b></td>
-                                        <td style='text-align: center'> <b>Status</b></td>
-                                    </tr>
                                     <?php
 
                                     $host       = "localhost";
