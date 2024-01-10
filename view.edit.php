@@ -146,7 +146,7 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 														echo "selected";
 													}
 													?>>
-													<?php echo $row1["start_time"] . " - " . $row1["end_time"] . " " .$get_student_period . " " .$row1["id"] ?></option>
+													<?php echo $row1["start_time"] . " - " . $row1["end_time"] ?></option>
 											<?php endwhile; ?>
 										</select>
                                     </div>
