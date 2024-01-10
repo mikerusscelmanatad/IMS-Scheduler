@@ -146,8 +146,8 @@ include_once("navbar.php");
                                                 
                                 echo "</table>";
 
-                                            echo "<a href='#' class='printBtn btn btn-success' onClick='PrintDiv()'> Print </a>&nbsp;";
-                                            echo "<a href='schedulelist.php' class='btn btn-primary'>Back </a>&nbsp;";
+                                            echo "<a href='#' class='action printBtn btn btn-success' onClick='PrintDiv()'> Print </a>&nbsp;";
+                                            echo "<a href='schedulelist.php' class='action btn btn-primary'>Back </a>&nbsp;";
 
             // delete record
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
