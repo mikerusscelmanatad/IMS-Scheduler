@@ -35,11 +35,11 @@ include_once("navbar.php");
 
             if (isset($_GET['id'])) {
                 $student_id = $_GET['id'];
+
                 $query = "SELECT * FROM student AS s 
-                                    INNER JOIN level AS l ON s.level_id = l.level_id 
-                                    INNER JOIN course AS c ON s.course_id = c.course_id 
-                                    WHERE student_id='$student_id'
-                            ";
+                    INNER JOIN level AS l ON s.level_id = l.level_id 
+                    INNER JOIN course AS c ON s.course_id = c.course_id 
+                WHERE student_id='$student_id'";
                 $result = mysqli_query($connect, $query);
             }
 
@@ -75,13 +75,25 @@ include_once("navbar.php");
                             if (isset($_GET['id'])) {
                                 $subject_id = mysqli_real_escape_string($connect, $_GET['id']);
 
-
-                                $query = "SELECT * FROM subject AS s 
-                                                    INNER JOIN rooms AS r ON s.room_id = r.room_id
-                                                    INNER JOIN timer AS t ON s.timer_id = t.id
-                                                    WHERE s.course_id=$student_course_id";
-                                                    
+                                $query = "SELECT * FROM `student_subject` ss 
+                                    INNER JOIN subject s ON s.subject_id = ss.subject_id 
+                                    INNER JOIN student st ON ss.student_id = st.student_id 
+                                    INNER JOIN level AS l ON st.level_id = l.level_id 
+                                    INNER JOIN course AS c ON st.course_id = c.course_id 
+                                    INNER JOIN rooms AS r ON ss.room_id = r.room_id
+                                    INNER JOIN timer AS t ON ss.timer_id = t.id
+                                WHERE ss.student_id = $student_id;";
                                 $result = mysqli_query($connect, $query);
+                                $countResultFromStudentSubject = mysqli_num_rows($result);
+                                
+                                if ($countResultFromStudentSubject <= 0) {
+                                    $query = "SELECT * FROM subject AS s 
+                                    INNER JOIN rooms AS r ON s.room_id = r.room_id
+                                    INNER JOIN timer AS t ON s.timer_id = t.id
+                                    WHERE s.course_id=$student_course_id";
+                                    
+                                    $result = mysqli_query($connect, $query);
+                                }
                             }
 
                             echo "<table width='100%' class='studentDetailsTable table table-primary'>
@@ -108,8 +120,8 @@ include_once("navbar.php");
                                                 echo "<td style='text-align: center'>". $row['start_time'] . " - " . $row['end_time'] .     "</td>";
                                                 echo "<td style='text-align: center'>" . $row['subject_description'] . "</td>";
                                                 echo "<td style='text-align: center'>" . $row['room'] . "</td>";
-                                                echo "<td style='text-align: center'>" . $row['faculty_id'] . "</td>";
-                                                echo "<td style='text-align: center'>" . $row['book_id'] . "</td>";
+                                                echo "<td style='text-align: center'>" . $row['teachers_name'] . "</td>";
+                                                echo "<td style='text-align: center'>" . $row['books'] . "</td>";
                                     
                                                 echo "<td style='text-align: center'>";
                                                 echo "<form class='action form-horizontal' method='post' action='view.edit.php' enctype='multipart/form-data'>";

@@ -24,11 +24,11 @@ if (isset($_GET['update'])) {
 	$countResult = mysqli_num_rows($result);
 
 	if ($countResult > 0) {
-		$query = "UPDATE student_subject SET `room_id`=$room_id, `faculty_id`='$faculty_id', `books`='$book_id' WHERE `subject_id`='$subject_id' AND `student_id`=$student_id";
+		$query = "UPDATE student_subject SET `room_id`=$room_id, `faculty_id`=44, `books`='$book_id', `teachers_name`='$faculty_id' WHERE `subject_id`='$subject_id' AND `student_id`=$student_id";
 		$result = mysqli_query($connect, $query);
 	} else {
-		$query = "INSERT INTO student_subject(subject_id, student_id, room_id, faculty_id, timer_id, books, created_by) 
-		VALUES($subject_id, $student_id, $room_id, $faculty_id, 10, '$book_id', $student_id)";
+		$query = "INSERT INTO student_subject(subject_id, student_id, room_id, timer_id, faculty_id, books, created_by, teachers_name) 
+		VALUES($subject_id, $student_id, $room_id, 10, 44, '$book_id', $student_id, '$faculty_id')";
 		$result = mysqli_query($connect, $query);
 	}
 

@@ -109,7 +109,7 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 										<select id="subject_description" name="subject_description" class="form-control">
 											<?php while ($row1 = mysqli_fetch_assoc($findAllSubjectResult)) :; ?>
 												<option id="<?php echo $row1["subject_id"]; ?>" value="<?php echo $row1["subject_description"]; ?>" <?php
-													if ($row1["subject_id"] == $get_subject_id) {
+													if ($row1["subject_id"] === $get_subject_id) {
 														echo "selected";
 													}
 													?>>
@@ -125,7 +125,7 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 										<select id="room_id" name="room_id" class="form-control">
 											<?php while ($row1 = mysqli_fetch_assoc($findAllRoomsResult)) :; ?>
 												<option id="<?php echo $row1["room_id"]; ?>" value="<?php echo $row1["room_id"]; ?>" <?php
-													if ($row1["room_id"] == $get_room_id) {
+													if ($row1["room_id"] === $get_room_id) {
 														echo "selected";
 													}
 													?>>
@@ -134,35 +134,52 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 										</select>
                                     </div>
 								</div>
+
+
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="timer_id"> Subject </label>
+									<div class="col-md-5">
+										<select id="timer_id" name="timer_id" class="form-control">
+											<?php while ($row1 = mysqli_fetch_assoc($findAllPeriodResult)) :; ?>
+												<option id="<?php echo $row1["id"]; ?>" value="<?php echo $row1["id"]; ?>" <?php
+													if ($row1["id"] === $get_student_period) {
+														echo "selected";
+													}
+													?>>
+													<?php echo $row1["start_time"] . " - " . $row1["end_time"]; ?></option>
+											<?php endwhile; ?>
+										</select>
+                                    </div>
+								</div>
 					
-                                    <!-- Text input-->
-									<div class="form-group">
-										<label class="col-md-4 control-label" for=""> Teachers Name </label>
-										<div class="col-md-5">
-											<input id="teacher_id" name="teacher_id" type="text" placeholder="Teachers name here" value="" class="form-control input-md" required="">
-										</div>
+								<!-- Text input-->
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="teacher_id"> Teachers Name </label>
+									<div class="col-md-5">
+										<input id="teacher_id" name="teacher_id" type="text" placeholder="Teachers name here" value="" class="form-control input-md" required="">
 									</div>
+								</div>
 
-									<!-- Text input-->
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="student_name"> Books</label>
-										<div class="col-md-5">
-											<input id="book_id" name="book_id" type="text" placeholder="Book" value="" class="form-control input-md" required="">
-										</div>
+								<!-- Text input-->
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="student_name"> Books</label>
+									<div class="col-md-5">
+										<input id="book_id" name="book_id" type="text" placeholder="Book" value="" class="form-control input-md" required="">
 									</div>
+								</div>
 
 
 
 
-									<!-- Button -->
-									<div class="form-group" align="right">
-										<label class="col-md-4 control-label" for="update"></label>
-										<div class="col-md-5">
-											<button type="submit" id="update" name="update" class="btn btn-success"> Update </button>
-											<a href="view.php?id=<?php echo $student_id?>" class="btn btn-primary"> Back </a> &nbsp; &nbsp;
-											
-										</div>
+								<!-- Button -->
+								<div class="form-group" align="right">
+									<label class="col-md-4 control-label" for="update"></label>
+									<div class="col-md-5">
+										<button type="submit" id="update" name="update" class="btn btn-success"> Update </button>
+										<a href="view.php?id=<?php echo $student_id?>" class="btn btn-primary"> Back </a> &nbsp; &nbsp;
+										
 									</div>
+								</div>
 						</fieldset>
 					</form>
 				</div>
