@@ -38,9 +38,9 @@ mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
 $subject_id = $_POST['subject_id'];
 $student_id = $_POST['student_id'];
 $update = true;
-$query = "SELECT * FROM `subject` AS sub
-INNER JOIN `student` stud ON sub.course_id = stud.course_id
-WHERE stud.student_id=$student_id AND sub.subject_id=$subject_id";
+$query = "SELECT * FROM `student_subject` AS ss
+INNER JOIN `student` stud ON ss.student_id = stud.student_id
+WHERE ss.student_id=$student_id AND ss.subject_id=$subject_id";
 
 $findAllSubjectByCourseResult = mysqli_query($connect, $query);
 
@@ -49,6 +49,8 @@ while ($row = mysqli_fetch_assoc($findAllSubjectByCourseResult)) {
 	$get_room_id = $row['room_id'];
 	$get_student_course = $row['course_id'];
 	$get_student_period = $row['timer_id'];
+	$get_teacher_name = $row['teachers_name'];
+	$get_books = $row['books'];
 }
 
 $findAllSubject = "SELECT * FROM `subject` WHERE subject_id=$get_subject_id";
@@ -160,7 +162,7 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="teacher_id"> Teachers Name </label>
 									<div class="col-md-5">
-										<input id="teacher_id" name="teacher_id" type="text" placeholder="Teachers name here" value="" class="form-control input-md" required="">
+										<input id="teacher_id" name="teacher_id" type="text" placeholder="Teachers name here" value="<?php echo htmlspecialchars($get_teacher_name) ?>" class="form-control input-md" />
 									</div>
 								</div>
 
@@ -168,7 +170,7 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="student_name"> Books</label>
 									<div class="col-md-5">
-										<input id="book_id" name="book_id" type="text" placeholder="Book" value="" class="form-control input-md" required="">
+										<textarea id="book_id" name="book_id" type="text" placeholder="Book" value="" class="form-control input-md" maxlength="500" style="width:100%"><?php echo htmlspecialchars($get_books)?></textarea>
 									</div>
 								</div>
 

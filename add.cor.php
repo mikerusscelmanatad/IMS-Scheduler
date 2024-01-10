@@ -66,8 +66,19 @@ if (isset($_POST['submit'])) {
 	 * 
 	 * 
 	 * **/
-	$query = "DELETE FROM student_subject WHERE `student_id`='$student_id'";
-	$result = mysqli_query($connect, $query);
+
+	 $query = "SELECT * FROM student WHERE `student_id`='$student_id'";
+	 $queryStudentResult = mysqli_query($connect, $query);
+	 $studentChangedCourse = false;
+	 while ($row = mysqli_fetch_assoc($queryStudentResult)) {
+		$student_student_course_id = $row["course_id"];
+		if ($student_student_course_id !== $student_course) {
+			$query = "DELETE FROM student_subject WHERE `student_id`='$student_id'";
+			$result = mysqli_query($connect, $query);
+			$studentChangedCourse = true;
+			break;
+		}
+	 }
 
 	$querySubject = "SELECT * FROM subject AS s 
 			INNER JOIN rooms AS r ON s.room_id = r.room_id
@@ -80,9 +91,15 @@ if (isset($_POST['submit'])) {
 		$subject_room_id = $row["room_id"];
 		$subject_timer_id = $row["timer_id"];
 
-		$insertStudentSubject = "INSERT INTO student_subject(subject_id, student_id, room_id, timer_id, faculty_id, books, created_by, teachers_name) 
+		if ($studentChangedCourse) {
+			$insertStudentSubject = "INSERT INTO student_subject(subject_id, student_id, room_id, timer_id, faculty_id, books, created_by, teachers_name) 
 			VALUES($subject_subject_id, $student_id, $subject_room_id, $subject_timer_id, 0, '', $student_id, '')";
-		$resultStudedntSubject = mysqli_query($connect, $insertStudentSubject);
+			$resultStudedntSubject = mysqli_query($connect, $insertStudentSubject);
+		} else {
+			$updatetStudentSubject = "UPDATE student_subject SET room_id=$subject_room_id, timer_id=$subject_timer_id 
+				WHERE subject_id=$subject_subject_id AND student_id=$student_id";
+			$resultStudedntSubject = mysqli_query($connect, $updatetStudentSubject);
+		}
 	}
 
 	$query = "UPDATE student SET
