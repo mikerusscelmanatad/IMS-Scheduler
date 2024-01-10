@@ -113,7 +113,6 @@ include_once("navbar.php");
                                             while ($row = mysqli_fetch_assoc($result)) {
                                                 echo "<tr>";
                                                 $subject_id = $row['subject_id'];
-                                                $student_name = $row['subject_type'];
                                                 $subject_description = $row['subject_description'];
                                             
                                                

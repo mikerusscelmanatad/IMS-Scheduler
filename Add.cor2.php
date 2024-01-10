@@ -24,7 +24,7 @@ if (isset($_POST['update'])) {
 	$faculty_id = mysqli_real_escape_string($connect, $_POST['faculty_id']);
 	$room_id = mysqli_real_escape_string($connect, $_POST['room_id']);
 
-	$query = "UPDATE subject SET `subject_description`='$subject_description', `room_id`='$room_id', `faculty_id`='$faculty_id' WHERE `subject_id`='$subject_id'";
+	$query = "UPDATE student_subject SET `subject_description`='$subject_description', `room_id`='$room_id', `faculty_id`='$faculty_id' WHERE `subject_id`='$subject_id'";
 
 	$result = mysqli_query($connect, $query);
 }
