@@ -119,8 +119,19 @@ include_once("navbar.php");
                                                 echo "<td style='text-align: center'>". $row['start_time'] . " - " . $row['end_time'] .     "</td>";
                                                 echo "<td style='text-align: center'>" . $row['subject_description'] . "</td>";
                                                 echo "<td style='text-align: center'>" . $row['room'] . "</td>";
-                                                echo "<td style='text-align: center'>" . $row['teachers_name'] . "</td>";
-                                                echo "<td style='text-align: center'>" . $row['books'] . "</td>";
+
+
+                                                if (empty($row['teachers_name']) || is_null($row['teachers_name'])) {
+                                                    echo "<td style='text-align: center'></td>";
+                                                } else {
+                                                    echo "<td style='text-align: center'>" . $row['teachers_name'] . "</td>";
+                                                }
+                                                if (empty($row['books']) || is_null($row['books'])) {
+                                                    echo "<td style='text-align: center'></td>";
+                                                } else {
+                                                    echo "<td style='text-align: center'>" . $row['books'] . "</td>";
+                                                }
+                                               
                                     
                                                 echo "<td style='text-align: center'>";
                                                 echo "<form class='action form-horizontal' method='post' action='view.edit.php' enctype='multipart/form-data'>";

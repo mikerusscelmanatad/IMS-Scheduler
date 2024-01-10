@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2024 at 03:25 AM
+-- Generation Time: Jan 10, 2024 at 05:38 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -326,16 +326,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `student_status`) VALUES
-(238, 'John Cortes ', 153, 1, 'NEW STUDENT'),
-(239, 'kykle  manny  ', 152, 1, 'NEW STUDENT'),
-(242, 'kykle  manny', 142, 4, 'NEW STUDENT'),
-(243, 'John Cortes ', 151, 3, 'NEW STUDENT'),
-(244, 'Janjan ceniza  ', 150, 5, 'NEW STUDENT'),
-(245, 'Pedro penbbukouko   ', 152, 2, 'NEW STUDENT'),
-(251, 'manny pakaayaww ', 147, 9, 'NEW STUDENT'),
-(254, 'John Cortes    ', 144, 11, 'NEW STUDENT'),
-(255, 'Ryu zen ', 144, 3, 'NEW STUDENT'),
-(258, 'ANN CURTIS      ', 142, 3, 'NEW STUDENT');
+(264, 'STUD_SUB001      ', 143, 2, 'NEW STUDENT');
 
 -- --------------------------------------------------------
 
@@ -361,8 +352,24 @@ CREATE TABLE `student_subject` (
 --
 
 INSERT INTO `student_subject` (`subject_id`, `student_id`, `room_id`, `faculty_id`, `timer_id`, `books`, `teachers_name`, `deleted`, `created_at`, `created_by`) VALUES
-(179, 258, 23, 44, 10, 'asf', 'asdf', 0, '2024-01-09 15:56:05', '258'),
+(1, 262, 35, 44, 4, 'asfasdf', 'asf', 0, '2024-01-10 04:12:23', '262'),
+(1, 263, 35, 44, 4, 'asf', 'asf', 0, '2024-01-10 04:13:09', '263'),
+(2, 263, 19, 0, 4, '', '', 0, '2024-01-10 04:13:09', '263'),
+(168, 263, 26, 0, 6, '', '', 0, '2024-01-10 04:13:09', '263'),
+(169, 263, 21, 0, 7, '', '', 0, '2024-01-10 04:13:09', '263'),
+(170, 263, 71, 0, 8, '', '', 0, '2024-01-10 04:13:09', '263'),
+(171, 263, 73, 0, 9, '', '', 0, '2024-01-10 04:13:09', '263'),
+(172, 263, 74, 0, 10, '', '', 0, '2024-01-10 04:13:09', '263'),
+(173, 263, 75, 0, 11, '', '', 0, '2024-01-10 04:13:09', '263'),
+(178, 263, 78, 0, 12, '', '', 0, '2024-01-10 04:13:09', '263'),
+(179, 258, 72, 44, 14, 'asdfasdf', 'asdf', 0, '2024-01-10 03:18:42', '258'),
+(179, 259, 17, 44, 4, 'asdfasdf', 'asdfasdf', 0, '2024-01-10 03:56:08', '259'),
 (192, 254, 24, 44, 10, 'john', '', 0, '2024-01-09 16:06:38', '254'),
+(192, 255, 17, 44, 8, 'asdf', 'asdf', 0, '2024-01-10 03:33:39', '255'),
+(219, 264, 17, 44, 4, 'asdfasdfasdf', 'asdfasdf', 0, '2024-01-10 04:35:16', '264'),
+(220, 264, 25, 44, 6, 'asf', 'asf', 0, '2024-01-10 04:35:16', '264'),
+(222, 264, 33, 0, 6, '', '', 0, '2024-01-10 04:35:16', '264'),
+(223, 264, 35, 0, 7, '', '', 0, '2024-01-10 04:35:16', '264'),
 (243, 251, 34, 44, 10, 'wikiwiki', '', 0, '2024-01-09 16:06:57', '251'),
 (261, 238, 41, 44, 10, 'updated booking', '', 0, '2024-01-09 16:10:32', '238'),
 (264, 123, 17, 44, 10, '', '', 0, '2024-01-09 13:38:32', '');
@@ -679,7 +686,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=265;
 
 --
 -- AUTO_INCREMENT for table `subject`

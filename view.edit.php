@@ -51,7 +51,7 @@ while ($row = mysqli_fetch_assoc($findAllSubjectByCourseResult)) {
 	$get_student_period = $row['timer_id'];
 }
 
-$findAllSubject = "SELECT * FROM `subject` WHERE course_id=$get_student_course";
+$findAllSubject = "SELECT * FROM `subject` WHERE subject_id=$get_subject_id";
 $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 
 //Dropdown list query *************************************
@@ -137,16 +137,16 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 
 
 								<div class="form-group">
-									<label class="col-md-4 control-label" for="timer_id"> Subject </label>
+									<label class="col-md-4 control-label" for="timer_detail"> Time </label>
 									<div class="col-md-5">
-										<select id="timer_id" name="timer_id" class="form-control">
+										<select id="timer_detail" name="timer_detail" class="form-control">
 											<?php while ($row1 = mysqli_fetch_assoc($findAllPeriodResult)) :; ?>
 												<option id="<?php echo $row1["id"]; ?>" value="<?php echo $row1["id"]; ?>" <?php
 													if ($row1["id"] === $get_student_period) {
 														echo "selected";
 													}
 													?>>
-													<?php echo $row1["start_time"] . " - " . $row1["end_time"]; ?></option>
+													<?php echo $row1["start_time"] . " - " . $row1["end_time"] . " " .$get_student_period . " " .$row1["id"] ?></option>
 											<?php endwhile; ?>
 										</select>
                                     </div>
