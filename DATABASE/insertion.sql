@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2024 at 05:13 PM
+-- Generation Time: Jan 10, 2024 at 03:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -87,7 +87,7 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 
 CREATE TABLE `books` (
   `book_id` int(11) NOT NULL,
-  `book_name` varchar(250) NOT NULL
+  `book_name` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -95,8 +95,8 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`book_id`, `book_name`) VALUES
-(0, 'Reading Advantage 1'),
-(0, 'Reading Advantage 2');
+(1, 'Reading Advantage 1'),
+(2, 'Reading Advantage 2');
 
 -- --------------------------------------------------------
 
@@ -335,7 +335,7 @@ INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `s
 (251, 'manny pakaayaww ', 147, 9, 'NEW STUDENT'),
 (254, 'John Cortes    ', 144, 11, 'NEW STUDENT'),
 (255, 'Ryu zen ', 144, 3, 'NEW STUDENT'),
-(258, 'ANN CURTIS    ', 142, 3, 'NEW STUDENT');
+(258, 'ANN CURTIS      ', 142, 3, 'NEW STUDENT');
 
 -- --------------------------------------------------------
 
@@ -361,7 +361,7 @@ CREATE TABLE `student_subject` (
 --
 
 INSERT INTO `student_subject` (`subject_id`, `student_id`, `room_id`, `faculty_id`, `timer_id`, `books`, `teachers_name`, `deleted`, `created_at`, `created_by`) VALUES
-(179, 258, 23, 44, 10, 'anne', '', 0, '2024-01-09 15:56:05', '258'),
+(179, 258, 23, 44, 10, 'asf', 'asdf', 0, '2024-01-09 15:56:05', '258'),
 (192, 254, 24, 44, 10, 'john', '', 0, '2024-01-09 16:06:38', '254'),
 (243, 251, 34, 44, 10, 'wikiwiki', '', 0, '2024-01-09 16:06:57', '251'),
 (261, 238, 41, 44, 10, 'updated booking', '', 0, '2024-01-09 16:10:32', '238'),
@@ -545,6 +545,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `books`
+--
+ALTER TABLE `books`
+  ADD PRIMARY KEY (`book_id`);
+
+--
 -- Indexes for table `course`
 --
 ALTER TABLE `course`
@@ -632,6 +638,12 @@ ALTER TABLE `addtable`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `books`
+--
+ALTER TABLE `books`
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `course`
