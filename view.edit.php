@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
 	$subject_id = $_GET['id'];
 
 	$update = true;
-	$query = "SELECT * FROM `subject` WHERE `subject_id`='$subject_id'";
+	$query = "SELECT * FROM `student_subject` WHERE `subject_id`='$subject_id'";
 
 	    	$result = mysqli_query($connect, $query);
 	while ($row = mysqli_fetch_assoc($result)) {
@@ -52,7 +52,7 @@ if (isset($_GET['id'])) {
 	}
 }
 
-$findAllSubject = "SELECT * FROM `subject`";
+$findAllSubject = "SELECT * FROM `student_subject`";
 $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 
 //Dropdown list query *************************************

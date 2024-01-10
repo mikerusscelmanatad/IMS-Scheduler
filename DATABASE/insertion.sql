@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2024 at 03:41 AM
+-- Generation Time: Jan 10, 2024 at 02:23 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -87,16 +87,76 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 
 CREATE TABLE `books` (
   `book_id` int(11) NOT NULL,
-  `book_name` varchar(250) NOT NULL
+  `book_name` varchar(250) NOT NULL,
+  `book_type` varchar(35) NOT NULL,
+  `book_course` varchar(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`book_id`, `book_name`) VALUES
-(0, 'Reading Advantage 1'),
-(0, 'Reading Advantage 2');
+INSERT INTO `books` (`book_id`, `book_name`, `book_type`, `book_course`) VALUES
+(1, 'Reading Advantage 1', '1.1 READING', 'PREMIUM'),
+(2, 'Reading Advantage 2', '1.1 READING', 'PREMIUM'),
+(3, 'Reading Advantage 3', '1.1 READING', 'PREMIUM'),
+(4, 'Reading Advantage 4', '1.1 READING', 'PREMIUM'),
+(5, 'Reading Explorer 4', '1.1 READING', 'PREMIUM'),
+(6, 'Speaking Juice 1', '1.1 SPEAKING', 'PREMIUM'),
+(7, 'SLE 1', '1.1 SPEAKING', 'PREMIUM'),
+(8, 'SLE 2 ', '1.1 SPEAKING', 'PREMIUM'),
+(9, 'SLE 3', '1.1 SPEAKING', 'PREMIUM'),
+(10, 'Express Yourself 1', '1.1 SPEAKING', 'PREMIUM'),
+(11, 'Side by Side 1 ', '1.1 Grammar', 'PREMIUM'),
+(12, 'Best Grammar in use', '1.1 Grammar', 'PREMIUM'),
+(13, 'Grammar in use Inter', '1.1 Grammar', 'PREMIUM'),
+(14, 'Grammar in advance', '1.1 Grammar', 'PREMIUM'),
+(15, 'Destination C1', '1.1 Grammar', 'PREMIUM'),
+(16, 'Elementary Vocabulary', '1.1 Grammar', 'PREMIUM'),
+(17, 'Inter Vocabulary', '1.1 Grammar', 'PREMIUM'),
+(18, '4000 words 5', '1.1 Grammar', 'PREMIUM'),
+(19, 'Destination C1', '1.1 Grammar', 'PREMIUM'),
+(20, 'Real Writing 1', 'G  Writing', 'PREMIUM'),
+(21, 'Real Writing 2', 'G  Writing', 'PREMIUM'),
+(23, 'Real Writing 3', 'G  Writing', 'PREMIUM'),
+(24, 'Real Writing 4', 'G  Writing', 'PREMIUM'),
+(25, 'Real Writing 4', 'G  Writing', 'PREMIUM'),
+(26, 'Real Listening and Speaking', 'G Listening', 'PREMIUM'),
+(27, 'Real Listening and Speaking 1', 'G   Listening', 'PREMIUM'),
+(28, 'Real Listening and Speaking 2', 'G  Listening', 'PREMIUM'),
+(29, 'Real Listening 2', 'G Listening', 'PREMIUM'),
+(30, 'Real Listening 3', 'G  Listening', 'PREMIUM'),
+(31, 'Listening 5', 'G  Listening', 'INTENSIVE'),
+(32, 'Reading Advantage 1', '1.1 READING', 'INTENSIVE'),
+(33, 'Reading Advantage 2', '1.1 READING', 'INTENSIVE'),
+(34, 'Reading Advantage 3', '1.1 READING', 'INTENSIVE'),
+(35, 'Reading Advantage 4', '1.1 READING', 'INTENSIVE'),
+(36, 'Reading Explorer 4', '1.1 READING', 'INTENSIVE'),
+(37, 'Side by Side 1', '1.1 Grammar', 'INTENSIVE'),
+(38, 'Basic Grammar in use', '1.1 Grammar', 'INTENSIVE'),
+(39, 'Grammar in use Inter', '1.1 Grammar', 'INTENSIVE'),
+(40, 'Grammar in use Advance', '1.1 Grammar', 'INTENSIVE'),
+(41, 'Destination C1', '1.1 Grammar', 'INTENSIVE'),
+(42, 'Elementary Vocabulary', '1.1 Vocabulary', 'INTENSIVE'),
+(43, 'Inter Vocabulary', '1.1 Vocabulary', 'INTENSIVE'),
+(44, 'Inter Vocabulary', '1.1 Vocabulary', 'INTENSIVE'),
+(45, '4000 words by 5', '1.1 Vocabulary', 'INTENSIVE'),
+(46, 'Destination C1', '1.1 Vocabulary', 'INTENSIVE'),
+(47, 'Speaking Juice 1', '1.1 SPEAKING', 'INTENSIVE'),
+(48, 'SLE 1 ', '1.1 SPEAKING', 'INTENSIVE'),
+(49, 'SLE 2 ', '1.1 SPEAKING', 'INTENSIVE'),
+(50, 'SLE 3', '1.1 SPEAKING', 'INTENSIVE'),
+(51, 'Express yourself 1', '1.1 SPEAKING', 'INTENSIVE'),
+(52, 'Real Writing 1', 'G  Writing', 'INTENSIVE'),
+(53, 'Real Writing 2', 'G  Writing', 'INTENSIVE'),
+(54, 'Real Writing 3', 'G  Writing', 'INTENSIVE'),
+(55, 'Real Writing 4', 'G  Writing', 'INTENSIVE'),
+(56, 'Real Writing 4', 'G  Writing', 'INTENSIVE'),
+(57, 'Real Listening and Speaking 1', 'G Listening', 'INTENSIVE'),
+(58, 'Real Listening and Speaking 2', 'G  Listening', 'INTENSIVE'),
+(59, 'Real Listening 2', 'G Listening', 'INTENSIVE'),
+(60, 'Real listening 3', 'G  Listening', 'INTENSIVE'),
+(61, 'Listening 5 ', 'G Listening', 'INTENSIVE');
 
 -- --------------------------------------------------------
 
@@ -325,7 +385,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `student_status`) VALUES
-(238, 'John Cortes ', 153, 1, 'NEW STUDENT'),
+(238, 'John Cortes  ', 141, 10, 'NEW STUDENT'),
 (239, 'kykle  manny ', 152, 1, 'OLD STUDENT'),
 (242, 'kykle  manny', 142, 4, 'NEW STUDENT'),
 (243, 'John Cortes ', 151, 3, 'NEW STUDENT'),
@@ -345,7 +405,12 @@ INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `s
 CREATE TABLE `student_subject` (
   `subject_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
-  `deleted` int(11) NOT NULL,
+  `subject_description` varchar(200) NOT NULL,
+  `course_id` int(25) NOT NULL,
+  `timer_id` int(25) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `faculty_id` int(25) NOT NULL,
+  `book_id` int(25) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_by` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -354,16 +419,102 @@ CREATE TABLE `student_subject` (
 -- Dumping data for table `student_subject`
 --
 
-INSERT INTO `student_subject` (`subject_id`, `student_id`, `deleted`, `created_at`, `created_by`) VALUES
-(1, 123, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(1, 200, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(2, 123, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(2, 200, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(123, 200, 0, '2023-12-28 08:44:53', 'ADMIN'),
-(168, 123, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(168, 200, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(169, 123, 0, '0000-00-00 00:00:00', 'ADMIN'),
-(169, 200, 0, '0000-00-00 00:00:00', 'ADMIN');
+INSERT INTO `student_subject` (`subject_id`, `student_id`, `subject_description`, `course_id`, `timer_id`, `room_id`, `faculty_id`, `book_id`, `created_at`, `created_by`) VALUES
+(1, 0, 'Reading', 141, 3, 19, 0, 0, '2024-01-10 01:02:46', ''),
+(2, 0, 'Business Writing', 141, 4, 72, 0, 0, '2024-01-10 01:02:46', ''),
+(168, 0, 'Grammmar', 141, 6, 26, 0, 0, '2024-01-10 01:02:46', ''),
+(169, 0, 'Vocabulary', 141, 7, 21, 0, 0, '2024-01-10 01:02:46', ''),
+(170, 0, 'LUNCH', 141, 8, 71, 0, 0, '2024-01-10 01:02:46', ''),
+(171, 0, 'Native', 141, 9, 73, 0, 0, '2024-01-10 01:02:46', ''),
+(172, 0, 'Writing', 141, 10, 74, 0, 0, '2024-01-10 01:02:46', ''),
+(173, 0, 'Listening', 141, 11, 75, 0, 0, '2024-01-10 01:02:46', ''),
+(178, 0, 'Conversation', 141, 12, 78, 0, 0, '2024-01-10 01:02:46', ''),
+(179, 0, 'Reading', 142, 3, 23, 0, 0, '2024-01-10 01:02:46', ''),
+(180, 0, 'Grammar', 142, 4, 24, 0, 0, '2024-01-10 01:02:46', ''),
+(181, 0, 'Vocabulary', 142, 6, 25, 0, 0, '2024-01-10 01:02:46', ''),
+(182, 0, 'Vocabulary', 142, 7, 60, 0, 0, '2024-01-10 01:02:46', ''),
+(183, 0, 'LUNCH', 142, 8, 71, 0, 0, '2024-01-10 01:02:46', ''),
+(184, 0, 'Speaking', 142, 10, 67, 0, 0, '2024-01-10 01:02:46', ''),
+(187, 0, 'Speaking', 142, 10, 36, 0, 0, '2024-01-10 01:02:46', ''),
+(188, 0, 'Writing', 142, 11, 80, 0, 0, '2024-01-10 01:02:46', ''),
+(189, 0, 'Listening', 142, 12, 78, 0, 0, '2024-01-10 01:02:46', ''),
+(190, 0, 'Native', 142, 13, 82, 0, 0, '2024-01-10 01:02:46', ''),
+(192, 0, 'Native', 144, 3, 24, 0, 0, '2024-01-10 01:02:46', ''),
+(193, 0, 'Speaking Drill', 144, 4, 38, 0, 0, '2024-01-10 01:02:46', ''),
+(194, 0, 'Grammar', 144, 6, 27, 0, 0, '2024-01-10 01:02:46', ''),
+(195, 0, 'Vocabulary', 144, 7, 66, 0, 0, '2024-01-10 01:02:46', ''),
+(196, 0, 'LUNCH', 144, 8, 71, 0, 0, '2024-01-10 01:02:46', ''),
+(197, 0, 'Listening', 144, 9, 78, 0, 0, '2024-01-10 01:02:46', ''),
+(198, 0, 'Listening', 144, 10, 80, 0, 0, '2024-01-10 01:02:46', ''),
+(199, 0, 'Native', 144, 11, 78, 0, 0, '2024-01-10 01:02:46', ''),
+(200, 0, 'Discussion\r\n', 144, 12, 80, 0, 0, '2024-01-10 01:02:46', ''),
+(201, 0, 'Reading', 152, 3, 37, 0, 0, '2024-01-10 01:02:46', ''),
+(202, 0, 'Speaking', 152, 4, 40, 0, 0, '2024-01-10 01:02:46', ''),
+(203, 0, 'Grammar', 152, 6, 40, 0, 0, '2024-01-10 01:02:46', ''),
+(204, 0, 'Vocabulary', 152, 7, 51, 0, 0, '2024-01-10 01:02:46', ''),
+(205, 0, 'LUNCH', 152, 8, 71, 0, 0, '2024-01-10 01:02:46', ''),
+(206, 0, 'Reading P56', 152, 9, 80, 0, 0, '2024-01-10 01:02:46', ''),
+(207, 0, 'Reading P7', 152, 10, 79, 0, 0, '2024-01-10 01:02:46', ''),
+(208, 0, 'Listening', 152, 11, 79, 0, 0, '2024-01-10 01:02:46', ''),
+(209, 0, 'Listening', 152, 12, 80, 0, 0, '2024-01-10 01:02:46', ''),
+(210, 0, 'Reading', 151, 3, 18, 0, 0, '2024-01-10 01:02:46', ''),
+(211, 0, 'Listening', 151, 4, 36, 0, 0, '2024-01-10 01:02:46', ''),
+(212, 0, 'Grammar', 151, 6, 30, 0, 0, '2024-01-10 01:02:46', ''),
+(213, 0, 'Vocabulary', 151, 7, 33, 0, 0, '2024-01-10 01:02:46', ''),
+(214, 0, 'LUNCH', 151, 8, 71, 0, 0, '2024-01-10 01:02:46', ''),
+(215, 0, 'Native', 151, 9, 78, 0, 0, '2024-01-10 01:02:46', ''),
+(216, 0, 'Writing', 151, 10, 79, 0, 0, '2024-01-10 01:02:46', ''),
+(217, 0, 'Listening', 151, 11, 80, 0, 0, '2024-01-10 01:02:46', ''),
+(218, 0, 'Conversation', 151, 12, 73, 0, 0, '2024-01-10 01:02:46', ''),
+(219, 0, 'Reading', 143, 3, 19, 0, 0, '2024-01-10 01:02:46', ''),
+(220, 0, 'Speaking', 143, 4, 25, 0, 0, '2024-01-10 01:02:46', ''),
+(222, 0, 'Grammar', 143, 6, 33, 0, 0, '2024-01-10 01:02:46', ''),
+(223, 0, 'Vocabulary', 143, 7, 35, 0, 0, '2024-01-10 01:02:46', ''),
+(224, 0, 'Reading', 145, 3, 39, 0, 0, '2024-01-10 01:02:46', ''),
+(225, 0, 'Writing T1', 145, 4, 29, 0, 0, '2024-01-10 01:02:46', ''),
+(226, 0, 'Pronunciation', 145, 6, 56, 0, 0, '2024-01-10 01:02:46', ''),
+(227, 0, 'Speaking', 145, 7, 65, 0, 0, '2024-01-10 01:02:46', ''),
+(228, 0, 'LUNCH', 145, 8, 71, 0, 0, '2024-01-10 01:02:46', ''),
+(229, 0, 'Reading (IELTS INTEG)', 145, 9, 73, 0, 0, '2024-01-10 01:02:46', ''),
+(230, 0, 'Listening', 145, 10, 77, 0, 0, '2024-01-10 01:02:46', ''),
+(231, 0, 'Writing T2', 145, 11, 76, 0, 0, '2024-01-10 01:02:46', ''),
+(232, 0, 'Grammar Voca', 145, 12, 80, 0, 0, '2024-01-10 01:02:46', ''),
+(233, 0, 'Reading', 146, 3, 26, 0, 0, '2024-01-10 01:02:46', ''),
+(234, 0, 'Writing T1', 146, 4, 32, 0, 0, '2024-01-10 01:02:46', ''),
+(235, 0, 'Pronunciation', 146, 6, 34, 0, 0, '2024-01-10 01:02:46', ''),
+(236, 0, 'Speaking', 146, 7, 36, 0, 0, '2024-01-10 01:02:46', ''),
+(237, 0, 'LUNCH', 146, 8, 71, 0, 0, '2024-01-10 01:02:46', ''),
+(238, 0, 'Reading (IELTS INTEG)', 146, 9, 78, 0, 0, '2024-01-10 01:02:46', ''),
+(239, 0, 'Listening', 146, 10, 78, 0, 0, '2024-01-10 01:02:46', ''),
+(240, 0, 'Writing T2', 146, 11, 74, 0, 0, '2024-01-10 01:02:46', ''),
+(241, 0, 'Grammar Voca', 146, 12, 77, 0, 0, '2024-01-10 01:02:46', ''),
+(243, 0, 'Reading', 147, 3, 34, 0, 0, '2024-01-10 01:02:46', ''),
+(244, 0, 'Writing', 147, 4, 33, 0, 0, '2024-01-10 01:02:46', ''),
+(245, 0, 'Listening', 147, 6, 37, 0, 0, '2024-01-10 01:02:46', ''),
+(246, 0, 'Speaking', 147, 7, 55, 0, 0, '2024-01-10 01:02:46', ''),
+(247, 0, 'LUNCH', 147, 8, 71, 0, 0, '2024-01-10 01:02:46', ''),
+(248, 0, 'Native', 147, 9, 78, 0, 0, '2024-01-10 01:02:46', ''),
+(249, 0, 'Writing', 147, 10, 77, 0, 0, '2024-01-10 01:02:46', ''),
+(250, 0, 'Listening', 147, 11, 78, 0, 0, '2024-01-10 01:02:46', ''),
+(251, 0, 'Conversation', 147, 12, 72, 0, 0, '2024-01-10 01:02:46', ''),
+(252, 0, 'Reading', 150, 3, 29, 0, 0, '2024-01-10 01:02:46', ''),
+(253, 0, 'Writing', 150, 4, 34, 0, 0, '2024-01-10 01:02:46', ''),
+(254, 0, 'Listening', 150, 6, 52, 0, 0, '2024-01-10 01:02:46', ''),
+(255, 0, 'Speaking', 150, 7, 56, 0, 0, '2024-01-10 01:02:46', ''),
+(256, 0, 'LUNCH', 150, 8, 71, 0, 0, '2024-01-10 01:02:46', ''),
+(257, 0, 'Native', 150, 9, 73, 0, 0, '2024-01-10 01:02:46', ''),
+(258, 0, 'Writing', 150, 10, 74, 0, 0, '2024-01-10 01:02:46', ''),
+(259, 0, 'Listening', 150, 11, 80, 0, 0, '2024-01-10 01:02:46', ''),
+(260, 0, 'Conversation', 150, 12, 75, 0, 0, '2024-01-10 01:02:46', ''),
+(261, 0, 'Speaking', 153, 3, 18, 0, 0, '2024-01-10 01:02:46', ''),
+(262, 0, 'Business Grammar and Vocabulary', 153, 4, 25, 0, 0, '2024-01-10 01:02:46', ''),
+(263, 0, 'Business Writing', 153, 6, 30, 0, 0, '2024-01-10 01:02:46', ''),
+(264, 0, 'Professional English', 153, 7, 32, 0, 0, '2024-01-10 01:02:46', ''),
+(265, 0, 'LUNCH', 153, 8, 71, 0, 0, '2024-01-10 01:02:46', ''),
+(266, 0, 'Business Integration 1', 153, 9, 73, 0, 0, '2024-01-10 01:02:46', ''),
+(267, 0, 'Business Integration 2', 153, 10, 75, 0, 0, '2024-01-10 01:02:46', ''),
+(268, 0, 'Presentation and Socialization', 153, 11, 79, 0, 0, '2024-01-10 01:02:46', ''),
+(269, 0, 'Native', 153, 12, 80, 0, 0, '2024-01-10 01:02:46', '');
 
 -- --------------------------------------------------------
 
@@ -400,7 +551,7 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `subject_code`, `updated_at`, `room_id`, `timer_id`, `course_id`, `faculty_id`, `book_id`) VALUES
-(1, 'PREMIUM', 'Reading', '1.1', NULL, 35, 3, 141, 0, 0),
+(1, 'PREMIUM', 'Reading', '1.1', NULL, 26, 3, 141, 0, 0),
 (2, 'PREMIUM', 'Speaking', '1.1', NULL, 19, 4, 141, 0, 0),
 (168, 'PREMIUM', 'Grammmar', '1.1', NULL, 26, 6, 141, 0, 0),
 (169, 'PREMIUM', 'Vocabulary', '1.1', NULL, 21, 7, 141, 0, 0),
@@ -543,6 +694,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `books`
+--
+ALTER TABLE `books`
+  ADD PRIMARY KEY (`book_id`);
+
+--
 -- Indexes for table `course`
 --
 ALTER TABLE `course`
@@ -592,7 +749,11 @@ ALTER TABLE `student`
 -- Indexes for table `student_subject`
 --
 ALTER TABLE `student_subject`
-  ADD PRIMARY KEY (`subject_id`,`student_id`);
+  ADD PRIMARY KEY (`subject_id`,`student_id`),
+  ADD KEY `subject_id` (`subject_id`),
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `timer_id` (`timer_id`),
+  ADD KEY `course_id` (`course_id`);
 
 --
 -- Indexes for table `subject`
@@ -604,7 +765,7 @@ ALTER TABLE `subject`
   ADD KEY `fk_period_id` (`timer_id`),
   ADD KEY `fk_faculty_id` (`faculty_id`) USING BTREE,
   ADD KEY `fk_course_id` (`course_id`) USING BTREE,
-  ADD KEY `fk_book_id` (`book_id`) USING BTREE;
+  ADD KEY `fk_book_id` (`book_id`);
 
 --
 -- Indexes for table `timer`
@@ -627,6 +788,12 @@ ALTER TABLE `addtable`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `books`
+--
+ALTER TABLE `books`
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `course`
@@ -668,7 +835,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=271;
 
 --
 -- AUTO_INCREMENT for table `timer`
@@ -700,7 +867,6 @@ ALTER TABLE `subject`
   ADD CONSTRAINT `fk_period_id` FOREIGN KEY (`timer_id`) REFERENCES `timer` (`id`),
   ADD CONSTRAINT `fk_room_id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`),
   ADD CONSTRAINT `subject_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`);
-  ADD CONSTRAINT `fk_faculty_id` FOREIGN KEY (`faculty_id`) REFERENCES `faculty` (`faculty_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

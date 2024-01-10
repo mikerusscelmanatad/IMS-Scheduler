@@ -76,7 +76,7 @@ include_once("navbar.php");
                                 $subject_id = mysqli_real_escape_string($connect, $_GET['id']);
 
 
-                                $query = "SELECT * FROM subject AS s 
+                                $query = "SELECT * FROM student_subject AS s 
                                                     INNER JOIN rooms AS r ON s.room_id = r.room_id
                                                     INNER JOIN timer AS t ON s.timer_id = t.id
                                                     WHERE s.course_id=$student_course_id";
@@ -101,7 +101,6 @@ include_once("navbar.php");
                                             while ($row = mysqli_fetch_assoc($result)) {
                                                 echo "<tr>";
                                                 $subject_id = $row['subject_id'];
-                                                $student_name = $row['subject_type'];
                                                 $subject_description = $row['subject_description'];
                                             
                                                
