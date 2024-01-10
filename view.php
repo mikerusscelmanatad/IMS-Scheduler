@@ -8,10 +8,18 @@ include_once("navbar.php");
     <script>
         function PrintDiv() {
             var divToPrint = document.getElementById('divToPrint');
+            var htmlToPrint = '' +
+                '<style type="text/css">' +
+                    'table th, table td {' +
+                    'border:1px solid #000;' +
+                    'padding:0.9em;' +
+                    '}' +
+                '</style>';
             $('.action').hide();
-            var popupWin = window.open('', '_blank', 'width=300,height=300');
+            htmlToPrint += divToPrint.outerHTML;
+            var popupWin = window.open('', '_blank', 'width=500,height=500');
             popupWin.document.open();
-            popupWin.document.write('<html><body onload="window.print()"/>' + divToPrint.innerHTML + '</html>');
+            popupWin.document.write('<html><body onload="window.print()"/>' + htmlToPrint + '</html>');
             popupWin.document.close();
             $('.action').show();
         }
@@ -133,7 +141,7 @@ include_once("navbar.php");
                                                 }
                                                
                                     
-                                                echo "<td style='text-align: center'>";
+                                                echo "<td class='action' style='text-align: center'>";
                                                 echo "<form class='action form-horizontal' method='post' action='view.edit.php' enctype='multipart/form-data'>";
                                                     echo "<input name='student_id' type='hidden' value=$student_id></input>";
                                                     echo "<input name='subject_id' type='hidden' value=$row[subject_id]></input>";
