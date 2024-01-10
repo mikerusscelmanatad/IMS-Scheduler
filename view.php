@@ -45,7 +45,7 @@ include_once("navbar.php");
 
 
             echo "<div id='divToPrint' class='container'> 
-                        <table style='border:1px solid gray;' width='100%' class='table table-primary' style='margin-bottom:20px;'>
+                        <table width='100%' class='table table-primary' style='margin-bottom:20px;'>
                             <tr>
                                 <th colspan='1'><center> ID NUMBER </center></th>
                                 <th colspan='3'><center> STUDENTS NAME </center></th>
@@ -96,15 +96,16 @@ include_once("navbar.php");
                                 }
                             }
 
-                            echo "<table style='border:1px solid gray;' width='100%' height='40%' class='studentDetailsTable table table-primary' >
+                            echo "<table width='100%' class='studentDetailsTable table table-primary'>
                                             <tr>
                                             
-                                                <th style='border:1px solid gray;'><center> TIME </th>
-                                                <th style='border:1px solid gray;'><center> SUBJECT </th>
-                                                <th style='border:1px solid gray;'><center> ROOM </th>
-                                                <th style='border:1px solid gray;'><center> TEACHER</th>
-                                                <th style='border:1px solid gray;'><center> BOOKS </th> 
-                                                <th class='action'  style='border:1px solid gray;'><center> ACTION </th> 
+                                               
+                                                <th style='text-align: center'> TIME </th>
+                                                <th style='text-align: center'> SUBJECT </th>
+                                                <th style='text-align: center'> ROOM </th>
+                                                <th style='text-align: center'> TEACHER</th>
+                                                <th style='text-align: center'> BOOKS </th> 
+                                                <th class='action' style='text-align: center'> ACTION </th> 
                                                 
                                             </tr>";
             
@@ -115,24 +116,24 @@ include_once("navbar.php");
                                                 $subject_description = $row['subject_description'];
                                             
                                                
-                                                echo "<td style='border:1px solid gray;'><center>". $row['start_time'] . " - " . $row['end_time'] .     "</center> </td>";
-                                                echo "<td style='border:1px solid gray;'><center>" . $row['subject_description'] . "</td>";
-                                                echo "<td  style='border:1px solid gray;'><center>". $row['room'] . "</td>";
+                                                echo "<td style='text-align: center'>". $row['start_time'] . " - " . $row['end_time'] .     "</td>";
+                                                echo "<td style='text-align: center'>" . $row['subject_description'] . "</td>";
+                                                echo "<td style='text-align: center'>" . $row['room'] . "</td>";
 
 
                                                 if (empty($row['teachers_name']) || is_null($row['teachers_name'])) {
-                                                    echo "<td  style='border:1px solid gray;'><center></td>";
+                                                    echo "<td style='text-align: center'></td>";
                                                 } else {
-                                                    echo "<td  style='border:1px solid gray;'><center>" . $row['teachers_name'] . "</td>";
+                                                    echo "<td style='text-align: center'>" . $row['teachers_name'] . "</td>";
                                                 }
                                                 if (empty($row['books']) || is_null($row['books'])) {
-                                                    echo "<td style='border:1px solid gray;'><center></td>";
+                                                    echo "<td style='text-align: center'></td>";
                                                 } else {
-                                                    echo"<td style='border:1px solid gray;'><center>" . $row['books'] . "</td>";
+                                                    echo "<td style='text-align: center'>" . $row['books'] . "</td>";
                                                 }
                                                
                                     
-                                                echo "<td style='border:1px solid gray;'><center>";
+                                                echo "<td style='text-align: center'>";
                                                 echo "<form class='action form-horizontal' method='post' action='view.edit.php' enctype='multipart/form-data'>";
                                                     echo "<input name='student_id' type='hidden' value=$student_id></input>";
                                                     echo "<input name='subject_id' type='hidden' value=$row[subject_id]></input>";

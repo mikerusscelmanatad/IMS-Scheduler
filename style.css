@@ -1,5 +1,4 @@
-.table {
-  border: 2px solid rgb(0, 0, 0);
+.Table {
   display: table;
   margin: auto;
 }
@@ -51,7 +50,7 @@
 .table,
 th,
 td {
-  border: 2px solid rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
   border-collapse: collapse;
   color: #212121;
   font-size: 15px;
@@ -59,9 +58,4 @@ td {
 th,
 td {
   background-color: #ffffff;
-  border: .5px solid black;
-  border-collapse: collapse;
-  color: #212121;
-  font-size: 15px;
-
 }
