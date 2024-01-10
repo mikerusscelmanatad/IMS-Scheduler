@@ -61,9 +61,12 @@ include_once("navbar.php");
                                                 <div class='container'>
 
                                                     <tr>
-                                                        <td style='text-align: center'> IMS - <?= $row['student_id']; ?></td>
-                                                        <td style='text-align: center'><?= $row['student_name']; ?></td>
-                                                        <td style='text-align: center'><?= $row['student_status']; ?></td>
+                                                    <B><h4>
+                                                        <td style='text-align: center'> IMS - <?= $row['student_id']; ?></td> &nbsp;&nbsp;&nbsp;
+                                                        <td style='text-align: center'><?= $row['student_name']; ?></td> &nbsp;&nbsp;&nbsp;
+                                                        <td style='text-align: center'><?= $row['student_status']; ?></td> &nbsp;&nbsp;&nbsp;
+                                                    
+                                                    </h4></B>
                                                     </tr>
 
                                                 </div>
