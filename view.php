@@ -53,7 +53,7 @@ include_once("navbar.php");
 
 
             echo "<div id='divToPrint' class='container'> 
-                        <table width='100%' class='table table-primary' style='margin-bottom:20px;'>
+                        <table class='table table-primary' style='width=100%; margin-bottom:20px; table-layout:auto;'>
                             <tr>
                                 <th colspan='1'><center> ID NUMBER </center></th>
                                 <th colspan='3'><center> STUDENTS NAME </center></th>
@@ -69,7 +69,7 @@ include_once("navbar.php");
                             $student_status = $row['student_status'];
 
                             echo "<td style= 'color:blue' colspan='1'> <B> <center> IMS - " . $row['student_id'] . "</B> </td>";
-                            echo "<td colspan='3' style='text-align: center'> <B>" . $row['student_name'] . "</B> </td>";
+                            echo "<td colspan='3' style='text-align: center'> <B>" . htmlspecialchars($row['student_name']) . "</B> </td>";
                             echo "<td colspan='2'> <center>" . $row['course_name'] . " </td>";
                             echo "<td colspan='1'> <center>" . $row['level_name'] . " </td>";
                             echo "<td colspan='1'> <center>" . $row['student_status'] . " </td>";
@@ -104,7 +104,7 @@ include_once("navbar.php");
                                 }
                             }
 
-                            echo "<table width='100%' class='studentDetailsTable table table-primary'>
+                            echo "<table width='100%' class='studentDetailsTable table table-primary' style='table-layout:auto;'>
                                             <tr>
                                             
                                                
@@ -132,12 +132,12 @@ include_once("navbar.php");
                                                 if (empty($row['teachers_name']) || is_null($row['teachers_name'])) {
                                                     echo "<td style='text-align: center'></td>";
                                                 } else {
-                                                    echo "<td style='text-align: center'>" . $row['teachers_name'] . "</td>";
+                                                    echo "<td style='text-align: center'>" . htmlspecialchars($row['teachers_name']) . "</td>";
                                                 }
                                                 if (empty($row['books']) || is_null($row['books'])) {
                                                     echo "<td style='text-align: center'></td>";
                                                 } else {
-                                                    echo "<td style='text-align: center'>" . $row['books'] . "</td>";
+                                                    echo "<td style='text-align: center'>" . htmlspecialchars($row['books']) . "</td>";
                                                 }
                                                
                                     

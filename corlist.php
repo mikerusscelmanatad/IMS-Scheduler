@@ -54,7 +54,7 @@ include_once("navbar.php");
                       ";
             $result = mysqli_query($connect, $query) or die(mysqli_error($connect));
             echo "<div class='container'>
-                    <table width='50' class='table table-primary'>
+                    <table class='table table-primary' style='width:100%;table-layout:auto;'>
                             <tr>
                                 <th>ID Number </th>
                                 <th>Students Name </th>
@@ -74,11 +74,11 @@ include_once("navbar.php");
 
                 echo "<tr>";
 
-                echo "<td style= 'color:blue'> <B><center> IMS - " . $row['student_id'] . "</td>";
-                echo "<td style='text-align: center'><B>" . $row['student_name'] . " </B></td>";
-                echo "<td style='text-align: center'>" . $row['course_name'] . "</td>";
-                echo "<td style='text-align: center'>" . $row['level_name'] . "</td>";
-                echo "<td style='text-align: center'>" . $row['student_status'] . "</td>";
+                echo "<td style= 'color:blue'> <B><center> IMS - " . htmlspecialchars($row['student_id']) . "</td>";
+                echo "<td style='text-align: center'><B>" . htmlspecialchars($student_name) . " </B></td>";
+                echo "<td style='text-align: center'>" . htmlspecialchars($row['course_name']) . "</td>";
+                echo "<td style='text-align: center'>" . htmlspecialchars($row['level_name']) . "</td>";
+                echo "<td style='text-align: center'>" . htmlspecialchars($row['student_status']) . "</td>";
 
 
                 echo "<td style='text-align: center'>
