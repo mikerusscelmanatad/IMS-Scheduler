@@ -17,7 +17,7 @@ if ($username && $password) {
 			$dbusername = $row['username'];
 			$dbpassword = $row['password'];
 		}
-		if ($username == $dbusername && ($password) == $dbpassword) {
+		if ($username == $dbusername && password_verify($password, $dbpassword)) {
 			echo '<script type="text/javascript">
 						alert("Welcome User!");
 							location="setschedule.php";

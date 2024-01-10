@@ -11,9 +11,8 @@ if (!mysqli_select_db($con, 'insertion')) {
 
 $username = $_POST['username'];
 $password = $_POST['password'];
-
-
-$sql = "INSERT INTO admin (username, password) VALUES ('$username', '$password')";
+$generatedPassword = password_hash($password, PASSWORD_BCRYPT);
+$sql = "INSERT INTO admin (username, password) VALUES ('$username', '$generatedPassword')";
 
 if (!mysqli_query($con, $sql)) {
 	echo 'not registered';
