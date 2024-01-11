@@ -12,12 +12,13 @@ include_once("navbar.php");
                 '<style type="text/css">' +
                     'table th, table td {' +
                     'border:1px solid #000;' +
-                    'padding:0.9em;' +
+                    'padding-bottom:1.2em;' +
+                    'padding:0.3em;' +
                     '}' +
                 '</style>';
             $('.action').hide();
             htmlToPrint += divToPrint.outerHTML;
-            var popupWin = window.open('', '_blank', 'width=500,height=500');
+            var popupWin = window.open('', '_blank', 'width=300,height=300');
             popupWin.document.open();
             popupWin.document.write('<html><body onload="window.print()"/>' + htmlToPrint + '</html>');
             popupWin.document.close();
@@ -46,7 +47,7 @@ include_once("navbar.php");
 
 
             echo "<div id='divToPrint' class='container'> 
-                        <table class='table table-primary' style='width=100%; margin-bottom:20px; table-layout:auto;'>
+                        <table class='table table-primary' style='width=60%; margin-bottom:20px;' table-layout:auto;'>
                             <tr>
                                 <th colspan='1'><center> ID NUMBER </center></th>
                                 <th colspan='3'><center> STUDENTS NAME </center></th>

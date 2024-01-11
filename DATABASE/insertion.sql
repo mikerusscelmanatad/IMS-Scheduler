@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2024 at 12:43 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Jan 11, 2024 at 07:54 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -322,6 +322,14 @@ CREATE TABLE `student` (
   `student_status` enum('NEW STUDENT','OLD STUDENT','NO STATUS') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `student_status`) VALUES
+(100, 'kykle  manny', 141, 2, 'OLD STUDENT'),
+(101, 'John Cortes', 143, 1, 'NEW STUDENT');
+
 -- --------------------------------------------------------
 
 --
@@ -344,6 +352,21 @@ CREATE TABLE `student_subject` (
 --
 -- Dumping data for table `student_subject`
 --
+
+INSERT INTO `student_subject` (`subject_id`, `student_id`, `room_id`, `faculty_id`, `timer_id`, `books`, `teachers_name`, `deleted`, `created_at`, `created_by`) VALUES
+(1, 1, 18, 0, 3, 'Reading Advantage 1', 'Teacher Marie', 0, '2024-01-11 06:50:06', '1'),
+(2, 1, 71, 0, 16, '---', '---', 0, '2024-01-11 06:50:06', '1'),
+(168, 1, 26, 0, 6, '', '', 0, '2024-01-11 06:50:06', '1'),
+(169, 1, 21, 0, 7, '', '', 0, '2024-01-11 06:50:06', '1'),
+(170, 1, 71, 0, 8, '', '', 0, '2024-01-11 06:50:06', '1'),
+(171, 1, 73, 0, 9, '', '', 0, '2024-01-11 06:50:06', '1'),
+(172, 1, 74, 0, 10, '', '', 0, '2024-01-11 06:50:06', '1'),
+(173, 1, 75, 0, 11, '', '', 0, '2024-01-11 06:50:06', '1'),
+(178, 1, 78, 0, 12, '', '', 0, '2024-01-11 06:50:06', '1'),
+(219, 101, 19, 0, 3, 'hhhhh', 'Teacher Marie', 0, '2024-01-11 06:52:29', '101'),
+(220, 101, 71, 0, 16, '---', '---', 0, '2024-01-11 06:52:29', '101'),
+(222, 101, 33, 0, 4, 'vocabulary 101', 'Teacher Marie', 0, '2024-01-11 06:52:29', '101'),
+(223, 101, 35, 0, 7, '101\r\n\r\n', 'Teacher Marie', 0, '2024-01-11 06:52:29', '101');
 
 -- --------------------------------------------------------
 
@@ -652,13 +675,13 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `subject`
@@ -670,7 +693,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `timer`
 --
 ALTER TABLE `timer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
