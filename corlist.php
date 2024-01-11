@@ -1,6 +1,7 @@
 <?php
 include_once("header.php");
 include_once("navbar.php");
+require 'databaasee.php';
 ?>
 <html>
 
@@ -35,17 +36,6 @@ include_once("navbar.php");
 <body> 
     <div class="container">
             <?php
-            // your database connection
-            $host       = "localhost";
-            $username   = "root";
-            $password   = "";
-            $database   = "insertion";
-
-            // select database
-            $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error($connect));
-
-                   
-            mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
 
             $query = "SELECT * FROM student AS s
                                 INNER JOIN level AS l ON s.level_id = l.level_id

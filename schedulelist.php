@@ -6,6 +6,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "header.php";
 include_once("header.php");
 include_once("navbar.php");
+require 'databaasee.php';
 ?>
 <html>
 
@@ -36,17 +37,6 @@ include_once("navbar.php");
                                 style='width: 50%; margin-bottom:10px;'/>
                             <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Search</button>
                                 <?php
-
-                                $host       = "localhost";
-                                $username   = "root";
-                                $password   = "";
-                                $database   = "insertion";
-
-                                // select database
-                                $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error($connect));
-
-
-                                mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
 
                                 if (isset($_GET["search"])) {
                                     $filtervalues = $_GET['search'];

@@ -39,14 +39,7 @@ include_once("navbar.php");
             echo "<tr>
             <td>";
             // your database connection
-            $host       = "localhost";
-            $username   = "root";
-            $password   = "";
-            $database   = "insertion";
-
-            // select database
-            $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error());
-            mysqli_select_db($connect, "insertion") or die(mysqli_error());
+            require 'databaasee.php';
 
             $query = "SELECT * FROM timer";
             $result = mysqli_query($connect, $query) or die(mysqli_error());

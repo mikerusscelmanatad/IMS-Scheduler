@@ -5,8 +5,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 if ($username && $password) {
-	$connect = mysqli_connect("localhost", "root", "") or die("couldn't connect to the database!");
-	mysqli_select_db($connect, "insertion") or die("couldn't find database!");
+	require 'databaasee.php';
 
 	$query = mysqli_query($connect, "SELECT * FROM admin WHERE username='$username'");
 

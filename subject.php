@@ -69,14 +69,7 @@ include_once("navbar.php");
     echo "<tr>
             <td>";
     // your database connection
-    $host       = "localhost";
-    $username   = "root";
-    $password   = "";
-    $database   = "insertion";
-
-    // select database
-    $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error($connect));
-    mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
+    require 'databaasee.php';
 
     $query = ("SELECT * FROM subject");
     $result = mysqli_query($connect, $query);

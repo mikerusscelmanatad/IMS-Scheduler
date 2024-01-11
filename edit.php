@@ -1,12 +1,8 @@
 <?php
 // ************** add.cor.php *********************
 // php select option value from database
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "insertion";
-// connect to database
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+require 'databaasee.php';
+
 $query = "SELECT * FROM student ";
 $result = mysqli_query($connect, $query);
 $options = "";
@@ -28,12 +24,6 @@ include_once("navbar.php");
 ?>
 
 <?php
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$database = "insertion";
-$connect = mysqli_connect($hostname, $username, $password, $database) or die(mysqli_error($connect));
-mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
 
 if (isset($_GET['id'])) {
 	$student_id = $_GET['id'];

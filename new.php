@@ -1,13 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'root', '');
-
-if (!$con) {
-  echo 'not connected to server';
-}
-if (!mysqli_select_db($con, 'insertion')) {
-  echo 'database not selected';
-}
+require 'databaasee.php';
 function getPosts()
 {
   $posts = array();

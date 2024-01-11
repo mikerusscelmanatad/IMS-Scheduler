@@ -1,11 +1,6 @@
 <?php 
 
- $link = mysqli_connect("localhost", "root", "", "insertion");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
+require 'databaasee.php';
 
 $sql = "DELETE FROM faculty";
 $result = mysqli_query($link, $sql);

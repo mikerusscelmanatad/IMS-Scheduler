@@ -1,10 +1,6 @@
 <?php
 
-$connect = mysqli_connect('localhost', 'root', '', 'insertion');
-if (!$connect) {
-  echo 'not connected to server';
-}
-mysqli_select_db($connect, 'insertion') or die(mysqli_error($connect));
+require 'databaasee.php';
 
 
 function getPosts()

@@ -11,12 +11,7 @@
 
 		<?php
 
-		$conn = mysqli_connect('localhost', 'root', '');
-		if (!$conn) {
-			die('Could not connect: ' . mysqli_error());
-		}
-		//echo 'Connected successfully' . 'iancuello';
-		mysqli_select_db("insertion", $conn);
+			require 'databaasee.php';
 		?>
 
 

@@ -1,16 +1,5 @@
 <?php
-
-// php select option value from database
-
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "insertion";
-
-// connect to mysql database
-
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
-
+require 'databaasee.php';
 // mysql select query
 $query = "SELECT * FROM `course`";
 
@@ -104,17 +93,6 @@ include_once("navbar.php");
 
 <?php
 
-// php select option value from database
-
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "insertion";
-
-// connect to mysql database
-
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
-
 // mysql select query
 $query = "SELECT * FROM `rooms`";
 
@@ -172,17 +150,6 @@ while ($row2 = mysqli_fetch_array($result2)) {
 
         </select>
         <?php
-
-        // php select option value from database
-
-        $hostname = "localhost";
-        $username = "root";
-        $password = "";
-        $databaseName = "insertion";
-
-        // connect to mysql database
-
-        $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
         // mysql select query
         $query = "SELECT * FROM `rooms`";
@@ -251,17 +218,6 @@ while ($row2 = mysqli_fetch_array($result2)) {
 
                 <?php
 
-                // php select option value from database
-
-                $hostname = "localhost";
-                $username = "root";
-                $password = "";
-                $databaseName = "insertion";
-
-                // connect to mysql database
-
-                $connect = mysqli_connect($hostname, $username, $password, $databaseName);
-
                 // mysql select query
                 $query = "SELECT * FROM `timer`";
 
@@ -327,17 +283,6 @@ while ($row2 = mysqli_fetch_array($result2)) {
 
 
                 <?php
-
-                // php select option value from database
-
-                $hostname = "localhost";
-                $username = "root";
-                $password = "";
-                $databaseName = "insertion";
-
-                // connect to mysql database
-
-                $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
                 // mysql select query
                 $query = "SELECT * FROM `timer`";

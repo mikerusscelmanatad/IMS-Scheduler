@@ -1,15 +1,8 @@
 <?php
 // ************** add.cor.php *********************
 
-// php select option value from database
+require 'databaasee.php';
 
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "insertion";
-
-// connect to database
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
 $student_id = "student_id";
 
 $query = "SELECT * FROM `student` ORDER BY student_id ASC ";
@@ -22,16 +15,6 @@ $result = mysqli_query($connect, $query);
 
 <?php
 // ************** add.cor.php *********************
-
-// php select option value from database
-
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "insertion";
-
-// connect to database
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
 $query = "SELECT * FROM `course`";
 $findAllQueryResult = mysqli_query($connect, $query);

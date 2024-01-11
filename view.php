@@ -32,14 +32,7 @@ include_once("navbar.php");
             <legend><h2>SCHEDULE</h2></legend>
             <?php
             // your database connection
-            $host       = "localhost";
-            $username   = "root";
-            $password   = "";
-            $database   = "insertion";
-
-            // select database
-            $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error($connect));
-                        mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
+            require 'databaasee.php';
 
             if (isset($_GET['id'])) {
                 $student_id = $_GET['id'];
@@ -75,10 +68,6 @@ include_once("navbar.php");
                             echo "<td colspan='1'> <center>" . $row['student_status'] . " </td>";
                         }
                         echo "</table>";
-
-                            // select database
-                            $connect = mysqli_connect($host, $username, $password, $database) or die(mysqli_error($connect));
-                            mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
 
                             if (isset($_GET['id'])) {
                                 $subject_id = mysqli_real_escape_string($connect, $_GET['id']);

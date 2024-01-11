@@ -9,14 +9,7 @@ include_once("navbar.php");
 ?>
 
 <?php
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$database = "insertion";
-
-
-$connect = mysqli_connect($hostname, $username, $password, $database) or die(mysqli_error($connect));
-mysqli_select_db($connect, "insertion") or die(mysqli_error($connect));
+require 'databaasee.php';
 
 if (isset($_GET['id'])) {
 	$subject_id = $_GET['id'];
