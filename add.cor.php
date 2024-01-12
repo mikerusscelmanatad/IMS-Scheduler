@@ -93,7 +93,7 @@ if (isset($_POST['submit'])) {
 			}
 		}
 
-		echo '	<<script type="text/javascript">
+		echo '	<script type="text/javascript">
 								alert("Student Added!");
 									location="schedulelist.php";
 									</script>';

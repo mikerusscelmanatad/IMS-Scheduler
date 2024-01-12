@@ -38,7 +38,7 @@ include_once("navbar.php");
             if (isset($_GET['id'])) {
                 $student_id = $_GET['id'];
 
-                $query = "SELECT * FROM student AS s 
+                $query = "SELECT *, s.level_id as student_level_id FROM student AS s 
                     INNER JOIN level AS l ON s.level_id = l.level_id 
                     INNER JOIN course AS c ON s.course_id = c.course_id 
                 WHERE student_id='$student_id'";
@@ -59,7 +59,7 @@ include_once("navbar.php");
                         while ($row = mysqli_fetch_assoc($result)) {
                             $student_name = $row['student_name'];
                             $student_course_id = $row['course_id'];
-                            $student_level_id = $row['level_id'];
+                            $student_level_id = $row['student_level_id'];
                             $student_status = $row['student_status'];
 
                             echo "<td style= 'color:blue' colspan='1'> <B> <center> IMS - " . $row['student_id'] . "</B> </td>";
@@ -135,6 +135,8 @@ include_once("navbar.php");
                                                 echo "<form class='action form-horizontal' method='post' action='view.edit.php' enctype='multipart/form-data'>";
                                                     echo "<input name='student_id' type='hidden' value=$student_id></input>";
                                                     echo "<input name='subject_id' type='hidden' value=$row[subject_id]></input>";
+                                                    echo "<input name='course_id' type='hidden' value=$student_course_id></input>";
+                                                    echo "<input name='level_id' type='hidden' value=$student_level_id></input>";
                                                     if ($subject_description !== "LUNCH") {
                                                         echo "<button type='submit' class='btn btn-success'>Edit</button>&nbsp;";
                                                     }
