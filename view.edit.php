@@ -113,11 +113,12 @@ $findlAllDuplicateRoomsResult = mysqli_query($connect, $findAllRooms);
 								<div class="col-md-5">
 									<select id="timer_detail" name="timer_detail" class="form-control">
 										<?php while ($row1 = mysqli_fetch_assoc($findAllPeriodResult)) :; ?>
-											<option id="<?php echo $row1["id"]; ?>" value="<?php echo $row1["id"]; ?>" <?php
-																														if ($row1["id"] === $get_student_period) {
-																															echo "selected";
-																														}
-																														?>>
+											<option id="<?php echo $row1["id"]; ?>" value="<?php echo $row1["id"]; ?>" 
+												<?php
+													if ($row1["id"] === $get_student_period) {
+														echo "selected";
+													}
+													?>>
 												<?php echo $row1["start_time"] . " - " . $row1["end_time"] ?></option>
 										<?php endwhile; ?>
 									</select>
@@ -130,12 +131,13 @@ $findlAllDuplicateRoomsResult = mysqli_query($connect, $findAllRooms);
 								<div class="col-md-5">
 									<select id="subject_description" name="subject_description" class="form-control">
 										<?php while ($row1 = mysqli_fetch_assoc($findAllSubjectResult)) :; ?>
-											<option id="<?php echo $row1["subject_id"]; ?>" value="<?php echo $row1["subject_description"]; ?>" ; <?php
-																																					if ($row1["subject_id"] === $get_subject_id) {
-																																						echo "selected";
-																																					}
-																																					?>>
-												<?php echo $row1["subject_description"]; ?></option>
+											<option id="<?php echo $row1["subject_id"]; ?>" value="<?php echo $row1["subject_description"]; ?>" ; 
+											<?php
+												if ($row1["subject_id"] === $get_subject_id) {
+													echo "selected";
+												}
+												?>>
+											<?php echo $row1["subject_description"]; ?></option>
 										<?php endwhile; ?>
 									</select>
 								</div>
@@ -148,7 +150,7 @@ $findlAllDuplicateRoomsResult = mysqli_query($connect, $findAllRooms);
 										<?php while ($row1 = mysqli_fetch_assoc($findAllRoomsResult)) :; ?>
 											<option id="<?php echo $row1["room_id"]; ?>" value="<?php echo $row1["room_id"]; ?>" 
 												<?php
-												   $optionRoomId = $row1["room_id"];
+													$optionRoomId = $row1["room_id"];
 													if ($row1["room_id"] === $get_room_id) {
 														echo "selected";
 													}
@@ -165,12 +167,14 @@ $findlAllDuplicateRoomsResult = mysqli_query($connect, $findAllRooms);
 															INNER JOIN rooms r ON f.room = r.room
 														WHERE t.id = $get_student_period  AND r.room_id = $optionRoomId AND r.is_group = 0
 														GROUP BY room_id, room_is_group HAVING COUNT(*) >= 1 ORDER BY c;";
-													$selectDuplicateQueryResult = mysqli_query($connect, $selectDuplicateQuery);
-													if (mysqli_num_rows($selectDuplicateQueryResult) > 0) {
-														echo " disabled";
-														echo " style='background-color:red;color:white;'";
-													}
-												?>>
+														$blankRoomId = 71;
+														$noRoomId = 83;
+														$selectDuplicateQueryResult = mysqli_query($connect, $selectDuplicateQuery);
+														if (mysqli_num_rows($selectDuplicateQueryResult) > 0) {
+															echo " disabled";
+															echo " style='background-color:red;color:white;'";
+														}
+														?>>
 												<?php echo $row1["room"]; ?>
 											</option>
 										<?php endwhile; ?>
@@ -183,11 +187,11 @@ $findlAllDuplicateRoomsResult = mysqli_query($connect, $findAllRooms);
 
 							<!-- Text input-->
 							<!-- <div class="form-group">
-									<label class="col-md-4 control-label" for="teacher_id"> Teachers Name </label>
-									<div class="col-md-5">
-										<input id="teacher_id" name="teacher_id" type="text" placeholder="Teachers name here" value="<?php echo htmlspecialchars($get_teacher_name) ?>" class="form-control input-md" />
-									</div>
-								</div> -->
+								<label class="col-md-4 control-label" for="teacher_id"> Teachers Name </label>
+								<div class="col-md-5">
+									<input id="teacher_id" name="teacher_id" type="text" placeholder="Teachers name here" value="<?php echo htmlspecialchars($get_teacher_name) ?>" class="form-control input-md" />
+								</div>
+							</div> -->
 
 							<!-- Text input-->
 							<div class="form-group">
@@ -217,8 +221,8 @@ $findlAllDuplicateRoomsResult = mysqli_query($connect, $findAllRooms);
 
 
 
-$path = $_SERVER['DOCUMENT_ROOT'];
-$path .= "footer.php";
-include_once("footer.php");
-include_once("navbar.php");
-?>
+			$path = $_SERVER['DOCUMENT_ROOT'];
+			$path .= "footer.php";
+			include_once("footer.php");
+			include_once("navbar.php");
+			?>

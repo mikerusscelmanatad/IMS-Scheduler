@@ -25,7 +25,7 @@ if (isset($_GET['update'])) {
 	$countResult = mysqli_num_rows($result);
 
 	if ($countResult > 0) {
-
+		$previousFacultyId = 1;
 		while ($row = mysqli_fetch_assoc($result)) {
 			$prevRoomId = $row["room_id"];
 			$prevRoomQuery = "SELECT * FROM rooms r INNER JOIN faculty f ON r.room = f.room WHERE r.room_id = $prevRoomId LIMIT 1;";
@@ -37,10 +37,20 @@ if (isset($_GET['update'])) {
 
 		$roomQuery = "SELECT * FROM rooms r INNER JOIN faculty f ON r.room = f.room WHERE r.room_id = $room_id LIMIT 1;";
 		$roomQueryResult = mysqli_query($connect, $roomQuery);
-
+		$facultyId = 1;// NO TEACHER ID
+		$teacherName = "NO TEACHER";// NO TEACHER
 		while ($roomRow = mysqli_fetch_assoc($roomQueryResult)) {
-			$teacherName = $roomRow["faculty_name"];
-			$facultyId = $roomRow["faculty_id"];
+
+			if (empty($roomRow["faculty_name"]) || is_null($roomRow["faculty_name"])) {
+				$teacherName = "NO TEACHER";// NO TEACHER NAME
+			} else {
+				$teacherName = $roomRow["faculty_name"];
+			}
+			if (empty($roomRow["faculty_id"]) || is_null($roomRow["faculty_id"])) {
+				$facultyId = 1;// NO TEACHER ID
+			} else {
+				$facultyId = $roomRow["faculty_id"];// NO TEACHER NAME
+			}
 		}
 
 		$prevFacultyDeletetQuery = "DELETE FROM `teacher_timer` WHERE teacher_id=$previousFacultyId AND timer_id=$timer_detail AND student_id=$student_id AND subject_id=$subject_id;";
@@ -54,7 +64,7 @@ if (isset($_GET['update'])) {
 		$facultyInsertQueryResult = mysqli_query($connect, $facultyInsertQuery);
 	} else {
 		$query = "INSERT INTO student_subject(subject_id, student_id, room_id, timer_id, faculty_id, books, created_by, teachers_name) 
-		VALUES($subject_id, $student_id, $room_id, $timer_detail, 0, '$book_id', $student_id, '$faculty_id')";
+		VALUES($subject_id, $student_id, $room_id, $timer_detail, 1, '$book_id', $student_id, '$faculty_id')";
 		$result = mysqli_query($connect, $query);
 	}
 

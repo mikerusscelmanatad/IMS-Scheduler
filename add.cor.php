@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 			$subject_description = $row["subject_description"];
 
 			if ($subject_description !== "LUNCH") {
-				$facultyQuery = "SELECT * FROM `faculty` WHERE faculty_id <> 0;";
+				$facultyQuery = "SELECT * FROM `faculty` WHERE faculty_id <> 1;";
 				$facultyResult = mysqli_query($connect, $facultyQuery);
 				
 				while ($facultyRow = mysqli_fetch_assoc($facultyResult)) {
@@ -76,7 +76,7 @@ if (isset($_POST['submit'])) {
 						// $facultyInsertQueryResult = mysqli_query($connect, $facultyInsertQuery);
 						$noRoomId = 71;
 						$insertStudentSubject = "INSERT INTO student_subject(subject_id, student_id, room_id, timer_id, faculty_id, books, created_by, teachers_name) 
-						VALUES($subject_subject_id, $last_student_id, $noRoomId, $subject_timer_id, 0, '', $last_student_id, '')";
+						VALUES($subject_subject_id, $last_student_id, $noRoomId, $subject_timer_id, 1, '', $last_student_id, '')";
 						$resultStudedntSubject = mysqli_query($connect, $insertStudentSubject);
 						break;
 					}
@@ -88,7 +88,7 @@ if (isset($_POST['submit'])) {
 				 * 
 				 * **/
 				$insertStudentSubject = "INSERT INTO student_subject(subject_id, student_id, room_id, timer_id, faculty_id, books, created_by, teachers_name) 
-				VALUES($subject_subject_id, $last_student_id, 71, $subject_timer_id, 0, '', $last_student_id, '')";
+				VALUES($subject_subject_id, $last_student_id, 71, $subject_timer_id, 1, '', $last_student_id, '')";
 				$resultStudedntSubject = mysqli_query($connect, $insertStudentSubject);
 			}
 		}
@@ -142,7 +142,7 @@ if (isset($_POST['submit'])) {
 
 		if ($studentChangedCourse) {
 			$insertStudentSubject = "INSERT INTO student_subject(subject_id, student_id, room_id, timer_id, faculty_id, books, created_by, teachers_name) 
-			VALUES($subject_subject_id, $student_id, $subject_room_id, $subject_timer_id, 0, '', $student_id, '')";
+			VALUES($subject_subject_id, $student_id, $subject_room_id, $subject_timer_id, 1, '', $student_id, '')";
 			$resultStudedntSubject = mysqli_query($connect, $insertStudentSubject);
 		} else {
 			$updatetStudentSubject = "UPDATE student_subject SET room_id=$subject_room_id, timer_id=$subject_timer_id 
