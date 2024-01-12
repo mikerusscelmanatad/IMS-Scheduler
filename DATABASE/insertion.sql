@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2024 at 04:37 AM
+-- Generation Time: Jan 12, 2024 at 11:03 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -87,16 +87,173 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 
 CREATE TABLE `books` (
   `book_id` int(11) NOT NULL,
-  `book_name` varchar(1000) NOT NULL
+  `book_name` varchar(1000) NOT NULL,
+  `course` varchar(50) NOT NULL,
+  `level` varchar(50) NOT NULL,
+  `book_type` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`book_id`, `book_name`) VALUES
-(1, 'Reading Advantage 1'),
-(2, 'Reading Advantage 2');
+INSERT INTO `books` (`book_id`, `book_name`, `course`, `level`, `book_type`) VALUES
+(3, 'Reading Advantage 1', 'PREMIUM', 'Beginner 1', '1.1 READING'),
+(4, 'Reading Advantage 1', 'PREMIUM', 'Elementary 2', '1.1 READING'),
+(5, 'Reading Advantage 1', 'PREMIUM', 'Elementary 3', '1.1 READING'),
+(6, 'Reading Advantage 2', 'PREMIUM', 'Pre Intermediate 4', '1.1 READING'),
+(7, 'Reading Advantage 3', 'PREMIUM', 'Intermediate 5', '1.1 READING'),
+(8, 'Reading Advantage 3', 'PREMIUM', 'Intermediate 6', '1.1 READING'),
+(9, 'Reading Advantage 4', 'PREMIUM', 'Upper Intermediate 7', '1.1 READING'),
+(10, 'Reading Advantage 4', 'PREMIUM', 'Upper Intermediate 8', '1.1 READING'),
+(11, 'Reading Explorer 4', 'PREMIUM', 'Advanced 9', '1.1 READING'),
+(12, 'Reading Explorer 4', 'PREMIUM', 'Advanced 10', '1.1 READING'),
+(13, 'Reading Explorer 4', 'PREMIUM', 'Advanced 11', '1.1 READING'),
+(14, 'Reading Explorer 4', 'PREMIUM', 'Advanced 12', '1.1 READING'),
+(15, 'Speaking Juice 1', 'PREMIUM', 'Beginner 1', '1.1 SPEAKING'),
+(16, 'Speaking Juice 1', 'PREMIUM', 'Elementary 2', '1.1 SPEAKING'),
+(17, 'Speaking Juice 1', 'PREMIUM', 'Elementary 3', '1.1 SPEAKING'),
+(18, 'SLE 1', 'PREMIUM', 'Pre Intermediate 4', '1.1 SPEAKING'),
+(19, 'SLE 2', 'PREMIUM', 'Intermediate 5', '1.1 SPEAKING'),
+(20, 'SLE 2', 'PREMIUM', 'Intermediate 6', '1.1 SPEAKING'),
+(21, 'SLE 3', 'PREMIUM', 'Upper Intermediate 7', '1.1 SPEAKING'),
+(22, 'SLE 3', 'PREMIUM', 'Upper Intermediate 8', '1.1 SPEAKING'),
+(23, 'Express yourself 1', 'PREMIUM', 'Advanced 9', '1.1 SPEAKING'),
+(24, 'Express yourself 1', 'PREMIUM', 'Advanced 10', '1.1 SPEAKING'),
+(25, 'Express yourself 1', 'PREMIUM', 'Advanced 11', '1.1 SPEAKING'),
+(26, 'Express yourself 1', 'PREMIUM', 'Advanced 12', '1.1 SPEAKING'),
+(27, 'Side by Side 1', 'PREMIUM', 'Beginner 1', '1.1 Grammar'),
+(28, 'Side by Side 1', 'PREMIUM', 'Elementary 2', '1.1 Grammar'),
+(29, 'Side by Side 1', 'PREMIUM', 'Elementary 3', '1.1 Grammar'),
+(30, 'Basic Grammar In use', 'PREMIUM', 'Pre Intermediate 4', '1.1 Grammar'),
+(31, 'Grammar in use Intermediate', 'PREMIUM', 'Intermediate 5', '1.1 Grammar'),
+(32, 'Grammar in use Intermediate', 'PREMIUM', 'Intermediate 6', '1.1 Grammar'),
+(33, 'Grammar in use Advanced', 'PREMIUM', 'Upper Intermediate 7', '1.1 Grammar'),
+(34, 'Grammar in use Advanced', 'PREMIUM', 'Upper Intermediate 8', '1.1 Grammar'),
+(35, 'Destination C1', 'PREMIUM', 'Advanced 9', '1.1 Grammar'),
+(36, 'Destination C1', 'PREMIUM', 'Advanced 10', '1.1 Grammar'),
+(37, 'Destination C1', 'PREMIUM', 'Advanced 11', '1.1 Grammar'),
+(38, 'Destination C1', 'PREMIUM', 'Advanced 12', '1.1 Grammar'),
+(39, 'Elementary Vocabulary', 'PREMIUM', 'Beginner 1', '1.1 Vocabulary'),
+(40, 'Elementary Vocabulary', 'PREMIUM', 'Elementary 2', '1.1 Vocabulary'),
+(41, 'Elementary Vocabulary', 'PREMIUM', 'Elementary 3', '1.1 Vocabulary'),
+(42, 'Inter Vocabulary', 'PREMIUM', 'Pre Intermediate 4', '1.1 Vocabulary'),
+(43, 'Inter vocabulary', 'PREMIUM', 'Intermediate 5', '1.1 Vocabulary'),
+(44, 'Inter vocabulary', 'PREMIUM', 'Intermediate 6', '1.1 Vocabulary'),
+(45, '4000 words 5', 'PREMIUM', 'Upper Intermediate 7', '1.1 Vocabulary'),
+(46, '4000 words 5', 'PREMIUM', 'Upper Intermediate 8', '1.1 Vocabulary'),
+(47, 'Destination C1', 'PREMIUM', 'Advanced 9', '1.1 Vocabulary'),
+(48, 'Destination C1', 'PREMIUM', 'Advanced 10', '1.1 Vocabulary'),
+(49, 'Destination C1', 'PREMIUM', 'Advanced 11', '1.1 Vocabulary'),
+(50, 'Destination C1', 'PREMIUM', 'Advanced 12', '1.1 Vocabulary'),
+(51, 'Real Writing 1', 'PREMIUM', 'Beginner 1', 'G  Writing'),
+(52, 'Real Writing 1', 'PREMIUM', 'Elementary 2', 'G Listening'),
+(53, 'Real Writing 1', 'PREMIUM', 'Elementary 3', 'G  Writing'),
+(54, 'Real Writing 2', 'PREMIUM', 'Pre Intermediate 4', 'G  Writing'),
+(55, 'Real Writing 3', 'PREMIUM', 'Intermediate 5', 'G  Writing'),
+(56, 'Real Writing 3', 'PREMIUM', 'Intermediate 6', 'G  Writing'),
+(57, 'Real Writing 4', 'PREMIUM', 'Upper Intermediate 7', 'G  Writing'),
+(58, 'Real Writing 4', 'PREMIUM', 'Upper Intermediate 8', 'G  Writing'),
+(59, 'Real Writing 4', 'PREMIUM', 'Advanced 9', 'G  Writing'),
+(60, 'Real Writing 4', 'PREMIUM', 'Advanced 10', 'G  Writing'),
+(61, 'Real Writing 4', 'PREMIUM', 'Advanced 11', 'G  Writing'),
+(62, 'Real Writing 4', 'PREMIUM', 'Advanced 12', 'G  Writing'),
+(63, 'Real Listening and Speaking 1', 'PREMIUM', 'Beginner 1', 'G  Listening'),
+(64, 'Real Listening and Speaking 1', 'PREMIUM', 'Elementary 2', 'G Listening'),
+(65, 'Real Listening and Speaking 1', 'PREMIUM', 'Elementary 3', 'G  Listening'),
+(66, 'Real Listening and Speaking 1', 'PREMIUM', 'Pre Intermediate 4', 'G Listening'),
+(67, 'Real Listening 2', 'PREMIUM', 'Intermediate 5', 'G  Listening'),
+(68, 'Real Listening 2', 'PREMIUM', 'Intermediate 6', 'G Listening'),
+(69, 'Real Listening 3', 'PREMIUM', 'Upper Intermediate 7', 'G  Listening'),
+(70, 'Real Listening 3', 'PREMIUM', 'Upper Intermediate 8', 'G Listening'),
+(71, 'Listening 5', 'PREMIUM', 'Advanced 9', 'G  Listening'),
+(72, 'Listening 5', 'PREMIUM', 'Advanced 10', 'G Listening'),
+(73, 'Listening 5', 'PREMIUM', 'Advanced 11', 'G  Listening'),
+(74, 'Listening 5', 'PREMIUM', 'Advanced 12', 'G Listening'),
+(75, 'Reading Advantage 1', 'INTENSIVE', 'Beginner 1', '1.1 READING'),
+(76, 'Reading Advantage 1', 'INTENSIVE', 'Elementary 2', '1.1 READING'),
+(77, 'Reading Advantage 1', 'INTENSIVE', 'Elementary 3', '1.1 READING'),
+(78, 'Reading Advantage 2', 'PREMIUM', 'Pre Intermediate 4', '1.1 READING'),
+(79, 'Reading Advantage 3', 'INTENSIVE', 'Intermediate 5', '1.1 READING'),
+(80, 'Reading Advantage 3', 'INTENSIVE', 'Intermediate 6', '1.1 READING'),
+(81, 'Reading Advantage 4', 'INTENSIVE', 'Upper Intermediate 7', '1.1 READING'),
+(82, 'Reading Advantage 4', 'INTENSIVE', 'Upper Intermediate 8', '1.1 READING'),
+(83, 'Reading explorer 4', 'INTENSIVE', 'Advanced 9', '1.1 READING'),
+(84, 'Reading explorer 4', 'INTENSIVE', 'Advanced 10', '1.1 READING'),
+(85, 'Reading explorer 4', 'INTENSIVE', 'Advanced 11', '1.1 READING'),
+(86, 'Reading explorer 4', 'INTENSIVE', 'Advanced 12', '1.1 READING'),
+(87, 'Side by Side 1', 'INTENSIVE', 'Beginner 1', '1.1 Grammar'),
+(88, 'Side by Side 1', 'INTENSIVE', 'Elementary 2', '1.1 Grammar'),
+(89, 'Side by Side 1', 'INTENSIVE', 'Elementary 3', '1.1 Grammar'),
+(90, 'Basic Grammar In use', 'INTENSIVE', 'Pre Intermediate 4', '1.1 Grammar'),
+(91, 'Grammar in use Inter', 'INTENSIVE', 'Intermediate 5', '1.1 Grammar'),
+(92, 'Grammar in use Inter', 'INTENSIVE', 'Intermediate 6', '1.1 Grammar'),
+(93, 'Grammar in use Advanced', 'INTENSIVE', 'Upper Intermediate 7', '1.1 Grammar'),
+(94, 'Grammar in use Advanced', 'INTENSIVE', 'Upper Intermediate 8', '1.1 Grammar'),
+(95, 'Destination C1', 'INTENSIVE', 'Advanced 9', '1.1 Grammar'),
+(96, 'Destination C1', 'INTENSIVE', 'Advanced 10', '1.1 Grammar'),
+(97, 'Destination C1', 'INTENSIVE', 'Advanced 11', '1.1 Grammar'),
+(98, 'Destination C1', 'INTENSIVE', 'Advanced 12', '1.1 Grammar'),
+(99, 'Elementary Vocabulary', 'INTENSIVE', 'Beginner 1', '1.1 Vocabulary'),
+(100, 'Elementary Vocabulary', 'INTENSIVE', 'Elementary 2', '1.1 Vocabulary'),
+(101, 'Elementary Vocabulary', 'INTENSIVE', 'Elementary 3', '1.1 Vocabulary'),
+(102, 'Inter Vocabulary', 'INTENSIVE', 'Pre Intermediate 4', '1.1 Vocabulary'),
+(103, 'Inter Vocabulary', 'INTENSIVE', 'Intermediate 5', '1.1 Vocabulary'),
+(104, 'Inter Vocabulary', 'INTENSIVE', 'Intermediate 6', '1.1 Vocabulary'),
+(105, '4000 words 5', 'INTENSIVE', 'Upper Intermediate 7', '1.1 Vocabulary'),
+(106, '4000 words 5', 'INTENSIVE', 'Upper Intermediate 8', '1.1 Vocabulary'),
+(107, 'Destination C1', 'INTENSIVE', 'Advanced 9', '1.1 Vocabulary'),
+(108, 'Destination C1', 'INTENSIVE', 'Advanced 10', '1.1 Vocabulary'),
+(109, 'Destination C1', 'INTENSIVE', 'Advanced 11', '1.1 Vocabulary'),
+(110, 'Destination C1', 'INTENSIVE', 'Advanced 12', '1.1 Vocabulary'),
+(111, 'Speaking Juice 1', 'INTENSIVE', 'Beginner 1', '1.1 SPEAKING'),
+(112, 'Speaking Juice 1', 'INTENSIVE', 'Elementary 2', '1.1 SPEAKING'),
+(113, 'Speaking Juice 1', 'INTENSIVE', 'Elementary 3', '1.1 SPEAKING'),
+(114, 'SLE 1', 'INTENSIVE', 'Pre Intermediate 4', '1.1 SPEAKING'),
+(115, 'SLE 2', 'INTENSIVE', 'Intermediate 5', '1.1 SPEAKING'),
+(116, 'SLE 2', 'INTENSIVE', 'Intermediate 6', '1.1 SPEAKING'),
+(117, 'SLE 3', 'INTENSIVE', 'Upper Intermediate 7', '1.1 SPEAKING'),
+(118, 'SLE 3', 'INTENSIVE', 'Upper Intermediate 8', '1.1 SPEAKING'),
+(119, 'Express yourself 1', 'INTENSIVE', 'Advanced 9', '1.1 SPEAKING'),
+(120, 'Express yourself 1', 'INTENSIVE', 'Advanced 10', '1.1 SPEAKING'),
+(121, 'Express yourself 1', 'INTENSIVE', 'Advanced 11', '1.1 SPEAKING'),
+(122, 'Express yourself 1', 'INTENSIVE', 'Advanced 12', '1.1 SPEAKING'),
+(123, 'Real Writing 1', 'INTENSIVE', 'Beginner 1', 'G  Writing'),
+(124, 'Real Writing 1', 'INTENSIVE', 'Elementary 2', 'G  Writing'),
+(125, 'Real Writing 1', 'INTENSIVE', 'Elementary 3', 'G  Writing'),
+(126, 'Real Writing 2', 'INTENSIVE', 'Pre Intermediate 4', 'G  Writing'),
+(127, 'Real Writing 3', 'INTENSIVE', 'Intermediate 5', 'G  Writing'),
+(128, 'Real Writing 3', 'INTENSIVE', 'Intermediate 6', 'G  Writing'),
+(129, 'Real Writing 4', 'INTENSIVE', 'Upper Intermediate 7', 'G  Writing'),
+(130, 'Real Writing 4', 'INTENSIVE', 'Upper Intermediate 8', 'G  Writing'),
+(131, 'Real Writing 4', 'INTENSIVE', 'Advanced 9', 'G  Writing'),
+(132, 'Real Writing 4', 'INTENSIVE', 'Advanced 10', 'G  Writing'),
+(133, 'Real Writing 4', 'INTENSIVE', 'Advanced 11', 'G  Writing'),
+(134, 'Real Writing 4', 'INTENSIVE', 'Advanced 12', 'G  Writing'),
+(135, 'Real Listening and Speaking 1', 'INTENSIVE', 'Beginner 1', 'G  Listening'),
+(136, 'Real Listening and Speaking 1', 'INTENSIVE', 'Elementary 2', 'G Listening'),
+(138, 'Real Listening and Speaking 1', 'INTENSIVE', 'Elementary 3', 'G  Listening'),
+(139, 'Real Listening and Speaking 1', 'INTENSIVE', 'Pre Intermediate 4', 'G Listening'),
+(140, 'Real Listening 2', 'INTENSIVE', 'Intermediate 5', 'G   Listening'),
+(141, 'Real Listening 2', 'INTENSIVE', 'Intermediate 6', 'G Listening'),
+(142, 'Real Listening 3', 'INTENSIVE', 'Upper Intermediate 7', 'G  Listening'),
+(143, 'Real Listening 3', 'INTENSIVE', 'Upper Intermediate 8', 'G Listening'),
+(144, 'Listening 5', 'INTENSIVE', 'Advanced 9', 'G  Listening'),
+(145, 'Listening 5', 'INTENSIVE', 'Advanced 10', 'G Listening'),
+(146, 'Listening 5', 'INTENSIVE', 'Advanced 11', 'G  Listening'),
+(147, 'Listening 5', 'INTENSIVE', 'Advanced 12', 'G Listening'),
+(148, 'Speaking Juice 1', 'POWER SPEAKING', 'Beginner 1', '1.1 SPEAKING'),
+(149, 'Speaking Juice 1', 'POWER SPEAKING', 'Elementary 2', '1.1 SPEAKING'),
+(150, 'Speaking Juice 1', 'POWER SPEAKING', 'Elementary 3', '1.1 SPEAKING'),
+(151, 'Speaking Juice 3', 'POWER SPEAKING', 'Pre Intermediate 4', '1.1 SPEAKING'),
+(152, 'SLE 1', 'POWER SPEAKING', 'Intermediate 5', '1.1 SPEAKING'),
+(153, 'SLE 1', 'POWER SPEAKING', 'Intermediate 6', '1.1 SPEAKING'),
+(154, 'SLE 2', 'POWER SPEAKING', 'Upper Intermediate 7', '1.1 SPEAKING'),
+(155, 'SLE 2', 'POWER SPEAKING', 'Upper Intermediate 8', '1.1 SPEAKING'),
+(156, 'SLE 3', 'POWER SPEAKING', 'Advanced 9', '1.1 SPEAKING'),
+(157, 'SLE 3', 'POWER SPEAKING', 'Advanced 10', '1.1 SPEAKING'),
+(158, 'SLE 3', 'POWER SPEAKING', 'Advanced 11', '1.1 SPEAKING'),
+(159, 'SLE 3', 'POWER SPEAKING', 'Advanced 12', '1.1 SPEAKING');
 
 -- --------------------------------------------------------
 
@@ -353,18 +510,23 @@ CREATE TABLE `student` (
   `student_name` varchar(250) NOT NULL,
   `course_id` int(11) NOT NULL,
   `level_id` int(11) NOT NULL,
-  `student_status` enum('NEW STUDENT','OLD STUDENT','NO STATUS') NOT NULL
+  `student_status` enum('NEW STUDENT','OLD STUDENT','NO STATUS') NOT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `student_status`) VALUES
-(101, 'John Cortes', 143, 1, 'NEW STUDENT'),
-(102, 'kykle  manny', 141, 1, 'NEW STUDENT'),
-(103, 'John Cortes', 141, 1, 'NEW STUDENT'),
-(104, 'Bae Jihyun', 142, 4, 'NEW STUDENT');
+INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `student_status`, `start_date`, `end_date`) VALUES
+(157, '1', 141, 1, 'NEW STUDENT', '2024-01-15', '2024-01-19'),
+(158, '2', 142, 1, 'NEW STUDENT', '2024-01-15', '2024-01-19'),
+(159, '3', 141, 1, 'NEW STUDENT', '2024-01-15', '2024-01-19'),
+(160, '4', 141, 1, 'NEW STUDENT', '2024-01-15', '2024-01-19'),
+(161, '5', 142, 2, 'NEW STUDENT', '2024-01-15', '2024-01-19'),
+(162, 'Lee Dooyoung', 141, 1, 'NEW STUDENT', '2024-01-15', '2024-01-19'),
+(163, 'Lee Dooyoung', 141, 3, 'NEW STUDENT', '2024-01-15', '2024-01-19');
 
 -- --------------------------------------------------------
 
@@ -393,30 +555,48 @@ INSERT INTO `student_subject` (`subject_id`, `student_id`, `room_id`, `faculty_i
 (1, 1, 18, 0, 3, 'Reading Advantage 1', 'Teacher Marie', 0, '2024-01-11 06:50:06', '1'),
 (1, 102, 19, 0, 3, 'Reading Advantage 1', 'Teacher Marie', 0, '2024-01-11 06:57:15', '102'),
 (1, 103, 35, 0, 3, 'Reading advantage 1', 'Teacher Marie', 0, '2024-01-12 02:08:50', '103'),
+(1, 162, 20, 0, 3, '', 'Teacher Sophia', 0, '2024-01-12 09:02:40', '162'),
+(1, 163, 20, 0, 3, '', 'Teacher Juliet', 0, '2024-01-12 09:03:16', '163'),
 (2, 1, 71, 0, 16, '---', '---', 0, '2024-01-11 06:50:06', '1'),
 (2, 102, 19, 0, 4, 'speaking 101', 'Teacher Marie', 0, '2024-01-11 06:57:15', '102'),
 (2, 103, 19, 0, 4, '', '', 0, '2024-01-12 02:08:50', '103'),
+(2, 162, 20, 0, 4, '', 'Teacher Sophia', 0, '2024-01-12 09:02:40', '162'),
+(2, 163, 17, 0, 4, '', '', 0, '2024-01-12 09:03:16', '163'),
 (168, 1, 26, 0, 6, '', '', 0, '2024-01-11 06:50:06', '1'),
 (168, 102, 21, 0, 6, 'Grammar 101\r\n', 'Teacher Marie', 0, '2024-01-11 06:57:15', '102'),
 (168, 103, 26, 0, 6, '', '', 0, '2024-01-12 02:08:50', '103'),
+(168, 162, 20, 0, 6, '', 'Teacher Sophia', 0, '2024-01-12 09:02:40', '162'),
+(168, 163, 21, 0, 6, '', 'Teacher Juliet', 0, '2024-01-12 09:03:16', '163'),
 (169, 1, 21, 0, 7, '', '', 0, '2024-01-11 06:50:06', '1'),
 (169, 102, 21, 0, 7, 'Vocabulary 1\r\n', 'Teacher Marie', 0, '2024-01-11 06:57:15', '102'),
 (169, 103, 21, 0, 7, '', '', 0, '2024-01-12 02:08:50', '103'),
+(169, 162, 20, 0, 7, '', 'Teacher Sophia', 0, '2024-01-12 09:02:40', '162'),
+(169, 163, 21, 0, 7, '', 'Teacher Juliet', 0, '2024-01-12 09:03:16', '163'),
 (170, 1, 71, 0, 8, '', '', 0, '2024-01-11 06:50:06', '1'),
 (170, 102, 71, 0, 8, '---', '---', 0, '2024-01-11 06:57:15', '102'),
 (170, 103, 71, 0, 8, '', '', 0, '2024-01-12 02:08:50', '103'),
+(170, 162, 71, 0, 8, '', '', 0, '2024-01-12 09:02:40', '162'),
+(170, 163, 71, 0, 8, '', '', 0, '2024-01-12 09:03:16', '163'),
 (171, 1, 73, 0, 9, '', '', 0, '2024-01-11 06:50:06', '1'),
 (171, 102, 73, 0, 9, '---', 'Teacher Marie', 0, '2024-01-11 06:57:15', '102'),
 (171, 103, 73, 0, 9, '', '', 0, '2024-01-12 02:08:50', '103'),
+(171, 162, 19, 0, 9, '', 'Teacher Nathan', 0, '2024-01-12 09:02:40', '162'),
+(171, 163, 20, 0, 9, '', 'Teacher Sophia', 0, '2024-01-12 09:03:16', '163'),
 (172, 1, 74, 0, 10, '', '', 0, '2024-01-11 06:50:06', '1'),
 (172, 102, 74, 0, 10, '---', 'Teacher Marie', 0, '2024-01-11 06:57:15', '102'),
 (172, 103, 74, 0, 10, '', '', 0, '2024-01-12 02:08:50', '103'),
+(172, 162, 21, 0, 10, '', 'Teacher Juliet', 0, '2024-01-12 09:02:40', '162'),
+(172, 163, 22, 0, 10, '', 'Teacher Marilou\r\n', 0, '2024-01-12 09:03:16', '163'),
 (173, 1, 75, 0, 11, '', '', 0, '2024-01-11 06:50:06', '1'),
 (173, 102, 75, 0, 11, '---', 'Teacher Marie', 0, '2024-01-11 06:57:15', '102'),
 (173, 103, 75, 0, 11, '', '', 0, '2024-01-12 02:08:50', '103'),
+(173, 162, 20, 0, 11, '', 'Teacher Sophia', 0, '2024-01-12 09:02:40', '162'),
+(173, 163, 21, 0, 11, '', 'Teacher Juliet', 0, '2024-01-12 09:03:16', '163'),
 (178, 1, 78, 0, 12, '', '', 0, '2024-01-11 06:50:06', '1'),
 (178, 102, 71, 0, 16, '---', '---', 0, '2024-01-11 06:57:15', '102'),
 (178, 103, 78, 0, 12, '', '', 0, '2024-01-12 02:08:50', '103'),
+(178, 162, 20, 0, 12, '', 'Teacher Sophia', 0, '2024-01-12 09:02:40', '162'),
+(178, 163, 21, 0, 12, '', 'Teacher Juliet', 0, '2024-01-12 09:03:16', '163'),
 (179, 104, 23, 0, 16, '', '', 0, '2024-01-12 02:11:36', '104'),
 (180, 104, 24, 0, 4, '', '', 0, '2024-01-12 02:11:36', '104'),
 (181, 104, 25, 0, 6, '', '', 0, '2024-01-12 02:11:36', '104'),
@@ -566,6 +746,66 @@ INSERT INTO `subject` (`subject_id`, `subject_type`, `subject_description`, `sub
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `teacher_timer`
+--
+
+CREATE TABLE `teacher_timer` (
+  `teacher_id` int(11) NOT NULL,
+  `timer_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `teacher_timer`
+--
+
+INSERT INTO `teacher_timer` (`teacher_id`, `timer_id`, `student_id`, `subject_id`) VALUES
+(35, 3, 157, 1),
+(37, 3, 159, 1),
+(38, 3, 162, 1),
+(39, 3, 163, 1),
+(35, 4, 157, 2),
+(37, 4, 159, 2),
+(38, 4, 162, 2),
+(39, 4, 163, 2),
+(35, 6, 157, 168),
+(37, 6, 159, 168),
+(38, 6, 162, 168),
+(39, 6, 163, 168),
+(35, 7, 157, 169),
+(37, 7, 159, 169),
+(38, 7, 162, 169),
+(39, 7, 163, 169),
+(35, 9, 157, 171),
+(36, 9, 159, 171),
+(37, 9, 162, 171),
+(38, 9, 163, 171),
+(35, 10, 157, 172),
+(38, 10, 159, 172),
+(39, 10, 162, 172),
+(40, 10, 163, 172),
+(35, 11, 157, 173),
+(37, 11, 159, 173),
+(38, 11, 162, 173),
+(39, 11, 163, 173),
+(35, 12, 157, 178),
+(37, 12, 159, 178),
+(38, 12, 162, 178),
+(39, 12, 163, 178),
+(36, 3, 158, 179),
+(36, 4, 158, 180),
+(36, 6, 158, 181),
+(36, 7, 158, 182),
+(36, 10, 158, 184),
+(37, 10, 158, 187),
+(36, 11, 158, 188),
+(36, 12, 158, 189),
+(35, 13, 158, 190);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `timer`
 --
 
@@ -590,7 +830,6 @@ INSERT INTO `timer` (`id`, `start_time`, `end_time`) VALUES
 (11, '2:50', '3:35'),
 (12, '3:45', '4:30'),
 (13, '4:40', '5:25'),
-(14, '6:00 pm', '7:00 pm'),
 (15, 'NO TIME', 'NO TIME'),
 (16, '---', '---');
 
@@ -684,6 +923,16 @@ ALTER TABLE `subject`
   ADD KEY `fk_faculty_id` (`faculty_id`);
 
 --
+-- Indexes for table `teacher_timer`
+--
+ALTER TABLE `teacher_timer`
+  ADD PRIMARY KEY (`teacher_id`,`timer_id`,`student_id`),
+  ADD KEY `fk_tt_teacher_id` (`teacher_id`),
+  ADD KEY `fk_tt_timer_id` (`timer_id`),
+  ADD KEY `fk_tt_student_id` (`student_id`),
+  ADD KEY `fk_tt_subject_id` (`subject_id`);
+
+--
 -- Indexes for table `timer`
 --
 ALTER TABLE `timer`
@@ -709,7 +958,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
 -- AUTO_INCREMENT for table `course`
@@ -745,7 +994,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
 -- AUTO_INCREMENT for table `subject`
@@ -793,6 +1042,15 @@ ALTER TABLE `subject`
   ADD CONSTRAINT `fk_period_id` FOREIGN KEY (`timer_id`) REFERENCES `timer` (`id`),
   ADD CONSTRAINT `fk_room_id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`),
   ADD CONSTRAINT `subject_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`);
+
+--
+-- Constraints for table `teacher_timer`
+--
+ALTER TABLE `teacher_timer`
+  ADD CONSTRAINT `fk_tt_student_id` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`),
+  ADD CONSTRAINT `fk_tt_subject_id` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`),
+  ADD CONSTRAINT `fk_tt_teacher_id` FOREIGN KEY (`teacher_id`) REFERENCES `faculty` (`faculty_id`),
+  ADD CONSTRAINT `fk_tt_timer_id` FOREIGN KEY (`timer_id`) REFERENCES `timer` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
