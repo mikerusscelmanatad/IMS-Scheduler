@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2024 at 10:54 AM
+-- Generation Time: Jan 12, 2024 at 11:03 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -241,7 +241,19 @@ INSERT INTO `books` (`book_id`, `book_name`, `course`, `level`, `book_type`) VAL
 (144, 'Listening 5', 'INTENSIVE', 'Advanced 9', 'G  Listening'),
 (145, 'Listening 5', 'INTENSIVE', 'Advanced 10', 'G Listening'),
 (146, 'Listening 5', 'INTENSIVE', 'Advanced 11', 'G  Listening'),
-(147, 'Listening 5', 'INTENSIVE', 'Advanced 12', 'G Listening');
+(147, 'Listening 5', 'INTENSIVE', 'Advanced 12', 'G Listening'),
+(148, 'Speaking Juice 1', 'POWER SPEAKING', 'Beginner 1', '1.1 SPEAKING'),
+(149, 'Speaking Juice 1', 'POWER SPEAKING', 'Elementary 2', '1.1 SPEAKING'),
+(150, 'Speaking Juice 1', 'POWER SPEAKING', 'Elementary 3', '1.1 SPEAKING'),
+(151, 'Speaking Juice 3', 'POWER SPEAKING', 'Pre Intermediate 4', '1.1 SPEAKING'),
+(152, 'SLE 1', 'POWER SPEAKING', 'Intermediate 5', '1.1 SPEAKING'),
+(153, 'SLE 1', 'POWER SPEAKING', 'Intermediate 6', '1.1 SPEAKING'),
+(154, 'SLE 2', 'POWER SPEAKING', 'Upper Intermediate 7', '1.1 SPEAKING'),
+(155, 'SLE 2', 'POWER SPEAKING', 'Upper Intermediate 8', '1.1 SPEAKING'),
+(156, 'SLE 3', 'POWER SPEAKING', 'Advanced 9', '1.1 SPEAKING'),
+(157, 'SLE 3', 'POWER SPEAKING', 'Advanced 10', '1.1 SPEAKING'),
+(158, 'SLE 3', 'POWER SPEAKING', 'Advanced 11', '1.1 SPEAKING'),
+(159, 'SLE 3', 'POWER SPEAKING', 'Advanced 12', '1.1 SPEAKING');
 
 -- --------------------------------------------------------
 
@@ -946,7 +958,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
 -- AUTO_INCREMENT for table `course`
