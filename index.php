@@ -7,11 +7,10 @@ include_once("header.php");
 
 <head>
 	<meta charset="utf-8">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 	<style>
-		
 		body {
 			background-image: url();
 			background-color: white;
@@ -21,20 +20,22 @@ include_once("header.php");
 
 <body>
 
-		<div class="container"> 
-			<br>
-			<center>
-			<img src = "photo/imslogo.png" alt="IMS Academy logo" class="logo" width="200" height="100">
-			</center>
-			
-		</div>
+	<div class="container">
+		<br>
+		<center>
+			<img src="photo/imslogo.png" alt="IMS Academy logo" class="logo" width="200" height="100">
+		</center>
+
+	</div>
 
 	<div class="content">
 		<div class="form">
 			<form class="form-horizontal" method="post" action="login.php">
 				<fieldset>
 
-					<legend><center>IMS SCHEDULER </center></legend>
+					<legend>
+						<center>IMS SCHEDULER </center>
+					</legend>
 
 
 					<br>

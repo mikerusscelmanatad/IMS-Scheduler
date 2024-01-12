@@ -1,4 +1,3 @@
-
 <?php
 // ************** add.cor.php *********************
 
@@ -39,39 +38,59 @@ include_once("navbar.php");
 <head>
 
 
- 
+
 	<style>
-		 body {
-           
-		   background-color: white;
-		   color: black;
-	   }
+		body {
 
-	   th {
-		   text-align: center;
-	   }   
+			background-color: white;
+			color: black;
+		}
 
-	   tr {
-		   height: 10px;
-	   }
+		th {
+			text-align: center;
+		}
 
-	   td {
-		   padding-top: 5px;
-		   padding-left: 20px;
-		   padding-bottom: 5px;
-		   height: 20px;
-	   }
+		tr {
+			height: 10px;
+		}
 
+		td {
+			padding-top: 5px;
+			padding-left: 20px;
+			padding-bottom: 5px;
+			height: 20px;
+		}
 	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var dateToday = new Date();
+			$("#startDatePicker").datepicker({
+				dateFormat: "yy-mm-dd",
+				minDate: dateToday,
+				autoclose: true
+			}).on("change", function() {
+				var date = $(this).val();
+				console.log(date, 'START DATE change');
+			});
+			$("#endDatePicker").datepicker({
+				dateFormat: "yy-mm-dd",
+				minDate: dateToday,
+				autoclose: true
+			}).on("change", function() {
+				var date = $(this).val();
+				console.log(date, 'END DATE change');
+			});
+		});
+	</script>
+
 </head>
 
 <body>
-
 	<br>
-	
+
 	<div class="container container-fluid">
-		
-		<div class="form-group" align="center" >
+
+		<div class="form-group" align="center">
 			<div class="form">
 				<div class="jumbotron">
 					IMS ACADEMY
@@ -79,15 +98,17 @@ include_once("navbar.php");
 						<fieldset>
 
 							<!-- Form Name -->
-							<legend><h3> STUDENT INFORMATION </h3>  </legend> <br> <br>
-	   						
-							
+							<legend>
+								<h3> STUDENT INFORMATION </h3>
+							</legend> <br> <br>
+
+
 							<div class="form-group">
-									<label class="col-md-4 control-label" for="student_status"> Please select </label>
-									<div class="col-md-4">
+								<label class="col-md-4 control-label" for="student_status"> Please select </label>
+								<div class="col-md-4">
 									<input type="radio" id="student_status" name="student_status" value="OLD STUDENT" />
 									<label for="student_status">Old Student</label> &nbsp; &nbsp;
-									<input  type="radio" id="student_status" name="student_status" value="NEW STUDENT" />
+									<input type="radio" id="student_status" name="student_status" value="NEW STUDENT" />
 									<label for="student_status"> New student </label>
 								</div>
 							</div>
@@ -97,50 +118,78 @@ include_once("navbar.php");
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="student_name">Students Name </label>
 								<div class="col-md-4">
-									<input class="form-control" id="student_name" name="student_name" type="text" placeholder="Name here "  required="">
+									<input class="form-control" id="student_name" name="student_name" type="text" placeholder="Name here " required="">
 								</div>
 							</div>
 
 
 							<!-- Text input-->
-							
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="student_course"> Course </label>
-									<div class="col-md-4">
-										<select  class="form-control" id="student_course" name="student_course">
-											<option value="Select">Select</option>
-											<?php while ($row1 = mysqli_fetch_array($findAllQueryResult)) :; ?>
-												<option id=<?php echo $row1['course_id']; ?> value="<?php echo $row1['course_id']; ?>"><?php echo $row1['course_name']; ?></option>
-											<?php endwhile; ?>
-										</select>
-									</div>
+
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="student_course"> Course </label>
+								<div class="col-md-4">
+									<select class="form-control" id="student_course" name="student_course">
+										<option value="Select">Select</option>
+										<?php while ($row1 = mysqli_fetch_array($findAllQueryResult)) :; ?>
+											<option id=<?php echo $row1['course_id']; ?> value="<?php echo $row1['course_id']; ?>"><?php echo $row1['course_name']; ?></option>
+										<?php endwhile; ?>
+									</select>
 								</div>
+							</div>
 
 
-							
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="student_level"> Level </label>
-										<div class="col-md-4">
-											<select id="student_level" name="student_level" class="form-control">
-												<option value="Select">Select</option>
-												<?php while ($row1 = mysqli_fetch_array($findAllLevelResult)) :; ?>
-													<option id=<?php echo $row1['level_id']; ?> value="<?php echo $row1['level_id']; ?>"><?php echo $row1['level_name']; ?></option>
-												<?php endwhile; ?>
-											</select>
+
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="student_level"> Level </label>
+								<div class="col-md-4">
+									<select id="student_level" name="student_level" class="form-control">
+										<option value="Select">Select</option>
+										<?php while ($row1 = mysqli_fetch_array($findAllLevelResult)) :; ?>
+											<option id=<?php echo $row1['level_id']; ?> value="<?php echo $row1['level_id']; ?>"><?php echo $row1['level_name']; ?></option>
+										<?php endwhile; ?>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group" style="z-index: auto;">
+								<label class="col-md-4 control-label" for="startDatePicker"> Start Date: </label>
+								<div class="col-md-4">
+									<div>
+										<div class='input-group date'>
+											<input id="startDatePicker" name="startDatePicker" type='text' class="form-control" required/>
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar"></span>
+											</span>
 										</div>
-								</div>
-
-
-
-									<!-- Button -->
-								<div class="form-group" align="right">
-								<label class="col-md-4 control-label" for="submit"></label>
-									<div class="col-md-4">
-											<button align="right" id="submit" name="submit" class="btn btn-success"> Proceed </button>
 									</div>
 								</div>
-				
-						
+							</div>
+
+
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="endDatePicker"> End Date: </label>
+								<div class="col-md-4">
+									<div>
+										<div class='input-group date'>
+											<input id="endDatePicker" name="endDatePicker" type="text" class="form-control" required/>
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar"></span>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<!-- Button -->
+							<div class="form-group" align="right">
+								<label class="col-md-4 control-label" for="submit"></label>
+								<div class="col-md-4">
+									<button align="right" id="submit" name="submit" class="btn btn-success"> Proceed </button>
+								</div>
+							</div>
+
+
 						</fieldset>
 					</form>
 				</div>
@@ -148,9 +197,9 @@ include_once("navbar.php");
 		</div>
 	</div>
 
-<?php
-$path = $_SERVER['DOCUMENT_ROOT'];
-$path .= "footer.php";
-include_once("footer.php");
-include_once("navbar.php");
-?>
+	<?php
+	$path = $_SERVER['DOCUMENT_ROOT'];
+	$path .= "footer.php";
+	include_once("footer.php");
+	include_once("navbar.php");
+	?>
