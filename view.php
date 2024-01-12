@@ -12,7 +12,7 @@ include_once("navbar.php");
                 '<style type="text/css">' +
                     'table th, table td {' +
                     'border:1px solid #000;' +
-                    'padding-bottom:1em;' +
+                    'padding-bottom:0.3em;' +
                     'padding:0.3em;' +
                     '}' +
                 '</style>';
