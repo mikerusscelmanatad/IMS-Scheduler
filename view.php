@@ -135,7 +135,10 @@ include_once("navbar.php");
                                                 echo "<form class='action form-horizontal' method='post' action='view.edit.php' enctype='multipart/form-data'>";
                                                     echo "<input name='student_id' type='hidden' value=$student_id></input>";
                                                     echo "<input name='subject_id' type='hidden' value=$row[subject_id]></input>";
-                                                    echo "<button type='submit' class='btn btn-success'>Edit</button>&nbsp;";
+                                                    if ($subject_description !== "LUNCH") {
+                                                        echo "<button type='submit' class='btn btn-success'>Edit</button>&nbsp;";
+                                                    }
+                                                    
                                                     // echo "<a href='view.edit.php?id=" . $row['subject_id'] . "' class='action btn btn-success'>Edit</a> &nbsp;";
                                                 echo "</td>";
                                                 echo "</tr>";

@@ -71,12 +71,12 @@ if (isset($_POST['submit'])) {
 							$roomId = $roomRow["room_id"];
 						}
 
-						$facultyInsertQuery = "INSERT INTO `teacher_timer`(`teacher_id`, `timer_id`, `student_id`, `subject_id`)
-							VALUES($facultyId, $subject_timer_id, $last_student_id, $subject_subject_id);";
-						$facultyInsertQueryResult = mysqli_query($connect, $facultyInsertQuery);
-
+						// $facultyInsertQuery = "INSERT INTO `teacher_timer`(`teacher_id`, `timer_id`, `student_id`, `subject_id`)
+						// 	VALUES($facultyId, $subject_timer_id, $last_student_id, $subject_subject_id);";
+						// $facultyInsertQueryResult = mysqli_query($connect, $facultyInsertQuery);
+						$noRoomId = 71;
 						$insertStudentSubject = "INSERT INTO student_subject(subject_id, student_id, room_id, timer_id, faculty_id, books, created_by, teachers_name) 
-						VALUES($subject_subject_id, $last_student_id, $roomId, $subject_timer_id, 0, '', $last_student_id, '$teacherName')";
+						VALUES($subject_subject_id, $last_student_id, $noRoomId, $subject_timer_id, 0, '', $last_student_id, '')";
 						$resultStudedntSubject = mysqli_query($connect, $insertStudentSubject);
 						break;
 					}

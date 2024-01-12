@@ -65,14 +65,16 @@ include_once("navbar.php");
 		$(document).ready(function() {
 			var dateToday = new Date();
 			$("#startDatePicker").datepicker({
+				beforeShowDay: $.datepicker.noWeekends,
 				dateFormat: "yy-mm-dd",
 				minDate: dateToday,
-				autoclose: true
+				autoclose: true,
 			}).on("change", function() {
 				var date = $(this).val();
 				console.log(date, 'START DATE change');
 			});
 			$("#endDatePicker").datepicker({
+				beforeShowDay: $.datepicker.noWeekends,
 				dateFormat: "yy-mm-dd",
 				minDate: dateToday,
 				autoclose: true
