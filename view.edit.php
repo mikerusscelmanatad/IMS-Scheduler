@@ -148,12 +148,12 @@ $findAllRoomsResult = mysqli_query($connect, $findAllRooms);
 								
 					
 								<!-- Text input-->
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label class="col-md-4 control-label" for="teacher_id"> Teachers Name </label>
 									<div class="col-md-5">
 										<input id="teacher_id" name="teacher_id" type="text" placeholder="Teachers name here" value="<?php echo htmlspecialchars($get_teacher_name) ?>" class="form-control input-md" />
 									</div>
-								</div>
+								</div> -->
 
 								<!-- Text input-->
 								<div class="form-group">
