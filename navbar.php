@@ -14,7 +14,7 @@ include_once("header.php");
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="setschedule.php"><!--BUPC --> <em> IMS </em> Scheduler </a>
+        <a class="navbar-brand" href="setschedule.php"><!--BUPC !--> <em> IMS </em> Scheduler </a>
       </div>
       <div>
 
@@ -31,7 +31,7 @@ include_once("header.php");
           <!-- <li><a href="list.php"><span class="glyphicon glyphicon-list"></span> List</a></li>
           <li><a href="tablelist.php"><span class="glyphicon glyphicon-calendar"></span> Schedule</a></li> -->
           <li><a href="schedulelist.php"><span class="glyphicon glyphicon-calendar"></span> View Schedule</a></li>
-
+          <li><a href="teacherlist.list.php"><span class="glyphicon glyphicon-calendar"></span> Teacher Schedule</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="Index.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>

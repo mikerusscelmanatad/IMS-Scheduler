@@ -12,8 +12,8 @@ include_once("navbar.php");
                 '<style type="text/css">' +
                     'table th, table td {' +
                     'border:1px solid #000;' +
-                    'padding-bottom:0.3em;' +
-                    'padding:0.3em;' +
+                    'padding-bottom:0;' +
+                    'padding:0;' +
                     '}' +
                 '</style>';
             $('.action').hide();
@@ -47,7 +47,7 @@ include_once("navbar.php");
 
 
             echo "<div id='divToPrint' class='container'> 
-                        <table class='table table-primary' style='width=70%; margin-bottom:20px;' table-layout:auto;'>
+                        <table class='table table-primary' style='width=70%;' table-layout:auto;'>
                             <tr>
                                 <th colspan='1'><center> ID NUMBER </center></th>
                                 <th colspan='3'><center> STUDENTS NAME </center></th>

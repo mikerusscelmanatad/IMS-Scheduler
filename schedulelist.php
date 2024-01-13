@@ -92,11 +92,7 @@ require 'databaasee.php';
             include_once("corlist.php");
         ?>
 
-        <legend class="text-center"> TEACHERS' SCHEDULE </legend>
-
-        <?php
-            include_once("teacherlist.php");
-        ?>
+        
 </body>
 
 </html>
