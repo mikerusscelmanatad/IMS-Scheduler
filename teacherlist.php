@@ -100,7 +100,7 @@ require 'databaasee.php';
                                     border-radius: 50%;
                                     color: white;
                                     display: inline-block;
-                                    padding:10px;'>BOOKED
+                                    padding:10px;'> OCCUPIED
                                 </div>
                             </b>
                         </td>";
@@ -112,7 +112,7 @@ require 'databaasee.php';
                                         background-color: 8BC34A;
                                         color: white;
                                         display: inline-block;
-                                        padding:0px;'>AVAILABLE
+                                        padding:0px;'>VACANT
                                     </div>
                                     </b>
                                 </td>";
@@ -139,26 +139,26 @@ require 'databaasee.php';
                         foreach($roomIdArray as $arr) {
                             if (in_array($arr, $roomIdArrayFromDb)) {
                                 echo "<td align='center' height='50' style='background-color:red;'>
-                                    <b><div style='
-                                            height: 80px;
-                                            width: 80px;
-                                            background-color: red;
-                                            border-radius: 50%;
-                                            color: white;
-                                            display: inline-block;
-                                            padding:10px;'>BOOKED
-                                        </div>
-                                    </b>
-                                </td>";
-                            } else {
-                                echo "<td align='center' height='50' style='background-color:skyblue;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:10px;'> OCCUPIED
+                                </div>
+                            </b>
+                        </td>";
+                    } else {
+                        echo "<td align='center' height='50' style='background-color:skyblue;'>
                                     <b><div style='
                                         height: 80px;
                                         width: 80px;
                                         background-color: 8BC34A;
                                         color: white;
                                         display: inline-block;
-                                        padding:0px;'>AVAILABLE
+                                        padding:0px;'>VACANT
                                     </div>
                                     </b>
                                 </td>";
@@ -185,29 +185,29 @@ require 'databaasee.php';
                         foreach($roomIdArray as $arr) {
                             if (in_array($arr, $roomIdArrayFromDb)) {
                                 echo "<td align='center' height='50' style='background-color:red;'>
-                                    <b><div style='
-                                            height: 80px;
-                                            width: 80px;
-                                            background-color: red;
-                                            border-radius: 50%;
-                                            color: white;
-                                            display: inline-block;
-                                            padding:10px;'>BOOKED
-                                        </div>
-                                    </b>
-                                </td>";
-                            } else {
-                                echo "<td align='center' height='50' style='background-color:skyblue;'>
-                                <b><div style='
+                             <b><div style='
                                     height: 80px;
                                     width: 80px;
-                                    background-color: 8BC34A;
+                                    background-color: red;
+                                    border-radius: 50%;
                                     color: white;
                                     display: inline-block;
-                                    padding:0px;'>AVAILABLE
+                                    padding:10px;'> OCCUPIED
                                 </div>
-                                </b>
-                            </td>";
+                            </b>
+                        </td>";
+                    } else {
+                        echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                    <b><div style='
+                                        height: 80px;
+                                        width: 80px;
+                                        background-color: 8BC34A;
+                                        color: white;
+                                        display: inline-block;
+                                        padding:0px;'>VACANT
+                                    </div>
+                                    </b>
+                                </td>";
                             }
                         }
                 echo "</tr>
@@ -231,29 +231,29 @@ require 'databaasee.php';
                         foreach($roomIdArray as $arr) {
                             if (in_array($arr, $roomIdArrayFromDb)) {
                                 echo "<td align='center' height='50' style='background-color:red;'>
-                                    <b><div style='
-                                            height: 80px;
-                                            width: 80px;
-                                            background-color: red;
-                                            border-radius: 50%;
-                                            color: white;
-                                            display: inline-block;
-                                            padding:10px;'>BOOKED
-                                        </div>
-                                    </b>
-                                </td>";
-                            } else {
-                                echo "<td align='center' height='50' style='background-color:skyblue;'>
-                                <b><div style='
+                             <b><div style='
                                     height: 80px;
                                     width: 80px;
-                                    background-color: 8BC34A;
+                                    background-color: red;
+                                    border-radius: 50%;
                                     color: white;
                                     display: inline-block;
-                                    padding:0px;'>AVAILABLE
+                                    padding:10px;'> OCCUPIED
                                 </div>
-                                </b>
-                            </td>";
+                            </b>
+                        </td>";
+                    } else {
+                        echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                    <b><div style='
+                                        height: 80px;
+                                        width: 80px;
+                                        background-color: 8BC34A;
+                                        color: white;
+                                        display: inline-block;
+                                        padding:0px;'>VACANT
+                                    </div>
+                                    </b>
+                                </td>";
                             }
                         }
                 echo "</tr>
@@ -277,29 +277,29 @@ require 'databaasee.php';
                         foreach($roomIdArray as $arr) {
                             if (in_array($arr, $roomIdArrayFromDb)) {
                                 echo "<td align='center' height='50' style='background-color:red;'>
-                                    <b><div style='
-                                            height: 80px;
-                                            width: 80px;
-                                            background-color: red;
-                                            border-radius: 50%;
-                                            color: white;
-                                            display: inline-block;
-                                            padding:10px;'>BOOKED
-                                        </div>
-                                    </b>
-                                </td>";
-                            } else {
-                                echo "<td align='center' height='50' style='background-color:skyblue;'>
-                                    <b><div style='
-                                        height: 80px;
-                                        width: 80px;
-                                        background-color: 8BC34A;
-                                        color: white;
-                                        display: inline-block;
-                                        padding:0px;'>AVAILABLE
-                                    </div>
-                                    </b>
-                                </td>";
+                                <b><div style='
+                                       height: 80px;
+                                       width: 80px;
+                                       background-color: red;
+                                       border-radius: 50%;
+                                       color: white;
+                                       display: inline-block;
+                                       padding:10px;'> OCCUPIED
+                                   </div>
+                               </b>
+                           </td>";
+                       } else {
+                           echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                       <b><div style='
+                                           height: 80px;
+                                           width: 80px;
+                                           background-color: 8BC34A;
+                                           color: white;
+                                           display: inline-block;
+                                           padding:0px;'>VACANT
+                                       </div>
+                                       </b>
+                                   </td>";
                             }
                         }
                 echo "</tr>
@@ -323,29 +323,29 @@ require 'databaasee.php';
                         foreach($roomIdArray as $arr) {
                             if (in_array($arr, $roomIdArrayFromDb)) {
                                 echo "<td align='center' height='50' style='background-color:red;'>
-                                    <b><div style='
-                                            height: 80px;
-                                            width: 80px;
-                                            background-color: red;
-                                            border-radius: 50%;
-                                            color: white;
-                                            display: inline-block;
-                                            padding:10px;'>BOOKED
-                                        </div>
-                                    </b>
-                                </td>";
-                            } else {
-                                echo "<td align='center' height='50' style='background-color:skyblue;'>
-                                    <b><div style='
-                                        height: 80px;
-                                        width: 80px;
-                                        background-color: 8BC34A;
-                                        color: white;
-                                        display: inline-block;
-                                        padding:0px;'>AVAILABLE
-                                    </div>
-                                    </b>
-                                </td>";
+                                <b><div style='
+                                       height: 80px;
+                                       width: 80px;
+                                       background-color: red;
+                                       border-radius: 50%;
+                                       color: white;
+                                       display: inline-block;
+                                       padding:10px;'> OCCUPIED
+                                   </div>
+                               </b>
+                           </td>";
+                       } else {
+                           echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                       <b><div style='
+                                           height: 80px;
+                                           width: 80px;
+                                           background-color: 8BC34A;
+                                           color: white;
+                                           display: inline-block;
+                                           padding:0px;'>VACANT
+                                       </div>
+                                       </b>
+                                   </td>";
                             }
                         }
                echo "</tr>
@@ -369,29 +369,29 @@ require 'databaasee.php';
                         foreach($roomIdArray as $arr) {
                             if (in_array($arr, $roomIdArrayFromDb)) {
                                 echo "<td align='center' height='50' style='background-color:red;'>
-                                    <b><div style='
-                                            height: 80px;
-                                            width: 80px;
-                                            background-color: red;
-                                            border-radius: 50%;
-                                            color: white;
-                                            display: inline-block;
-                                            padding:10px;'>BOOKED
-                                        </div>
-                                    </b>
-                                </td>";
-                            } else {
-                                echo "<td align='center' height='50' style='background-color:skyblue;'>
-                                    <b><div style='
-                                        height: 80px;
-                                        width: 80px;
-                                        background-color: 8BC34A;
-                                        color: white;
-                                        display: inline-block;
-                                        padding:0px;'>AVAILABLE
-                                    </div>
-                                    </b>
-                                </td>";
+                                <b><div style='
+                                       height: 80px;
+                                       width: 80px;
+                                       background-color: red;
+                                       border-radius: 50%;
+                                       color: white;
+                                       display: inline-block;
+                                       padding:10px;'> OCCUPIED
+                                   </div>
+                               </b>
+                           </td>";
+                       } else {
+                           echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                       <b><div style='
+                                           height: 80px;
+                                           width: 80px;
+                                           background-color: 8BC34A;
+                                           color: white;
+                                           display: inline-block;
+                                           padding:0px;'>VACANT
+                                       </div>
+                                       </b>
+                                   </td>";
                             }
                         }
                 echo "</tr>
@@ -415,29 +415,29 @@ require 'databaasee.php';
                         foreach($roomIdArray as $arr) {
                             if (in_array($arr, $roomIdArrayFromDb)) {
                                 echo "<td align='center' height='50' style='background-color:red;'>
-                                    <b><div style='
-                                            height: 80px;
-                                            width: 80px;
-                                            background-color: red;
-                                            border-radius: 50%;
-                                            color: white;
-                                            display: inline-block;
-                                            padding:10px;'>BOOKED
-                                        </div>
-                                    </b>
-                                </td>";
-                            } else {
-                                echo "<td align='center' height='50' style='background-color:skyblue;'>
-                                    <b><div style='
-                                        height: 80px;
-                                        width: 80px;
-                                        background-color: 8BC34A;
-                                        color: white;
-                                        display: inline-block;
-                                        padding:0px;'>AVAILABLE
-                                    </div>
-                                    </b>
-                                </td>";
+                                <b><div style='
+                                       height: 80px;
+                                       width: 80px;
+                                       background-color: red;
+                                       border-radius: 50%;
+                                       color: white;
+                                       display: inline-block;
+                                       padding:10px;'> OCCUPIED
+                                   </div>
+                               </b>
+                           </td>";
+                       } else {
+                           echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                       <b><div style='
+                                           height: 80px;
+                                           width: 80px;
+                                           background-color: 8BC34A;
+                                           color: white;
+                                           display: inline-block;
+                                           padding:0px;'>VACANT
+                                       </div>
+                                       </b>
+                                   </td>";
                             }
                         }
                 echo "</tr>
@@ -461,29 +461,29 @@ require 'databaasee.php';
                         foreach($roomIdArray as $arr) {
                             if (in_array($arr, $roomIdArrayFromDb)) {
                                 echo "<td align='center' height='50' style='background-color:red;'>
-                                    <b><div style='
-                                            height: 80px;
-                                            width: 80px;
-                                            background-color: red;
-                                            border-radius: 50%;
-                                            color: white;
-                                            display: inline-block;
-                                            padding:10px;'>BOOKED
-                                        </div>
-                                    </b>
-                                </td>";
-                            } else {
-                                echo "<td align='center' height='50' style='background-color:skyblue;'>
-                                    <b><div style='
-                                        height: 80px;
-                                        width: 80px;
-                                        background-color: 8BC34A;
-                                        color: white;
-                                        display: inline-block;
-                                        padding:0px;'>AVAILABLE
-                                    </div>
-                                    </b>
-                                </td>";
+                                <b><div style='
+                                       height: 80px;
+                                       width: 80px;
+                                       background-color: red;
+                                       border-radius: 50%;
+                                       color: white;
+                                       display: inline-block;
+                                       padding:10px;'> OCCUPIED
+                                   </div>
+                               </b>
+                           </td>";
+                       } else {
+                           echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                       <b><div style='
+                                           height: 80px;
+                                           width: 80px;
+                                           background-color: 8BC34A;
+                                           color: white;
+                                           display: inline-block;
+                                           padding:0px;'>VACANT
+                                       </div>
+                                       </b>
+                                   </td>";
                             }
                         }
                echo"</tr>
