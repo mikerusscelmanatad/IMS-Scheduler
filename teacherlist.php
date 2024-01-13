@@ -75,7 +75,7 @@ require 'databaasee.php';
 
                 echo "<tr>
                     <td align='center' height='50'>
-                        <b>08:30 AM - 09:15 AM</b>";
+                        <b>08:30 - 09:15</b>";
                 echo "</td>";
                 $selectAllTeacherQuery = "SELECT s.student_name, f.faculty_name, s.course_id, s.level_id, r.room 
                  FROM teacher_timer tt 
@@ -105,23 +105,23 @@ require 'databaasee.php';
                             </b>
                         </td>";
                     } else {
-                        echo "<td align='center' height='50' style='background-color:#8BC34A;'>
-                            <b><div style='
-                                height: 80px;
-                                width: 80px;
-                                background-color: 8BC34A;
-                                color: white;
-                                display: inline-block;
-                                padding:10px;'>AVAILABLE
-                            </div>
-                            </b>
-                        </td>";
+                        echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                    <b><div style='
+                                        height: 80px;
+                                        width: 80px;
+                                        background-color: 8BC34A;
+                                        color: white;
+                                        display: inline-block;
+                                        padding:0px;'>AVAILABLE
+                                    </div>
+                                    </b>
+                                </td>";
                     }
                 }
                 echo "</tr>
                 <tr>
                     <td align='center' height='50'>
-                        <b>09:25 AM - 10:10 AM</b>
+                        <b>09:25 - 10:10</b>
                     </td>";
                     $selectAllTeacherQuery = "SELECT s.student_name, f.faculty_name, s.course_id, s.level_id, r.room 
                         FROM teacher_timer tt 
@@ -151,14 +151,14 @@ require 'databaasee.php';
                                     </b>
                                 </td>";
                             } else {
-                                echo "<td align='center' height='50' style='background-color:#8BC34A;'>
+                                echo "<td align='center' height='50' style='background-color:skyblue;'>
                                     <b><div style='
                                         height: 80px;
                                         width: 80px;
                                         background-color: 8BC34A;
                                         color: white;
                                         display: inline-block;
-                                        padding:10px;'>AVAILABLE
+                                        padding:0px;'>AVAILABLE
                                     </div>
                                     </b>
                                 </td>";
@@ -167,7 +167,7 @@ require 'databaasee.php';
                 echo "</tr>
                 <tr>
                     <td align='center' height='50'>
-                        <b>10:20 AM - 11:05 AM</b>
+                        <b>10:20 - 11:05</b>
                     </td>";
                     $selectAllTeacherQuery = "SELECT s.student_name, f.faculty_name, s.course_id, s.level_id, r.room 
                         FROM teacher_timer tt 
@@ -197,23 +197,23 @@ require 'databaasee.php';
                                     </b>
                                 </td>";
                             } else {
-                                echo "<td align='center' height='50' style='background-color:#8BC34A;'>
-                                    <b><div style='
-                                        height: 80px;
-                                        width: 80px;
-                                        background-color: 8BC34A;
-                                        color: white;
-                                        display: inline-block;
-                                        padding:10px;'>AVAILABLE
-                                    </div>
-                                    </b>
-                                </td>";
+                                echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: 8BC34A;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>AVAILABLE
+                                </div>
+                                </b>
+                            </td>";
                             }
                         }
                 echo "</tr>
                 <tr>
                     <td align='center' height='50'>
-                        <b>11:15 AM - 12:00 NN</b>
+                        <b>11:15 - 12:00</b>
                     </td>";
                     $selectAllTeacherQuery = "SELECT s.student_name, f.faculty_name, s.course_id, s.level_id, r.room 
                         FROM teacher_timer tt 
@@ -243,23 +243,23 @@ require 'databaasee.php';
                                     </b>
                                 </td>";
                             } else {
-                                echo "<td align='center' height='50' style='background-color:#8BC34A;'>
-                                    <b><div style='
-                                        height: 80px;
-                                        width: 80px;
-                                        background-color: 8BC34A;
-                                        color: white;
-                                        display: inline-block;
-                                        padding:10px;'>AVAILABLE
-                                    </div>
-                                    </b>
-                                </td>";
+                                echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: 8BC34A;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>AVAILABLE
+                                </div>
+                                </b>
+                            </td>";
                             }
                         }
                 echo "</tr>
                 <tr>
                     <td align='center' height='50'>
-                        <b>01:00 PM - 01:45 PM</b>
+                        <b>01:00 - 01:45</b>
                     </td>";
                     $selectAllTeacherQuery = "SELECT s.student_name, f.faculty_name, s.course_id, s.level_id, r.room 
                         FROM teacher_timer tt 
@@ -289,14 +289,14 @@ require 'databaasee.php';
                                     </b>
                                 </td>";
                             } else {
-                                echo "<td align='center' height='50' style='background-color:#8BC34A;'>
+                                echo "<td align='center' height='50' style='background-color:skyblue;'>
                                     <b><div style='
                                         height: 80px;
                                         width: 80px;
                                         background-color: 8BC34A;
                                         color: white;
                                         display: inline-block;
-                                        padding:10px;'>AVAILABLE
+                                        padding:0px;'>AVAILABLE
                                     </div>
                                     </b>
                                 </td>";
@@ -305,7 +305,7 @@ require 'databaasee.php';
                 echo "</tr>
                 <tr>
                     <td align='center' height='50'>
-                        <b>01:55 PM - 02:40 PM</b>
+                        <b>01:55 - 02:40</b>
                     </td>";
                     $selectAllTeacherQuery = "SELECT s.student_name, f.faculty_name, s.course_id, s.level_id, r.room 
                         FROM teacher_timer tt 
@@ -335,14 +335,14 @@ require 'databaasee.php';
                                     </b>
                                 </td>";
                             } else {
-                                echo "<td align='center' height='50' style='background-color:#8BC34A;'>
+                                echo "<td align='center' height='50' style='background-color:skyblue;'>
                                     <b><div style='
                                         height: 80px;
                                         width: 80px;
                                         background-color: 8BC34A;
                                         color: white;
                                         display: inline-block;
-                                        padding:10px;'>AVAILABLE
+                                        padding:0px;'>AVAILABLE
                                     </div>
                                     </b>
                                 </td>";
@@ -351,7 +351,7 @@ require 'databaasee.php';
                echo "</tr>
                 <tr>
                     <td align='center' height='50'>
-                        <b>02:50 PM - 03:35 PM</b>
+                        <b>02:50 - 03:35</b>
                     </td>";
                     $selectAllTeacherQuery = "SELECT s.student_name, f.faculty_name, s.course_id, s.level_id, r.room 
                         FROM teacher_timer tt 
@@ -381,14 +381,14 @@ require 'databaasee.php';
                                     </b>
                                 </td>";
                             } else {
-                                echo "<td align='center' height='50' style='background-color:#8BC34A;'>
+                                echo "<td align='center' height='50' style='background-color:skyblue;'>
                                     <b><div style='
                                         height: 80px;
                                         width: 80px;
                                         background-color: 8BC34A;
                                         color: white;
                                         display: inline-block;
-                                        padding:10px;'>AVAILABLE
+                                        padding:0px;'>AVAILABLE
                                     </div>
                                     </b>
                                 </td>";
@@ -397,7 +397,7 @@ require 'databaasee.php';
                 echo "</tr>
                 <tr>
                     <td align='center' height='50'>
-                        <b>03:45 PM - 04:30 PM</b>
+                        <b>03:45 - 04:30</b>
                     </td>";
                     $selectAllTeacherQuery = "SELECT s.student_name, f.faculty_name, s.course_id, s.level_id, r.room 
                         FROM teacher_timer tt 
@@ -427,14 +427,14 @@ require 'databaasee.php';
                                     </b>
                                 </td>";
                             } else {
-                                echo "<td align='center' height='50' style='background-color:#8BC34A;'>
+                                echo "<td align='center' height='50' style='background-color:skyblue;'>
                                     <b><div style='
                                         height: 80px;
                                         width: 80px;
                                         background-color: 8BC34A;
                                         color: white;
                                         display: inline-block;
-                                        padding:10px;'>AVAILABLE
+                                        padding:0px;'>AVAILABLE
                                     </div>
                                     </b>
                                 </td>";
@@ -443,7 +443,7 @@ require 'databaasee.php';
                 echo "</tr>
                 <tr>
                     <td align='center' height='50'>
-                        <b>04:40 PM - 05:25 PM</b>
+                        <b>04:40 - 05:25</b>
                     </td>";
                     $selectAllTeacherQuery = "SELECT s.student_name, f.faculty_name, s.course_id, s.level_id, r.room 
                         FROM teacher_timer tt 
@@ -473,14 +473,14 @@ require 'databaasee.php';
                                     </b>
                                 </td>";
                             } else {
-                                echo "<td align='center' height='50' style='background-color:#8BC34A;'>
+                                echo "<td align='center' height='50' style='background-color:skyblue;'>
                                     <b><div style='
                                         height: 80px;
                                         width: 80px;
                                         background-color: 8BC34A;
                                         color: white;
                                         display: inline-block;
-                                        padding:10px;'>AVAILABLE
+                                        padding:0px;'>AVAILABLE
                                     </div>
                                     </b>
                                 </td>";
