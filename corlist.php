@@ -93,7 +93,6 @@ require 'databaasee.php';
                 $student_id = mysqli_real_escape_string($connect, $_POST['student_id']);
                 $sql = mysqli_query($connect, "DELETE FROM teacher_timer WHERE student_id='$student_id'");
                 $sql = mysqli_query($connect, "DELETE FROM student_subject WHERE student_id='$student_id'");
-                $sql = mysqli_query($connect, "DELETE FROM student WHERE student_id='$student_id'");
                 if (!$sql) {
                     echo ("Could not delete rows" . mysqli_error($connect));
                 }
