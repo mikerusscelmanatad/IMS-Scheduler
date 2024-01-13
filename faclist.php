@@ -46,12 +46,16 @@ include_once("navbar.php");
                             <tr>
                                 <th> Courses </th> 
                                 <th>Designation</th>
+                                <th>room</th>
                                  <th>Action</th>
                             </tr>";
       while ($row = mysqli_fetch_assoc($result)) {
+        
         echo "<tr>";
         echo "<td>" . $row['faculty_name'] . "</td>";
         echo "<td>" . $row['designation'] . "</td>";
+        echo "<td>" . $row['room'] . "</td>";
+
         echo "<td><form class='form-horizontal' method='post' action='faclist.php'>
                         <input name='faculty_id' type='hidden' value='" . $row['faculty_id'] . "';>
                         <input type='submit' class='btn btn-danger' name='delete' value='Delete'>
@@ -87,11 +91,12 @@ include_once("navbar.php");
       if ($_SERVER['REQUEST_METHOD'] == "POST") {
         echo '<script type="text/javascript">
                           alert("row Successfuly Deleted");
-                            location="courselist.php";
+                            location="addteacher.php";
                               </script>';
       }
       if (isset($_POST['faculty_id'])) {
         $faculty_id = mysqli_real_escape_string($connect, $_POST['faculty_id']);
+
         $sql = mysqli_query($connect, "DELETE FROM faculty WHERE faculty_id='$faculty_id'");
         if (!$sql) {
           echo ("Could not delete rows" . mysqli_error($con));

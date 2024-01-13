@@ -39,7 +39,8 @@ require 'databaasee.php';
 </head>
 
 <body>
-    <div class="" style="margin:20px">
+
+    <div class="" style="margin:10px">
         <?php
 
                 $query = "SELECT f.room AS teacher_room_name, 

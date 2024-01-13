@@ -16,12 +16,18 @@ include_once("navbar.php");
 
 <body>
 
-  <div align="center">
-    <?php
-    include_once("addfaculty.php");
-    ?>
 
-
+<div class="container">
+		<div class="row" align="center">
+			<div class="">
+				<div class="jumbotron">
+              <div class="form-group">
+                <?php
+                    include_once("addfaculty.php");
+                  ?>	
+								</div>
+							</div>
+              
     <div align="center">
       <?php
       include_once("faclist.php");
