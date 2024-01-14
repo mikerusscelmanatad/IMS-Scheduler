@@ -90,21 +90,52 @@ require 'databaasee.php';
                     INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
                     INNER JOIN rooms r ON r.room_id = f.room
                     INNER JOIN student s ON tt.student_id = s.student_id
-                WHERE tt.timer_id = 3;";
+                WHERE tt.timer_id = 3 AND tt.room_id IS NULL;";
                 $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
-                $roomIdArrayFromDb = array();
+                $roomIdArrayForOneFromDb = array();
                 $count=0;
                 while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
                     $selectRoom = $selectAllTeacherRow["room"];
                     $selectStudent = $selectAllTeacherRow["student_name"];
-                    $roomIdArrayFromDb[$count] = new RoomDetails();
-                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
-                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $roomIdArrayForOneFromDb[$count] = new RoomDetails();
+                    $roomIdArrayForOneFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayForOneFromDb[$count]->roomDetailStudentName = $selectStudent;
                     $count++;
                 }
+                $selectGroupTeacherQuery = "SELECT s.student_name, s.course_id, s.level_id, r.room 
+                FROM teacher_timer tt 
+                   INNER JOIN timer t ON tt.timer_id = t.id
+                   INNER JOIN rooms r ON r.room_id = tt.room_id
+                   INNER JOIN student s ON tt.student_id = s.student_id
+               WHERE tt.timer_id = 3;";
+               $selectGroupTeacherQueryResult = mysqli_query($connect, $selectGroupTeacherQuery) or die(mysqli_error($connect));
+               $roomIdArrayForGroupFromDb = array();
+               $count=0;
+               while ($selectAllTeacherRow = mysqli_fetch_assoc($selectGroupTeacherQueryResult)) {
+                   $selectRoom = $selectAllTeacherRow["room"];
+                   $selectStudent = $selectAllTeacherRow["student_name"];
+                   $roomIdArrayForGroupFromDb[$count] = new RoomDetails();
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailRoomName = $selectRoom;
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailStudentName = $selectStudent;
+                   $count++;
+               }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                    if (in_array($arr, array_column($roomIdArrayForOneFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayForOneFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayForOneFromDb[$counter]->roomDetailStudentName: "...";
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else if (in_array($arr, array_column($roomIdArrayForGroupFromDb, "roomDetailRoomName"))) {
                         $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
@@ -144,21 +175,52 @@ require 'databaasee.php';
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
                             INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
-                        WHERE tt.timer_id = 4;";
-                        $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
-                        $roomIdArrayFromDb = array();
-                        $count=0;
+                            WHERE tt.timer_id = 4 AND tt.room_id IS NULL;";
+                $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
+                $roomIdArrayForOneFromDb = array();
+                $count=0;
                 while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
                     $selectRoom = $selectAllTeacherRow["room"];
                     $selectStudent = $selectAllTeacherRow["student_name"];
-                    $roomIdArrayFromDb[$count] = new RoomDetails();
-                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
-                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $roomIdArrayForOneFromDb[$count] = new RoomDetails();
+                    $roomIdArrayForOneFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayForOneFromDb[$count]->roomDetailStudentName = $selectStudent;
                     $count++;
                 }
+                $selectGroupTeacherQuery = "SELECT s.student_name, s.course_id, s.level_id, r.room 
+                FROM teacher_timer tt 
+                   INNER JOIN timer t ON tt.timer_id = t.id
+                   INNER JOIN rooms r ON r.room_id = tt.room_id
+                   INNER JOIN student s ON tt.student_id = s.student_id
+               WHERE tt.timer_id = 4;";
+               $selectGroupTeacherQueryResult = mysqli_query($connect, $selectGroupTeacherQuery) or die(mysqli_error($connect));
+               $roomIdArrayForGroupFromDb = array();
+               $count=0;
+               while ($selectAllTeacherRow = mysqli_fetch_assoc($selectGroupTeacherQueryResult)) {
+                   $selectRoom = $selectAllTeacherRow["room"];
+                   $selectStudent = $selectAllTeacherRow["student_name"];
+                   $roomIdArrayForGroupFromDb[$count] = new RoomDetails();
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailRoomName = $selectRoom;
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailStudentName = $selectStudent;
+                   $count++;
+               }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                    if (in_array($arr, array_column($roomIdArrayForOneFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayForOneFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayForOneFromDb[$counter]->roomDetailStudentName: "...";
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else if (in_array($arr, array_column($roomIdArrayForGroupFromDb, "roomDetailRoomName"))) {
                         $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
@@ -198,21 +260,52 @@ require 'databaasee.php';
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
                             INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
-                        WHERE tt.timer_id = 6;";
-                        $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
-                        $roomIdArrayFromDb = array();
-                        $count=0;
+                            WHERE tt.timer_id = 6 AND tt.room_id IS NULL;";
+                $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
+                $roomIdArrayForOneFromDb = array();
+                $count=0;
                 while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
                     $selectRoom = $selectAllTeacherRow["room"];
                     $selectStudent = $selectAllTeacherRow["student_name"];
-                    $roomIdArrayFromDb[$count] = new RoomDetails();
-                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
-                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $roomIdArrayForOneFromDb[$count] = new RoomDetails();
+                    $roomIdArrayForOneFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayForOneFromDb[$count]->roomDetailStudentName = $selectStudent;
                     $count++;
                 }
+                $selectGroupTeacherQuery = "SELECT s.student_name, s.course_id, s.level_id, r.room 
+                FROM teacher_timer tt 
+                   INNER JOIN timer t ON tt.timer_id = t.id
+                   INNER JOIN rooms r ON r.room_id = tt.room_id
+                   INNER JOIN student s ON tt.student_id = s.student_id
+               WHERE tt.timer_id = 6;";
+               $selectGroupTeacherQueryResult = mysqli_query($connect, $selectGroupTeacherQuery) or die(mysqli_error($connect));
+               $roomIdArrayForGroupFromDb = array();
+               $count=0;
+               while ($selectAllTeacherRow = mysqli_fetch_assoc($selectGroupTeacherQueryResult)) {
+                   $selectRoom = $selectAllTeacherRow["room"];
+                   $selectStudent = $selectAllTeacherRow["student_name"];
+                   $roomIdArrayForGroupFromDb[$count] = new RoomDetails();
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailRoomName = $selectRoom;
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailStudentName = $selectStudent;
+                   $count++;
+               }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                    if (in_array($arr, array_column($roomIdArrayForOneFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayForOneFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayForOneFromDb[$counter]->roomDetailStudentName: "...";
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else if (in_array($arr, array_column($roomIdArrayForGroupFromDb, "roomDetailRoomName"))) {
                         $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
@@ -252,21 +345,52 @@ require 'databaasee.php';
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
                             INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
-                        WHERE tt.timer_id = 7;";
-                        $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
-                        $roomIdArrayFromDb = array();
-                        $count=0;
+                            WHERE tt.timer_id = 7 AND tt.room_id IS NULL;";
+                $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
+                $roomIdArrayForOneFromDb = array();
+                $count=0;
                 while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
                     $selectRoom = $selectAllTeacherRow["room"];
                     $selectStudent = $selectAllTeacherRow["student_name"];
-                    $roomIdArrayFromDb[$count] = new RoomDetails();
-                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
-                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $roomIdArrayForOneFromDb[$count] = new RoomDetails();
+                    $roomIdArrayForOneFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayForOneFromDb[$count]->roomDetailStudentName = $selectStudent;
                     $count++;
                 }
+                $selectGroupTeacherQuery = "SELECT s.student_name, s.course_id, s.level_id, r.room 
+                FROM teacher_timer tt 
+                   INNER JOIN timer t ON tt.timer_id = t.id
+                   INNER JOIN rooms r ON r.room_id = tt.room_id
+                   INNER JOIN student s ON tt.student_id = s.student_id
+               WHERE tt.timer_id = 7;";
+               $selectGroupTeacherQueryResult = mysqli_query($connect, $selectGroupTeacherQuery) or die(mysqli_error($connect));
+               $roomIdArrayForGroupFromDb = array();
+               $count=0;
+               while ($selectAllTeacherRow = mysqli_fetch_assoc($selectGroupTeacherQueryResult)) {
+                   $selectRoom = $selectAllTeacherRow["room"];
+                   $selectStudent = $selectAllTeacherRow["student_name"];
+                   $roomIdArrayForGroupFromDb[$count] = new RoomDetails();
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailRoomName = $selectRoom;
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailStudentName = $selectStudent;
+                   $count++;
+               }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                    if (in_array($arr, array_column($roomIdArrayForOneFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayForOneFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayForOneFromDb[$counter]->roomDetailStudentName: "...";
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else if (in_array($arr, array_column($roomIdArrayForGroupFromDb, "roomDetailRoomName"))) {
                         $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
@@ -306,21 +430,52 @@ require 'databaasee.php';
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
                             INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
-                        WHERE tt.timer_id = 9;";
-                        $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
-                        $roomIdArrayFromDb = array();
-                        $count=0;
+                            WHERE tt.timer_id = 9 AND tt.room_id IS NULL;";
+                $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
+                $roomIdArrayForOneFromDb = array();
+                $count=0;
                 while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
                     $selectRoom = $selectAllTeacherRow["room"];
                     $selectStudent = $selectAllTeacherRow["student_name"];
-                    $roomIdArrayFromDb[$count] = new RoomDetails();
-                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
-                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $roomIdArrayForOneFromDb[$count] = new RoomDetails();
+                    $roomIdArrayForOneFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayForOneFromDb[$count]->roomDetailStudentName = $selectStudent;
                     $count++;
                 }
+                $selectGroupTeacherQuery = "SELECT s.student_name, s.course_id, s.level_id, r.room 
+                FROM teacher_timer tt 
+                   INNER JOIN timer t ON tt.timer_id = t.id
+                   INNER JOIN rooms r ON r.room_id = tt.room_id
+                   INNER JOIN student s ON tt.student_id = s.student_id
+               WHERE tt.timer_id = 9;";
+               $selectGroupTeacherQueryResult = mysqli_query($connect, $selectGroupTeacherQuery) or die(mysqli_error($connect));
+               $roomIdArrayForGroupFromDb = array();
+               $count=0;
+               while ($selectAllTeacherRow = mysqli_fetch_assoc($selectGroupTeacherQueryResult)) {
+                   $selectRoom = $selectAllTeacherRow["room"];
+                   $selectStudent = $selectAllTeacherRow["student_name"];
+                   $roomIdArrayForGroupFromDb[$count] = new RoomDetails();
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailRoomName = $selectRoom;
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailStudentName = $selectStudent;
+                   $count++;
+               }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                    if (in_array($arr, array_column($roomIdArrayForOneFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayForOneFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayForOneFromDb[$counter]->roomDetailStudentName: "...";
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else if (in_array($arr, array_column($roomIdArrayForGroupFromDb, "roomDetailRoomName"))) {
                         $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
@@ -360,21 +515,52 @@ require 'databaasee.php';
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
                             INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
-                        WHERE tt.timer_id = 10;";
-                        $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
-                        $roomIdArrayFromDb = array();
-                        $count=0;
+                            WHERE tt.timer_id = 10 AND tt.room_id IS NULL;";
+                $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
+                $roomIdArrayForOneFromDb = array();
+                $count=0;
                 while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
                     $selectRoom = $selectAllTeacherRow["room"];
                     $selectStudent = $selectAllTeacherRow["student_name"];
-                    $roomIdArrayFromDb[$count] = new RoomDetails();
-                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
-                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $roomIdArrayForOneFromDb[$count] = new RoomDetails();
+                    $roomIdArrayForOneFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayForOneFromDb[$count]->roomDetailStudentName = $selectStudent;
                     $count++;
                 }
+                $selectGroupTeacherQuery = "SELECT s.student_name, s.course_id, s.level_id, r.room 
+                FROM teacher_timer tt 
+                   INNER JOIN timer t ON tt.timer_id = t.id
+                   INNER JOIN rooms r ON r.room_id = tt.room_id
+                   INNER JOIN student s ON tt.student_id = s.student_id
+               WHERE tt.timer_id = 10;";
+               $selectGroupTeacherQueryResult = mysqli_query($connect, $selectGroupTeacherQuery) or die(mysqli_error($connect));
+               $roomIdArrayForGroupFromDb = array();
+               $count=0;
+               while ($selectAllTeacherRow = mysqli_fetch_assoc($selectGroupTeacherQueryResult)) {
+                   $selectRoom = $selectAllTeacherRow["room"];
+                   $selectStudent = $selectAllTeacherRow["student_name"];
+                   $roomIdArrayForGroupFromDb[$count] = new RoomDetails();
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailRoomName = $selectRoom;
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailStudentName = $selectStudent;
+                   $count++;
+               }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                    if (in_array($arr, array_column($roomIdArrayForOneFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayForOneFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayForOneFromDb[$counter]->roomDetailStudentName: "...";
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else if (in_array($arr, array_column($roomIdArrayForGroupFromDb, "roomDetailRoomName"))) {
                         $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
@@ -414,21 +600,52 @@ require 'databaasee.php';
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
                             INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
-                        WHERE tt.timer_id = 11;";
-                        $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
-                        $roomIdArrayFromDb = array();
-                        $count=0;
+                            WHERE tt.timer_id = 11 AND tt.room_id IS NULL;";
+                $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
+                $roomIdArrayForOneFromDb = array();
+                $count=0;
                 while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
                     $selectRoom = $selectAllTeacherRow["room"];
                     $selectStudent = $selectAllTeacherRow["student_name"];
-                    $roomIdArrayFromDb[$count] = new RoomDetails();
-                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
-                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $roomIdArrayForOneFromDb[$count] = new RoomDetails();
+                    $roomIdArrayForOneFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayForOneFromDb[$count]->roomDetailStudentName = $selectStudent;
                     $count++;
                 }
+                $selectGroupTeacherQuery = "SELECT s.student_name, s.course_id, s.level_id, r.room 
+                FROM teacher_timer tt 
+                   INNER JOIN timer t ON tt.timer_id = t.id
+                   INNER JOIN rooms r ON r.room_id = tt.room_id
+                   INNER JOIN student s ON tt.student_id = s.student_id
+               WHERE tt.timer_id = 11;";
+               $selectGroupTeacherQueryResult = mysqli_query($connect, $selectGroupTeacherQuery) or die(mysqli_error($connect));
+               $roomIdArrayForGroupFromDb = array();
+               $count=0;
+               while ($selectAllTeacherRow = mysqli_fetch_assoc($selectGroupTeacherQueryResult)) {
+                   $selectRoom = $selectAllTeacherRow["room"];
+                   $selectStudent = $selectAllTeacherRow["student_name"];
+                   $roomIdArrayForGroupFromDb[$count] = new RoomDetails();
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailRoomName = $selectRoom;
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailStudentName = $selectStudent;
+                   $count++;
+               }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                    if (in_array($arr, array_column($roomIdArrayForOneFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayForOneFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayForOneFromDb[$counter]->roomDetailStudentName: "...";
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else if (in_array($arr, array_column($roomIdArrayForGroupFromDb, "roomDetailRoomName"))) {
                         $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
@@ -468,21 +685,52 @@ require 'databaasee.php';
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
                             INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
-                        WHERE tt.timer_id = 12;";
-                        $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
-                        $roomIdArrayFromDb = array();
-                        $count=0;
+                            WHERE tt.timer_id = 12 AND tt.room_id IS NULL;";
+                $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
+                $roomIdArrayForOneFromDb = array();
+                $count=0;
                 while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
                     $selectRoom = $selectAllTeacherRow["room"];
                     $selectStudent = $selectAllTeacherRow["student_name"];
-                    $roomIdArrayFromDb[$count] = new RoomDetails();
-                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
-                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $roomIdArrayForOneFromDb[$count] = new RoomDetails();
+                    $roomIdArrayForOneFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayForOneFromDb[$count]->roomDetailStudentName = $selectStudent;
                     $count++;
                 }
+                $selectGroupTeacherQuery = "SELECT s.student_name, s.course_id, s.level_id, r.room 
+                FROM teacher_timer tt 
+                   INNER JOIN timer t ON tt.timer_id = t.id
+                   INNER JOIN rooms r ON r.room_id = tt.room_id
+                   INNER JOIN student s ON tt.student_id = s.student_id
+               WHERE tt.timer_id = 12;";
+               $selectGroupTeacherQueryResult = mysqli_query($connect, $selectGroupTeacherQuery) or die(mysqli_error($connect));
+               $roomIdArrayForGroupFromDb = array();
+               $count=0;
+               while ($selectAllTeacherRow = mysqli_fetch_assoc($selectGroupTeacherQueryResult)) {
+                   $selectRoom = $selectAllTeacherRow["room"];
+                   $selectStudent = $selectAllTeacherRow["student_name"];
+                   $roomIdArrayForGroupFromDb[$count] = new RoomDetails();
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailRoomName = $selectRoom;
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailStudentName = $selectStudent;
+                   $count++;
+               }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                    if (in_array($arr, array_column($roomIdArrayForOneFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayForOneFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayForOneFromDb[$counter]->roomDetailStudentName: "...";
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else if (in_array($arr, array_column($roomIdArrayForGroupFromDb, "roomDetailRoomName"))) {
                         $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
@@ -522,21 +770,52 @@ require 'databaasee.php';
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
                             INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
-                        WHERE tt.timer_id = 13;";
-                        $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
-                        $roomIdArrayFromDb = array();
-                        $count=0;
+                            WHERE tt.timer_id = 13 AND tt.room_id IS NULL;";
+                $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
+                $roomIdArrayForOneFromDb = array();
+                $count=0;
                 while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
                     $selectRoom = $selectAllTeacherRow["room"];
                     $selectStudent = $selectAllTeacherRow["student_name"];
-                    $roomIdArrayFromDb[$count] = new RoomDetails();
-                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
-                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $roomIdArrayForOneFromDb[$count] = new RoomDetails();
+                    $roomIdArrayForOneFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayForOneFromDb[$count]->roomDetailStudentName = $selectStudent;
                     $count++;
                 }
+                $selectGroupTeacherQuery = "SELECT s.student_name, s.course_id, s.level_id, r.room 
+                FROM teacher_timer tt 
+                   INNER JOIN timer t ON tt.timer_id = t.id
+                   INNER JOIN rooms r ON r.room_id = tt.room_id
+                   INNER JOIN student s ON tt.student_id = s.student_id
+               WHERE tt.timer_id = 13;";
+               $selectGroupTeacherQueryResult = mysqli_query($connect, $selectGroupTeacherQuery) or die(mysqli_error($connect));
+               $roomIdArrayForGroupFromDb = array();
+               $count=0;
+               while ($selectAllTeacherRow = mysqli_fetch_assoc($selectGroupTeacherQueryResult)) {
+                   $selectRoom = $selectAllTeacherRow["room"];
+                   $selectStudent = $selectAllTeacherRow["student_name"];
+                   $roomIdArrayForGroupFromDb[$count] = new RoomDetails();
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailRoomName = $selectRoom;
+                   $roomIdArrayForGroupFromDb[$count]->roomDetailStudentName = $selectStudent;
+                   $count++;
+               }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                    if (in_array($arr, array_column($roomIdArrayForOneFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayForOneFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayForOneFromDb[$counter]->roomDetailStudentName: "...";
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else if (in_array($arr, array_column($roomIdArrayForGroupFromDb, "roomDetailRoomName"))) {
                         $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
