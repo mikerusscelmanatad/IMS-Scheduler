@@ -14,7 +14,7 @@ if (isset($_GET['update'])) {
 
 	$student_id = $_GET['id'];
 	$subject_id = $_GET['subject_id'];
-	$room_id = mysqli_real_escape_string($connect, $_GET['room_id']);	
+	$room_id = $_GET['room_id'];	
 	$book_id = htmlspecialchars(mysqli_real_escape_string($connect, $_GET['book_id']));
 	$timer_detail = $_GET['timer_detail'];
 	$teacher_detail = $_GET["teacher_detail"];
@@ -43,25 +43,24 @@ if (isset($_GET['update'])) {
 			} 
 			if ((!empty($roomRow["faculty_id"]) || !is_null($roomRow["faculty_id"])) && empty($GET["teacher_id"])) {
 				$facultyId = $roomRow["faculty_id"];// NO TEACHER NAME
-			} else {
-				/**
-				 * This is to update for Group Rooms
-				 * Need retrieve Teacher Name 
-				 * if have value from joining room display the teacher from room
-				 * if no value check from option teacher_detail if it is shown or Group Room is chosen
-				 * if no value ddefault 1 to No Teacher
-				 * 
-				 * Check for Rooms which have id from 72 - 82 these are Group Teachers
-				 * 
-				 * **/
-				if ($room_id >= 72 && $room_id <= 82) {
-					$facultyId = $teacher_detail;
-					$teacherNameFromFaculty = "SELECT * FROM faculty f WHERE f.faculty_id = $facultyId LIMIT 1;";
-					$teacherNameFromFacultyResult = mysqli_query($connect, $teacherNameFromFaculty);
-					while ($teacherNameFromFacultyRow = mysqli_fetch_assoc($teacherNameFromFacultyResult)) {
-						$teacherName = $teacherNameFromFacultyRow["faculty_name"];
-					}
-				}
+			} 
+		}
+		/**
+		 * This is to update for Group Rooms
+		 * Need retrieve Teacher Name 
+		 * if have value from joining room display the teacher from room
+		 * if no value check from option teacher_detail if it is shown or Group Room is chosen
+		 * if no value ddefault 1 to No Teacher
+		 * 
+		 * Check for Rooms which have id from 72 - 82 these are Group Teachers
+		 * 
+		 * **/
+		if ($room_id >= 72 && $room_id <= 82 && !is_null($teacher_detail)) {
+			$facultyId = $teacher_detail;
+			$teacherNameFromFaculty = "SELECT * FROM faculty f WHERE f.faculty_id = $facultyId LIMIT 1;";
+			$teacherNameFromFacultyResult = mysqli_query($connect, $teacherNameFromFaculty);
+			while ($teacherNameFromFacultyRow = mysqli_fetch_assoc($teacherNameFromFacultyResult)) {
+				$teacherName = $teacherNameFromFacultyRow["faculty_name"];
 			}
 		}
 		$prevFacultyDeletetQuery = "DELETE FROM `teacher_timer` WHERE teacher_id=$previousFacultyId AND timer_id=$timer_detail AND student_id=$student_id AND subject_id=$subject_id;";
