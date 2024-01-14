@@ -55,6 +55,7 @@ if (isset($_GET['update'])) {
 		 * Check for Rooms which have id from 72 - 82 these are Group Teachers
 		 * 
 		 * **/
+		$tt_room_id = null;
 		if ($room_id >= 72 && $room_id <= 82 && !is_null($teacher_detail)) {
 			$facultyId = $teacher_detail;
 			$teacherNameFromFaculty = "SELECT * FROM faculty f WHERE f.faculty_id = $facultyId LIMIT 1;";
@@ -71,9 +72,15 @@ if (isset($_GET['update'])) {
 		$query = "UPDATE student_subject SET `room_id`=$room_id, `faculty_id`=$facultyId, `books`='$book_id', `teachers_name`='$teacherName', `timer_id`=$timer_detail  WHERE `subject_id`='$subject_id' AND `student_id`=$student_id";
 		$result = mysqli_query($connect, $query);
 
-		$facultyInsertQuery = "INSERT INTO `teacher_timer`(`teacher_id`, `timer_id`, `student_id`, `subject_id`, `room_id`)
-			VALUES($facultyId, $timer_detail, $student_id, $subject_id, $tt_room_id);";
-		$facultyInsertQueryResult = mysqli_query($connect, $facultyInsertQuery);
+		if (is_null($tt_room_id)) {
+			$facultyInsertQuery = "INSERT INTO `teacher_timer`(`teacher_id`, `timer_id`, `student_id`, `subject_id`)
+			VALUES ($facultyId, $timer_detail, $student_id, $subject_id);";
+			$facultyInsertQueryResult = mysqli_query($connect, $facultyInsertQuery);
+		} else {
+			$facultyInsertQuery = "INSERT INTO `teacher_timer`(`teacher_id`, `timer_id`, `student_id`, `subject_id`, `room_id`)
+			VALUES ($facultyId, $timer_detail, $student_id, $subject_id, '$tt_room_id');";
+			$facultyInsertQueryResult = mysqli_query($connect, $facultyInsertQuery);
+		}
 	} else {
 		$prevFacultyDeletetQuery = "DELETE FROM `teacher_timer` WHERE timer_id=$timer_detail AND student_id=$student_id AND subject_id=$subject_id;";
 		$prevFacultyDeletetQueryResult = mysqli_query($connect, $prevFacultyDeletetQuery);
