@@ -31,7 +31,7 @@ $student_level_id = $_GET['level_id'];
 $update = true;
 $query = "SELECT * FROM `student_subject` AS ss
 INNER JOIN `student` stud ON ss.student_id = stud.student_id
-WHERE ss.student_id=$student_id AND ss.subject_id=$subject_id";
+WHERE ss.student_id=$student_id AND ss.subject_id=$subject_id;";
 
 $findAllSubjectByCourseResult = mysqli_query($connect, $query);
 
@@ -44,7 +44,7 @@ while ($row = mysqli_fetch_assoc($findAllSubjectByCourseResult)) {
 	$get_books = $row['books'];
 }
 
-$findAllSubject = "SELECT * FROM `subject` WHERE subject_id=$get_subject_id";
+$findAllSubject = "SELECT * FROM `subject` WHERE subject_id=$get_subject_id;";
 $findAllSubjectResult = mysqli_query($connect, $findAllSubject);
 
 //Dropdown list query *************************************
@@ -196,8 +196,26 @@ $findAllTeachersResult = mysqli_query($connect, $findAllTeachers);
 													if ($row1["room_id"] === $get_room_id) {
 														echo "selected";
 													}
-
-													$selectDuplicateQuery = "SELECT
+													if ($row1["room_id"] >= 72 && $row1["room_id"] <= 82) {
+														$selectDuplicateQuery = "SELECT
+														COUNT(*) AS c,
+														r.room_id AS room_id,
+														r.is_group AS room_is_group
+														FROM `teacher_timer` tt
+															INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
+															INNER JOIN timer t ON tt.timer_id = t.id
+															INNER JOIN student st ON tt.student_id = st.student_id
+															INNER JOIN subject s ON tt.subject_id = s.subject_id
+															INNER JOIN rooms r ON tt.room_id = r.room_id
+														WHERE t.id = $get_student_period  AND r.room_id = $optionRoomId AND r.is_group = 1
+														GROUP BY room_id, room_is_group HAVING COUNT(*) >= 6 ORDER BY c;";
+															$selectDuplicateQueryResult = mysqli_query($connect, $selectDuplicateQuery);
+															if (mysqli_num_rows($selectDuplicateQueryResult) > 0) {
+																echo " disabled";
+																echo " style='background-color:red;color:white;'";
+															}
+													} else {
+														$selectDuplicateQuery = "SELECT
 														COUNT(*) AS c,
 														r.room_id AS room_id,
 														r.is_group AS room_is_group
@@ -216,7 +234,9 @@ $findAllTeachersResult = mysqli_query($connect, $findAllTeachers);
 																echo " disabled";
 																echo " style='background-color:red;color:white;'";
 															}
-															?>>
+													}
+			
+													?>>
 												<?php echo $row1["room"]; ?>
 											</option>
 										<?php endwhile; ?>

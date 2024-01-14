@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2024 at 11:41 AM
+-- Generation Time: Jan 14, 2024 at 02:04 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -465,14 +465,14 @@ INSERT INTO `level` (`level_id`, `level_name`, `created_at`, `created_by`) VALUE
 (1, 'Beginner 1', '2023-12-29 09:57:06', ''),
 (2, 'Elementary 2', '2023-12-29 09:58:48', ''),
 (3, 'Elementary 3', '2023-12-29 09:58:48', ''),
-(4, 'Preintermediate 4', '2023-12-29 09:58:48', ''),
+(4, 'Pre Intermediate 4', '2023-12-29 09:58:48', ''),
 (5, 'Intermediate 5', '2023-12-29 09:58:48', ''),
 (6, 'Intermediate 6', '2023-12-29 09:58:48', ''),
-(7, 'Upper-Intermediate 7', '2023-12-29 09:58:48', ''),
-(8, 'Upper-Intermediate 8', '2023-12-29 09:58:48', ''),
-(9, 'Advance 9', '2023-12-29 09:58:48', ''),
-(10, 'Advance 10', '2023-12-29 09:58:48', ''),
-(11, 'Advance 11', '2023-12-29 09:58:48', ''),
+(7, 'Upper Intermediate 7', '2023-12-29 09:58:48', ''),
+(8, 'Upper Intermediate 8', '2023-12-29 09:58:48', ''),
+(9, 'Advanced 9', '2023-12-29 09:58:48', ''),
+(10, 'Advanced 10', '2023-12-29 09:58:48', ''),
+(11, 'Advanced 11', '2023-12-29 09:58:48', ''),
 (12, 'Master 12', '2023-12-29 09:58:48', ''),
 (13, 'NO LEVEL', '2024-01-01 10:12:39', '');
 
@@ -751,7 +751,8 @@ CREATE TABLE `teacher_timer` (
   `teacher_id` int(11) NOT NULL,
   `timer_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
-  `subject_id` int(11) NOT NULL
+  `subject_id` int(11) NOT NULL,
+  `room_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -883,7 +884,8 @@ ALTER TABLE `teacher_timer`
   ADD KEY `fk_tt_teacher_id` (`teacher_id`),
   ADD KEY `fk_tt_timer_id` (`timer_id`),
   ADD KEY `fk_tt_student_id` (`student_id`),
-  ADD KEY `fk_tt_subject_id` (`subject_id`);
+  ADD KEY `fk_tt_subject_id` (`subject_id`),
+  ADD KEY `fk_tt_room_id` (`room_id`);
 
 --
 -- Indexes for table `timer`
@@ -947,7 +949,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=241;
 
 --
 -- AUTO_INCREMENT for table `subject`
@@ -1006,6 +1008,7 @@ ALTER TABLE `subject`
 -- Constraints for table `teacher_timer`
 --
 ALTER TABLE `teacher_timer`
+  ADD CONSTRAINT `fk_tt_room_id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`),
   ADD CONSTRAINT `fk_tt_student_id` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`),
   ADD CONSTRAINT `fk_tt_subject_id` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`),
   ADD CONSTRAINT `fk_tt_teacher_id` FOREIGN KEY (`teacher_id`) REFERENCES `faculty` (`faculty_id`),
