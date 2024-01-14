@@ -3,6 +3,19 @@
 
 require 'databaasee.php';
 
+$studentsQuery = "SELECT * FROM `student` WHERE `end_date` < CURRENT_DATE;";
+$studentsQueryResult = mysqli_query($connect, $studentsQuery);
+
+while ($row = mysqli_fetch_array($studentsQueryResult)) {
+	$toCleanStudentId = $row["student_id"];
+	
+	$cleanStudentsQuery = "UPDATE student SET student_status = 'OLD STUDENT' WHERE student_id = $toCleanStudentId;";
+	$cleanStudentsQueryResult = mysqli_query($connect, $cleanStudentsQuery);	
+
+	$cleanStudentsQuery = "DELETE FROM teacher_timer WHERE student_id = $toCleanStudentId;";
+	$cleanStudentsQueryResult = mysqli_query($connect, $cleanStudentsQuery);	
+}
+
 $student_id = "student_id";
 
 $query = "SELECT * FROM `student` ORDER BY student_id ASC ";
