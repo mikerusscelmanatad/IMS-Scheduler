@@ -83,8 +83,8 @@ $findAllBooks = "SELECT * FROM books b
 	INNER JOIN subject s ON UPPER(b.subject) = UPPER(s.subject_description)
 WHERE 
 	c.course_id=$student_course_id 
-	AND l.level_id=$student_level_id 
-	AND s.subject_id=$subject_id";
+	AND (l.level_id=$student_level_id OR b.level = 'NO LEVEL')
+	AND s.subject_id=$subject_id;";
 $findAllBooksResult = mysqli_query($connect, $findAllBooks);
 // **************************
 
