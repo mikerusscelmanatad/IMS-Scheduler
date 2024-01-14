@@ -24,10 +24,10 @@ include_once("navbar.php");
 ?>
 <?php
 
-$subject_id = $_POST['subject_id'];
-$student_id = $_POST['student_id'];
-$student_course_id = $_POST['course_id'];
-$student_level_id = $_POST['level_id'];
+$subject_id = $_GET['subject_id'];
+$student_id = $_GET['student_id'];
+$student_course_id = $_GET['course_id'];
+$student_level_id = $_GET['level_id'];
 $update = true;
 $query = "SELECT * FROM `student_subject` AS ss
 INNER JOIN `student` stud ON ss.student_id = stud.student_id
@@ -71,9 +71,9 @@ FROM `teacher_timer` tt
 	INNER JOIN timer t ON tt.timer_id = t.id
 	INNER JOIN student st ON tt.student_id = st.student_id
 	INNER JOIN subject s ON tt.subject_id = s.subject_id
-	INNER JOIN rooms r ON f.room = r.room
+	INNER JOIN rooms r ON f.room = r.room_id
 WHERE t.id = $get_student_period 
-GROUP BY room_id, room_is_group HAVING COUNT(*) >= 1 ORDER BY c";
+GROUP BY room_id, is_group HAVING COUNT(*) >= 1 ORDER BY c";
 $findlAllDuplicateRoomsResult = mysqli_query($connect, $findAllRooms);
 
 // ****************************
@@ -86,6 +86,13 @@ WHERE
 	AND l.level_id=$student_level_id 
 	AND s.subject_id=$subject_id";
 $findAllBooksResult = mysqli_query($connect, $findAllBooks);
+// **************************
+
+$findAllTeachers = "SELECT * FROM `faculty`;";
+$findAllTeachersResult = mysqli_query($connect, $findAllTeachers);
+
+
+// **************************
 ?>
 <html>
 
@@ -96,7 +103,30 @@ $findAllBooksResult = mysqli_query($connect, $findAllBooks);
 		}
 	</style>
 	<script type="text/javascript">
-
+		$(document).ready(function(){
+						
+			/**
+			 * Show Teacher's input only for Group Rooms
+			 * rooms which have ids 72 - 82 are Group Room
+			 * 
+			 * **/
+			var room = document.getElementById("room_id");
+			var teacher = document.getElementById("teacherContainer");
+			if (room.value >= 72 && room.value <= 82) {
+				if (teacher.style.display === "none") {
+					teacher.style.display = "block";
+				} 
+			} 
+			$("#room_id").on("change", function(){
+				if (room.value >= 72 && room.value <= 82) {
+					if (teacher.style.display === "none") {
+						teacher.style.display = "block";
+					}
+				} else {
+						teacher.style.display = "none";
+				}
+			});
+		});
 	</script>
 </head>
 
@@ -129,10 +159,10 @@ $findAllBooksResult = mysqli_query($connect, $findAllBooks);
 									<select id="timer_detail" name="timer_detail" class="form-control">
 										<?php while ($row1 = mysqli_fetch_assoc($findAllPeriodResult)) :; ?>
 											<option id="<?php echo $row1["id"]; ?>" value="<?php echo $row1["id"]; ?>" <?php
-																														if ($row1["id"] === $get_student_period) {
-																															echo "selected";
-																														}
-																														?>>
+													if ($row1["id"] === $get_student_period) {
+														echo "selected";
+													}
+													?>>
 												<?php echo $row1["start_time"] . " - " . $row1["end_time"] ?></option>
 										<?php endwhile; ?>
 									</select>
@@ -146,10 +176,10 @@ $findAllBooksResult = mysqli_query($connect, $findAllBooks);
 									<select id="subject_description" name="subject_description" class="form-control">
 										<?php while ($row1 = mysqli_fetch_assoc($findAllSubjectResult)) :; ?>
 											<option id="<?php echo $row1["subject_id"]; ?>" value="<?php echo $row1["subject_description"]; ?>" ; <?php
-																																					if ($row1["subject_id"] === $get_subject_id) {
-																																						echo "selected";
-																																					}
-																																					?>>
+													if ($row1["subject_id"] === $get_subject_id) {
+														echo "selected";
+													}
+													?>>
 												<?php echo $row1["subject_description"]; ?></option>
 										<?php endwhile; ?>
 									</select>
@@ -176,7 +206,7 @@ $findAllBooksResult = mysqli_query($connect, $findAllBooks);
 															INNER JOIN timer t ON tt.timer_id = t.id
 															INNER JOIN student st ON tt.student_id = st.student_id
 															INNER JOIN subject s ON tt.subject_id = s.subject_id
-															INNER JOIN rooms r ON f.room = r.room
+															INNER JOIN rooms r ON f.room = r.room_id
 														WHERE t.id = $get_student_period  AND r.room_id = $optionRoomId AND r.is_group = 0
 														GROUP BY room_id, room_is_group HAVING COUNT(*) >= 1 ORDER BY c;";
 															$blankRoomId = 71;
@@ -189,6 +219,21 @@ $findAllBooksResult = mysqli_query($connect, $findAllBooks);
 															?>>
 												<?php echo $row1["room"]; ?>
 											</option>
+										<?php endwhile; ?>
+									</select>
+								</div>
+							</div>
+
+							<!-- Text input-->
+
+							<div id="teacherContainer" class="form-group" style="display:none;">
+								<label class="col-md-4 control-label" for="teacher_detail"> Teachers Name </label>
+								<div class="col-md-5">
+									<select id="teacher_detail" name="teacher_detail" class="form-control">
+										<?php while ($row1 = mysqli_fetch_assoc($findAllTeachersResult)) :; ?>
+											<option id="<?php echo $row1["faculty_id"]; ?>" value="<?php echo $row1["faculty_id"]; ?>" ; <?php
+													?>>
+												<?php echo $row1["faculty_name"]; ?></option>
 										<?php endwhile; ?>
 									</select>
 								</div>
@@ -210,15 +255,6 @@ $findAllBooksResult = mysqli_query($connect, $findAllBooks);
 									?></textarea>
 								</div>
 							</div>
-
-
-							<!-- Text input-->
-							<!-- <div class="form-group">
-								<label class="col-md-4 control-label" for="teacher_id"> Teachers Name </label>
-								<div class="col-md-5">
-									<input id="teacher_id" name="teacher_id" type="text" placeholder="Teachers name here" value="<?php echo htmlspecialchars($get_teacher_name) ?>" class="form-control input-md" />
-								</div>
-							</div> -->
 
 							<!-- Button -->
 							<div class="form-group" align="right">

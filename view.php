@@ -132,19 +132,24 @@ include_once("navbar.php");
                                                
                                     
                                                 echo "<td class='action' style='text-align: center'>";
-                                                echo "<form class='action form-horizontal' method='post' action='view.edit.php' enctype='multipart/form-data'>";
+                                                echo "<form class='action form-horizontal' method='post' action='view.php' enctype='multipart/form-data'>";
                                                     echo "<input name='student_id' type='hidden' value=$student_id></input>";
                                                     echo "<input name='subject_id' type='hidden' value=$row[subject_id]></input>";
                                                     echo "<input name='course_id' type='hidden' value=$student_course_id></input>";
                                                     echo "<input name='level_id' type='hidden' value=$student_level_id></input>";
                                                     if ($subject_description !== "LUNCH") {
-                                                        echo "<button type='submit' class='btn btn-success'>Edit</button>&nbsp;";
+                                                        
+                                                        echo "<a href='view.edit.php?student_id=" . $student_id . "&subject_id=" . $row['subject_id'] . "&course_id=" . $student_course_id . "&level_id=" . $student_level_id . "' class='btn btn-success'>Edit</a> &nbsp;";
+                                                        echo "<a href='view.php?action=delete&id=" . $student_id . "&subject_id=" . $row['subject_id'] . "' class='action btn btn-danger'>Delete</a>&nbsp;";
+                                                        // echo "<button type='submit' class='btn btn-danger'>Delete</button>&nbsp;";
                                                     }
                                                     
                                                     // echo "<a href='view.edit.php?id=" . $row['subject_id'] . "' class='action btn btn-success'>Edit</a> &nbsp;";
+                                              
                                                 echo "</td>";
                                                 echo "</tr>";
-                                               echo "</form>";
+                                                echo "</form>";
+                                               
                                             }
                                                 
                                 echo "</table>";
@@ -156,15 +161,24 @@ include_once("navbar.php");
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 echo '<script type="text/javascript">
                                         alert("Schedule Successfuly Deleted");
-                                            location="schedulelist.php";
+                                            location="view.php";
                                 </script>';
             }
-            if (isset($_POST['id'])) {
-                $id = mysqli_real_escape_string($connect, $_POST['id']);
-                $sql = mysqli_query($connect, "DELETE FROM addtable WHERE id='$id'");
-                if (!$sql) {
-                    echo ("Could not delete rows" . mysqli_error($connect));
-                }
+            if (isset($_GET['action']) == "delete") {
+                    $subject_id = mysqli_real_escape_string($connect, $_GET['subject_id']);
+                    $student_id = mysqli_real_escape_string($connect, $_GET['id']);
+
+                    $sql = mysqli_query($connect, "DELETE FROM student_subject WHERE subject_id=$subject_id AND student_id=$student_id;");
+
+                    $sql = mysqli_query($connect, "DELETE FROM teacher_timer WHERE subject_id=$subject_id AND student_id=$student_id;");
+                    if (!$sql) {
+                        echo ("Could not delete rows" . mysqli_error($connect));
+                    }
+
+                    echo '<script type="text/javascript">
+                                        alert("Schedule Successfuly Deleted");
+                                            location="view.php?id='.$student_id.'";
+                                </script>';
             }
 
             ?>
