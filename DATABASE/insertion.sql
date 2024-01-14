@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2024 at 11:50 PM
+-- Generation Time: Jan 14, 2024 at 11:41 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -390,7 +390,7 @@ CREATE TABLE `faculty` (
   `faculty_id` int(11) NOT NULL,
   `faculty_name` varchar(250) NOT NULL,
   `designation` varchar(250) NOT NULL,
-  `room` int(11) NOT NULL
+  `room` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -398,51 +398,51 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`faculty_id`, `faculty_name`, `designation`, `room`) VALUES
-(1, 'No Teacher', 'No faculty', 1),
-(35, 'Teacher Marie', 'ESL', 501),
-(36, 'Teacher Dioni', 'ESL', 502),
-(37, 'Teacher Nathan', 'ESL', 503),
-(38, 'Teacher Sophia', 'Esl\r\n', 504),
-(39, 'Teacher Juliet', 'ESL\r\n', 505),
-(40, 'Teacher Marilou\r\n', 'ESL', 506),
-(41, 'Teacher August', 'ESL', 507),
-(42, 'Teacher Mary Joy\r\n', 'ESL', 508),
-(43, 'Teacher Flora', 'ESL', 509),
-(44, 'Teacher Gail', 'ESL', 510),
-(45, 'Teacher Jem\r\n', 'ESL', 511),
-(50, 'Teacher Shannyn', 'ESL', 512),
-(51, 'Teacher Mariel', 'ESL', 515),
-(52, 'Teacher Bebelyn', 'ESL', 516),
-(53, 'Teacher Lloyd', 'ESL', 518),
-(54, 'Teacher Estella', 'ESL ', 519),
-(55, 'Teacher Kaye', 'ESL', 520),
-(56, 'Teacher Ninn', 'ESL', 521),
-(57, 'Teacher Dayvis', 'ESL', 522),
-(58, 'Teacher Rose', 'ESL', 523),
-(59, 'Teacher Lyle', 'ESL', 524),
-(60, 'Teacher Vin', 'ESL', 525),
-(61, 'Teacher Chariss', 'ESL', 526),
-(62, 'Teacher Jessabel', 'ESL', 527),
-(63, 'Teacher Fatima', 'ESL', 528),
-(64, 'Teacher Carl', 'ESL', 529),
-(65, 'Teacher Shera', 'ESL', 530),
-(66, 'Teacher Maria', 'ESL', 531),
-(67, 'Teacher Windy', 'ESL', 532),
-(68, 'Teacher Alora', 'ESL', 533),
-(69, 'Teacher Kentlee', 'ESL', 535),
-(70, 'Teacher Sherlyn', 'ESL', 536),
-(71, 'Teacher Jeal', 'ESL', 543),
-(72, 'Teacher Elme', 'ESL', 544),
-(73, 'Teacher Juvy', 'ESL', 545),
-(74, 'Teacher Menchu', 'ESL', 546),
-(75, 'Teacher Jia', 'ESL', 547),
-(76, 'Teacher Marivel', 'ESL', 548),
-(77, 'Teacher Tom', 'ESL', 549),
-(78, 'Teacher Kent', 'ESL', 550),
-(79, 'Teacher Anziel', 'ESL', 551),
-(80, 'Teacher Limberlie', 'ESL', 552),
-(81, 'Teacher Kryshia', 'ESL', 553),
-(82, 'Teacher Cheryl', 'ESL', 554);
+(1, 'No Teacher', 'No faculty', 83),
+(35, 'Teacher Marie', 'ESL', 17),
+(36, 'Teacher Dioni', 'ESL', 18),
+(37, 'Teacher Nathan', 'ESL', 19),
+(38, 'Teacher Sophia', 'Esl\r\n', 20),
+(39, 'Teacher Juliet', 'ESL\r\n', 21),
+(40, 'Teacher Marilou\r\n', 'ESL', 22),
+(41, 'Teacher August', 'ESL', 23),
+(42, 'Teacher Mary Joy\r\n', 'ESL', 24),
+(43, 'Teacher Flora', 'ESL', 25),
+(44, 'Teacher Gail', 'ESL', 26),
+(45, 'Teacher Jem\r\n', 'ESL', 27),
+(50, 'Teacher Shannyn', 'ESL', 28),
+(51, 'Teacher Mariel', 'ESL', 31),
+(52, 'Teacher Bebelyn', 'ESL', 32),
+(53, 'Teacher Lloyd', 'ESL', 34),
+(54, 'Teacher Estella', 'ESL ', 35),
+(55, 'Teacher Kaye', 'ESL', 36),
+(56, 'Teacher Ninn', 'ESL', 37),
+(57, 'Teacher Dayvis', 'ESL', 38),
+(58, 'Teacher Rose', 'ESL', 39),
+(59, 'Teacher Lyle', 'ESL', 40),
+(60, 'Teacher Vin', 'ESL', 41),
+(61, 'Teacher Chariss', 'ESL', 42),
+(62, 'Teacher Jessabel', 'ESL', 43),
+(63, 'Teacher Fatima', 'ESL', 44),
+(64, 'Teacher Carl', 'ESL', 45),
+(65, 'Teacher Shera', 'ESL', 46),
+(66, 'Teacher Maria', 'ESL', 47),
+(67, 'Teacher Windy', 'ESL', 48),
+(68, 'Teacher Alora', 'ESL', 49),
+(69, 'Teacher Kentlee', 'ESL', 51),
+(70, 'Teacher Sherlyn', 'ESL', 52),
+(71, 'Teacher Jeal', 'ESL', 59),
+(72, 'Teacher Elme', 'ESL', 60),
+(73, 'Teacher Juvy', 'ESL', 61),
+(74, 'Teacher Menchu', 'ESL', 62),
+(75, 'Teacher Jia', 'ESL', 63),
+(76, 'Teacher Marivel', 'ESL', 64),
+(77, 'Teacher Tom', 'ESL', 65),
+(78, 'Teacher Kent', 'ESL', 66),
+(79, 'Teacher Anziel', 'ESL', 67),
+(80, 'Teacher Limberlie', 'ESL', 68),
+(81, 'Teacher Kryshia', 'ESL', 69),
+(82, 'Teacher Cheryl', 'ESL', 70);
 
 -- --------------------------------------------------------
 
@@ -609,21 +609,6 @@ CREATE TABLE `student_subject` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_by` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `student_subject`
---
-
-INSERT INTO `student_subject` (`subject_id`, `student_id`, `room_id`, `faculty_id`, `timer_id`, `books`, `teachers_name`, `deleted`, `created_at`, `created_by`) VALUES
-(1, 176, 35, 1, 3, '', '', 0, '2024-01-12 17:06:36', '176'),
-(2, 176, 19, 1, 4, '', '', 0, '2024-01-12 17:06:36', '176'),
-(168, 176, 26, 1, 6, '', '', 0, '2024-01-12 17:06:36', '176'),
-(169, 176, 21, 1, 7, '', '', 0, '2024-01-12 17:06:36', '176'),
-(170, 176, 71, 1, 8, '', '', 0, '2024-01-12 17:06:36', '176'),
-(171, 176, 73, 1, 9, '', '', 0, '2024-01-12 17:06:36', '176'),
-(172, 176, 74, 1, 10, '', '', 0, '2024-01-12 17:06:36', '176'),
-(173, 176, 75, 1, 11, '', '', 0, '2024-01-12 17:06:36', '176'),
-(178, 176, 78, 1, 12, '', '', 0, '2024-01-12 17:06:36', '176');
 
 -- --------------------------------------------------------
 
@@ -840,7 +825,8 @@ ALTER TABLE `data`
 --
 ALTER TABLE `faculty`
   ADD PRIMARY KEY (`faculty_id`),
-  ADD KEY `faculty_id` (`faculty_id`);
+  ADD KEY `faculty_id` (`faculty_id`),
+  ADD KEY `fk_f_room_id` (`room`);
 
 --
 -- Indexes for table `level`
@@ -943,7 +929,7 @@ ALTER TABLE `data`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `faculty_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `faculty_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `level`
@@ -961,7 +947,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
 -- AUTO_INCREMENT for table `subject`
@@ -984,6 +970,12 @@ ALTER TABLE `timer`
 --
 ALTER TABLE `course`
   ADD CONSTRAINT `fk_level_id` FOREIGN KEY (`level_id`) REFERENCES `level` (`level_id`);
+
+--
+-- Constraints for table `faculty`
+--
+ALTER TABLE `faculty`
+  ADD CONSTRAINT `fk_f_room_id` FOREIGN KEY (`room`) REFERENCES `rooms` (`room_id`);
 
 --
 -- Constraints for table `student`
