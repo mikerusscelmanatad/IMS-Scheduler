@@ -63,13 +63,15 @@ if (isset($_POST['submit'])) {
 					$maximumStudentCountPerRoomForOneOnOne = 1;
 					if ($countSearchAvailableTeacherResult <= 0) {
 						$teacherName = $facultyRow['faculty_name'];
-						$roomName = $facultyRow['room'];
+						// $roomName = $facultyRow['room'];
 
-						$getRoomQuery = "SELECT room_id FROM rooms WHERE room = '$roomName' LIMIT 1;";
-						$getRoomQueryResult = mysqli_query($connect, $getRoomQuery);
-						while ($roomRow = mysqli_fetch_assoc($getRoomQueryResult)) {
-							$roomId = $roomRow["room_id"];
-						}
+						// $getRoomQuery = "SELECT room_id FROM rooms WHERE room = '$roomName' LIMIT 1;";
+						// $getRoomQueryResult = mysqli_query($connect, $getRoomQuery);
+						// while ($roomRow = mysqli_fetch_assoc($getRoomQueryResult)) {
+						// 	$roomId = $roomRow["room_id"];
+						// }
+
+						$roomId = $facultyRow['room'];
 
 						// $facultyInsertQuery = "INSERT INTO `teacher_timer`(`teacher_id`, `timer_id`, `student_id`, `subject_id`)
 						// 	VALUES($facultyId, $subject_timer_id, $last_student_id, $subject_subject_id);";
@@ -106,13 +108,14 @@ if (isset($_POST['submit'])) {
 	$student_status = mysqli_real_escape_string($connect, $_POST['student_status']);
 	$student_course = $_POST['student_course'];
 	$student_level = $_POST['student_level'];
-
+	$start_date = $_POST['startDatePicker'];
+	$end_date = $_POST['endDatePicker'];
 	/**
 	 * 
 	 * - Need to Delete first records from student_subject, this is to assume that student change his course
 	 * - Need to Insert new records from student_subject based from its new course
 	 * - Update student details accoringly
-	 * 
+	 * - Need to Delete teacher_timer to flush all schedule from teachers
 	 * 
 	 * **/
 
@@ -123,6 +126,9 @@ if (isset($_POST['submit'])) {
 		$student_student_course_id = $row["course_id"];
 		if ($student_student_course_id !== $student_course) {
 			$query = "DELETE FROM student_subject WHERE `student_id`='$student_id'";
+			$result = mysqli_query($connect, $query);
+
+			$query = "DELETE FROM teacher_timer WHERE `student_id`='$student_id'";
 			$result = mysqli_query($connect, $query);
 			$studentChangedCourse = true;
 			break;
@@ -139,21 +145,17 @@ if (isset($_POST['submit'])) {
 		$subject_subject_id = $row["subject_id"];
 		$subject_room_id = $row["room_id"];
 		$subject_timer_id = $row["timer_id"];
-
+		$noRoomId = 71;
 		if ($studentChangedCourse) {
 			$insertStudentSubject = "INSERT INTO student_subject(subject_id, student_id, room_id, timer_id, faculty_id, books, created_by, teachers_name) 
-			VALUES($subject_subject_id, $student_id, $subject_room_id, $subject_timer_id, 1, '', $student_id, '')";
+			VALUES($subject_subject_id, $student_id, $noRoomId, $subject_timer_id, 1, '', $student_id, '')";
 			$resultStudedntSubject = mysqli_query($connect, $insertStudentSubject);
-		} else {
-			$updatetStudentSubject = "UPDATE student_subject SET room_id=$subject_room_id, timer_id=$subject_timer_id 
-				WHERE subject_id=$subject_subject_id AND student_id=$student_id";
-			$resultStudedntSubject = mysqli_query($connect, $updatetStudentSubject);
 		}
 	}
 
 	$query = "UPDATE student SET
 			`student_name`='$student_name', `course_id`='$student_course',`level_id`='$student_level', 
-			`student_status`='$student_status' WHERE `student_id`='$student_id'";
+			`student_status`='$student_status', `start_date`='$start_date', `end_date`='$end_date' WHERE `student_id`='$student_id'";
 	$result = mysqli_query($connect, $query);
 
 	if (!$result) {
