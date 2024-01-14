@@ -49,19 +49,19 @@ require 'databaasee.php';
                     public $roomDetailStudentName;
                 }
         
-                $query = "SELECT f.room AS teacher_room_name, 
-                f.faculty_name, 
-                t.id as timer_detail,
-                CONCAT(student_name,' ( ', start_time , ' - ' ,end_time, ' ) ' ) AS schedule 
-                FROM `teacher_timer` tt
-                    INNER JOIN faculty f ON f.faculty_id = tt.teacher_id
-                    LEFT JOIN timer t ON t.id = tt.timer_id
-                    INNER JOIN student s ON s.student_id = tt.student_id
-                    INNER JOIN subject sub ON sub.subject_id = tt.subject_id
-                WHERE f.faculty_id <> 1
-                ORDER BY f.faculty_id ASC, t.id ASC;
-                            ";
-                $result = mysqli_query($connect, $query) or die(mysqli_error($connect));
+                // $query = "SELECT f.room AS teacher_room_name, 
+                // f.faculty_name, 
+                // t.id as timer_detail,
+                // CONCAT(student_name,' ( ', start_time , ' - ' ,end_time, ' ) ' ) AS schedule 
+                // FROM `teacher_timer` tt
+                //     INNER JOIN faculty f ON f.faculty_id = tt.teacher_id
+                //     LEFT JOIN timer t ON t.id = tt.timer_id
+                //     INNER JOIN student s ON s.student_id = tt.student_id
+                //     INNER JOIN subject sub ON sub.subject_id = tt.subject_id
+                // WHERE f.faculty_id <> 1
+                // ORDER BY f.faculty_id ASC, t.id ASC;
+                //             ";
+                // $result = mysqli_query($connect, $query) or die(mysqli_error($connect));
 
                 $roomIdArray = array();
                 $selectAllRoomsQuery = "SELECT * FROM rooms WHERE room_id NOT IN (71,83);";
@@ -88,7 +88,7 @@ require 'databaasee.php';
                  FROM teacher_timer tt 
                     INNER JOIN timer t ON tt.timer_id = t.id
                     INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
-                    INNER JOIN rooms r ON r.room = f.room
+                    INNER JOIN rooms r ON r.room_id = f.room
                     INNER JOIN student s ON tt.student_id = s.student_id
                 WHERE tt.timer_id = 3;";
                 $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
@@ -142,7 +142,7 @@ require 'databaasee.php';
                         FROM teacher_timer tt 
                             INNER JOIN timer t ON tt.timer_id = t.id
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
-                            INNER JOIN rooms r ON r.room = f.room
+                            INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
                         WHERE tt.timer_id = 4;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
@@ -196,7 +196,7 @@ require 'databaasee.php';
                         FROM teacher_timer tt 
                             INNER JOIN timer t ON tt.timer_id = t.id
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
-                            INNER JOIN rooms r ON r.room = f.room
+                            INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
                         WHERE tt.timer_id = 6;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
@@ -250,7 +250,7 @@ require 'databaasee.php';
                         FROM teacher_timer tt 
                             INNER JOIN timer t ON tt.timer_id = t.id
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
-                            INNER JOIN rooms r ON r.room = f.room
+                            INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
                         WHERE tt.timer_id = 7;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
@@ -304,7 +304,7 @@ require 'databaasee.php';
                         FROM teacher_timer tt 
                             INNER JOIN timer t ON tt.timer_id = t.id
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
-                            INNER JOIN rooms r ON r.room = f.room
+                            INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
                         WHERE tt.timer_id = 9;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
@@ -358,7 +358,7 @@ require 'databaasee.php';
                         FROM teacher_timer tt 
                             INNER JOIN timer t ON tt.timer_id = t.id
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
-                            INNER JOIN rooms r ON r.room = f.room
+                            INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
                         WHERE tt.timer_id = 10;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
@@ -412,7 +412,7 @@ require 'databaasee.php';
                         FROM teacher_timer tt 
                             INNER JOIN timer t ON tt.timer_id = t.id
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
-                            INNER JOIN rooms r ON r.room = f.room
+                            INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
                         WHERE tt.timer_id = 11;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
@@ -466,7 +466,7 @@ require 'databaasee.php';
                         FROM teacher_timer tt 
                             INNER JOIN timer t ON tt.timer_id = t.id
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
-                            INNER JOIN rooms r ON r.room = f.room
+                            INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
                         WHERE tt.timer_id = 12;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
@@ -520,7 +520,7 @@ require 'databaasee.php';
                         FROM teacher_timer tt 
                             INNER JOIN timer t ON tt.timer_id = t.id
                             INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
-                            INNER JOIN rooms r ON r.room = f.room
+                            INNER JOIN rooms r ON r.room_id = f.room
                             INNER JOIN student s ON tt.student_id = s.student_id
                         WHERE tt.timer_id = 13;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
