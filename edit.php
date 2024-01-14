@@ -59,6 +59,29 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 			background-color: white;
 		}
 	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var dateToday = new Date();
+			$("#startDatePicker").datepicker({
+				beforeShowDay: $.datepicker.noWeekends,
+				dateFormat: "yy-mm-dd",
+				minDate: dateToday,
+				autoclose: true,
+			}).on("change", function() {
+				var date = $(this).val();
+				console.log(date, 'START DATE change');
+			});
+			$("#endDatePicker").datepicker({
+				beforeShowDay: $.datepicker.noWeekends,
+				dateFormat: "yy-mm-dd",
+				minDate: dateToday,
+				autoclose: true
+			}).on("change", function() {
+				var date = $(this).val();
+				console.log(date, 'END DATE change');
+			});
+		});
+	</script>
 </head>
 
 <body>
@@ -137,7 +160,34 @@ $findAllLevelResult = mysqli_query($connect, $findAllLevel);
 									</div>
 							</div>
 
-									
+							<div class="form-group" style="z-index: auto;">
+								<label class="col-md-4 control-label" for="startDatePicker"> Start Date: </label>
+								<div class="col-md-4">
+									<div>
+										<div class='input-group date'>
+											<input id="startDatePicker" name="startDatePicker" type='text' class="form-control" required/>
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar"></span>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<label class="col-md-4 control-label" for="endDatePicker"> End Date: </label>
+								<div class="col-md-4">
+									<div>
+										<div class='input-group date'>
+											<input id="endDatePicker" name="endDatePicker" type="text" class="form-control" required/>
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar"></span>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
 									<!-- Button -->
 							<div class="form-group" align="right">
 								<label class="col-md-4 control-label" for="update"></label>
