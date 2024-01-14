@@ -217,6 +217,7 @@ $findAllTeachersResult = mysqli_query($connect, $findAllTeachers);
 													} else {
 														$selectDuplicateQuery = "SELECT
 														COUNT(*) AS c,
+														f.faculty_id,
 														r.room_id AS room_id,
 														r.is_group AS room_is_group
 														FROM `teacher_timer` tt
@@ -225,8 +226,8 @@ $findAllTeachersResult = mysqli_query($connect, $findAllTeachers);
 															INNER JOIN student st ON tt.student_id = st.student_id
 															INNER JOIN subject s ON tt.subject_id = s.subject_id
 															INNER JOIN rooms r ON f.room = r.room_id
-														WHERE t.id = $get_student_period  AND r.room_id = $optionRoomId AND r.is_group = 0
-														GROUP BY room_id, room_is_group HAVING COUNT(*) >= 1 ORDER BY c;";
+														WHERE t.id = $get_student_period  AND r.room_id = $optionRoomId AND r.is_group = 0 AND tt.room_id IS NULL
+														GROUP BY f.faculty_id, room_id, room_is_group HAVING COUNT(*) >= 1 ORDER BY c;";
 															$blankRoomId = 71;
 															$noRoomId = 83;
 															$selectDuplicateQueryResult = mysqli_query($connect, $selectDuplicateQuery);
