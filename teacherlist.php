@@ -41,8 +41,14 @@ require 'databaasee.php';
 <body>
 
     <div class="" style="margin:10px">
-        <?php
-
+        <?php   
+        
+                class RoomDetails
+                {
+                    public $roomDetailRoomName;
+                    public $roomDetailStudentName;
+                }
+        
                 $query = "SELECT f.room AS teacher_room_name, 
                 f.faculty_name, 
                 t.id as timer_detail,
@@ -78,7 +84,7 @@ require 'databaasee.php';
                     <td align='center' height='50'>
                         <b>08:30 - 09:15</b>";
                 echo "</td>";
-                $selectAllTeacherQuery = "SELECT s.student_name, f.faculty_name, s.course_id, s.level_id, r.room 
+                $selectAllTeacherQuery = "SELECT s.student_name, s.course_id, s.level_id, r.room 
                  FROM teacher_timer tt 
                     INNER JOIN timer t ON tt.timer_id = t.id
                     INNER JOIN faculty f ON tt.teacher_id = f.faculty_id
@@ -87,12 +93,19 @@ require 'databaasee.php';
                 WHERE tt.timer_id = 3;";
                 $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
                 $roomIdArrayFromDb = array();
+                $count=0;
                 while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
                     $selectRoom = $selectAllTeacherRow["room"];
-                    $roomIdArrayFromDb[] = $selectRoom;
+                    $selectStudent = $selectAllTeacherRow["student_name"];
+                    $roomIdArrayFromDb[$count] = new RoomDetails();
+                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $count++;
                 }
+                $counter=0;
                 foreach($roomIdArray as $arr) {
-                    if (in_array($arr, $roomIdArrayFromDb)) {
+                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
+                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
                                     height: 80px;
@@ -101,7 +114,7 @@ require 'databaasee.php';
                                     border-radius: 50%;
                                     color: white;
                                     display: inline-block;
-                                    padding:10px;'> OCCUPIED
+                                    padding:0px;'>OCCUPIED $checkStudentname
                                 </div>
                             </b>
                         </td>";
@@ -118,6 +131,7 @@ require 'databaasee.php';
                                     </b>
                                 </td>";
                     }
+                    $counter++;
                 }
                 echo "</tr>
                 <tr>
@@ -133,13 +147,20 @@ require 'databaasee.php';
                         WHERE tt.timer_id = 4;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
                         $roomIdArrayFromDb = array();
-                        while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
-                            $selectRoom = $selectAllTeacherRow["room"];
-                            $roomIdArrayFromDb[] = $selectRoom;
-                        }
-                        foreach($roomIdArray as $arr) {
-                            if (in_array($arr, $roomIdArrayFromDb)) {
-                                echo "<td align='center' height='50' style='background-color:red;'>
+                        $count=0;
+                while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
+                    $selectRoom = $selectAllTeacherRow["room"];
+                    $selectStudent = $selectAllTeacherRow["student_name"];
+                    $roomIdArrayFromDb[$count] = new RoomDetails();
+                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $count++;
+                }
+                $counter=0;
+                foreach($roomIdArray as $arr) {
+                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
+                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
                                     height: 80px;
                                     width: 80px;
@@ -147,7 +168,7 @@ require 'databaasee.php';
                                     border-radius: 50%;
                                     color: white;
                                     display: inline-block;
-                                    padding:10px;'> OCCUPIED
+                                    padding:0px;'>OCCUPIED $checkStudentname
                                 </div>
                             </b>
                         </td>";
@@ -163,8 +184,9 @@ require 'databaasee.php';
                                     </div>
                                     </b>
                                 </td>";
-                            }
-                        }
+                    }
+                    $counter++;
+                }
                 echo "</tr>
                 <tr>
                     <td align='center' height='50'>
@@ -179,13 +201,20 @@ require 'databaasee.php';
                         WHERE tt.timer_id = 6;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
                         $roomIdArrayFromDb = array();
-                        while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
-                            $selectRoom = $selectAllTeacherRow["room"];
-                            $roomIdArrayFromDb[] = $selectRoom;
-                        }
-                        foreach($roomIdArray as $arr) {
-                            if (in_array($arr, $roomIdArrayFromDb)) {
-                                echo "<td align='center' height='50' style='background-color:red;'>
+                        $count=0;
+                while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
+                    $selectRoom = $selectAllTeacherRow["room"];
+                    $selectStudent = $selectAllTeacherRow["student_name"];
+                    $roomIdArrayFromDb[$count] = new RoomDetails();
+                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $count++;
+                }
+                $counter=0;
+                foreach($roomIdArray as $arr) {
+                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
+                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
                                     height: 80px;
                                     width: 80px;
@@ -193,7 +222,7 @@ require 'databaasee.php';
                                     border-radius: 50%;
                                     color: white;
                                     display: inline-block;
-                                    padding:10px;'> OCCUPIED
+                                    padding:0px;'>OCCUPIED $checkStudentname
                                 </div>
                             </b>
                         </td>";
@@ -209,8 +238,9 @@ require 'databaasee.php';
                                     </div>
                                     </b>
                                 </td>";
-                            }
-                        }
+                    }
+                    $counter++;
+                }
                 echo "</tr>
                 <tr>
                     <td align='center' height='50'>
@@ -225,13 +255,20 @@ require 'databaasee.php';
                         WHERE tt.timer_id = 7;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
                         $roomIdArrayFromDb = array();
-                        while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
-                            $selectRoom = $selectAllTeacherRow["room"];
-                            $roomIdArrayFromDb[] = $selectRoom;
-                        }
-                        foreach($roomIdArray as $arr) {
-                            if (in_array($arr, $roomIdArrayFromDb)) {
-                                echo "<td align='center' height='50' style='background-color:red;'>
+                        $count=0;
+                while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
+                    $selectRoom = $selectAllTeacherRow["room"];
+                    $selectStudent = $selectAllTeacherRow["student_name"];
+                    $roomIdArrayFromDb[$count] = new RoomDetails();
+                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $count++;
+                }
+                $counter=0;
+                foreach($roomIdArray as $arr) {
+                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
+                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
                                     height: 80px;
                                     width: 80px;
@@ -239,7 +276,7 @@ require 'databaasee.php';
                                     border-radius: 50%;
                                     color: white;
                                     display: inline-block;
-                                    padding:10px;'> OCCUPIED
+                                    padding:0px;'>OCCUPIED $checkStudentname
                                 </div>
                             </b>
                         </td>";
@@ -255,8 +292,9 @@ require 'databaasee.php';
                                     </div>
                                     </b>
                                 </td>";
-                            }
-                        }
+                    }
+                    $counter++;
+                }
                 echo "</tr>
                 <tr>
                     <td align='center' height='50'>
@@ -271,38 +309,46 @@ require 'databaasee.php';
                         WHERE tt.timer_id = 9;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
                         $roomIdArrayFromDb = array();
-                        while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
-                            $selectRoom = $selectAllTeacherRow["room"];
-                            $roomIdArrayFromDb[] = $selectRoom;
-                        }
-                        foreach($roomIdArray as $arr) {
-                            if (in_array($arr, $roomIdArrayFromDb)) {
-                                echo "<td align='center' height='50' style='background-color:red;'>
-                                <b><div style='
-                                       height: 80px;
-                                       width: 80px;
-                                       background-color: red;
-                                       border-radius: 50%;
-                                       color: white;
-                                       display: inline-block;
-                                       padding:10px;'> OCCUPIED
-                                   </div>
-                               </b>
-                           </td>";
-                       } else {
-                           echo "<td align='center' height='50' style='background-color:skyblue;'>
-                                       <b><div style='
-                                           height: 80px;
-                                           width: 80px;
-                                           background-color: 8BC34A;
-                                           color: white;
-                                           display: inline-block;
-                                           padding:0px;'>VACANT
-                                       </div>
-                                       </b>
-                                   </td>";
-                            }
-                        }
+                        $count=0;
+                while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
+                    $selectRoom = $selectAllTeacherRow["room"];
+                    $selectStudent = $selectAllTeacherRow["student_name"];
+                    $roomIdArrayFromDb[$count] = new RoomDetails();
+                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $count++;
+                }
+                $counter=0;
+                foreach($roomIdArray as $arr) {
+                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
+                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else {
+                        echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                    <b><div style='
+                                        height: 80px;
+                                        width: 80px;
+                                        background-color: 8BC34A;
+                                        color: white;
+                                        display: inline-block;
+                                        padding:0px;'>VACANT
+                                    </div>
+                                    </b>
+                                </td>";
+                    }
+                    $counter++;
+                }
                 echo "</tr>
                 <tr>
                     <td align='center' height='50'>
@@ -317,38 +363,46 @@ require 'databaasee.php';
                         WHERE tt.timer_id = 10;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
                         $roomIdArrayFromDb = array();
-                        while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
-                            $selectRoom = $selectAllTeacherRow["room"];
-                            $roomIdArrayFromDb[] = $selectRoom;
-                        }
-                        foreach($roomIdArray as $arr) {
-                            if (in_array($arr, $roomIdArrayFromDb)) {
-                                echo "<td align='center' height='50' style='background-color:red;'>
-                                <b><div style='
-                                       height: 80px;
-                                       width: 80px;
-                                       background-color: red;
-                                       border-radius: 50%;
-                                       color: white;
-                                       display: inline-block;
-                                       padding:10px;'> OCCUPIED
-                                   </div>
-                               </b>
-                           </td>";
-                       } else {
-                           echo "<td align='center' height='50' style='background-color:skyblue;'>
-                                       <b><div style='
-                                           height: 80px;
-                                           width: 80px;
-                                           background-color: 8BC34A;
-                                           color: white;
-                                           display: inline-block;
-                                           padding:0px;'>VACANT
-                                       </div>
-                                       </b>
-                                   </td>";
-                            }
-                        }
+                        $count=0;
+                while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
+                    $selectRoom = $selectAllTeacherRow["room"];
+                    $selectStudent = $selectAllTeacherRow["student_name"];
+                    $roomIdArrayFromDb[$count] = new RoomDetails();
+                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $count++;
+                }
+                $counter=0;
+                foreach($roomIdArray as $arr) {
+                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
+                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else {
+                        echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                    <b><div style='
+                                        height: 80px;
+                                        width: 80px;
+                                        background-color: 8BC34A;
+                                        color: white;
+                                        display: inline-block;
+                                        padding:0px;'>VACANT
+                                    </div>
+                                    </b>
+                                </td>";
+                    }
+                    $counter++;
+                }
                echo "</tr>
                 <tr>
                     <td align='center' height='50'>
@@ -363,38 +417,46 @@ require 'databaasee.php';
                         WHERE tt.timer_id = 11;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
                         $roomIdArrayFromDb = array();
-                        while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
-                            $selectRoom = $selectAllTeacherRow["room"];
-                            $roomIdArrayFromDb[] = $selectRoom;
-                        }
-                        foreach($roomIdArray as $arr) {
-                            if (in_array($arr, $roomIdArrayFromDb)) {
-                                echo "<td align='center' height='50' style='background-color:red;'>
-                                <b><div style='
-                                       height: 80px;
-                                       width: 80px;
-                                       background-color: red;
-                                       border-radius: 50%;
-                                       color: white;
-                                       display: inline-block;
-                                       padding:10px;'> OCCUPIED
-                                   </div>
-                               </b>
-                           </td>";
-                       } else {
-                           echo "<td align='center' height='50' style='background-color:skyblue;'>
-                                       <b><div style='
-                                           height: 80px;
-                                           width: 80px;
-                                           background-color: 8BC34A;
-                                           color: white;
-                                           display: inline-block;
-                                           padding:0px;'>VACANT
-                                       </div>
-                                       </b>
-                                   </td>";
-                            }
-                        }
+                        $count=0;
+                while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
+                    $selectRoom = $selectAllTeacherRow["room"];
+                    $selectStudent = $selectAllTeacherRow["student_name"];
+                    $roomIdArrayFromDb[$count] = new RoomDetails();
+                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $count++;
+                }
+                $counter=0;
+                foreach($roomIdArray as $arr) {
+                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
+                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else {
+                        echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                    <b><div style='
+                                        height: 80px;
+                                        width: 80px;
+                                        background-color: 8BC34A;
+                                        color: white;
+                                        display: inline-block;
+                                        padding:0px;'>VACANT
+                                    </div>
+                                    </b>
+                                </td>";
+                    }
+                    $counter++;
+                }
                 echo "</tr>
                 <tr>
                     <td align='center' height='50'>
@@ -409,38 +471,46 @@ require 'databaasee.php';
                         WHERE tt.timer_id = 12;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
                         $roomIdArrayFromDb = array();
-                        while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
-                            $selectRoom = $selectAllTeacherRow["room"];
-                            $roomIdArrayFromDb[] = $selectRoom;
-                        }
-                        foreach($roomIdArray as $arr) {
-                            if (in_array($arr, $roomIdArrayFromDb)) {
-                                echo "<td align='center' height='50' style='background-color:red;'>
-                                <b><div style='
-                                       height: 80px;
-                                       width: 80px;
-                                       background-color: red;
-                                       border-radius: 50%;
-                                       color: white;
-                                       display: inline-block;
-                                       padding:10px;'> OCCUPIED
-                                   </div>
-                               </b>
-                           </td>";
-                       } else {
-                           echo "<td align='center' height='50' style='background-color:skyblue;'>
-                                       <b><div style='
-                                           height: 80px;
-                                           width: 80px;
-                                           background-color: 8BC34A;
-                                           color: white;
-                                           display: inline-block;
-                                           padding:0px;'>VACANT
-                                       </div>
-                                       </b>
-                                   </td>";
-                            }
-                        }
+                        $count=0;
+                while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
+                    $selectRoom = $selectAllTeacherRow["room"];
+                    $selectStudent = $selectAllTeacherRow["student_name"];
+                    $roomIdArrayFromDb[$count] = new RoomDetails();
+                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $count++;
+                }
+                $counter=0;
+                foreach($roomIdArray as $arr) {
+                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
+                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else {
+                        echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                    <b><div style='
+                                        height: 80px;
+                                        width: 80px;
+                                        background-color: 8BC34A;
+                                        color: white;
+                                        display: inline-block;
+                                        padding:0px;'>VACANT
+                                    </div>
+                                    </b>
+                                </td>";
+                    }
+                    $counter++;
+                }
                 echo "</tr>
                 <tr>
                     <td align='center' height='50'>
@@ -455,38 +525,46 @@ require 'databaasee.php';
                         WHERE tt.timer_id = 13;";
                         $selectAllTeacherQueryResult = mysqli_query($connect, $selectAllTeacherQuery) or die(mysqli_error($connect));
                         $roomIdArrayFromDb = array();
-                        while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
-                            $selectRoom = $selectAllTeacherRow["room"];
-                            $roomIdArrayFromDb[] = $selectRoom;
-                        }
-                        foreach($roomIdArray as $arr) {
-                            if (in_array($arr, $roomIdArrayFromDb)) {
-                                echo "<td align='center' height='50' style='background-color:red;'>
-                                <b><div style='
-                                       height: 80px;
-                                       width: 80px;
-                                       background-color: red;
-                                       border-radius: 50%;
-                                       color: white;
-                                       display: inline-block;
-                                       padding:10px;'> OCCUPIED
-                                   </div>
-                               </b>
-                           </td>";
-                       } else {
-                           echo "<td align='center' height='50' style='background-color:skyblue;'>
-                                       <b><div style='
-                                           height: 80px;
-                                           width: 80px;
-                                           background-color: 8BC34A;
-                                           color: white;
-                                           display: inline-block;
-                                           padding:0px;'>VACANT
-                                       </div>
-                                       </b>
-                                   </td>";
-                            }
-                        }
+                        $count=0;
+                while ($selectAllTeacherRow = mysqli_fetch_assoc($selectAllTeacherQueryResult)) {
+                    $selectRoom = $selectAllTeacherRow["room"];
+                    $selectStudent = $selectAllTeacherRow["student_name"];
+                    $roomIdArrayFromDb[$count] = new RoomDetails();
+                    $roomIdArrayFromDb[$count]->roomDetailRoomName = $selectRoom;
+                    $roomIdArrayFromDb[$count]->roomDetailStudentName = $selectStudent;
+                    $count++;
+                }
+                $counter=0;
+                foreach($roomIdArray as $arr) {
+                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
+                    if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        echo "<td align='center' height='50' style='background-color:red;'>
+                             <b><div style='
+                                    height: 80px;
+                                    width: 80px;
+                                    background-color: red;
+                                    border-radius: 50%;
+                                    color: white;
+                                    display: inline-block;
+                                    padding:0px;'>OCCUPIED $checkStudentname
+                                </div>
+                            </b>
+                        </td>";
+                    } else {
+                        echo "<td align='center' height='50' style='background-color:skyblue;'>
+                                    <b><div style='
+                                        height: 80px;
+                                        width: 80px;
+                                        background-color: 8BC34A;
+                                        color: white;
+                                        display: inline-block;
+                                        padding:0px;'>VACANT
+                                    </div>
+                                    </b>
+                                </td>";
+                    }
+                    $counter++;
+                }
                echo"</tr>
             </table></div>";
         ?>
