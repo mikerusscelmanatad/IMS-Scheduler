@@ -63,7 +63,7 @@ if (isset($_GET['update'])) {
 				$teacherName = $teacherNameFromFacultyRow["faculty_name"];
 			}
 		}
-		$prevFacultyDeletetQuery = "DELETE FROM `teacher_timer` WHERE teacher_id=$previousFacultyId AND timer_id=$timer_detail AND student_id=$student_id AND subject_id=$subject_id;";
+		$prevFacultyDeletetQuery = "DELETE FROM `teacher_timer` WHERE timer_id=$timer_detail AND student_id=$student_id AND subject_id=$subject_id;";
 		$prevFacultyDeletetQueryResult = mysqli_query($connect, $prevFacultyDeletetQuery);
 
 		$query = "UPDATE student_subject SET `room_id`=$room_id, `faculty_id`=$facultyId, `books`='$book_id', `teachers_name`='$teacherName', `timer_id`=$timer_detail  WHERE `subject_id`='$subject_id' AND `student_id`=$student_id";
@@ -73,6 +73,9 @@ if (isset($_GET['update'])) {
 			VALUES($facultyId, $timer_detail, $student_id, $subject_id);";
 		$facultyInsertQueryResult = mysqli_query($connect, $facultyInsertQuery);
 	} else {
+		$prevFacultyDeletetQuery = "DELETE FROM `teacher_timer` WHERE timer_id=$timer_detail AND student_id=$student_id AND subject_id=$subject_id;";
+		$prevFacultyDeletetQueryResult = mysqli_query($connect, $prevFacultyDeletetQuery);
+		
 		$query = "INSERT INTO student_subject(subject_id, student_id, room_id, timer_id, faculty_id, books, created_by, teachers_name) 
 		VALUES($subject_id, $student_id, $room_id, $timer_detail, 1, '$book_id', $student_id, '$faculty_id')";
 		$result = mysqli_query($connect, $query);
