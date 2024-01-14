@@ -55,8 +55,8 @@ if (isset($_GET['update'])) {
 		 * Check for Rooms which have id from 72 - 82 these are Group Teachers
 		 * 
 		 * **/
+		$facultyId = empty($facultyId) && is_null(empty($facultyId)) ? $teacher_detail : 1;
 		if ($room_id >= 72 && $room_id <= 82) {
-			$facultyId = empty($facultyId) && is_null(empty($facultyId)) ? $teacher_detail : 1;
 			$teacherNameFromFaculty = "SELECT * FROM faculty f WHERE f.faculty_id = $facultyId LIMIT 1;";
 			$teacherNameFromFacultyResult = mysqli_query($connect, $teacherNameFromFaculty);
 			while ($teacherNameFromFacultyRow = mysqli_fetch_assoc($teacherNameFromFacultyResult)) {

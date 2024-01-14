@@ -248,7 +248,7 @@ $findAllTeachersResult = mysqli_query($connect, $findAllTeachers);
 										while ($bookRow = mysqli_fetch_assoc($findAllBooksResult)) {
 
 											if (!empty($bookRow["book_name"]) || !is_null($bookRow["book_name"])) {
-												echo $bookRow["book_name"];
+												echo "\n" . $bookRow["book_name"];
 											}
 											
 										}
