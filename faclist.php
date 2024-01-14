@@ -40,7 +40,7 @@ include_once("navbar.php");
       // your database connection
       require 'databaasee.php';
 
-      $query = ("SELECT * FROM faculty");
+      $query = ("SELECT * FROM faculty f INNER JOIN rooms r ON r.room_id = f.room;");
       $result = mysqli_query($connect, $query);
       echo "<div class='container'><table width='' class='table table-bordered' border='1' >
                             <tr>
