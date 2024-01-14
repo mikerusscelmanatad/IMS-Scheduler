@@ -104,8 +104,8 @@ require 'databaasee.php';
                 }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
                     if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
                                     height: 80px;
@@ -158,8 +158,8 @@ require 'databaasee.php';
                 }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
                     if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
                                     height: 80px;
@@ -212,8 +212,8 @@ require 'databaasee.php';
                 }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
                     if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
                                     height: 80px;
@@ -266,8 +266,8 @@ require 'databaasee.php';
                 }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
                     if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
                                     height: 80px;
@@ -320,8 +320,8 @@ require 'databaasee.php';
                 }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
                     if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
                                     height: 80px;
@@ -374,8 +374,8 @@ require 'databaasee.php';
                 }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
                     if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
                                     height: 80px;
@@ -428,8 +428,8 @@ require 'databaasee.php';
                 }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
                     if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
                                     height: 80px;
@@ -482,8 +482,8 @@ require 'databaasee.php';
                 }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
                     if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
                                     height: 80px;
@@ -536,8 +536,8 @@ require 'databaasee.php';
                 }
                 $counter=0;
                 foreach($roomIdArray as $arr) {
-                    $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "";
                     if (in_array($arr, array_column($roomIdArrayFromDb, "roomDetailRoomName"))) {
+                        $checkStudentname = !empty($roomIdArrayFromDb[$counter]->roomDetailStudentName) ? $roomIdArrayFromDb[$counter]->roomDetailStudentName: "...";
                         echo "<td align='center' height='50' style='background-color:red;'>
                              <b><div style='
                                     height: 80px;
