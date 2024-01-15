@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2024 at 02:04 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Jan 15, 2024 at 06:37 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -400,8 +400,8 @@ CREATE TABLE `faculty` (
 INSERT INTO `faculty` (`faculty_id`, `faculty_name`, `designation`, `room`) VALUES
 (1, 'No Teacher', 'No faculty', 83),
 (35, 'Teacher Marie', 'ESL', 17),
-(36, 'Teacher Dioni', 'ESL', 18),
-(37, 'Teacher Nathan', 'ESL', 19),
+(36, 'Teacher Lyn', 'ESL', 18),
+(37, 'Teacher Juday', 'ESL', 19),
 (38, 'Teacher Sophia', 'Esl\r\n', 20),
 (39, 'Teacher Juliet', 'ESL\r\n', 21),
 (40, 'Teacher Marilou\r\n', 'ESL', 22),
@@ -410,24 +410,24 @@ INSERT INTO `faculty` (`faculty_id`, `faculty_name`, `designation`, `room`) VALU
 (43, 'Teacher Flora', 'ESL', 25),
 (44, 'Teacher Gail', 'ESL', 26),
 (45, 'Teacher Jem\r\n', 'ESL', 27),
-(50, 'Teacher Shannyn', 'ESL', 28),
-(51, 'Teacher Mariel', 'ESL', 31),
+(50, 'Teacher Rollena', 'ESL', 28),
+(51, 'Teacher Marjorie', 'ESL', 31),
 (52, 'Teacher Bebelyn', 'ESL', 32),
 (53, 'Teacher Lloyd', 'ESL', 34),
 (54, 'Teacher Estella', 'ESL ', 35),
-(55, 'Teacher Kaye', 'ESL', 36),
+(55, 'Teacher Dine', 'ESL', 36),
 (56, 'Teacher Ninn', 'ESL', 37),
 (57, 'Teacher Dayvis', 'ESL', 38),
 (58, 'Teacher Rose', 'ESL', 39),
-(59, 'Teacher Lyle', 'ESL', 40),
+(59, 'Teacher Angelica', 'ESL', 40),
 (60, 'Teacher Vin', 'ESL', 41),
-(61, 'Teacher Chariss', 'ESL', 42),
+(61, 'Teacher Michelle', 'ESL', 42),
 (62, 'Teacher Jessabel', 'ESL', 43),
 (63, 'Teacher Fatima', 'ESL', 44),
 (64, 'Teacher Carl', 'ESL', 45),
 (65, 'Teacher Shera', 'ESL', 46),
 (66, 'Teacher Maria', 'ESL', 47),
-(67, 'Teacher Windy', 'ESL', 48),
+(67, 'Teacher Jane', 'ESL', 48),
 (68, 'Teacher Alora', 'ESL', 49),
 (69, 'Teacher Kentlee', 'ESL', 51),
 (70, 'Teacher Sherlyn', 'ESL', 52),
@@ -442,7 +442,11 @@ INSERT INTO `faculty` (`faculty_id`, `faculty_name`, `designation`, `room`) VALU
 (79, 'Teacher Anziel', 'ESL', 67),
 (80, 'Teacher Limberlie', 'ESL', 68),
 (81, 'Teacher Kryshia', 'ESL', 69),
-(82, 'Teacher Cheryl', 'ESL', 70);
+(116, 'Teacher Carla', 'ESL', 50),
+(117, 'Teacher Zee ', 'ESL', 33),
+(118, 'Teacher Iriel', 'ESL', 53),
+(119, 'Teacher Rica', 'ESL', 54),
+(120, 'Teacher Ivy', 'ESL', 55);
 
 -- --------------------------------------------------------
 
@@ -591,6 +595,14 @@ CREATE TABLE `student` (
   `end_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`student_id`, `student_name`, `course_id`, `level_id`, `student_status`, `start_date`, `end_date`) VALUES
+(241, 'John Cortes', 142, 1, 'NEW STUDENT', '2024-01-15', '2024-01-19'),
+(242, 'ANN CURTIS ', 142, 1, 'NEW STUDENT', '2024-01-15', '2024-01-19');
+
 -- --------------------------------------------------------
 
 --
@@ -609,6 +621,32 @@ CREATE TABLE `student_subject` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_by` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `student_subject`
+--
+
+INSERT INTO `student_subject` (`subject_id`, `student_id`, `room_id`, `faculty_id`, `timer_id`, `books`, `teachers_name`, `deleted`, `created_at`, `created_by`) VALUES
+(179, 241, 20, 38, 3, '									\r\nReading Advantage 1', 'Teacher Sophia', 0, '2024-01-15 03:44:17', '241'),
+(179, 242, 71, 1, 3, '', '', 0, '2024-01-15 03:46:16', '242'),
+(180, 241, 18, 36, 4, '									\r\nSide by Side 1', 'Teacher Dioni', 0, '2024-01-15 03:44:17', '241'),
+(180, 242, 71, 1, 4, '', '', 0, '2024-01-15 03:46:16', '242'),
+(181, 241, 71, 1, 6, '', '', 0, '2024-01-15 03:44:17', '241'),
+(181, 242, 71, 1, 6, '', '', 0, '2024-01-15 03:46:16', '242'),
+(182, 241, 71, 1, 7, '', '', 0, '2024-01-15 03:44:17', '241'),
+(182, 242, 71, 1, 7, '', '', 0, '2024-01-15 03:46:16', '242'),
+(183, 241, 71, 1, 8, '', '', 0, '2024-01-15 03:44:17', '241'),
+(183, 242, 71, 1, 8, '', '', 0, '2024-01-15 03:46:16', '242'),
+(184, 241, 71, 1, 10, '', '', 0, '2024-01-15 03:44:17', '241'),
+(184, 242, 71, 1, 10, '', '', 0, '2024-01-15 03:46:16', '242'),
+(187, 241, 71, 1, 10, '', '', 0, '2024-01-15 03:44:17', '241'),
+(187, 242, 71, 1, 10, '', '', 0, '2024-01-15 03:46:16', '242'),
+(188, 241, 71, 1, 11, '', '', 0, '2024-01-15 03:44:17', '241'),
+(188, 242, 72, 116, 11, '									\r\nReal Writing 1', 'Teacher Sample', 0, '2024-01-15 03:46:16', '242'),
+(189, 241, 71, 1, 12, '', '', 0, '2024-01-15 03:44:17', '241'),
+(189, 242, 71, 1, 12, '', '', 0, '2024-01-15 03:46:16', '242'),
+(190, 241, 54, 119, 13, '									', 'Teacher Rica', 0, '2024-01-15 03:44:17', '241'),
+(190, 242, 74, 1, 13, '									', 'No Teacher', 0, '2024-01-15 03:46:16', '242');
 
 -- --------------------------------------------------------
 
@@ -754,6 +792,17 @@ CREATE TABLE `teacher_timer` (
   `subject_id` int(11) NOT NULL,
   `room_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `teacher_timer`
+--
+
+INSERT INTO `teacher_timer` (`teacher_id`, `timer_id`, `student_id`, `subject_id`, `room_id`) VALUES
+(1, 13, 242, 190, 74),
+(36, 4, 241, 180, NULL),
+(38, 3, 241, 179, NULL),
+(116, 11, 242, 188, 72),
+(119, 13, 241, 190, NULL);
 
 -- --------------------------------------------------------
 
@@ -931,7 +980,7 @@ ALTER TABLE `data`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `faculty_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `faculty_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `level`
@@ -949,7 +998,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=241;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
 
 --
 -- AUTO_INCREMENT for table `subject`
