@@ -133,7 +133,7 @@ include_once("navbar.php");
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="student_name">Students Name </label>
 								<div class="col-md-4">
-									<input class="form-control" id="student_name" name="student_name" type="text" placeholder="Name here " required="">
+									<input class="form-control" id="student_name" name="student_name" type="text" autocomplete="off" placeholder="Name here " required="">
 								</div>
 							</div>
 
