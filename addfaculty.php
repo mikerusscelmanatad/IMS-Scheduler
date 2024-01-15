@@ -4,6 +4,8 @@ $path .= "header.php";
 include_once("header.php");
 include_once("navbar.php");
 ?>
+
+
 <html>
 
 <head>
@@ -28,20 +30,26 @@ include_once("navbar.php");
 							<!-- Form Name -->
 							<legend> Add Teacher </legend>
 
+							<div class="form-group">
+								<div class="col-md-5">
+									<input readonly id="faculty_id" name="faculty_id" type="hidden" value="<?php echo $faculty_id; ?>" class="form-control input-md" required="" />
+								</div>
+							</div>
+
 							<!-- Text input-->
 							<div class="form-group">
-								<label class="col-md-6 control-label" for="falname"> Input Name of Teacher</label>
+								<label class="col-md-6 control-label" for="faculty_name"> Input Name of Teacher</label>
 								<div class="col-md-5">
-									<input id="falname" name="falname" type="text" placeholder="" class="form-control input-md" autocomplete="off" required="">
+									<input id="faculty_name" name="faculty_name" type="text" placeholder="" class="form-control input-md" autocomplete="off" required="">
 
 								</div>
 							</div>
 
 							<!-- Text input-->
 							<div class="form-group">
-								<label class="col-md-6 control-label" for="Designation">Designation</label>
+								<label class="col-md-6 control-label" for="designation">Designation</label>
 								<div class="col-md-5">
-									<input id="Designation" name="Designation" type="text" placeholder="" class="form-control input-md" autocomplete="off" required="">
+									<input id="designation" name="designation" type="text" placeholder="" class="form-control input-md" autocomplete="off" required="">
 									<span class="help-block"></span>
 								</div>
 							</div>

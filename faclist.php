@@ -99,7 +99,7 @@ include_once("navbar.php");
 
         $sql = mysqli_query($connect, "DELETE FROM faculty WHERE faculty_id='$faculty_id'");
         if (!$sql) {
-          echo ("Could not delete rows" . mysqli_error($con));
+          echo ("Could not delete rows" . mysqli_error($connect));
         }
       }
       ?>
