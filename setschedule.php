@@ -12,6 +12,9 @@ while ($row = mysqli_fetch_array($studentsQueryResult)) {
 	$cleanStudentsQuery = "UPDATE student SET student_status = 'OLD STUDENT' WHERE student_id = $toCleanStudentId;";
 	$cleanStudentsQueryResult = mysqli_query($connect, $cleanStudentsQuery);	
 
+	$cleanStudentsQuery = "UPDATE student_subject SET room_id = 71, faculty_id=1, books='', teachers_name='' WHERE student_id = $toCleanStudentId;";
+	$cleanStudentsQueryResult = mysqli_query($connect, $cleanStudentsQuery);	
+
 	$cleanStudentsQuery = "DELETE FROM teacher_timer WHERE student_id = $toCleanStudentId;";
 	$cleanStudentsQueryResult = mysqli_query($connect, $cleanStudentsQuery);	
 }

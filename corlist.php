@@ -30,6 +30,12 @@ require 'databaasee.php';
             padding-bottom: 5px;
             height: 20px;
         }
+        .status {
+            height: 25px;
+            width: 140px;
+            background-color: #F44336;
+            color:white;
+        }
 
     </style>
 </head>
@@ -60,12 +66,19 @@ require 'databaasee.php';
                 $student_course = $row['course_name'];
                 $student_level = $row['level_name'];
                 $student_status = $row['student_status'];
-
-
+                $endDate = DateTime::createFromFormat('Y-m-d', $row['end_date']);
+                $now = new DateTime();
+                $now = DateTime::createFromFormat('Y-m-d', $now->format('Y-m-d'));
+                
                 echo "<tr>";
 
                 echo "<td style= 'color:blue'> <B><center> IMS - " . htmlspecialchars($row['student_id']) . "</td>";
-                echo "<td style='text-align: center'><B>" . htmlspecialchars($student_name) . " </B></td>";
+                if ($endDate < $now) {
+                    echo "<td style='text-align: center'><center><B>".htmlspecialchars($student_name)."<div class='status'>PAST STUDENT</div></B></center></td>";
+                    
+                } else {
+                    echo "<td style='text-align: center'><B>" . htmlspecialchars($student_name) . " </B></td>";
+                }
                 echo "<td style='text-align: center'>" . htmlspecialchars($row['course_name']) . "</td>";
                 echo "<td style='text-align: center'>" . htmlspecialchars($row['level_name']) . "</td>";
                 echo "<td style='text-align: center'>" . htmlspecialchars($row['student_status']) . "</td>";
